@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/item_AIS"
+                android:id="@+id/btn_smsAIS"
+                android:layout_weight="1"
+                android:background="@color/bg_topup_ais"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="@color/list_background" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/item_DTAC"
+                android:id="@+id/btn_smsDTAC"
+                android:layout_weight="1"
+                android:background="@color/bg_topup_dtac"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="@color/list_background" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/item_TRUE"
+                android:id="@+id/btn_smsTRUE"
+                android:layout_weight="1"
+                android:background="@color/bg_topup_true"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="@color/list_background" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="10dp"
+        android:paddingLeft="10dp"
+        android:background="@color/bg_topup_ais"
+        android:paddingBottom="10dp"
+        android:id="@+id/list_returnBG"
+        android:layout_weight="1">
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/listViewReturn"
+            android:background="@color/list_background"
+            android:choiceMode="singleChoice"
+            android:listSelector="@drawable/bkg"
+            android:clickable="true" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:visibility="gone"
+        android:id="@+id/panelBtn">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txtM116"
+                android:id="@+id/btnReturn"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:background="@android:color/holo_orange_light" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txtM117"
+                android:id="@+id/btnCancel"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:background="@android:color/holo_red_light"
+                android:layout_marginLeft="10dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

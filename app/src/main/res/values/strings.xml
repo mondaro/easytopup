@@ -1,0 +1,84 @@
+<resources>
+    <string name="app_name">เติมกะตังค์</string>
+    <string name="action_settings">ตั้งค่า</string>
+    <string name="drawer_open">รายการเมนูเปิด</string>
+    <string name="drawer_close">รายการเมนูปิด</string>
+
+    <!-- Nav Drawer Menu Items -->
+    <string-array name="nav_drawer_items">
+        <item >เติมเงิน</item>
+        <item >ยอดเงินคงเหลือ</item>
+        <item >ดึงเงินคืน</item>
+        <item >เพิ่มเติม</item>
+        <item >ตั้งค่ารหัสคนขาย</item>
+        <item >เกี่ยวกับโปรแกรม</item>
+        <item >ออกโปรแกรม</item>
+    </string-array>
+
+    <!-- Nav Drawer List Item Icons -->
+    <!-- Keep them in order as the titles are in -->
+    <array name="nav_drawer_icons">
+        <item>@drawable/ic_open_in_new_black_24dp</item>
+        <item>@drawable/ic_account_balance_wallet_black_24dp</item>
+        <item>@drawable/ic_restore_black_24dp</item>
+        <item>@drawable/ic_extension_black_24dp</item>
+        <item>@drawable/ic_settings_black_24dp</item>
+        <item>@drawable/ic_info_outline_black_24dp</item>
+        <item>@drawable/ic_exit_to_app_black_24dp</item>
+    </array>
+
+    <!-- Content Description -->
+    <string name="desc_list_item_icon">Item Icon</string>
+    <string name="item_AIS">AIS</string>
+    <string name="item_DTAC">DTAC</string>
+    <string name="item_TRUE">TRUE</string>
+    <string name="txt_chk_balance">กรุณาเลือกระบบ\nที่ต้องการเช็คยอด</string>
+    <string name="headerMpay">สำหรับคนขายเติมเงินระบบ AIS 1-2-call ที่ผูกบัญชีร่วมกับบริการ mPay</string>
+    <string name="txtM1">เติมเงินเข้ากระเป๋าขายออนไลน์</string>
+    <string name="txtM101">1. กรอกจำนวนเงิน</string>
+    <string name="txtM103">รหัสประจำตัว</string>
+    <string name="txtM104">ทำรายการ(1)</string>
+    <string name="txtM105">2. เลือกบัญชีที่ต้องการหักเงิน</string>
+    <string name="txtM106">ทำรายการ(2)</string>
+    <string name="txtM107">การเติมเงินเข้ากระเป๋าขายผ่าน mPay</string>
+    <string name="txtM108">ปิดหน้าต่างนี้</string>
+    <string name="txtM109">1. กรอกรหัสประจำตัว mPay\n\n
+                            2. กรอกจำนวนเงินที่ต้องการเติมลงไป\n\n
+                            3. กดปุ่ม ทำรายการ(1) รอจนได้รับข้อความเลือกบัญชีเติมเงินเข้ากระเป๋าขาย\n\n
+                            4. เลือกบัญชีที่ต้องการให้หักเงินเติมเข้ากระเป๋าขายออนไลน์\n\n
+                            5. กดปุ่ม ทำรายการ(2) ระบบจะทำการเติมเงินเข้ากระเป๋าขายออนไลน์ให้ทันทีโดยหักเงินจากบัญชีที่เลือกไว้\n\n
+                            ** หมายเหตุ ** หากไม่มีบัญชี mPay รบกวนติดต่อศูนย์บริการของ AIS ได้เลยครับ</string>
+    <string-array name="type_arrays">
+        <item>บัญชี mPay</item>
+        <item>บัญชี ธนาคาร</item>
+    </string-array>
+    <string name="txtM110">ซื้อบัตรเงินสด 1-2-Call</string>
+    <string name="txtM111">1. กรอกหมายเลขโทรศัพท์</string>
+    <string name="txtM112">2. เลือกราคาบัตรเงินสด 1-2-Call</string>
+    <string-array name="amount_arrays">
+        <item>50</item>
+        <item>100</item>
+        <item>300</item>
+        <item>500</item>
+        <item>1000</item>
+    </string-array>
+    <string name="txtM113">ซื้อบัตรเงินสด</string>
+    <string name="txtM114">ซื้อบัตรเงินสด 1-2-Call</string>
+    <string name="txtM115">1. กรอกรหัสประจำตัว mPay\n\n
+                            2. กรอกหมายเลขโทรศัพท์ที่ต้องการบัตรเติมเงินเติมลงไป\n\n
+                            3. เลือกจำนวนเงินบัตรเติมเงินที่ต้องการซื้อ\n\n
+                            4. กดปุ่ม ซื้อบัตรเงินสด เสร็จขั้นตอน ลูกค้าจะได้รับข้อความรหัสบัตรทันที\n\n
+                            ** หมายเหตุ ** หากไม่มีบัญชี mPay รบกวนติดต่อศูนย์บริการของ AIS ได้เลยครับ</string>
+    <string name="txtM116">ดึงเงินคืน</string>
+    <string name="txtM117">ยกเลิก</string>
+    <string name="txtM118">จ่ายบิล AIS รายเดือน</string>
+    <string name="txtM119">จ่ายบิล AIS รายเดือน</string>
+    <string name="about_content1">เติมกะตังค์\n</string>
+    <string name="about_content2">\n\n\nพัฒนาโดย\nMondaro Developer\n\n\n
+        ติดต่อทีมงาน
+        \nemail : mondaro23@gmail.com
+        \nfacebook : mondaros
+        \nline : pae_somkiat
+        \nwhatsapp : 0879760072</string>
+
+</resources>

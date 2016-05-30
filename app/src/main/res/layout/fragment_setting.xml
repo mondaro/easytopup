@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="10dp"
+    android:gravity="center"
+    android:background="@color/text_topup_pad">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="รหัสประจำตัวคนขายออนไลน์"
+        android:id="@+id/textView2"
+        android:padding="8dp"
+        android:textColor="@color/text_topup_pad_black"
+        android:layout_marginTop="10dp" />
+
+    <CheckBox
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="วันทูคอล"
+        android:id="@+id/checkBox1"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:layout_alignLeft="@+id/textView2"
+        android:textColor="@color/text_topup_pad_black"
+        android:textSize="20dp"
+        android:checked="false" />
+
+    <Space
+        android:layout_width="fill_parent"
+        android:layout_height="10dp"
+        android:id="@+id/space5"
+        android:layout_below="@+id/checkBox1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:id="@+id/editTextUID1"
+        android:padding="8dp"
+        android:textSize="25sp"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:maxLength="4"
+        android:textColor="@color/text_topup_pad"
+        android:layout_below="@+id/space5"
+        android:layout_alignLeft="@+id/editTextUID2"
+        android:layout_alignStart="@+id/editTextUID2"
+        android:enabled="false"
+        android:background="@drawable/border_inactive"
+        android:digits="0123456789"
+        android:textStyle="bold"
+        android:textColorHint="@color/background_material_light"
+        android:phoneNumber="true"
+        android:singleLine="true"/>
+
+    <Space
+        android:layout_width="fill_parent"
+        android:layout_height="10dp"
+        android:layout_below="@+id/editTextUID1"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/space" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ทรูมูฟ"
+        android:id="@+id/checkBox2"
+        android:textColor="@color/text_topup_pad_black"
+        android:textSize="20dp"
+        android:layout_below="@+id/space"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:checked="false" />
+
+    <Space
+        android:layout_width="fill_parent"
+        android:layout_height="10dp"
+        android:id="@+id/space4"
+        android:layout_below="@+id/checkBox2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:id="@+id/editTextUID2"
+        android:padding="8dp"
+        android:textSize="25sp"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:maxLength="4"
+        android:textColor="@color/text_topup_pad"
+        android:layout_below="@+id/space4"
+        android:layout_alignLeft="@+id/editTextUID3"
+        android:layout_alignStart="@+id/editTextUID3"
+        android:enabled="false"
+        android:background="@drawable/border_inactive"
+        android:digits="0123456789"
+        android:textStyle="bold"
+        android:textColorHint="@color/background_material_light"
+        android:singleLine="true" />
+
+    <Space
+        android:layout_width="fill_parent"
+        android:layout_height="10dp"
+        android:id="@+id/space2"
+        android:layout_below="@+id/editTextUID2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ดีแทค"
+        android:id="@+id/checkBox3"
+        android:textColor="@color/text_topup_pad_black"
+        android:textSize="20dp"
+        android:layout_below="@+id/space2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:checked="false" />
+
+    <Space
+        android:layout_width="fill_parent"
+        android:layout_height="10dp"
+        android:id="@+id/space3"
+        android:layout_below="@+id/checkBox3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:id="@+id/editTextUID3"
+        android:padding="8dp"
+        android:textSize="25sp"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:maxLength="4"
+        android:textColor="@color/text_topup_pad"
+        android:layout_below="@+id/space3"
+        android:layout_centerHorizontal="true"
+        android:enabled="false"
+        android:background="@drawable/border_inactive"
+        android:digits="0123456789"
+        android:textStyle="bold"
+        android:textColorHint="@color/background_material_light"
+        android:singleLine="true" />
+
+    <Button
+        android:layout_width="130dp"
+        android:layout_height="60dp"
+        android:text="ตกลง"
+        android:id="@+id/buttonOKSetting"
+        android:layout_marginBottom="10dp"
+        android:padding="10dp"
+        android:textSize="25sp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/button_ok"
+        android:textColor="@color/text_topup_pad" />
+
+</RelativeLayout>
