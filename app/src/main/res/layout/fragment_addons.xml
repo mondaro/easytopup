@@ -5,451 +5,531 @@
     android:background="@color/text_topup_pad_black"
     android:id="@+id/contentL">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
+    <ScrollView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:weightSum="5"
-        android:id="@+id/linearLayout">
+        android:id="@+id/scrollView" >
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.6"
-            android:background="#07912b"
-            android:padding="10dp"
-            android:gravity="center_vertical|center_horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/headerMpay"
-                android:id="@+id/textView6"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:textColor="@color/text_topup_pad"
-                android:padding="5dp" />
+            android:weightSum="5"
+            android:id="@+id/linearLayout">
 
             <LinearLayout
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:layout_weight="3">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="@string/txtM103"
-                    android:id="@+id/textView10"
-                    android:textColor="@color/text_topup_pad"
-                    android:layout_weight="1"
-                    android:layout_gravity="left"
-                    android:gravity="center_vertical|center_horizontal" />
-
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:inputType="phone"
-                    android:id="@+id/editText_ID"
-                    android:textColor="@color/bg_topup_pad_black"
-                    android:background="@color/text_topup_pad"
-                    android:textStyle="bold"
-                    android:textSize="30sp"
-                    android:gravity="center_vertical|center_horizontal"
-                    android:maxLength="4"
-                    android:layout_weight="1"
-                    android:hint="รหัส mPay"
-                    android:digits="0123456789"
-                    android:padding="5dp" />
-
-                <Button
-                    style="?android:attr/buttonStyleSmall"
-                    android:layout_width="45dp"
-                    android:layout_height="50dp"
-                    android:id="@+id/button_addmPayID"
-                    android:layout_weight="0.5"
-                    android:layout_gravity="right"
-                    android:gravity="center_vertical|center_horizontal"
-                    android:text="+"
-                    android:textSize="20sp"
-                    android:textColor="@color/background_material_light"
-                    android:background="@android:color/holo_red_light" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="2.2"
-            android:weightSum="4"
-            android:background="#000000"
-            android:padding="2dp">
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:padding="5dp"
-                android:background="#2cba56"
-                android:id="@+id/contentH1"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.6"
+                android:background="#07912b"
+                android:padding="10dp"
                 android:gravity="center_vertical|center_horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="@string/txtM1"
-                    android:id="@+id/textView7"
+                    android:text="@string/headerMpay"
+                    android:id="@+id/textView6"
+                    android:layout_gravity="center"
+                    android:gravity="center"
                     android:textColor="@color/text_topup_pad"
-                    android:gravity="center"
-                    android:layout_weight="1"
-                    android:layout_gravity="left"
-                    android:layout_marginLeft="10dp" />
-
-                <Button
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:id="@+id/button_what1"
-                    android:text="\?"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:gravity="center"
-                    android:layout_gravity="right"
-                    android:layout_marginRight="10dp"
-                    android:background="@android:color/holo_purple"
-                    android:textSize="25sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#31c270"
-                android:padding="10dp"
-                android:id="@+id/contentC1"
-                android:layout_weight="3"
-                android:visibility="gone">
+                    android:padding="5dp" />
 
                 <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:weightSum="2">
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="3">
 
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="@string/txtM103"
+                        android:id="@+id/textView10"
+                        android:textColor="@color/text_topup_pad"
                         android:layout_weight="1"
-                        android:padding="5dp">
+                        android:layout_gravity="left"
+                        android:gravity="center_vertical|center_horizontal" />
 
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:padding="3dp">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                android:id="@+id/textView8"
-                                android:text="@string/txtM101"
-                                android:textColor="@color/text_topup_pad" />
-
-                            <EditText
-                                android:layout_width="120dp"
-                                android:layout_height="wrap_content"
-                                android:inputType="phone"
-                                android:ems="10"
-                                android:id="@+id/editText_Amount"
-                                android:textSize="30sp"
-                                android:textStyle="bold"
-                                android:textColor="@color/bg_topup_pad_black"
-                                android:background="@color/text_topup_pad"
-                                android:layout_gravity="center"
-                                android:gravity="center"
-                                android:maxLength="5"
-                                android:nestedScrollingEnabled="false"
-                                android:layout_marginTop="8dp"
-                                android:hint="ยอดเงิน"
-                                android:digits="0123456789" />
-
-                            <LinearLayout
-                                android:orientation="vertical"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:layout_gravity="center"
-                                android:paddingTop="8dp">
-
-                                <Button
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="50dp"
-                                    android:id="@+id/button_pass1"
-                                    android:gravity="center"
-                                    android:text="@string/txtM104"
-                                    android:layout_marginTop="10dp" />
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
+                    <EditText
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:inputType="phone"
+                        android:id="@+id/editText_ID"
+                        android:textColor="@color/bg_topup_pad_black"
+                        android:background="@color/text_topup_pad"
+                        android:textStyle="bold"
+                        android:textSize="30sp"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:maxLength="4"
                         android:layout_weight="1"
-                        android:padding="5dp">
+                        android:hint="รหัส mPay"
+                        android:digits="0123456789"
+                        android:padding="5dp" />
 
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:padding="3dp" >
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                android:id="@+id/textView11"
-                                android:text="@string/txtM105"
-                                android:textColor="@color/text_topup_pad" />
-
-                            <Spinner
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/spinner"
-                                android:background="@android:color/holo_orange_light"
-                                android:spinnerMode="dialog"
-                                android:gravity="center"
-                                android:layout_gravity="center"
-                                android:entries="@array/type_arrays"
-                                android:padding="8dp"
-                                android:clickable="false"
-                                android:layout_marginTop="8dp" />
-
-                            <LinearLayout
-                                android:orientation="vertical"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:layout_gravity="center"
-                                android:paddingTop="8dp" >
-
-                                <Button
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="50dp"
-                                    android:id="@+id/button_pass2"
-                                    android:gravity="center"
-                                    android:text="@string/txtM106"
-                                    android:enabled="false"
-                                    android:layout_marginTop="10dp" />
-                            </LinearLayout>
-
-                        </LinearLayout>
-                    </LinearLayout>
+                    <Button
+                        style="?android:attr/buttonStyleSmall"
+                        android:layout_width="45dp"
+                        android:layout_height="50dp"
+                        android:id="@+id/button_addmPayID"
+                        android:layout_weight="0.5"
+                        android:layout_gravity="right"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:text="+"
+                        android:textSize="20sp"
+                        android:textColor="@color/background_material_light"
+                        android:background="@android:color/holo_red_light" />
                 </LinearLayout>
             </LinearLayout>
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="1dp"></LinearLayout>
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="2.2"
-            android:background="#000000"
-            android:padding="2dp">
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:padding="5dp"
-                android:background="#2cba56"
-                android:id="@+id/contentH2"
-                android:gravity="center_vertical|center_horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="@string/txtM110"
-                    android:id="@+id/textView13"
-                    android:textColor="@color/text_topup_pad"
-                    android:layout_gravity="left"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:layout_marginLeft="10dp" />
-
-                <Button
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:id="@+id/button_what2"
-                    android:gravity="center"
-                    android:text="\?"
-                    android:layout_gravity="right"
-                    android:layout_marginRight="10dp"
-                    android:background="@android:color/holo_purple"
-                    android:textSize="25sp" />
-            </LinearLayout>
-
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#31c270"
-                android:padding="10dp"
-                android:id="@+id/contentC2"
-                android:layout_weight="3"
-                android:visibility="gone">
+                android:layout_height="match_parent"
+                android:layout_weight="2.2"
+                android:weightSum="4"
+                android:background="#000000"
+                android:padding="2dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:id="@+id/textView15"
-                    android:text="@string/txtM111"
-                    android:textColor="@color/text_topup_pad"
-                    android:layout_marginTop="8dp" />
-
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:inputType="phone"
-                    android:ems="10"
-                    android:id="@+id/editText_phncard"
-                    android:textColor="@color/bg_topup_pad_black"
-                    android:background="@color/text_topup_pad"
-                    android:textStyle="bold"
-                    android:textSize="30sp"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:maxLength="10"
-                    android:layout_marginTop="8dp"
-                    android:numeric="integer"
-                    android:phoneNumber="true"
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
                     android:padding="5dp"
-                    android:hint="เบอร์โทรคนซื้อ"
-                    android:digits="0123456789" />
+                    android:background="#2cba56"
+                    android:id="@+id/contentH1"
+                    android:gravity="center_vertical|center_horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:id="@+id/textView14"
-                    android:text="@string/txtM112"
-                    android:textColor="@color/text_topup_pad"
-                    android:layout_marginTop="10dp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="@string/txtM1"
+                        android:id="@+id/textView7"
+                        android:textColor="@color/text_topup_pad"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="10dp" />
 
-                <Spinner
-                    android:layout_width="wrap_content"
+                    <Button
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:id="@+id/button_what1"
+                        android:text="\?"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:gravity="center"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="10dp"
+                        android:background="@android:color/holo_purple"
+                        android:textSize="25sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/spn2"
-                    android:background="@android:color/holo_orange_light"
-                    android:spinnerMode="dialog"
-                    android:gravity="center"
-                    android:layout_gravity="center"
-                    android:entries="@array/amount_arrays"
-                    android:padding="8dp"
-                    android:clickable="true"
-                    android:layout_marginTop="8dp" />
+                    android:background="#31c270"
+                    android:padding="10dp"
+                    android:id="@+id/contentC1"
+                    android:layout_weight="3"
+                    android:visibility="gone">
 
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:id="@+id/button_card"
-                    android:gravity="center"
-                    android:text="@string/txtM113"
-                    android:enabled="true"
-                    android:layout_marginTop="10dp"
-                    android:layout_gravity="center_horizontal"
-                    android:textSize="20sp"
-                    android:padding="10dp" />
-            </LinearLayout>
-        </LinearLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="2">
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="1dp"
-            android:layout_below="@+id/linearLayout"
-            android:layout_centerHorizontal="true" />
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="5dp">
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="2.2"
-            android:background="#000000"
-            android:padding="2dp">
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="3dp">
 
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:padding="5dp"
-                android:background="#2cba56"
-                android:id="@+id/linearLayout2"
-                android:gravity="center_vertical|center_horizontal" >
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                    android:id="@+id/textView8"
+                                    android:text="@string/txtM101"
+                                    android:textColor="@color/text_topup_pad" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="@string/txtM118"
-                    android:id="@+id/textView9"
-                    android:textColor="@color/text_topup_pad"
-                    android:layout_gravity="left"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:layout_marginLeft="10dp" />
+                                <EditText
+                                    android:layout_width="120dp"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="phone"
+                                    android:ems="10"
+                                    android:id="@+id/editText_Amount"
+                                    android:textSize="30sp"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/bg_topup_pad_black"
+                                    android:background="@color/text_topup_pad"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:maxLength="5"
+                                    android:nestedScrollingEnabled="false"
+                                    android:layout_marginTop="8dp"
+                                    android:hint="ยอดเงิน"
+                                    android:digits="0123456789" />
 
-                <Button
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:id="@+id/button"
-                    android:gravity="center"
-                    android:text="\?"
-                    android:layout_gravity="right"
-                    android:layout_marginRight="10dp"
-                    android:background="@android:color/holo_purple"
-                    android:textSize="25sp" />
+                                <LinearLayout
+                                    android:orientation="vertical"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:layout_gravity="center"
+                                    android:paddingTop="8dp">
+
+                                    <Button
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="50dp"
+                                        android:id="@+id/button_pass1"
+                                        android:gravity="center"
+                                        android:text="@string/txtM104"
+                                        android:layout_marginTop="10dp" />
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="5dp">
+
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="3dp" >
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                    android:id="@+id/textView11"
+                                    android:text="@string/txtM105"
+                                    android:textColor="@color/text_topup_pad" />
+
+                                <Spinner
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/spn1"
+                                    android:background="@android:color/holo_orange_light"
+                                    android:spinnerMode="dialog"
+                                    android:gravity="center"
+                                    android:layout_gravity="center"
+                                    android:entries="@array/type_arrays"
+                                    android:padding="8dp"
+                                    android:clickable="false"
+                                    android:layout_marginTop="8dp" />
+
+                                <LinearLayout
+                                    android:orientation="vertical"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:layout_gravity="center"
+                                    android:paddingTop="8dp" >
+
+                                    <Button
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="50dp"
+                                        android:id="@+id/button_pass2"
+                                        android:gravity="center"
+                                        android:text="@string/txtM106"
+                                        android:enabled="false"
+                                        android:layout_marginTop="10dp" />
+                                </LinearLayout>
+
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#31c270"
-                android:padding="10dp"
-                android:id="@+id/linearLayout3"
-                android:layout_weight="3"
-                android:visibility="gone" >
+                android:layout_height="match_parent"
+                android:padding="1dp"></LinearLayout>
 
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2.2"
+                android:background="#000000"
+                android:padding="2dp">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:background="#2cba56"
+                    android:id="@+id/contentH2"
+                    android:gravity="center_vertical|center_horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="@string/txtM110"
+                        android:id="@+id/textView13"
+                        android:textColor="@color/text_topup_pad"
+                        android:layout_gravity="left"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_marginLeft="10dp" />
+
+                    <Button
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:id="@+id/button_what2"
+                        android:gravity="center"
+                        android:text="\?"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="10dp"
+                        android:background="@android:color/holo_purple"
+                        android:textSize="25sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#31c270"
+                    android:padding="10dp"
+                    android:id="@+id/contentC2"
+                    android:layout_weight="3"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:id="@+id/textView15"
+                        android:text="@string/txtM111"
+                        android:textColor="@color/text_topup_pad"
+                        android:layout_marginTop="8dp" />
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:inputType="phone"
+                        android:ems="10"
+                        android:id="@+id/editText_phncard"
+                        android:textColor="@color/bg_topup_pad_black"
+                        android:background="@color/text_topup_pad"
+                        android:textStyle="bold"
+                        android:textSize="30sp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:maxLength="10"
+                        android:layout_marginTop="8dp"
+                        android:numeric="integer"
+                        android:phoneNumber="true"
+                        android:padding="5dp"
+                        android:hint="เบอร์โทรคนซื้อ"
+                        android:digits="0123456789" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:id="@+id/textView14"
+                        android:text="@string/txtM112"
+                        android:textColor="@color/text_topup_pad"
+                        android:layout_marginTop="10dp" />
+
+                    <Spinner
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/spn2"
+                        android:background="@android:color/holo_orange_light"
+                        android:spinnerMode="dialog"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:entries="@array/amount_arrays"
+                        android:padding="8dp"
+                        android:clickable="true"
+                        android:layout_marginTop="8dp" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:id="@+id/button_card"
+                        android:gravity="center"
+                        android:text="@string/txtM113"
+                        android:enabled="true"
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="20sp"
+                        android:padding="10dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="1dp"
+                android:layout_below="@+id/linearLayout"
+                android:layout_centerHorizontal="true" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2.2"
+                android:background="#000000"
+                android:padding="2dp">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:background="#2cba56"
+                    android:id="@+id/contentH3"
+                    android:gravity="center_vertical|center_horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="@string/txtM118"
+                        android:id="@+id/textView9"
+                        android:textColor="@color/text_topup_pad"
+                        android:layout_gravity="left"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_marginLeft="10dp" />
+
+                    <Button
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:id="@+id/button_what3"
+                        android:gravity="center"
+                        android:text="\?"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="10dp"
+                        android:background="@android:color/holo_purple"
+                        android:textSize="25sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#31c270"
+                    android:padding="10dp"
+                    android:id="@+id/contentC3"
+                    android:layout_weight="3"
+                    android:visibility="gone" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:id="@+id/textView16"
+                        android:text="@string/txtM111"
+                        android:textColor="@color/text_topup_pad"
+                        android:layout_marginTop="8dp" />
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:inputType="phone"
+                        android:ems="10"
+                        android:id="@+id/editText_phonebill"
+                        android:textColor="@color/bg_topup_pad_black"
+                        android:background="@color/text_topup_pad"
+                        android:textStyle="bold"
+                        android:textSize="30sp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:maxLength="10"
+                        android:layout_marginTop="8dp"
+                        android:numeric="integer"
+                        android:phoneNumber="true"
+                        android:padding="5dp"
+                        android:hint="เบอร์โทรรายเดือน"
+                        android:digits="0123456789" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/button_chkbill"
+                        android:gravity="center"
+                        android:text="@string/txtM104"
+                        android:enabled="true"
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="20sp"
+                        android:padding="10dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:id="@+id/textView17"
+                        android:text="@string/txtM119"
+                        android:textColor="@color/text_topup_pad"
+                        android:layout_marginTop="10dp" />
+
+                    <Spinner
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/spn3"
+                        android:background="@android:color/holo_orange_light"
+                        android:spinnerMode="dialog"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:entries="@array/op_arrays"
+                        android:padding="8dp"
+                        android:clickable="false"
+                        android:layout_marginTop="8dp" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:id="@+id/button_paybill"
+                        android:gravity="center"
+                        android:text="@string/txtM106"
+                        android:enabled="false"
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="20sp"
+                        android:padding="10dp" />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>
