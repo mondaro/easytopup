@@ -165,7 +165,7 @@ public class AddOnsFragment extends Fragment {
         btnpaybill.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
             try {
                 Intent callIntent = new Intent(Intent.ACTION_CALL);
-                String txtTel = "*555*" + op1 + "%23";
+                String txtTel = "*556*1*" + op1 + "%23";
                 Log.d("TEST",txtTel);
                 callIntent.setData(Uri.parse("tel:" + txtTel));
                 startActivity(callIntent);
