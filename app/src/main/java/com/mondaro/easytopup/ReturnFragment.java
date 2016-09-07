@@ -11,7 +11,6 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.telephony.SmsManager;
 import android.util.Log;
@@ -200,7 +199,7 @@ public class ReturnFragment extends Fragment {
     void loadSMS(int mode){
         switch (mode){
             case 1: addr = "address='022719123'"; tag = 1; break;
-            case 2: addr = "address='HappyOnline'"; tag = 2; break;
+            case 2: addr = "address='dtacOnline'"; tag = 2; break;
             case 3: addr = "address='MobileTopUp'"; tag = 3; break;
             //case 2: addr = "address='+66845950234'"; tag = 2; break;
             //case 3: addr = "address='+66902303600'"; tag = 3; break;

@@ -63,7 +63,7 @@ public class ChkBalanceFragment extends Fragment {
             switch (i){
                 case 1: txtTel = "*533" + "%23";break;
                 case 2: txtTel = "*211*2" + "%23";break;
-                case 3: txtTel = "*933" + "%23";break;
+                case 3: txtTel = "*123" + "%23";break;
             }
             ((MainActivity) getActivity()).displayView(0);
             callIntent.setData(Uri.parse("tel:" + txtTel));
