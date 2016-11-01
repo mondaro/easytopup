@@ -79,6 +79,7 @@ public class TopupFragment extends Fragment {
 
             imgButtonLast.setOnClickListener(new OnClickListener() {@Override public void onClick(View v) {
                 if(target=='1'){
+                    tmpDigit = "";
                     LASTPHONE = sharedPref.getString("LAST","");
                     //txtphone.setText(LASTPHONE);
                     InsDigit(LASTPHONE);
@@ -233,6 +234,7 @@ public class TopupFragment extends Fragment {
     }
 
     private void pickContact(View v) {
+        tmpDigit = "";
         Intent pickContactIntent = new Intent( Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI );
         pickContactIntent.setType(ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE);
         startActivityForResult(pickContactIntent, PICK_CONTACT_REQUEST);
