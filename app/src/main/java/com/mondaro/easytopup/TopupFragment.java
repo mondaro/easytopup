@@ -15,7 +15,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,8 +28,7 @@ public class TopupFragment extends Fragment {
     char target ='1';
     int mode = 1;
     TextView txtphone,txtcost,txtAIS,txtDTAC,txtTRUE;
-    Button btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btnOK,btnDel,btnContact;
-    ImageButton imgButtonLast;
+    Button btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btnOK,btnDel,btnContact,btnHistory;
     LinearLayout bgcolor;
     String USERPIN1,USERPIN2,USERPIN3,LASTPHONE;
     SharedPreferences sharedPref;
@@ -57,7 +55,7 @@ public class TopupFragment extends Fragment {
             ((MainActivity) getActivity()).displayView(4);
         }else{
             bgcolor = (LinearLayout)rootView.findViewById(R.id.bgTheme);
-            imgButtonLast = (ImageButton) rootView.findViewById(R.id.imageBtnHistory);
+            btnHistory = (Button) rootView.findViewById(R.id.btnHistory);
             btnContact = (Button) rootView.findViewById(R.id.btnFindContact);
             txtphone = (TextView) rootView.findViewById(R.id.textViewPhone);
             txtcost = (TextView) rootView.findViewById(R.id.textViewCost);
@@ -77,7 +75,7 @@ public class TopupFragment extends Fragment {
             txtDTAC = (TextView) rootView.findViewById(R.id.textViewDTAC);
             txtTRUE = (TextView) rootView.findViewById(R.id.textViewTRUE);
 
-            imgButtonLast.setOnClickListener(new OnClickListener() {@Override public void onClick(View v) {
+            btnHistory.setOnClickListener(new OnClickListener() {@Override public void onClick(View v) {
                 if(target=='1'){
                     tmpDigit = "";
                     LASTPHONE = sharedPref.getString("LAST","");

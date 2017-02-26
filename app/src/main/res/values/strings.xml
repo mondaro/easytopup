@@ -18,13 +18,13 @@
     <!-- Nav Drawer List Item Icons -->
     <!-- Keep them in order as the titles are in -->
     <string-array name="nav_drawer_icons">
-        <item>@drawable/ic_open_in_new_black_24dp</item>
-        <item>@drawable/ic_account_balance_wallet_black_24dp</item>
-        <item>@drawable/ic_restore_black_24dp</item>
-        <item>@drawable/ic_extension_black_24dp</item>
-        <item>@drawable/ic_settings_black_24dp</item>
-        <item>@drawable/ic_info_outline_black_24dp</item>
-        <item>@drawable/ic_exit_to_app_black_24dp</item>
+        <item>@mipmap/ic_open_in_new_black_48dp</item>
+        <item>@mipmap/ic_account_balance_wallet_black_48dp</item>
+        <item>@mipmap/ic_restore_black_48dp</item>
+        <item>@mipmap/ic_extension_black_48dp</item>
+        <item>@mipmap/ic_settings_black_48dp</item>
+        <item>@mipmap/ic_info_outline_black_48dp</item>
+        <item>@mipmap/ic_exit_to_app_black_48dp</item>
     </string-array>
 
     <!-- Content Description -->
@@ -33,7 +33,7 @@
     <string name="item_DTAC">DTAC</string>
     <string name="item_TRUE">TRUE</string>
     <string name="txt_chk_balance">กรุณาเลือกระบบ\nที่ต้องการเช็คยอด</string>
-    <string name="headerMpay">สำหรับคนขายเติมเงินระบบ AIS 1-2-call ที่ผูกบัญชีร่วมกับบริการ mPay</string>
+    <string name="headerMpay">สำหรับคนขายเติมเงินระบบ AIS 1&#8211;2&#8211;call ที่ผูกบัญชีร่วมกับบริการ mPay</string>
     <string name="txtM1">เติมเงินเข้ากระเป๋าขายออนไลน์</string>
     <string name="txtM101">1. กรอกจำนวนเงิน</string>
     <string name="txtM103">รหัสประจำตัว</string>
@@ -51,9 +51,9 @@
         <item>บัญชี mPay</item>
         <item>บัญชี ธนาคาร</item>
     </string-array>
-    <string name="txtM110">ซื้อบัตรเงินสด 1-2-Call</string>
+    <string name="txtM110">ซื้อบัตรเงินสด 1&#8211;2&#8211;Call</string>
     <string name="txtM111">1. กรอกหมายเลขโทรศัพท์</string>
-    <string name="txtM112">2. เลือกราคาบัตรเงินสด 1-2-Call</string>
+    <string name="txtM112">2. เลือกราคาบัตรเงินสด 1&#8211;2&#8211;Call</string>
     <string-array name="amount_arrays">
         <item>50</item>
         <item>100</item>
@@ -62,7 +62,7 @@
         <item>1000</item>
     </string-array>
     <string name="txtM113">ซื้อบัตรเงินสด</string>
-    <string name="txtM114">ซื้อบัตรเงินสด 1-2-Call</string>
+    <string name="txtM114">ซื้อบัตรเงินสด 1&#8211;2&#8211;Call</string>
     <string name="txtM115">1. กรอกหมายเลขโทรศัพท์ที่ต้องการบัตรเติมเงินเติมลงไป\n\n
                             2. เลือกจำนวนเงินบัตรเติมเงินที่ต้องการซื้อ\n\n
                             3. กดปุ่ม ซื้อบัตรเงินสด เสร็จขั้นตอน ลูกค้าจะได้รับข้อความรหัสบัตรทันที\n\n
@@ -81,12 +81,13 @@
                             3. เลือกหมายเลขยอดชำระจากตัวเลือก\n\n
                             4. กดปุ่ม ทำรายการ(2) ระบบจะทำการชำระค่าโทรศัพท์ให้ทันทีโดยหักเงินจากบัญชี mPay\n\n
                             ** หมายเหตุ ** หากไม่มีบัญชี mPay รบกวนติดต่อศูนย์บริการของ AIS ได้เลยครับ</string>
+    <string name="txtM121">** หมายเหตุ **  สำหรับตัวแทนเติมเงินออนไลน์เท่านั้น!!!\nสงสัยหรือพบปัญหาสอบถามที่ mondaro23@gmail.com\n\nรหัสประจำตัวคนขายออนไลน์</string>
+    <string name="txtM122"> &#8212;> ปาดหน้าจอจาก [ซ้าย] ไป [ขวา] เพื่อดูเมนู</string>
     <string name="about_content1">เติมกะตังค์\n</string>
     <string name="about_content2">\n\n\nพัฒนาโดย\nMondaro Developer\n\n\n
         ติดต่อทีมงาน
         \nemail : mondaro23@gmail.com
         \nfacebook : mondaros
-        \nline : pae_somkiat
-        \nwhatsapp : 0879760072</string>
+        \nline : pae_somkiat</string>
 
 </resources>

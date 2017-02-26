@@ -8,14 +8,15 @@
 
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="รหัสประจำตัวคนขายออนไลน์"
+        android:text="@string/txtM121"
         android:id="@+id/textView2"
         android:padding="8dp"
         android:textColor="@color/text_topup_pad_black"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="10dp"
+        android:textSize="18sp" />
 
     <CheckBox
         android:layout_width="fill_parent"
@@ -167,5 +168,6 @@
         android:layout_centerHorizontal="true"
         android:background="@drawable/button_ok"
         android:textColor="@color/text_topup_pad" />
+
 
 </RelativeLayout>
