@@ -1,50 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/accent_material_light"
+    android:orientation="vertical"
     android:padding="10dp">
 
     <TextView
+        android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/txtM107"
-        android:id="@+id/textView12"
-        android:padding="8dp"
-        android:textSize="20sp"
-        android:textColor="@color/text_topup_pad"
-        android:textStyle="bold|italic"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:padding="8dp"
+        android:text="@string/txtM107"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/text_topup_pad"
+        android:textSize="20sp"
+        android:textStyle="bold|italic" />
 
     <TextView
+        android:id="@+id/textView_helpmpay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/txtM109"
-        android:id="@+id/textView_helpmpay"
-        android:padding="8dp"
-        android:textSize="20sp"
-        android:textColor="@color/text_topup_pad"
         android:layout_below="@+id/textView12"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="10dp"
+        android:padding="8dp"
+        android:text="@string/txtM109"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/text_topup_pad"
+        android:textSize="20sp" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <Button
+            android:id="@+id/button_close_helpmpay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/txtM108"
-            android:id="@+id/button_close_helpmpay"
             android:layout_alignParentBottom="true"
-            android:textSize="20sp"
-            android:padding="10dp"
-            android:layout_marginBottom="8dp"
             android:layout_centerInParent="true"
-            android:background="@color/bg_topup_true" />
+            android:layout_marginBottom="8dp"
+            android:background="@color/bg_topup_true"
+            android:padding="10dp"
+            android:text="@string/txtM108"
+            android:textSize="20sp" />
     </RelativeLayout>
 </RelativeLayout>

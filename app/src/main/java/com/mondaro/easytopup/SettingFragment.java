@@ -13,13 +13,11 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.mondaro.easytopup.R;
-
 public class SettingFragment extends Fragment {
 
-    String uid1,uid2,uid3;
-    EditText txtUID1,txtUID2,txtUID3;
-    CheckBox chkb1,chkb2,chkb3;
+    String uidAIS, uidTRUE, uidDTAC;
+    EditText txtUID_AIS, txtUID_TRUE, txtUID_DTAC;
+    CheckBox chkbAIS, chkbTRUE, chkbDTAC;
     Button btnSet;
     SharedPreferences.Editor edt;
 
@@ -32,97 +30,97 @@ public class SettingFragment extends Fragment {
         Toast.makeText(getActivity(), "คำเตือน :\r\nกรุณาเลือกรายการระบบเติมเงินที่เครื่องเติมเงินรองรับ\nและทำการตั้งต่าหมายเลขประจำตัวคนเติมเงินให้ตรงตามระบบด้วยคะ",
                 Toast.LENGTH_LONG).show();
 
-        View rootView = inflater.inflate(R.layout.fragment_setting, container, false);
+        View settingView = inflater.inflate(R.layout.fragment_setting, container, false);
 
         final InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
 
         final SharedPreferences sharedPrf = this.getActivity().getPreferences(Context.MODE_PRIVATE);
         edt = sharedPrf.edit();
 
-        uid1 = sharedPrf.getString("UID1", "");
-        uid2 = sharedPrf.getString("UID2","");
-        uid3 = sharedPrf.getString("UID3","");
+        uidAIS = sharedPrf.getString("UID1", "");
+        uidTRUE = sharedPrf.getString("UID2","");
+        uidDTAC = sharedPrf.getString("UID3","");
 
-        txtUID1 = (EditText) rootView.findViewById(R.id.editTextUID1);
-        txtUID2 = (EditText) rootView.findViewById(R.id.editTextUID2);
-        txtUID3 = (EditText) rootView.findViewById(R.id.editTextUID3);
+        txtUID_AIS = (EditText) settingView.findViewById(R.id.editTextAIS);
+        txtUID_TRUE = (EditText) settingView.findViewById(R.id.editTextTRUE);
+        txtUID_DTAC = (EditText) settingView.findViewById(R.id.editTextDTAC);
 
-        chkb1 = (CheckBox) rootView.findViewById(R.id.checkBox1);
-        chkb2 = (CheckBox) rootView.findViewById(R.id.checkBox2);
-        chkb3 = (CheckBox) rootView.findViewById(R.id.checkBox3);
+        chkbAIS = (CheckBox) settingView.findViewById(R.id.checkBoxAIS);
+        chkbTRUE = (CheckBox) settingView.findViewById(R.id.checkBoxTRUE);
+        chkbDTAC = (CheckBox) settingView.findViewById(R.id.checkBoxDTAC);
 
-        if(!uid1.equals("")){
-            chkb1.setChecked(true);
-            txtUID1.setText(uid1);
-            txtUID1.setBackgroundResource(R.drawable.border_active);
+        if(!uidAIS.equals("")){
+            chkbAIS.setChecked(true);
+            txtUID_AIS.setText(uidAIS);
+            txtUID_AIS.setBackgroundResource(R.drawable.border_active);
         }
-        if(!uid2.equals("")){
-            chkb2.setChecked(true);
-            txtUID2.setText(uid2);
-            txtUID2.setBackgroundResource(R.drawable.border_active);
+        if(!uidTRUE.equals("")){
+            chkbTRUE.setChecked(true);
+            txtUID_TRUE.setText(uidTRUE);
+            txtUID_TRUE.setBackgroundResource(R.drawable.border_active);
         }
-        if(!uid3.equals("")){
-            chkb3.setChecked(true);
-            txtUID3.setText(uid3);
-            txtUID3.setBackgroundResource(R.drawable.border_active);
+        if(!uidDTAC.equals("")){
+            chkbDTAC.setChecked(true);
+            txtUID_DTAC.setText(uidDTAC);
+            txtUID_DTAC.setBackgroundResource(R.drawable.border_active);
         }
 
 
-        btnSet = (Button) rootView.findViewById(R.id.buttonOKSetting);
+        btnSet = (Button) settingView.findViewById(R.id.buttonOKSetting);
 
-        chkb1.setOnClickListener(new View.OnClickListener() {
+        chkbAIS.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(chkb1.isChecked()){
-                    txtUID1.setEnabled(true);
-                    chkb2.performClick();
-                    txtUID1.setBackgroundResource(R.drawable.border_active);
-                    chkb2.performClick();
-                    txtUID1.requestFocus();
-                    imm.showSoftInput(txtUID1, InputMethodManager.SHOW_IMPLICIT);
+                if(chkbAIS.isChecked()){
+                    txtUID_AIS.setEnabled(true);
+                    chkbTRUE.performClick();
+                    txtUID_AIS.requestFocus();
+                    txtUID_AIS.setBackgroundResource(R.drawable.border_active);
+                    chkbTRUE.performClick();
+                    imm.showSoftInput(txtUID_AIS, InputMethodManager.SHOW_IMPLICIT);
                 }else{
-                    txtUID1.setBackgroundResource(R.drawable.border_inactive);
-                    txtUID1.setText("");
-                    txtUID1.setEnabled(false);
+                    txtUID_AIS.setBackgroundResource(R.drawable.border_inactive);
+                    txtUID_AIS.setText("");
+                    txtUID_AIS.setEnabled(false);
                 }
 
         }});
-        chkb2.setOnClickListener(new View.OnClickListener() {
+        chkbTRUE.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(chkb2.isChecked()){
-                    txtUID2.setEnabled(true);
-                    txtUID2.requestFocus();
-                    imm.showSoftInput(txtUID2, InputMethodManager.SHOW_IMPLICIT);
-                    txtUID2.setBackgroundResource(R.drawable.border_active);
+                if(chkbTRUE.isChecked()){
+                    txtUID_TRUE.setEnabled(true);
+                    txtUID_TRUE.requestFocus();
+                    imm.showSoftInput(txtUID_TRUE, InputMethodManager.SHOW_IMPLICIT);
+                    txtUID_TRUE.setBackgroundResource(R.drawable.border_active);
                 }else{
-                    txtUID2.setBackgroundResource(R.drawable.border_inactive);
-                    txtUID2.setText("");
-                    txtUID2.setEnabled(false);
+                    txtUID_TRUE.setBackgroundResource(R.drawable.border_inactive);
+                    txtUID_TRUE.setText("");
+                    txtUID_TRUE.setEnabled(false);
                 }
             }});
-        chkb3.setOnClickListener(new View.OnClickListener() {
+        chkbDTAC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(chkb3.isChecked()){
-                    txtUID3.setEnabled(true);
-                    txtUID3.requestFocus();
-                    imm.showSoftInput(txtUID3, InputMethodManager.SHOW_IMPLICIT);
-                    txtUID3.setBackgroundResource(R.drawable.border_active);
+                if(chkbDTAC.isChecked()){
+                    txtUID_DTAC.setEnabled(true);
+                    txtUID_DTAC.requestFocus();
+                    imm.showSoftInput(txtUID_DTAC, InputMethodManager.SHOW_IMPLICIT);
+                    txtUID_DTAC.setBackgroundResource(R.drawable.border_active);
                 }else{
-                    txtUID3.setBackgroundResource(R.drawable.border_inactive);
-                    txtUID3.setText("");
-                    txtUID3.setEnabled(false);
+                    txtUID_DTAC.setBackgroundResource(R.drawable.border_inactive);
+                    txtUID_DTAC.setText("");
+                    txtUID_DTAC.setEnabled(false);
                 }
             }});
 
         btnSet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                edt.putString("UID1",txtUID1.getText().toString().trim());
-                edt.putString("UID2",txtUID2.getText().toString().trim());
-                edt.putString("UID3", txtUID3.getText().toString().trim());
-                if(!chkb1.isChecked() && !chkb2.isChecked() && !chkb3.isChecked()){
+                edt.putString("UID1", txtUID_AIS.getText().toString().trim());
+                edt.putString("UID2", txtUID_TRUE.getText().toString().trim());
+                edt.putString("UID3", txtUID_DTAC.getText().toString().trim());
+                if(!chkbAIS.isChecked() && !chkbTRUE.isChecked() && !chkbDTAC.isChecked()){
                     edt.putString("CHK", "");
                 }else{
                     edt.putString("CHK", "TRUE");
@@ -133,6 +131,6 @@ public class SettingFragment extends Fragment {
             }
         });
 
-        return rootView;
+        return settingView;
     }
 }

@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,7 +30,7 @@ public class TopupFragment extends Fragment {
     int mode = 1;
     TextView txtphone,txtcost,txtAIS,txtDTAC,txtTRUE;
     Button btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btnOK,btnDel,btnContact,btnHistory;
-    LinearLayout bgcolor;
+    FrameLayout bgcolor;
     String USERPIN1,USERPIN2,USERPIN3,LASTPHONE;
     SharedPreferences sharedPref;
     SharedPreferences.Editor edt;
@@ -54,7 +55,7 @@ public class TopupFragment extends Fragment {
             Toast.makeText(getActivity(), "ผลการตรวจสอบ :\r\nเครื่องนี้ยังไม่ได้ทำรายการตั้งค่าคะ\r\n\n", Toast.LENGTH_LONG).show();
             ((MainActivity) getActivity()).displayView(4);
         }else{
-            bgcolor = (LinearLayout)rootView.findViewById(R.id.bgTheme);
+            bgcolor = (FrameLayout)rootView.findViewById(R.id.bgTheme);
             btnHistory = (Button) rootView.findViewById(R.id.btnHistory);
             btnContact = (Button) rootView.findViewById(R.id.btnFindContact);
             txtphone = (TextView) rootView.findViewById(R.id.textViewPhone);

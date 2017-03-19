@@ -5,40 +5,40 @@
     android:background="@color/text_topup_pad_black">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:weightSum="3"
-        android:padding="16dp"
-        android:gravity="center_vertical|center|center_horizontal"
-        android:background="@color/text_topup_pad"
-        android:layout_below="@+id/textView4"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView4"
+        android:background="@color/text_topup_pad"
+        android:gravity="center_vertical|center|center_horizontal"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:weightSum="3">
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
             android:id="@+id/imageViewAIS"
-            android:src="@drawable/icon_ais"
-            android:layout_weight="1"
-            android:padding="16dp" />
-
-        <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="16dp"
+            android:src="@drawable/icon_ais" />
+
+        <ImageView
             android:id="@+id/imageViewDTAC"
-            android:layout_weight="1"
-            android:src="@drawable/icon_dtac"
-            android:padding="16dp" />
-
-        <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/imageViewTRUE"
             android:layout_weight="1"
-            android:src="@drawable/icon_truemove"
-            android:padding="16dp" />
+            android:padding="16dp"
+            android:src="@drawable/icon_dtac" />
+
+        <ImageView
+            android:id="@+id/imageViewTRUE"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="16dp"
+            android:src="@drawable/icon_truemove" />
     </LinearLayout>
 
     <TextView
