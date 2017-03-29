@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">เติมกะตังค์</string>
+    <string name="app_name">เติมกะตังส์</string>
     <string name="action_settings">ตั้งค่า</string>
     <string name="drawer_open">รายการเมนูเปิด</string>
     <string name="drawer_close">รายการเมนูปิด</string>
@@ -84,12 +84,8 @@
     <string name="txtM121">** หมายเหตุ **\nแอปพลิเคชันนี้ใช้สำหรับตัวแทนเติมเงินออนไลน์เท่านั้น!!!\nสงสัยหรือพบปัญหาสอบถามที่ mondaro23@gmail.com</string>
     <string name="txtM122"> &#8212;> ปาดหน้าจอจาก [ซ้าย] ไป [ขวา] เพื่อดูเมนู</string>
     <string name="txtM123">รหัสประจำตัวคนขายออนไลน์</string>
-    <string name="about_content1">เติมกะตังค์\n</string>
-    <string name="about_content2">\n\n\nพัฒนาโดย\nMondaro Developer\n\n\n
-        ติดต่อทีมงาน
-        \nemail : mondaro23@gmail.com
-        \nfacebook : mondaros
-        \nline : pae_somkiat</string>
+    <string name="about_content1">เติมกะตังส์\n</string>
+    <string name="about_content2">\n\nพัฒนาโดย\nMondaro Developer\n\nEmail\nmondaro23@gmail.com</string>
     <string name="btn0">0</string>
     <string name="btn1">1</string>
     <string name="btn2">2</string>
@@ -110,5 +106,7 @@
     <string name="settingDTAC">ดีแทค</string>
     <string name="settingTRUE">ทรูมูฟ</string>
     <string name="settingAIS">วันทูคอล</string>
+    <string name="btnEmail">ติดต่อทีมงาน</string>
+    <string name="btnWebsite">เข้าชม\nmondaro.cc</string>
 
 </resources>

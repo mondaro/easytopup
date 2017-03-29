@@ -23,7 +23,7 @@ public class AboutFragment extends Fragment {
         TextView tShow = (TextView) rootView.findViewById(R.id.txtLabel);
         try{
             PackageInfo pInfo = getActivity().getPackageManager().getPackageInfo(this.getActivity().getPackageName(), 0);
-            version = pInfo.versionName;
+            version = pInfo.versionName + "(" + pInfo.versionCode + ")";
         }catch(Exception e){
 
         }
