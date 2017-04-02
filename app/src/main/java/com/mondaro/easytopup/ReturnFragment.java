@@ -33,9 +33,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-/**
- * Created by MondAro on 11/4/2559.
- */
 public class ReturnFragment extends Fragment {
     LinearLayout bg,panel;
     Button btnReAIS,btnReDTAC,btnReTRUE,btnReturn,btnCancel;
@@ -131,32 +128,44 @@ public class ReturnFragment extends Fragment {
             btnReturn.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
                 switch (tag){
                     case 1:
-                        separated = cid.split(" ");
-                        strPhone = separated[1].substring(separated[1].length()-10,separated[1].length());
-                        strAmount = separated[1].substring(4,separated[1].length()-13);
-                        strRef = separated[0].substring(4,separated[0].length());
-                        final String last4phone = strPhone.substring(strPhone.length()-4,strPhone.length());
-                        txtTel = "*321*" + USERPIN1 + "*" + last4phone + "*" + strRef + "%23";
-                        txtVender = "AIS";
-                        Log.d("dialing-example",txtTel);
+                        try{
+                            separated = cid.split(" ");
+                            strPhone = separated[1].substring(separated[1].length()-10,separated[1].length());
+                            strAmount = separated[1].substring(4,separated[1].length()-13);
+                            strRef = separated[0].substring(4,separated[0].length());
+                            final String last4phone = strPhone.substring(strPhone.length()-4,strPhone.length());
+                            txtTel = "*321*" + USERPIN1 + "*" + last4phone + "*" + strRef + "%23";
+                            txtVender = "AIS";
+                            Log.d("dialing-example",txtTel);
+                        }catch(Exception e){
+                            //Null
+                        }
                         break;
                     case 2:
-                        separated = cid.split(" ");
-                        strPhone = "0" + separated[0].substring(separated[0].length()-9,separated[0].length());
-                        strAmount = separated[0].substring(4,separated[0].length()-14);
-                        strRef = separated[1].substring(separated[1].length()-16,separated[1].length()-7);
-                        txtTel = "*211*8*" + strPhone + "*" + USERPIN3 + "*" + strAmount.substring(0,strAmount.length()-2) + "*1" + "%23";
-                        txtVender = "DTAC";
-                        Log.d("dialing-example",txtTel);
+                        try{
+                            separated = cid.split(" ");
+                            strPhone = "0" + separated[0].substring(separated[0].length()-9,separated[0].length());
+                            strAmount = separated[0].substring(4,separated[0].length()-14);
+                            strRef = separated[1].substring(separated[1].length()-16,separated[1].length()-7);
+                            txtTel = "*211*8*" + strPhone + "*" + USERPIN3 + "*" + strAmount.substring(0,strAmount.length()-2) + "*1" + "%23";
+                            txtVender = "DTAC";
+                            Log.d("dialing-example",txtTel);
+                        }catch(Exception e){
+                            //Null
+                        }
                         break;
                     case 3:
-                        separated = cid.split(" ");
-                        strPhone = separated[5];
-                        strAmount = separated[2] + " " + separated[3];
-                        strRef = separated[0];
-                        cid = cid.substring(0,cid.length()-18);
-                        txtVender = "TRUE";
-                        Log.d("dialing-example",cid);
+                        try{
+                            separated = cid.split(" ");
+                            strPhone = separated[5];
+                            strAmount = separated[2] + " " + separated[3];
+                            strRef = separated[0];
+                            cid = cid.substring(0,cid.length()-18);
+                            txtVender = "TRUE";
+                            Log.d("dialing-example",cid);
+                        }catch(Exception e){
+                            //Null
+                        }
                         break;
                 }
 
@@ -201,15 +210,12 @@ public class ReturnFragment extends Fragment {
             case 1: addr = "address='022719123'"; tag = 1; break;
             case 2: addr = "address='dtacOnline'"; tag = 2; break;
             case 3: addr = "address='MobileTopUp'"; tag = 3; break;
-            //case 2: addr = "address='+66845950234'"; tag = 2; break;
-            //case 3: addr = "address='+66902303600'"; tag = 3; break;
         }
         try{
             Uri inboxURI = Uri.parse("content://sms/inbox");
             String[] reqCols = new String[] { "_id", "address", "body", "date" };
             ContentResolver cr = getActivity().getContentResolver();
 
-            //Cursor c = cr.query(inboxURI, reqCols, null, null, null);
             Cursor c = cr.query(inboxURI, reqCols, addr, null, null);
 
             List<String> items = new ArrayList<String>();
