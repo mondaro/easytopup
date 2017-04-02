@@ -30,6 +30,8 @@
         <meta-data
             android:name="com.samsung.android.sdk.multiwindow.multiinstance.enable"
             android:value="true" />
+        <meta-data android:name="android.max_aspect"
+            android:value="ratio_float"/>
     </application>
 
 </manifest>
