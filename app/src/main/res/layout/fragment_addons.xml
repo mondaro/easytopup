@@ -91,6 +91,143 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_below="@+id/linearLayout"
+                android:layout_centerHorizontal="true"
+                android:orientation="vertical"
+                android:padding="1dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2.2"
+                android:background="#000000"
+                android:orientation="vertical"
+                android:padding="2dp">
+
+                <LinearLayout
+                    android:id="@+id/contentH3"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:background="#2cba56"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="บัญชี Mpay"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/text_topup_pad" />
+
+                    <Button
+                        android:id="@+id/button_what3"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="10dp"
+                        android:background="@android:color/holo_purple"
+                        android:gravity="center"
+                        android:text="\?"
+                        android:textSize="25sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/contentC3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:background="#31c270"
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/textView16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/txtM111"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/text_topup_pad" />
+
+                    <EditText
+                        android:id="@+id/editText_phonebill"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="8dp"
+                        android:background="@color/text_topup_pad"
+                        android:digits="0123456789"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="เบอร์โทรรายเดือน"
+                        android:inputType="phone"
+                        android:maxLength="10"
+                        android:numeric="integer"
+                        android:padding="5dp"
+                        android:phoneNumber="true"
+                        android:textColor="@color/bg_topup_pad_black"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/button_chkbill"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:enabled="true"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="@string/txtM104"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/textView17"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/txtM119"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/text_topup_pad" />
+
+                    <Spinner
+                        android:id="@+id/spn3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="8dp"
+                        android:background="@android:color/holo_orange_light"
+                        android:clickable="false"
+                        android:entries="@array/op_arrays"
+                        android:gravity="center"
+                        android:padding="8dp"
+                        android:spinnerMode="dialog" />
+
+                    <Button
+                        android:id="@+id/button_paybill"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:enabled="false"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="@string/txtM106"
+                        android:textSize="20sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="2.2"
                 android:background="#000000"
                 android:orientation="vertical"
@@ -428,6 +565,554 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:text="@string/txtM118"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/text_topup_pad" />
+
+                    <Button
+                        android:id="@+id/button_what3"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="10dp"
+                        android:background="@android:color/holo_purple"
+                        android:gravity="center"
+                        android:text="\?"
+                        android:textSize="25sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/contentC3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:background="#31c270"
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/textView16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/txtM111"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/text_topup_pad" />
+
+                    <EditText
+                        android:id="@+id/editText_phonebill"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="8dp"
+                        android:background="@color/text_topup_pad"
+                        android:digits="0123456789"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="เบอร์โทรรายเดือน"
+                        android:inputType="phone"
+                        android:maxLength="10"
+                        android:numeric="integer"
+                        android:padding="5dp"
+                        android:phoneNumber="true"
+                        android:textColor="@color/bg_topup_pad_black"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/button_chkbill"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:enabled="true"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="@string/txtM104"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/textView17"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/txtM119"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/text_topup_pad" />
+
+                    <Spinner
+                        android:id="@+id/spn3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="8dp"
+                        android:background="@android:color/holo_orange_light"
+                        android:clickable="false"
+                        android:entries="@array/op_arrays"
+                        android:gravity="center"
+                        android:padding="8dp"
+                        android:spinnerMode="dialog" />
+
+                    <Button
+                        android:id="@+id/button_paybill"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:enabled="false"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="@string/txtM106"
+                        android:textSize="20sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/linearLayout"
+                android:layout_centerHorizontal="true"
+                android:orientation="vertical"
+                android:padding="1dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2.2"
+                android:background="#000000"
+                android:orientation="vertical"
+                android:padding="2dp">
+
+                <LinearLayout
+                    android:id="@+id/contentH3"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:background="#2cba56"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="จ่ายบิล AIS แอร์เน็ต"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/text_topup_pad" />
+
+                    <Button
+                        android:id="@+id/button_what3"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="10dp"
+                        android:background="@android:color/holo_purple"
+                        android:gravity="center"
+                        android:text="\?"
+                        android:textSize="25sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/contentC3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:background="#31c270"
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/textView16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/txtM111"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/text_topup_pad" />
+
+                    <EditText
+                        android:id="@+id/editText_phonebill"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="8dp"
+                        android:background="@color/text_topup_pad"
+                        android:digits="0123456789"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="เบอร์โทรรายเดือน"
+                        android:inputType="phone"
+                        android:maxLength="10"
+                        android:numeric="integer"
+                        android:padding="5dp"
+                        android:phoneNumber="true"
+                        android:textColor="@color/bg_topup_pad_black"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/button_chkbill"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:enabled="true"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="@string/txtM104"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/textView17"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/txtM119"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/text_topup_pad" />
+
+                    <Spinner
+                        android:id="@+id/spn3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="8dp"
+                        android:background="@android:color/holo_orange_light"
+                        android:clickable="false"
+                        android:entries="@array/op_arrays"
+                        android:gravity="center"
+                        android:padding="8dp"
+                        android:spinnerMode="dialog" />
+
+                    <Button
+                        android:id="@+id/button_paybill"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:enabled="false"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="@string/txtM106"
+                        android:textSize="20sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/linearLayout"
+                android:layout_centerHorizontal="true"
+                android:orientation="vertical"
+                android:padding="1dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2.2"
+                android:background="#000000"
+                android:orientation="vertical"
+                android:padding="2dp">
+
+                <LinearLayout
+                    android:id="@+id/contentH3"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:background="#2cba56"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="จ่ายบิล Mistine"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/text_topup_pad" />
+
+                    <Button
+                        android:id="@+id/button_what3"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="10dp"
+                        android:background="@android:color/holo_purple"
+                        android:gravity="center"
+                        android:text="\?"
+                        android:textSize="25sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/contentC3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:background="#31c270"
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/textView16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/txtM111"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/text_topup_pad" />
+
+                    <EditText
+                        android:id="@+id/editText_phonebill"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="8dp"
+                        android:background="@color/text_topup_pad"
+                        android:digits="0123456789"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="เบอร์โทรรายเดือน"
+                        android:inputType="phone"
+                        android:maxLength="10"
+                        android:numeric="integer"
+                        android:padding="5dp"
+                        android:phoneNumber="true"
+                        android:textColor="@color/bg_topup_pad_black"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/button_chkbill"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:enabled="true"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="@string/txtM104"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/textView17"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/txtM119"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/text_topup_pad" />
+
+                    <Spinner
+                        android:id="@+id/spn3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="8dp"
+                        android:background="@android:color/holo_orange_light"
+                        android:clickable="false"
+                        android:entries="@array/op_arrays"
+                        android:gravity="center"
+                        android:padding="8dp"
+                        android:spinnerMode="dialog" />
+
+                    <Button
+                        android:id="@+id/button_paybill"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:enabled="false"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="@string/txtM106"
+                        android:textSize="20sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/linearLayout"
+                android:layout_centerHorizontal="true"
+                android:orientation="vertical"
+                android:padding="1dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2.2"
+                android:background="#000000"
+                android:orientation="vertical"
+                android:padding="2dp">
+
+                <LinearLayout
+                    android:id="@+id/contentH3"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:background="#2cba56"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="จ่ายบิล AEON"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/text_topup_pad" />
+
+                    <Button
+                        android:id="@+id/button_what3"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="10dp"
+                        android:background="@android:color/holo_purple"
+                        android:gravity="center"
+                        android:text="\?"
+                        android:textSize="25sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/contentC3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:background="#31c270"
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/textView16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/txtM111"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/text_topup_pad" />
+
+                    <EditText
+                        android:id="@+id/editText_phonebill"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="8dp"
+                        android:background="@color/text_topup_pad"
+                        android:digits="0123456789"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="เบอร์โทรรายเดือน"
+                        android:inputType="phone"
+                        android:maxLength="10"
+                        android:numeric="integer"
+                        android:padding="5dp"
+                        android:phoneNumber="true"
+                        android:textColor="@color/bg_topup_pad_black"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/button_chkbill"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:enabled="true"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="@string/txtM104"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/textView17"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/txtM119"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/text_topup_pad" />
+
+                    <Spinner
+                        android:id="@+id/spn3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="8dp"
+                        android:background="@android:color/holo_orange_light"
+                        android:clickable="false"
+                        android:entries="@array/op_arrays"
+                        android:gravity="center"
+                        android:padding="8dp"
+                        android:spinnerMode="dialog" />
+
+                    <Button
+                        android:id="@+id/button_paybill"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:enabled="false"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="@string/txtM106"
+                        android:textSize="20sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/linearLayout"
+                android:layout_centerHorizontal="true"
+                android:orientation="vertical"
+                android:padding="1dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2.2"
+                android:background="#000000"
+                android:orientation="vertical"
+                android:padding="2dp">
+
+                <LinearLayout
+                    android:id="@+id/contentH3"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:background="#2cba56"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="จ่ายบิล FirstChoice"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/text_topup_pad" />
 
