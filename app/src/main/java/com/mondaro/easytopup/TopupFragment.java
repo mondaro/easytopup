@@ -16,7 +16,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.view.View.OnClickListener;
@@ -24,7 +23,6 @@ import android.view.View.OnClickListener;
 import com.mondaro.easytopup.R;
 
 public class TopupFragment extends Fragment {
-
     String tmpDigit = "";
     char target ='1';
     int mode = 1;
@@ -80,7 +78,6 @@ public class TopupFragment extends Fragment {
                 if(target=='1'){
                     tmpDigit = "";
                     LASTPHONE = sharedPref.getString("LAST","");
-                    //txtphone.setText(LASTPHONE);
                     InsDigit(LASTPHONE);
                 }else if(target=='2'){/*null*/}}});
             btnContact.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
@@ -202,7 +199,6 @@ public class TopupFragment extends Fragment {
             String txtTel = "*123*" + USERPIN1 + "*" + txtphone.getText().toString().trim() + "*" + txtcost.getText().toString().trim() + "%23";
             callIntent.setData(Uri.parse("tel:" + txtTel));
             startActivity(callIntent);
-            //Log.d("dialing-example",txtTel);
         } catch (ActivityNotFoundException activityException) {
             Log.d("dialing-example", "Call failed", activityException);
         }
@@ -214,7 +210,6 @@ public class TopupFragment extends Fragment {
             String txtTel = "*666*" + txtphone.getText().toString().trim() + "*" + txtcost.getText().toString().trim() + "*" + USERPIN2 + "%23";
             callIntent.setData(Uri.parse("tel:" + txtTel));
             startActivity(callIntent);
-            //Log.d("dialing-example", txtTel);
         } catch (ActivityNotFoundException activityException) {
             Log.d("dialing-example", "Call failed", activityException);
         }
@@ -226,7 +221,6 @@ public class TopupFragment extends Fragment {
             String txtTel = "*211*1*" + txtphone.getText().toString().trim() + "*" + USERPIN3 + "*" + txtcost.getText().toString().trim() + "*1*" + "%23";
             callIntent.setData(Uri.parse("tel:" + txtTel));
             startActivity(callIntent);
-            //Log.d("dialing-example", txtTel);
         } catch (ActivityNotFoundException activityException) {
             Log.d("dialing-example", "Call failed", activityException);
         }
@@ -254,7 +248,6 @@ public class TopupFragment extends Fragment {
                 String number = cursor.getString(numberColumnIndex).replace("(", "").replace(")", "").replace("-", "").replace(" ", "");
                 number.trim();
                     try{
-                        //Toast.makeText(getActivity(), "contact info : "+ number+"\n", Toast.LENGTH_LONG).show();
                         txtphone.setText(number);
                         target = '2';
                         txtcost.setBackgroundResource(R.drawable.border_active);

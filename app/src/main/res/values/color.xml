@@ -15,4 +15,5 @@
     <color name="bg_topup_ais">#06b567</color>
     <color name="bg_topup_dtac">#139dd3</color>
     <color name="bg_topup_true">#f8680e</color>
+    <color name="bg_content_addons">#91cf0b</color>
 </resources>

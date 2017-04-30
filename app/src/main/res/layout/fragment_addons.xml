@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/contentL"
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
@@ -8,10 +9,10 @@
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:ignore="UselessParent">
 
         <LinearLayout
-            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/text_topup_pad_black"
@@ -33,18 +34,20 @@
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:text="@string/headerMpay"
+                    android:text="@string/header_Addons"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/text_topup_pad" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="0dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:layout_weight="3"
+                    android:background="@color/bg_content_addons"
                     android:gravity="center"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    tools:ignore="NestedWeights">
 
                     <TextView
                         android:id="@+id/textView10"
@@ -53,7 +56,7 @@
                         android:layout_gravity="left"
                         android:layout_weight="1"
                         android:gravity="center_vertical|center_horizontal"
-                        android:text="@string/txtM103"
+                        android:text="@string/txt_MPAY_ID"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/text_topup_pad" />
 
@@ -65,7 +68,7 @@
                         android:background="@color/text_topup_pad"
                         android:digits="0123456789"
                         android:gravity="center_vertical|center_horizontal"
-                        android:hint="รหัส mPay"
+                        android:hint="@string/hintmPay"
                         android:inputType="phone"
                         android:maxLength="4"
                         android:padding="5dp"
@@ -82,19 +85,11 @@
                         android:layout_weight="0.5"
                         android:background="@android:color/holo_red_light"
                         android:gravity="center_vertical|center_horizontal"
-                        android:text="+"
+                        android:text="@string/txt_plus"
                         android:textColor="@color/background_material_light"
-                        android:textSize="20sp" />
+                        android:textSize="30sp" />
                 </LinearLayout>
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/linearLayout"
-                android:layout_centerHorizontal="true"
-                android:orientation="vertical"
-                android:padding="1dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -105,122 +100,76 @@
                 android:padding="2dp">
 
                 <LinearLayout
-                    android:id="@+id/contentH3"
+                    android:id="@+id/contentH0"
                     android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
+                    android:layout_height="0dp"
                     android:layout_weight="1"
                     android:background="#2cba56"
                     android:gravity="center_vertical|center_horizontal"
                     android:orientation="horizontal"
-                    android:padding="5dp">
+                    android:padding="5dp"
+                    tools:ignore="NestedWeights">
 
                     <TextView
-                        android:id="@+id/textView9"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/textViewmPay"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="left"
                         android:layout_marginLeft="10dp"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="บัญชี Mpay"
+                        android:text="@string/menu_MPAY"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/text_topup_pad" />
 
                     <Button
-                        android:id="@+id/button_what3"
+                        android:id="@+id/button_what0"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_gravity="right"
                         android:layout_marginRight="10dp"
                         android:background="@android:color/holo_purple"
+                        android:enabled="false"
                         android:gravity="center"
-                        android:text="\?"
-                        android:textSize="25sp" />
+                        android:textSize="25sp"
+                        android:visibility="invisible" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/contentC3"
+                    android:id="@+id/contentC0"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:background="#31c270"
+                    android:background="@color/bg_content_addons"
                     android:orientation="vertical"
-                    android:padding="10dp"
+                    android:padding="8dp"
                     android:visibility="gone">
 
-                    <TextView
-                        android:id="@+id/textView16"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/txtM111"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="@color/text_topup_pad" />
-
-                    <EditText
-                        android:id="@+id/editText_phonebill"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="8dp"
-                        android:background="@color/text_topup_pad"
-                        android:digits="0123456789"
-                        android:ems="10"
-                        android:gravity="center"
-                        android:hint="เบอร์โทรรายเดือน"
-                        android:inputType="phone"
-                        android:maxLength="10"
-                        android:numeric="integer"
-                        android:padding="5dp"
-                        android:phoneNumber="true"
-                        android:textColor="@color/bg_topup_pad_black"
-                        android:textSize="30sp"
-                        android:textStyle="bold" />
-
                     <Button
-                        android:id="@+id/button_chkbill"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:id="@+id/button_chkBalance"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="10dp"
+                        android:layout_weight="1"
                         android:enabled="true"
                         android:gravity="center"
-                        android:padding="10dp"
-                        android:text="@string/txtM104"
+                        android:padding="20dp"
+                        android:text="@string/btn_ChkBal"
+                        android:textAllCaps="false"
                         android:textSize="20sp" />
 
-                    <TextView
-                        android:id="@+id/textView17"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:text="@string/txtM119"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="@color/text_topup_pad" />
-
-                    <Spinner
-                        android:id="@+id/spn3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="8dp"
-                        android:background="@android:color/holo_orange_light"
-                        android:clickable="false"
-                        android:entries="@array/op_arrays"
-                        android:gravity="center"
-                        android:padding="8dp"
-                        android:spinnerMode="dialog" />
-
                     <Button
-                        android:id="@+id/button_paybill"
-                        android:layout_width="wrap_content"
-                        android:layout_height="50dp"
+                        android:id="@+id/button_chkCommission"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="10dp"
-                        android:enabled="false"
+                        android:layout_weight="1"
+                        android:enabled="true"
                         android:gravity="center"
-                        android:padding="10dp"
-                        android:text="@string/txtM106"
+                        android:padding="20dp"
+                        android:text="@string/btn_ChkCom"
+                        android:textAllCaps="false"
                         android:textSize="20sp" />
                 </LinearLayout>
             </LinearLayout>
@@ -242,17 +191,18 @@
                     android:background="#2cba56"
                     android:gravity="center_vertical|center_horizontal"
                     android:orientation="horizontal"
-                    android:padding="5dp">
+                    android:padding="5dp"
+                    tools:ignore="NestedWeights">
 
                     <TextView
                         android:id="@+id/textView7"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="left"
                         android:layout_marginLeft="10dp"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="@string/txtM1"
+                        android:text="@string/menu_TopupToWallet"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/text_topup_pad" />
 
@@ -260,14 +210,11 @@
                         android:id="@+id/button_what1"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentTop="true"
                         android:layout_gravity="right"
                         android:layout_marginRight="10dp"
                         android:background="@android:color/holo_purple"
                         android:gravity="center"
-                        android:text="\?"
+                        android:text="@string/txt_question"
                         android:textSize="25sp" />
 
                 </LinearLayout>
@@ -277,7 +224,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:background="#31c270"
+                    android:background="@color/bg_content_addons"
                     android:orientation="vertical"
                     android:padding="10dp"
                     android:visibility="gone">
@@ -286,7 +233,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:weightSum="2">
+                        android:weightSum="2"
+                        android:baselineAligned="false"
+                        tools:ignore="UselessParent">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -299,13 +248,14 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical"
-                                android:padding="3dp">
+                                android:padding="3dp"
+                                tools:ignore="UselessParent">
 
                                 <TextView
                                     android:id="@+id/textView8"
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
-                                    android:text="@string/txtM101"
+                                    android:text="@string/txt_InputAmount"
                                     android:textAppearance="?android:attr/textAppearanceMedium"
                                     android:textColor="@color/text_topup_pad" />
 
@@ -319,13 +269,14 @@
                                     android:digits="0123456789"
                                     android:ems="10"
                                     android:gravity="center"
-                                    android:hint="ยอดเงิน"
+                                    android:hint="@string/hintAmount"
                                     android:inputType="phone"
                                     android:maxLength="5"
                                     android:nestedScrollingEnabled="false"
                                     android:textColor="@color/bg_topup_pad_black"
                                     android:textSize="30sp"
-                                    android:textStyle="bold" />
+                                    android:textStyle="bold"
+                                    tools:ignore="UnusedAttribute" />
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -341,7 +292,8 @@
                                         android:layout_height="50dp"
                                         android:layout_marginTop="10dp"
                                         android:gravity="center"
-                                        android:text="@string/txtM104" />
+                                        android:text="@string/btn_process_1"
+                                        tools:ignore="TooDeepLayout" />
                                 </LinearLayout>
 
                             </LinearLayout>
@@ -359,13 +311,14 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical"
-                                android:padding="3dp">
+                                android:padding="3dp"
+                                tools:ignore="UselessParent">
 
                                 <TextView
                                     android:id="@+id/textView11"
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
-                                    android:text="@string/txtM105"
+                                    android:text="@string/txt_SelectAcc"
                                     android:textAppearance="?android:attr/textAppearanceMedium"
                                     android:textColor="@color/text_topup_pad" />
 
@@ -397,7 +350,7 @@
                                         android:layout_marginTop="10dp"
                                         android:enabled="false"
                                         android:gravity="center"
-                                        android:text="@string/txtM106" />
+                                        android:text="@string/btn_process_2" />
                                 </LinearLayout>
 
                             </LinearLayout>
@@ -406,12 +359,6 @@
                 </LinearLayout>
 
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:padding="1dp"></LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -429,17 +376,18 @@
                     android:background="#2cba56"
                     android:gravity="center_vertical|center_horizontal"
                     android:orientation="horizontal"
-                    android:padding="5dp">
+                    android:padding="5dp"
+                    tools:ignore="NestedWeights">
 
                     <TextView
                         android:id="@+id/textView13"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="left"
                         android:layout_marginLeft="10dp"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="@string/txtM110"
+                        android:text="@string/menu_BuyCardAIS"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/text_topup_pad" />
 
@@ -451,7 +399,7 @@
                         android:layout_marginRight="10dp"
                         android:background="@android:color/holo_purple"
                         android:gravity="center"
-                        android:text="\?"
+                        android:text="@string/txt_question"
                         android:textSize="25sp" />
                 </LinearLayout>
 
@@ -460,22 +408,36 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:background="#31c270"
+                    android:background="@color/bg_content_addons"
                     android:orientation="vertical"
                     android:padding="10dp"
                     android:visibility="gone">
 
-                    <TextView
-                        android:id="@+id/textView15"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/txtM111"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="@color/text_topup_pad" />
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textView15"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="8dp"
+                            android:layout_weight="1"
+                            android:text="@string/txt_phoneBuyCard"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/text_topup_pad" />
+
+                        <Button
+                            android:id="@+id/button_contactBuyCard"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            android:text="@string/btnContact" />
+                    </LinearLayout>
 
                     <EditText
-                        android:id="@+id/editText_phncard"
+                        android:id="@+id/editText_phonecard"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -484,12 +446,11 @@
                         android:digits="0123456789"
                         android:ems="10"
                         android:gravity="center"
-                        android:hint="เบอร์โทรคนซื้อ"
+                        android:hint="@string/hintPhoneGetCard"
                         android:inputType="phone"
                         android:maxLength="10"
-                        android:numeric="integer"
+                        android:maxLines="1"
                         android:padding="5dp"
-                        android:phoneNumber="true"
                         android:textColor="@color/bg_topup_pad_black"
                         android:textSize="30sp"
                         android:textStyle="bold" />
@@ -499,7 +460,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginTop="10dp"
-                        android:text="@string/txtM112"
+                        android:text="@string/txt_SelectCardValue"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/text_topup_pad" />
 
@@ -525,18 +486,10 @@
                         android:enabled="true"
                         android:gravity="center"
                         android:padding="10dp"
-                        android:text="@string/txtM113"
+                        android:text="@string/btn_BuyCardAIS"
                         android:textSize="20sp" />
                 </LinearLayout>
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/linearLayout"
-                android:layout_centerHorizontal="true"
-                android:orientation="vertical"
-                android:padding="1dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -554,17 +507,18 @@
                     android:background="#2cba56"
                     android:gravity="center_vertical|center_horizontal"
                     android:orientation="horizontal"
-                    android:padding="5dp">
+                    android:padding="5dp"
+                    tools:ignore="NestedWeights">
 
                     <TextView
                         android:id="@+id/textView9"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="left"
                         android:layout_marginLeft="10dp"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="@string/txtM118"
+                        android:text="@string/menu_AISBill"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/text_topup_pad" />
 
@@ -576,7 +530,7 @@
                         android:layout_marginRight="10dp"
                         android:background="@android:color/holo_purple"
                         android:gravity="center"
-                        android:text="\?"
+                        android:text="@string/txt_question"
                         android:textSize="25sp" />
                 </LinearLayout>
 
@@ -585,19 +539,33 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:background="#31c270"
+                    android:background="@color/bg_content_addons"
                     android:orientation="vertical"
                     android:padding="10dp"
                     android:visibility="gone">
 
-                    <TextView
-                        android:id="@+id/textView16"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/txtM111"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="@color/text_topup_pad" />
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textView16"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="8dp"
+                            android:layout_weight="1"
+                            android:text="@string/txt_phoneBuyCard"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/text_topup_pad" />
+
+                        <Button
+                            android:id="@+id/button_contactBill"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            android:text="@string/btnContact" />
+                    </LinearLayout>
 
                     <EditText
                         android:id="@+id/editText_phonebill"
@@ -609,12 +577,10 @@
                         android:digits="0123456789"
                         android:ems="10"
                         android:gravity="center"
-                        android:hint="เบอร์โทรรายเดือน"
+                        android:hint="@string/hintPhoneBill"
                         android:inputType="phone"
                         android:maxLength="10"
-                        android:numeric="integer"
                         android:padding="5dp"
-                        android:phoneNumber="true"
                         android:textColor="@color/bg_topup_pad_black"
                         android:textSize="30sp"
                         android:textStyle="bold" />
@@ -628,7 +594,7 @@
                         android:enabled="true"
                         android:gravity="center"
                         android:padding="10dp"
-                        android:text="@string/txtM104"
+                        android:text="@string/btn_process_1"
                         android:textSize="20sp" />
 
                     <TextView
@@ -636,7 +602,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginTop="10dp"
-                        android:text="@string/txtM119"
+                        android:text="@string/txt_SelectBill"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/text_topup_pad" />
 
@@ -662,18 +628,10 @@
                         android:enabled="false"
                         android:gravity="center"
                         android:padding="10dp"
-                        android:text="@string/txtM106"
+                        android:text="@string/btn_process_2"
                         android:textSize="20sp" />
                 </LinearLayout>
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/linearLayout"
-                android:layout_centerHorizontal="true"
-                android:orientation="vertical"
-                android:padding="1dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -684,60 +642,75 @@
                 android:padding="2dp">
 
                 <LinearLayout
-                    android:id="@+id/contentH3"
+                    android:id="@+id/contentH4"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
                     android:background="#2cba56"
                     android:gravity="center_vertical|center_horizontal"
                     android:orientation="horizontal"
-                    android:padding="5dp">
+                    android:padding="5dp"
+                    tools:ignore="NestedWeights">
 
                     <TextView
-                        android:id="@+id/textView9"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/textViewN"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="left"
                         android:layout_marginLeft="10dp"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="จ่ายบิล AIS แอร์เน็ต"
+                        android:text="@string/menu_TransDays"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/text_topup_pad" />
 
                     <Button
-                        android:id="@+id/button_what3"
+                        android:id="@+id/button_what4"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_gravity="right"
                         android:layout_marginRight="10dp"
                         android:background="@android:color/holo_purple"
                         android:gravity="center"
-                        android:text="\?"
+                        android:text="@string/txt_question"
                         android:textSize="25sp" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/contentC3"
+                    android:id="@+id/contentC4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:background="#31c270"
+                    android:background="@color/bg_content_addons"
                     android:orientation="vertical"
                     android:padding="10dp"
                     android:visibility="gone">
 
-                    <TextView
-                        android:id="@+id/textView16"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/txtM111"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="@color/text_topup_pad" />
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textViewN1"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="8dp"
+                            android:layout_weight="1"
+                            android:text="@string/txt_phoneBuyCard"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/text_topup_pad" />
+
+                        <Button
+                            android:id="@+id/button_contactTransDay"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            android:text="@string/btnContact" />
+                    </LinearLayout>
 
                     <EditText
-                        android:id="@+id/editText_phonebill"
+                        android:id="@+id/editText_phonedays"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -746,471 +719,45 @@
                         android:digits="0123456789"
                         android:ems="10"
                         android:gravity="center"
-                        android:hint="เบอร์โทรรายเดือน"
+                        android:hint="@string/hintPhone"
                         android:inputType="phone"
                         android:maxLength="10"
-                        android:numeric="integer"
+                        android:maxLines="1"
                         android:padding="5dp"
-                        android:phoneNumber="true"
                         android:textColor="@color/bg_topup_pad_black"
                         android:textSize="30sp"
                         android:textStyle="bold" />
 
-                    <Button
-                        android:id="@+id/button_chkbill"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="10dp"
-                        android:enabled="true"
-                        android:gravity="center"
-                        android:padding="10dp"
-                        android:text="@string/txtM104"
-                        android:textSize="20sp" />
-
                     <TextView
-                        android:id="@+id/textView17"
+                        android:id="@+id/textViewN17"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginTop="10dp"
-                        android:text="@string/txtM119"
+                        android:text="@string/txt_SelectDays"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/text_topup_pad" />
 
                     <Spinner
-                        android:id="@+id/spn3"
+                        android:id="@+id/spn4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="8dp"
                         android:background="@android:color/holo_orange_light"
-                        android:clickable="false"
-                        android:entries="@array/op_arrays"
+                        android:entries="@array/days_arrays"
                         android:gravity="center"
                         android:padding="8dp"
                         android:spinnerMode="dialog" />
 
                     <Button
-                        android:id="@+id/button_paybill"
+                        android:id="@+id/button_transDays"
                         android:layout_width="wrap_content"
                         android:layout_height="50dp"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="10dp"
-                        android:enabled="false"
                         android:gravity="center"
                         android:padding="10dp"
-                        android:text="@string/txtM106"
-                        android:textSize="20sp" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/linearLayout"
-                android:layout_centerHorizontal="true"
-                android:orientation="vertical"
-                android:padding="1dp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="2.2"
-                android:background="#000000"
-                android:orientation="vertical"
-                android:padding="2dp">
-
-                <LinearLayout
-                    android:id="@+id/contentH3"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_weight="1"
-                    android:background="#2cba56"
-                    android:gravity="center_vertical|center_horizontal"
-                    android:orientation="horizontal"
-                    android:padding="5dp">
-
-                    <TextView
-                        android:id="@+id/textView9"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="left"
-                        android:layout_marginLeft="10dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="จ่ายบิล Mistine"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="@color/text_topup_pad" />
-
-                    <Button
-                        android:id="@+id/button_what3"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="right"
-                        android:layout_marginRight="10dp"
-                        android:background="@android:color/holo_purple"
-                        android:gravity="center"
-                        android:text="\?"
-                        android:textSize="25sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/contentC3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:background="#31c270"
-                    android:orientation="vertical"
-                    android:padding="10dp"
-                    android:visibility="gone">
-
-                    <TextView
-                        android:id="@+id/textView16"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/txtM111"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="@color/text_topup_pad" />
-
-                    <EditText
-                        android:id="@+id/editText_phonebill"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="8dp"
-                        android:background="@color/text_topup_pad"
-                        android:digits="0123456789"
-                        android:ems="10"
-                        android:gravity="center"
-                        android:hint="เบอร์โทรรายเดือน"
-                        android:inputType="phone"
-                        android:maxLength="10"
-                        android:numeric="integer"
-                        android:padding="5dp"
-                        android:phoneNumber="true"
-                        android:textColor="@color/bg_topup_pad_black"
-                        android:textSize="30sp"
-                        android:textStyle="bold" />
-
-                    <Button
-                        android:id="@+id/button_chkbill"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="10dp"
-                        android:enabled="true"
-                        android:gravity="center"
-                        android:padding="10dp"
-                        android:text="@string/txtM104"
-                        android:textSize="20sp" />
-
-                    <TextView
-                        android:id="@+id/textView17"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:text="@string/txtM119"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="@color/text_topup_pad" />
-
-                    <Spinner
-                        android:id="@+id/spn3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="8dp"
-                        android:background="@android:color/holo_orange_light"
-                        android:clickable="false"
-                        android:entries="@array/op_arrays"
-                        android:gravity="center"
-                        android:padding="8dp"
-                        android:spinnerMode="dialog" />
-
-                    <Button
-                        android:id="@+id/button_paybill"
-                        android:layout_width="wrap_content"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="10dp"
-                        android:enabled="false"
-                        android:gravity="center"
-                        android:padding="10dp"
-                        android:text="@string/txtM106"
-                        android:textSize="20sp" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/linearLayout"
-                android:layout_centerHorizontal="true"
-                android:orientation="vertical"
-                android:padding="1dp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="2.2"
-                android:background="#000000"
-                android:orientation="vertical"
-                android:padding="2dp">
-
-                <LinearLayout
-                    android:id="@+id/contentH3"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_weight="1"
-                    android:background="#2cba56"
-                    android:gravity="center_vertical|center_horizontal"
-                    android:orientation="horizontal"
-                    android:padding="5dp">
-
-                    <TextView
-                        android:id="@+id/textView9"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="left"
-                        android:layout_marginLeft="10dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="จ่ายบิล AEON"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="@color/text_topup_pad" />
-
-                    <Button
-                        android:id="@+id/button_what3"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="right"
-                        android:layout_marginRight="10dp"
-                        android:background="@android:color/holo_purple"
-                        android:gravity="center"
-                        android:text="\?"
-                        android:textSize="25sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/contentC3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:background="#31c270"
-                    android:orientation="vertical"
-                    android:padding="10dp"
-                    android:visibility="gone">
-
-                    <TextView
-                        android:id="@+id/textView16"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/txtM111"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="@color/text_topup_pad" />
-
-                    <EditText
-                        android:id="@+id/editText_phonebill"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="8dp"
-                        android:background="@color/text_topup_pad"
-                        android:digits="0123456789"
-                        android:ems="10"
-                        android:gravity="center"
-                        android:hint="เบอร์โทรรายเดือน"
-                        android:inputType="phone"
-                        android:maxLength="10"
-                        android:numeric="integer"
-                        android:padding="5dp"
-                        android:phoneNumber="true"
-                        android:textColor="@color/bg_topup_pad_black"
-                        android:textSize="30sp"
-                        android:textStyle="bold" />
-
-                    <Button
-                        android:id="@+id/button_chkbill"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="10dp"
-                        android:enabled="true"
-                        android:gravity="center"
-                        android:padding="10dp"
-                        android:text="@string/txtM104"
-                        android:textSize="20sp" />
-
-                    <TextView
-                        android:id="@+id/textView17"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:text="@string/txtM119"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="@color/text_topup_pad" />
-
-                    <Spinner
-                        android:id="@+id/spn3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="8dp"
-                        android:background="@android:color/holo_orange_light"
-                        android:clickable="false"
-                        android:entries="@array/op_arrays"
-                        android:gravity="center"
-                        android:padding="8dp"
-                        android:spinnerMode="dialog" />
-
-                    <Button
-                        android:id="@+id/button_paybill"
-                        android:layout_width="wrap_content"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="10dp"
-                        android:enabled="false"
-                        android:gravity="center"
-                        android:padding="10dp"
-                        android:text="@string/txtM106"
-                        android:textSize="20sp" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/linearLayout"
-                android:layout_centerHorizontal="true"
-                android:orientation="vertical"
-                android:padding="1dp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="2.2"
-                android:background="#000000"
-                android:orientation="vertical"
-                android:padding="2dp">
-
-                <LinearLayout
-                    android:id="@+id/contentH3"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_weight="1"
-                    android:background="#2cba56"
-                    android:gravity="center_vertical|center_horizontal"
-                    android:orientation="horizontal"
-                    android:padding="5dp">
-
-                    <TextView
-                        android:id="@+id/textView9"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="left"
-                        android:layout_marginLeft="10dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="จ่ายบิล FirstChoice"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="@color/text_topup_pad" />
-
-                    <Button
-                        android:id="@+id/button_what3"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="right"
-                        android:layout_marginRight="10dp"
-                        android:background="@android:color/holo_purple"
-                        android:gravity="center"
-                        android:text="\?"
-                        android:textSize="25sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/contentC3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:background="#31c270"
-                    android:orientation="vertical"
-                    android:padding="10dp"
-                    android:visibility="gone">
-
-                    <TextView
-                        android:id="@+id/textView16"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/txtM111"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="@color/text_topup_pad" />
-
-                    <EditText
-                        android:id="@+id/editText_phonebill"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="8dp"
-                        android:background="@color/text_topup_pad"
-                        android:digits="0123456789"
-                        android:ems="10"
-                        android:gravity="center"
-                        android:hint="เบอร์โทรรายเดือน"
-                        android:inputType="phone"
-                        android:maxLength="10"
-                        android:numeric="integer"
-                        android:padding="5dp"
-                        android:phoneNumber="true"
-                        android:textColor="@color/bg_topup_pad_black"
-                        android:textSize="30sp"
-                        android:textStyle="bold" />
-
-                    <Button
-                        android:id="@+id/button_chkbill"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="10dp"
-                        android:enabled="true"
-                        android:gravity="center"
-                        android:padding="10dp"
-                        android:text="@string/txtM104"
-                        android:textSize="20sp" />
-
-                    <TextView
-                        android:id="@+id/textView17"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:text="@string/txtM119"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="@color/text_topup_pad" />
-
-                    <Spinner
-                        android:id="@+id/spn3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="8dp"
-                        android:background="@android:color/holo_orange_light"
-                        android:clickable="false"
-                        android:entries="@array/op_arrays"
-                        android:gravity="center"
-                        android:padding="8dp"
-                        android:spinnerMode="dialog" />
-
-                    <Button
-                        android:id="@+id/button_paybill"
-                        android:layout_width="wrap_content"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="10dp"
-                        android:enabled="false"
-                        android:gravity="center"
-                        android:padding="10dp"
-                        android:text="@string/txtM106"
+                        android:text="@string/btn_TransDays"
                         android:textSize="20sp" />
                 </LinearLayout>
             </LinearLayout>

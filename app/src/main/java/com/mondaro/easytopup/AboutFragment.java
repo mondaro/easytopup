@@ -49,7 +49,7 @@ public class AboutFragment extends Fragment {
 
         try{
             PackageInfo pInfo = getActivity().getPackageManager().getPackageInfo(this.getActivity().getPackageName(), 0);
-            version = pInfo.versionName + "(" + pInfo.versionCode + ")";
+            version = pInfo.versionName ;
         }catch(Exception e){
 
         }

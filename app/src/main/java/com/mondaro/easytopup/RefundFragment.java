@@ -33,7 +33,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class ReturnFragment extends Fragment {
+public class RefundFragment extends Fragment {
     LinearLayout bg,panel;
     Button btnReAIS,btnReDTAC,btnReTRUE,btnReturn,btnCancel;
     ListView listViewRe;
@@ -43,12 +43,12 @@ public class ReturnFragment extends Fragment {
     int tag;
     SharedPreferences sharedPref;
 
-    public ReturnFragment(){}
+    public RefundFragment(){}
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_return, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_refund, container, false);
         bg = (LinearLayout) rootView.findViewById(R.id.list_returnBG);
         panel = (LinearLayout) rootView.findViewById(R.id.panelBtn);
         btnReAIS = (Button) rootView.findViewById(R.id.btn_smsAIS);
@@ -73,7 +73,7 @@ public class ReturnFragment extends Fragment {
             }else{
                 Toast.makeText(getActivity(), "แจ้งเตือน :\r\nคุณไม่ได้ลงทะเบียนรหัสประจำตัวของระบบ AIS \n" +
                         "กรุณาลงทะเบียนก่อนใช้งานด้วยคะ\r\n", Toast.LENGTH_LONG).show();
-                adapter = new SimpleCursorAdapter(getActivity(), R.layout.row_return, null,
+                adapter = new SimpleCursorAdapter(getActivity(), R.layout.row_refund, null,
                         new String[] { "body" }, new int[] {
                         R.id.lblMsg});
                 adapter.notifyDataSetChanged();
@@ -87,7 +87,7 @@ public class ReturnFragment extends Fragment {
                 }else{
                     Toast.makeText(getActivity(), "แจ้งเตือน :\r\nคุณไม่ได้ลงทะเบียนรหัสประจำตัวของระบบ AIS \n" +
                             "กรุณาลงทะเบียนก่อนใช้งานด้วยคะ\r\n", Toast.LENGTH_LONG).show();
-                    adapter = new SimpleCursorAdapter(getActivity(), R.layout.row_return, null,
+                    adapter = new SimpleCursorAdapter(getActivity(), R.layout.row_refund, null,
                             new String[] { "body" }, new int[] {
                             R.id.lblMsg});
                     adapter.notifyDataSetChanged();
@@ -102,7 +102,7 @@ public class ReturnFragment extends Fragment {
                 }else{
                     Toast.makeText(getActivity(), "แจ้งเตือน :\r\nคุณไม่ได้ลงทะเบียนรหัสประจำตัวของระบบ DTAC \n" +
                             "กรุณาลงทะเบียนก่อนใช้งานด้วยคะ\r\n", Toast.LENGTH_LONG).show();
-                    adapter = new SimpleCursorAdapter(getActivity(), R.layout.row_return, null,
+                    adapter = new SimpleCursorAdapter(getActivity(), R.layout.row_refund, null,
                             new String[] { "body" }, new int[] {
                             R.id.lblMsg});
                     adapter.notifyDataSetChanged();
@@ -117,7 +117,7 @@ public class ReturnFragment extends Fragment {
                 }else{
                     Toast.makeText(getActivity(), "แจ้งเตือน :\r\nคุณไม่ได้ลงทะเบียนรหัสประจำตัวของระบบ TRUE \n" +
                             "กรุณาลงทะเบียนก่อนใช้งานด้วยคะ\r\n", Toast.LENGTH_LONG).show();
-                    adapter = new SimpleCursorAdapter(getActivity(), R.layout.row_return, null,
+                    adapter = new SimpleCursorAdapter(getActivity(), R.layout.row_refund, null,
                             new String[] { "body" }, new int[] {
                             R.id.lblMsg});
                     adapter.notifyDataSetChanged();

@@ -3,8 +3,6 @@
     <string name="action_settings">ตั้งค่า</string>
     <string name="drawer_open">รายการเมนูเปิด</string>
     <string name="drawer_close">รายการเมนูปิด</string>
-
-    <!-- Nav Drawer Menu Items -->
     <string-array name="nav_drawer_items">
         <item >เติมเงิน</item>
         <item >ยอดเงินคงเหลือ</item>
@@ -14,9 +12,6 @@
         <item >เกี่ยวกับโปรแกรม</item>
         <item >ออกโปรแกรม</item>
     </string-array>
-
-    <!-- Nav Drawer List Item Icons -->
-    <!-- Keep them in order as the titles are in -->
     <string-array name="nav_drawer_icons">
         <item>@mipmap/ic_open_in_new_black_48dp</item>
         <item>@mipmap/ic_account_balance_wallet_black_48dp</item>
@@ -26,34 +21,56 @@
         <item>@mipmap/ic_info_outline_black_48dp</item>
         <item>@mipmap/ic_exit_to_app_black_48dp</item>
     </string-array>
-
-    <!-- Content Description -->
     <string name="desc_list_item_icon">Item Icon</string>
+    <!--navigation_Topup-->
+    <string name="txtM122"> &#8212;> ปาดหน้าจอจาก [ซ้าย] ไป [ขวา] เพื่อดูเมนู</string>
+    <string name="txtAmount">จำนวนเงิน</string>
+    <string name="btnContact">สมุดโทรศัพท์</string>
+    <string name="btnLast">เบอร์ล่าสุด</string>
+    <string name="txtTel">เบอร์โทรศัพท์</string>
+    <string name="btnTopup">เติม</string>
+    <string name="btnDel">ลบ</string>
+    <string name="btn0">0</string>
+    <string name="btn1">1</string>
+    <string name="btn2">2</string>
+    <string name="btn3">3</string>
+    <string name="btn4">4</string>
+    <string name="btn5">5</string>
+    <string name="btn6">6</string>
+    <string name="btn7">7</string>
+    <string name="btn8">8</string>
+    <string name="btn9">9</string>
+    <!--navigation_ChkBalance-->
+    <string name="header_CHKBalance">กรุณาเลือกระบบ\nที่ต้องการเช็คยอด</string>
+    <!--navigation_Refund-->
     <string name="item_AIS">AIS</string>
     <string name="item_DTAC">DTAC</string>
     <string name="item_TRUE">TRUE</string>
-    <string name="txt_chk_balance">กรุณาเลือกระบบ\nที่ต้องการเช็คยอด</string>
-    <string name="headerMpay">สำหรับคนขายเติมเงินระบบ AIS 1&#8211;2&#8211;call ที่ผูกบัญชีร่วมกับบริการ mPay</string>
-    <string name="txtM1">เติมเงินเข้ากระเป๋าขายออนไลน์</string>
-    <string name="txtM101">1. กรอกจำนวนเงิน</string>
-    <string name="txtM103">รหัสประจำตัว</string>
-    <string name="txtM104">ทำรายการ(1)</string>
-    <string name="txtM105">2. เลือกบัญชีที่ต้องการหักเงิน</string>
-    <string name="txtM106">ทำรายการ(2)</string>
-    <string name="txtM107">การเติมเงินเข้ากระเป๋าขายผ่าน mPay</string>
-    <string name="txtM108">ปิดหน้าต่างนี้</string>
-    <string name="txtM109">1. กรอกจำนวนเงินที่ต้องการเติมลงไป\n\n
-                            2. กดปุ่ม ทำรายการ(1) รอจนได้รับข้อความเลือกบัญชีเติมเงินเข้ากระเป๋าขาย\n\n
-                            3. เลือกบัญชีที่ต้องการให้หักเงินเติมเข้ากระเป๋าขายออนไลน์\n\n
-                            4. กดปุ่ม ทำรายการ(2) ระบบจะทำการเติมเงินเข้ากระเป๋าขายออนไลน์ให้ทันทีโดยหักเงินจากบัญชีที่เลือกไว้\n\n
-                            ** หมายเหตุ ** หากไม่มีบัญชี mPay รบกวนติดต่อศูนย์บริการของ AIS ได้เลยครับ</string>
+    <string name="btn_Refund">ดึงเงินคืน</string>
+    <string name="btn_Cancel">ยกเลิก</string>
+    <!--navigation_AddOns-->
+    <string name="header_Addons">สำหรับคนขายเติมเงินระบบ AIS 1&#8211;2&#8211;call ที่ผูกบัญชีร่วมกับบริการ mPay</string>
+    <string name="txt_MPAY_ID">รหัสประจำตัว</string>
+    <string name="txt_plus">+</string>
+    <string name="txt_question">\?</string>
+    <!--menu_MPAY-->
+    <string name="menu_MPAY">บัญชี mPay</string>
+    <string name="btn_ChkBal">ตรวจสอบยอดเงิน mPay Wallet</string>
+    <string name="btn_ChkCom">ตรวจสอบค่า Commision</string>
+    <!--menu_TopupToWallet-->
+    <string name="menu_TopupToWallet">เติมเงินเข้ากระเป๋าขายออนไลน์</string>
+    <string name="txt_InputAmount">1. กรอกจำนวนเงิน</string>
+    <string name="btn_process_1">ทำรายการ(1)</string>
+    <string name="txt_SelectAcc">2. เลือกบัญชีที่ต้องการหักเงิน</string>
     <string-array name="type_arrays">
         <item>บัญชี mPay</item>
         <item>บัญชี ธนาคาร</item>
     </string-array>
-    <string name="txtM110">ซื้อบัตรเงินสด 1&#8211;2&#8211;Call</string>
-    <string name="txtM111">1. กรอกหมายเลขโทรศัพท์</string>
-    <string name="txtM112">2. เลือกราคาบัตรเงินสด 1&#8211;2&#8211;Call</string>
+    <string name="btn_process_2">ทำรายการ(2)</string>
+    <!--menu_BuyCardAIS-->
+    <string name="menu_BuyCardAIS">ซื้อบัตรเงินสด 1&#8211;2&#8211;Call</string>
+    <string name="txt_phoneBuyCard">1. กรอกหมายเลขโทรศัพท์</string>
+    <string name="txt_SelectCardValue">2. เลือกราคาบัตรเงินสด 1&#8211;2&#8211;Call</string>
     <string-array name="amount_arrays">
         <item>50</item>
         <item>100</item>
@@ -61,52 +78,64 @@
         <item>500</item>
         <item>1000</item>
     </string-array>
-    <string name="txtM113">ซื้อบัตรเงินสด</string>
-    <string name="txtM114">ซื้อบัตรเงินสด 1&#8211;2&#8211;Call</string>
-    <string name="txtM115">1. กรอกหมายเลขโทรศัพท์ที่ต้องการบัตรเติมเงินเติมลงไป\n\n
-                            2. เลือกจำนวนเงินบัตรเติมเงินที่ต้องการซื้อ\n\n
-                            3. กดปุ่ม ซื้อบัตรเงินสด เสร็จขั้นตอน ลูกค้าจะได้รับข้อความรหัสบัตรทันที\n\n
-                            ** หมายเหตุ ** หากไม่มีบัญชี mPay รบกวนติดต่อศูนย์บริการของ AIS ได้เลยครับ</string>
-    <string name="txtM116">ดึงเงินคืน</string>
-    <string name="txtM117">ยกเลิก</string>
-    <string name="txtM118">จ่ายบิล AIS รายเดือน</string>
-    <string name="txtM119">เลือกรายการที่จะชำระ</string>
+    <string name="btn_BuyCardAIS">ซื้อบัตรเงินสด</string>
+    <!--menu_AISBill-->
+    <string name="menu_AISBill">จ่ายบิล AIS รายเดือน</string>
+    <string name="txt_SelectBill">เลือกรายการที่จะชำระ</string>
     <string-array name="op_arrays">
         <item>0</item>
         <item>1</item>
         <item>2</item>
     </string-array>
-    <string name="txtM120">1. กรอกหมายเลขโทรศัพท์ที่ต้องการชำระ\n\n
+    <!--menu_TransDays-->
+    <string name="menu_TransDays">โอนวัน AIS ระบบเติมเงิน</string>
+    <string name="txt_SelectDays">2. เลือกจำนวนวัน</string>
+    <string-array name="days_arrays">
+        <item>5</item>
+        <item>10</item>
+        <item>20</item>
+    </string-array>
+    <string name="btn_TransDays">โอนวัน</string>
+    <!--Popup-->
+    <string name="btn_ClosePopup">ปิดหน้าต่างนี้</string>
+    <string name="txt_TopupWallet_Description">1. กรอกจำนวนเงินที่ต้องการเติมลงไป\n\n
+                            2. กดปุ่ม ทำรายการ(1) รอจนได้รับข้อความเลือกบัญชีเติมเงินเข้ากระเป๋าขาย\n\n
+                            3. เลือกบัญชีที่ต้องการให้หักเงินเติมเข้ากระเป๋าขายออนไลน์\n\n
+                            4. กดปุ่ม ทำรายการ(2) ระบบจะทำการเติมเงินเข้ากระเป๋าขายออนไลน์ให้ทันทีโดยหักเงินจากบัญชีที่เลือกไว้\n\n
+                            ** หมายเหตุ ** หากไม่มีบัญชี mPay รบกวนติดต่อศูนย์บริการของ AIS ได้เลยครับ\n\n</string>
+    <string name="txt_BuyCard_Description">1. กรอกหมายเลขโทรศัพท์ที่ต้องการบัตรเติมเงินเติมลงไป\n\n
+                            2. เลือกจำนวนเงินบัตรเติมเงินที่ต้องการซื้อ\n\n
+                            3. กดปุ่ม ซื้อบัตรเงินสด เสร็จขั้นตอน ลูกค้าจะได้รับข้อความรหัสบัตรทันที\n\n
+                            ** หมายเหตุ ** หากไม่มีบัญชี mPay รบกวนติดต่อศูนย์บริการของ AIS ได้เลยครับ\n\n</string>
+    <string name="txt_AISBill_Description">1. กรอกหมายเลขโทรศัพท์ที่ต้องการชำระ\n\n
                             2. กดปุ่ม ทำรายการ(1) รอจนได้รับข้อความแจ้งยอดเงินที่ต้องชำระ\n\n
                             3. เลือกหมายเลขยอดชำระจากตัวเลือก\n\n
                             4. กดปุ่ม ทำรายการ(2) ระบบจะทำการชำระค่าโทรศัพท์ให้ทันทีโดยหักเงินจากบัญชี mPay\n\n
-                            ** หมายเหตุ ** หากไม่มีบัญชี mPay รบกวนติดต่อศูนย์บริการของ AIS ได้เลยครับ</string>
-    <string name="txtM121">** หมายเหตุ **\nแอปพลิเคชันนี้ใช้สำหรับตัวแทนเติมเงินออนไลน์เท่านั้น!!!\nสงสัยหรือพบปัญหาสอบถามที่ mondaro23@gmail.com</string>
-    <string name="txtM122"> &#8212;> ปาดหน้าจอจาก [ซ้าย] ไป [ขวา] เพื่อดูเมนู</string>
+                            ** หมายเหตุ ** หากไม่มีบัญชี mPay รบกวนติดต่อศูนย์บริการของ AIS ได้เลยครับ\n\n</string>
+    <string name="txt_AISTransDays_Description">1. กรอกหมายเลขโทรศัพท์ที่ต้องการโอนวันให้\n\n
+                            2. เลือกจำนวนวันที่ต้องการโอน จากตัวเลือก\n\n
+                            3. กดปุ่ม โอนวัน ระบบจะทำการโอนวันตามจำนวนที่เลือกไปยังหมายเลขโทรศัพท์ที่ระบุให้ทันที\n\n</string>
+    <!--navigation_Setting-->
     <string name="txtM123">รหัสประจำตัวคนขายออนไลน์</string>
-    <string name="about_content1">เติมกะตังส์\n</string>
-    <string name="about_content2">\n\nพัฒนาโดย\nMondaro Developer\n\nEmail\nmondaro23@gmail.com</string>
-    <string name="btn0">0</string>
-    <string name="btn1">1</string>
-    <string name="btn2">2</string>
-    <string name="txtAmount">จำนวนเงิน</string>
-    <string name="btnContact">สมุดโทรศัพท์</string>
-    <string name="btnLast">เบอร์ล่าสุด</string>
-    <string name="txtTel">เบอร์โทรศัพท์</string>
-    <string name="btnTopup">เติม</string>
-    <string name="btnDel">ลบ</string>
-    <string name="btn9">9</string>
-    <string name="btn3">3</string>
-    <string name="btn4">4</string>
-    <string name="btn5">5</string>
-    <string name="btn6">6</string>
-    <string name="btn7">7</string>
-    <string name="btn8">8</string>
+    <string name="txtM121">** หมายเหตุ **\nแอปพลิเคชันนี้ใช้สำหรับตัวแทนเติมเงินออนไลน์เท่านั้น!!!\nสงสัยหรือพบปัญหาสอบถามที่ mondaro23@gmail.com</string>
     <string name="btnOKSetting">ตั้งค่า</string>
     <string name="settingDTAC">ดีแทค</string>
     <string name="settingTRUE">ทรูมูฟ</string>
     <string name="settingAIS">วันทูคอล</string>
+    <!--navigation_About-->
+    <string name="about_content1">เติมกะตังส์\n</string>
+    <string name="about_content2">\n\nพัฒนาโดย\nMondaro Developer\n\n
+    แอปพลิเคชันนี้ใช้อำนวยความสะดวกในการเติมเงินสำหรับหน่วยเติมเงินเท่านั้น บุคคลธรรมดาไม่สามารถใช้งานได้\n
+    หากสนใจเป็นตัวแทนเติมเงิน กรุณาติดต่อที่ศูนย์บริการลูกค้าของแต่ละเครือข่ายใกล้บ้านท่าน</string>
     <string name="btnEmail">ติดต่อทีมงาน</string>
     <string name="btnWebsite">เข้าชม\nmondaro.cc</string>
+    <!--hint-->
+    <string name="hintmPay">รหัส mPay</string>
+    <string name="hintPhone">เบอร์โทรศัพท์</string>
+    <string name="hintAmount">ยอดเงิน</string>
+    <string name="hintPhoneGetCard">เบอร์โทรคนซื้อ</string>
+    <string name="hintPhoneBill">เบอร์โทรรายเดือน</string>
+
+
 
 </resources>

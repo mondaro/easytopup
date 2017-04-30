@@ -87,7 +87,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/txtM116"
+                android:text="@string/btn_Refund"
                 android:id="@+id/btnReturn"
                 android:layout_weight="1"
                 android:textSize="20sp"
@@ -96,7 +96,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/txtM117"
+                android:text="@string/btn_Cancel"
                 android:id="@+id/btnCancel"
                 android:layout_weight="1"
                 android:textSize="20sp"

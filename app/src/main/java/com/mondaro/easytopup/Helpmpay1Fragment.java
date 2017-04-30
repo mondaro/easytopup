@@ -7,9 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-/**
- * Created by MondAro on 11/4/2559.
- */
 public class Helpmpay1Fragment extends Fragment {
     Button closePop;
     @Override

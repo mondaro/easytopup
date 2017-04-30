@@ -135,7 +135,7 @@ public class MainActivity extends ActionBarActivity {
             switch (position) {
                 case 0: fragment = new TopupFragment();break;
                 case 1: fragment = new ChkBalanceFragment();break;
-                case 2: fragment = new ReturnFragment();break;
+                case 2: fragment = new RefundFragment();break;
                 case 3: fragment = new AddOnsFragment();break;
                 case 4: fragment = new SettingFragment();break;
                 case 5: fragment = new AboutFragment();break;

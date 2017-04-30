@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:text="@string/menu_TopupToWallet"
+            android:text="@string/menu_TransDays"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/text_topup_pad"
             android:textSize="20sp"
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:padding="8dp"
-            android:text="@string/txt_TopupWallet_Description"
+            android:text="@string/txt_AISTransDays_Description"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/text_topup_pad"
             android:textSize="20sp" />

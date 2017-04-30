@@ -7,13 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-public class Helpmpay2Fragment extends Fragment {
+public class Helpmpay4Fragment extends Fragment {
     Button closePop;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_helpmpay2, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_helpmpay4, container, false);
         closePop = (Button)rootView.findViewById(R.id.button_close_helpmpay);
 
         closePop.setOnClickListener(new View.OnClickListener() {

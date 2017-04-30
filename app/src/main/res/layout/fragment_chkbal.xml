@@ -47,7 +47,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/textView4"
         android:gravity="center"
-        android:text="@string/txt_chk_balance"
+        android:text="@string/header_CHKBalance"
         android:textColor="@color/text_topup_pad"
         android:padding="16dp" />
 
