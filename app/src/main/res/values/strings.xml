@@ -6,7 +6,7 @@
     <string-array name="nav_drawer_items">
         <item >เติมเงิน</item>
         <item >ยอดเงินคงเหลือ</item>
-        <item >ดึงเงินคืน</item>
+        <item >ประวัติทำรายการ/ดึงเงินคืน</item>
         <item >เพิ่มเติม</item>
         <item >ตั้งค่ารหัสคนขาย</item>
         <item >เกี่ยวกับโปรแกรม</item>

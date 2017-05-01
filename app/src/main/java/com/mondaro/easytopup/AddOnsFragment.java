@@ -1,16 +1,22 @@
 package com.mondaro.easytopup;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,6 +38,8 @@ public class AddOnsFragment extends Fragment {
     LinearLayout head0,head1,head2,head3,head4,content0,content1,content2,content3,content4;
     SharedPreferences sharedPref;
     SharedPreferences.Editor edt;
+    final private int REQUEST_READ_CONTACTS_PERMISSIONS = 112;
+    final private int REQUEST_CALL_PHONE_PERMISSIONS = 123;
 
     public AddOnsFragment(){}
     @Override
@@ -393,62 +401,172 @@ public class AddOnsFragment extends Fragment {
         });
 
         head0.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
-            if(content0.getVisibility() == View.VISIBLE){
-                content0.setVisibility(View.GONE);
+            int hasCallPhonePermission = ContextCompat.checkSelfPermission(getActivity(),
+                    Manifest.permission.CALL_PHONE);
+            if (hasCallPhonePermission != PackageManager.PERMISSION_GRANTED){
+                if (!ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
+                        Manifest.permission.CALL_PHONE)) {
+                    showMessageOK("ต้องการยืนยันการอนุญาตเข้าถึง\n\n[ระบบการโทร]\n\nเพื่อให้แอปพลิเคชันทำงานได้",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    ActivityCompat.requestPermissions(getActivity(),
+                                            new String[] {Manifest.permission.CALL_PHONE},
+                                            REQUEST_CALL_PHONE_PERMISSIONS);
+                                }
+                            });
+                    return;
+                }
+                ActivityCompat.requestPermissions(getActivity(),
+                        new String[] {Manifest.permission.CALL_PHONE},
+                        REQUEST_CALL_PHONE_PERMISSIONS);
+                return;
             }else{
-                content0.setVisibility(View.VISIBLE);
-                content1.setVisibility(View.GONE);
-                content2.setVisibility(View.GONE);
-                content3.setVisibility(View.GONE);
-                content4.setVisibility(View.GONE);
+                if(content0.getVisibility() == View.VISIBLE){
+                    content0.setVisibility(View.GONE);
+                }else{
+                    content0.setVisibility(View.VISIBLE);
+                    content1.setVisibility(View.GONE);
+                    content2.setVisibility(View.GONE);
+                    content3.setVisibility(View.GONE);
+                    content4.setVisibility(View.GONE);
+                }
             }
         }});
 
         head1.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
-            if(content1.getVisibility() == View.VISIBLE){
-                content1.setVisibility(View.GONE);
+            int hasCallPhonePermission = ContextCompat.checkSelfPermission(getActivity(),
+                    Manifest.permission.CALL_PHONE);
+            if (hasCallPhonePermission != PackageManager.PERMISSION_GRANTED){
+                if (!ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
+                        Manifest.permission.CALL_PHONE)) {
+                    showMessageOK("ต้องการยืนยันการอนุญาตเข้าถึง\n\n[ระบบการโทร]\n\nเพื่อให้แอปพลิเคชันทำงานได้",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    ActivityCompat.requestPermissions(getActivity(),
+                                            new String[] {Manifest.permission.CALL_PHONE},
+                                            REQUEST_CALL_PHONE_PERMISSIONS);
+                                }
+                            });
+                    return;
+                }
+                ActivityCompat.requestPermissions(getActivity(),
+                        new String[] {Manifest.permission.CALL_PHONE},
+                        REQUEST_CALL_PHONE_PERMISSIONS);
+                return;
             }else{
-                content0.setVisibility(View.GONE);
-                content1.setVisibility(View.VISIBLE);
-                content2.setVisibility(View.GONE);
-                content3.setVisibility(View.GONE);
-                content4.setVisibility(View.GONE);
+                if(content1.getVisibility() == View.VISIBLE){
+                    content1.setVisibility(View.GONE);
+                }else{
+                    content0.setVisibility(View.GONE);
+                    content1.setVisibility(View.VISIBLE);
+                    content2.setVisibility(View.GONE);
+                    content3.setVisibility(View.GONE);
+                    content4.setVisibility(View.GONE);
+                }
             }
         }});
 
         head2.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
-            if(content2.getVisibility() == View.VISIBLE){
-                content2.setVisibility(View.GONE);
+            int hasCallPhonePermission = ContextCompat.checkSelfPermission(getActivity(),
+                    Manifest.permission.CALL_PHONE);
+            if (hasCallPhonePermission != PackageManager.PERMISSION_GRANTED){
+                if (!ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
+                        Manifest.permission.CALL_PHONE)) {
+                    showMessageOK("ต้องการยืนยันการอนุญาตเข้าถึง\n\n[ระบบการโทร]\n\nเพื่อให้แอปพลิเคชันทำงานได้",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    ActivityCompat.requestPermissions(getActivity(),
+                                            new String[] {Manifest.permission.CALL_PHONE},
+                                            REQUEST_CALL_PHONE_PERMISSIONS);
+                                }
+                            });
+                    return;
+                }
+                ActivityCompat.requestPermissions(getActivity(),
+                        new String[] {Manifest.permission.CALL_PHONE},
+                        REQUEST_CALL_PHONE_PERMISSIONS);
+                return;
             }else{
-                content0.setVisibility(View.GONE);
-                content1.setVisibility(View.GONE);
-                content2.setVisibility(View.VISIBLE);
-                content3.setVisibility(View.GONE);
-                content4.setVisibility(View.GONE);
+                if(content2.getVisibility() == View.VISIBLE){
+                    content2.setVisibility(View.GONE);
+                }else{
+                    content0.setVisibility(View.GONE);
+                    content1.setVisibility(View.GONE);
+                    content2.setVisibility(View.VISIBLE);
+                    content3.setVisibility(View.GONE);
+                    content4.setVisibility(View.GONE);
+                }
             }
         }});
 
         head3.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
-            if(content3.getVisibility() == View.VISIBLE){
-                content3.setVisibility(View.GONE);
+            int hasCallPhonePermission = ContextCompat.checkSelfPermission(getActivity(),
+                    Manifest.permission.CALL_PHONE);
+            if (hasCallPhonePermission != PackageManager.PERMISSION_GRANTED){
+                if (!ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
+                        Manifest.permission.CALL_PHONE)) {
+                    showMessageOK("ต้องการยืนยันการอนุญาตเข้าถึง\n\n[ระบบการโทร]\n\nเพื่อให้แอปพลิเคชันทำงานได้",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    ActivityCompat.requestPermissions(getActivity(),
+                                            new String[] {Manifest.permission.CALL_PHONE},
+                                            REQUEST_CALL_PHONE_PERMISSIONS);
+                                }
+                            });
+                    return;
+                }
+                ActivityCompat.requestPermissions(getActivity(),
+                        new String[] {Manifest.permission.CALL_PHONE},
+                        REQUEST_CALL_PHONE_PERMISSIONS);
+                return;
             }else{
-                content0.setVisibility(View.GONE);
-                content1.setVisibility(View.GONE);
-                content2.setVisibility(View.GONE);
-                content3.setVisibility(View.VISIBLE);
-                content4.setVisibility(View.GONE);
+                if(content3.getVisibility() == View.VISIBLE){
+                    content3.setVisibility(View.GONE);
+                }else{
+                    content0.setVisibility(View.GONE);
+                    content1.setVisibility(View.GONE);
+                    content2.setVisibility(View.GONE);
+                    content3.setVisibility(View.VISIBLE);
+                    content4.setVisibility(View.GONE);
+                }
             }
         }});
 
         head4.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
-            if(content4.getVisibility() == View.VISIBLE){
-                content4.setVisibility(View.GONE);
+            int hasCallPhonePermission = ContextCompat.checkSelfPermission(getActivity(),
+                    Manifest.permission.CALL_PHONE);
+            if (hasCallPhonePermission != PackageManager.PERMISSION_GRANTED){
+                if (!ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
+                        Manifest.permission.CALL_PHONE)) {
+                    showMessageOK("ต้องการยืนยันการอนุญาตเข้าถึง\n\n[ระบบการโทร]\n\nเพื่อให้แอปพลิเคชันทำงานได้",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    ActivityCompat.requestPermissions(getActivity(),
+                                            new String[] {Manifest.permission.CALL_PHONE},
+                                            REQUEST_CALL_PHONE_PERMISSIONS);
+                                }
+                            });
+                    return;
+                }
+                ActivityCompat.requestPermissions(getActivity(),
+                        new String[] {Manifest.permission.CALL_PHONE},
+                        REQUEST_CALL_PHONE_PERMISSIONS);
+                return;
             }else{
-                content0.setVisibility(View.GONE);
-                content1.setVisibility(View.GONE);
-                content2.setVisibility(View.GONE);
-                content3.setVisibility(View.GONE);
-                content4.setVisibility(View.VISIBLE);
+                if(content4.getVisibility() == View.VISIBLE){
+                    content4.setVisibility(View.GONE);
+                }else{
+                    content0.setVisibility(View.GONE);
+                    content1.setVisibility(View.GONE);
+                    content2.setVisibility(View.GONE);
+                    content3.setVisibility(View.GONE);
+                    content4.setVisibility(View.VISIBLE);
+                }
             }
         }});
 
@@ -456,10 +574,32 @@ public class AddOnsFragment extends Fragment {
     }
 
     private void pickContact(View v,int target) {
-        txtphoneContact = "";
-        Intent pickContactIntent = new Intent( Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI );
-        pickContactIntent.setType(ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE);
-        startActivityForResult(pickContactIntent, target);
+        int hasReadContactsPermission = ContextCompat.checkSelfPermission(getActivity(),
+                Manifest.permission.READ_CONTACTS);
+        if (hasReadContactsPermission != PackageManager.PERMISSION_GRANTED){
+            if (!ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
+                    Manifest.permission.READ_CONTACTS)) {
+                showMessageOK("ต้องการยืนยันการอนุญาตเข้าถึง\n\n[สมุดรายชื่อ]\n\nเพื่อให้แอปพลิเคชันทำงานได้",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                ActivityCompat.requestPermissions(getActivity(),
+                                        new String[] {Manifest.permission.READ_CONTACTS},
+                                        REQUEST_READ_CONTACTS_PERMISSIONS);
+                            }
+                        });
+                return;
+            }
+            ActivityCompat.requestPermissions(getActivity(),
+                    new String[] {Manifest.permission.READ_CONTACTS},
+                    REQUEST_READ_CONTACTS_PERMISSIONS);
+            return;
+        }else{
+            txtphoneContact = "";
+            Intent pickContactIntent = new Intent( Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI );
+            pickContactIntent.setType(ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE);
+            startActivityForResult(pickContactIntent, target);
+        }
     }
 
     @Override
@@ -500,5 +640,37 @@ public class AddOnsFragment extends Fragment {
                         Toast.LENGTH_LONG).show();
             }
         }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch(requestCode){
+            case REQUEST_CALL_PHONE_PERMISSIONS:
+                if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
+
+                }else{
+                    Toast.makeText(getActivity(), "CALL_PHONE Denied", Toast.LENGTH_SHORT)
+                            .show();
+                }
+                break;
+            case REQUEST_READ_CONTACTS_PERMISSIONS:
+                if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
+
+                }else{
+                    Toast.makeText(getActivity(), "READ_CONTACTS Denied", Toast.LENGTH_SHORT)
+                            .show();
+                }
+                break;
+            default:
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+    }
+
+    private void showMessageOK(String message, DialogInterface.OnClickListener okListener) {
+        new AlertDialog.Builder(getActivity())
+                .setMessage(message)
+                .setPositiveButton("OK", okListener)
+                .create()
+                .show();
     }
 }

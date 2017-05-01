@@ -1,15 +1,21 @@
 package com.mondaro.easytopup;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,8 +25,6 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.view.View.OnClickListener;
-
-import com.mondaro.easytopup.R;
 
 public class TopupFragment extends Fragment {
     String tmpDigit = "";
@@ -33,6 +37,8 @@ public class TopupFragment extends Fragment {
     SharedPreferences sharedPref;
     SharedPreferences.Editor edt;
     static final int PICK_CONTACT_REQUEST = 1;
+    final private int REQUEST_READ_CONTACTS_PERMISSIONS = 112;
+    final private int REQUEST_CALL_PHONE_PERMISSIONS = 123;
 
     public TopupFragment(){}
 
@@ -145,19 +151,42 @@ public class TopupFragment extends Fragment {
             }else if(txtcost.getText().length()<1){
                 Toast.makeText(getActivity(), "ผิดพลาด :\r\nกรุณากรอกจำนวนเงิน\nให้ถูกต้องด้วยคะ", Toast.LENGTH_SHORT).show();
             }else{
-                switch (mode){
-                    case 1: TopupAIS();break;
-                    case 2: TopupDTAC();break;
-                    case 3:TopupTRUE();break;
+                int hasCallPhonePermission = ContextCompat.checkSelfPermission(getActivity(),
+                        Manifest.permission.CALL_PHONE);
+                if (hasCallPhonePermission != PackageManager.PERMISSION_GRANTED){
+                    if (!ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
+                            Manifest.permission.CALL_PHONE)) {
+                        showMessageOK("ต้องการยืนยันการอนุญาตเข้าถึง\n\n[ระบบการโทร]\n\nเพื่อให้แอปพลิเคชันทำงานได้",
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        ActivityCompat.requestPermissions(getActivity(),
+                                                new String[] {Manifest.permission.CALL_PHONE},
+                                                REQUEST_CALL_PHONE_PERMISSIONS);
+                                    }
+                                });
+                        return;
+                    }
+                    ActivityCompat.requestPermissions(getActivity(),
+                            new String[] {Manifest.permission.CALL_PHONE},
+                            REQUEST_CALL_PHONE_PERMISSIONS);
+                    return;
+                }else{
+                    switch (mode){
+                        case 1: TopupAIS();break;
+                        case 2: TopupDTAC();break;
+                        case 3:TopupTRUE();break;
+                    }
+                    edt.putString("LAST", txtphone.getText().toString().trim() );
+                    edt.commit();
+                    tmpDigit = "";
+                    txtphone.setText("");
+                    txtcost.setText("");
+                    txtphone.setBackgroundResource(R.drawable.border_active);
+                    txtcost.setBackgroundResource(R.drawable.border_inactive);
+                    target = '1';
                 }
-                edt.putString("LAST", txtphone.getText().toString().trim() );
-                edt.commit();
-                tmpDigit = "";
-                txtphone.setText("");
-                txtcost.setText("");
-                txtphone.setBackgroundResource(R.drawable.border_active);
-                txtcost.setBackgroundResource(R.drawable.border_inactive);
-                target = '1';
+
             }
         }else if(tmp == "DEL"){
             if(target=='1'){
@@ -227,10 +256,33 @@ public class TopupFragment extends Fragment {
     }
 
     private void pickContact(View v) {
-        tmpDigit = "";
-        Intent pickContactIntent = new Intent( Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI );
-        pickContactIntent.setType(ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE);
-        startActivityForResult(pickContactIntent, PICK_CONTACT_REQUEST);
+        int hasReadContactsPermission = ContextCompat.checkSelfPermission(getActivity(),
+                Manifest.permission.READ_CONTACTS);
+        if (hasReadContactsPermission != PackageManager.PERMISSION_GRANTED){
+            if (!ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
+                    Manifest.permission.READ_CONTACTS)) {
+                showMessageOK("ต้องการยืนยันการอนุญาตเข้าถึง\n\n[สมุดรายชื่อ]\n\nเพื่อให้แอปพลิเคชันทำงานได้",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                ActivityCompat.requestPermissions(getActivity(),
+                                        new String[] {Manifest.permission.READ_CONTACTS},
+                                        REQUEST_READ_CONTACTS_PERMISSIONS);
+                            }
+                        });
+                return;
+            }
+            ActivityCompat.requestPermissions(getActivity(),
+                    new String[] {Manifest.permission.READ_CONTACTS},
+                    REQUEST_READ_CONTACTS_PERMISSIONS);
+            return;
+        }else{
+            tmpDigit = "";
+            Intent pickContactIntent = new Intent( Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI );
+            pickContactIntent.setType(ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE);
+            startActivityForResult(pickContactIntent, PICK_CONTACT_REQUEST);
+        }
+
     }
 
     @Override
@@ -257,6 +309,38 @@ public class TopupFragment extends Fragment {
                     }
             }
         }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch(requestCode){
+            case REQUEST_READ_CONTACTS_PERMISSIONS:
+                if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
+
+                }else{
+                    Toast.makeText(getActivity(), "READ_CONTACTS Denied", Toast.LENGTH_SHORT)
+                            .show();
+                }
+                break;
+            case REQUEST_CALL_PHONE_PERMISSIONS:
+                if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
+
+                }else{
+                    Toast.makeText(getActivity(), "CALL_PHONE Denied", Toast.LENGTH_SHORT)
+                            .show();
+                }
+                break;
+            default:
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+    }
+
+    private void showMessageOK(String message, DialogInterface.OnClickListener okListener) {
+        new AlertDialog.Builder(getActivity())
+                .setMessage(message)
+                .setPositiveButton("OK", okListener)
+                .create()
+                .show();
     }
 }
 
