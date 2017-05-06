@@ -10,7 +10,10 @@
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:ignore="UselessParent">
+        tools:ignore="UselessParent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -79,15 +82,16 @@
                     <Button
                         android:id="@+id/button_addmPayID"
                         style="?android:attr/buttonStyleSmall"
-                        android:layout_width="45dp"
-                        android:layout_height="50dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_gravity="right"
                         android:layout_weight="0.5"
                         android:background="@android:color/holo_red_light"
                         android:gravity="center_vertical|center_horizontal"
                         android:text="@string/txt_plus"
                         android:textColor="@color/background_material_light"
-                        android:textSize="30sp" />
+                        android:textSize="30sp"
+                        tools:ignore="PrivateResource" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -232,9 +236,9 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:baselineAligned="false"
                         android:orientation="horizontal"
                         android:weightSum="2"
-                        android:baselineAligned="false"
                         tools:ignore="UselessParent">
 
                         <LinearLayout
@@ -261,7 +265,7 @@
 
                                 <EditText
                                     android:id="@+id/editText_Amount"
-                                    android:layout_width="120dp"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:layout_marginTop="8dp"
@@ -289,7 +293,7 @@
                                     <Button
                                         android:id="@+id/button_pass1"
                                         android:layout_width="wrap_content"
-                                        android:layout_height="50dp"
+                                        android:layout_height="match_parent"
                                         android:layout_marginTop="10dp"
                                         android:gravity="center"
                                         android:text="@string/btn_process_1"
@@ -346,7 +350,7 @@
                                     <Button
                                         android:id="@+id/button_pass2"
                                         android:layout_width="wrap_content"
-                                        android:layout_height="50dp"
+                                        android:layout_height="match_parent"
                                         android:layout_marginTop="10dp"
                                         android:enabled="false"
                                         android:gravity="center"
@@ -431,7 +435,7 @@
                         <Button
                             android:id="@+id/button_contactBuyCard"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_weight="0.5"
                             android:text="@string/btnContact" />
                     </LinearLayout>
@@ -480,7 +484,7 @@
                     <Button
                         android:id="@+id/button_card"
                         android:layout_width="wrap_content"
-                        android:layout_height="50dp"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="10dp"
                         android:enabled="true"
@@ -588,7 +592,7 @@
                     <Button
                         android:id="@+id/button_chkbill"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="10dp"
                         android:enabled="true"
@@ -622,7 +626,7 @@
                     <Button
                         android:id="@+id/button_paybill"
                         android:layout_width="wrap_content"
-                        android:layout_height="50dp"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="10dp"
                         android:enabled="false"
@@ -704,7 +708,7 @@
                         <Button
                             android:id="@+id/button_contactTransDay"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_weight="0.5"
                             android:text="@string/btnContact" />
                     </LinearLayout>
@@ -752,7 +756,7 @@
                     <Button
                         android:id="@+id/button_transDays"
                         android:layout_width="wrap_content"
-                        android:layout_height="50dp"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="10dp"
                         android:gravity="center"

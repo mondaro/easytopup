@@ -137,6 +137,22 @@ public class TopupFragment extends Fragment {
                 }
             });
             txtphone.setBackgroundResource(R.drawable.border_active);
+
+            btnDel.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    if(target=='1'){
+                        txtphone.setText("");
+                        txtphone.setBackgroundResource(R.drawable.border_active);
+                        txtcost.setBackgroundResource(R.drawable.border_inactive);
+                    }else{
+                        txtcost.setText("");
+                        txtphone.setBackgroundResource(R.drawable.border_inactive);
+                        txtcost.setBackgroundResource(R.drawable.border_active);
+                    }
+                    return false;
+                }
+            });
         }
 
         return rootView;
