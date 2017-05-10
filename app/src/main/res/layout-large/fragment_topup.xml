@@ -66,7 +66,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="1"
-                        android:drawableLeft="@android:drawable/ic_menu_revert"
+                        android:drawableLeft="@android:drawable/ic_menu_recent_history"
                         android:padding="3dp"
                         android:text="@string/btnLast" />
 
@@ -75,6 +75,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:drawableLeft="@android:drawable/ic_menu_view"
                         android:gravity="center"
                         android:text="@string/btnContact" />
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/contentL"
     android:layout_width="match_parent"
@@ -571,23 +572,41 @@
                             android:text="@string/btnContact" />
                     </LinearLayout>
 
-                    <EditText
-                        android:id="@+id/editText_phonebill"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="8dp"
-                        android:background="@color/text_topup_pad"
-                        android:digits="0123456789"
-                        android:ems="10"
-                        android:gravity="center"
-                        android:hint="@string/hintPhoneBill"
-                        android:inputType="phone"
-                        android:maxLength="10"
-                        android:padding="5dp"
-                        android:textColor="@color/bg_topup_pad_black"
-                        android:textSize="30sp"
-                        android:textStyle="bold" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/editText_phonebill"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="6dp"
+                            android:layout_weight="1"
+                            android:background="@color/text_topup_pad"
+                            android:digits="0123456789"
+                            android:ems="10"
+                            android:gravity="center"
+                            android:hint="@string/hintPhoneBill"
+                            android:inputType="phone"
+                            android:maxLength="10"
+                            android:padding="5dp"
+                            android:textColor="@color/bg_topup_pad_black"
+                            android:textSize="30sp"
+                            android:textStyle="bold" />
+
+                        <ImageButton
+                            android:id="@+id/imageButton_ResetPhoneBilll"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_weight="4"
+                            android:background="@android:color/holo_red_dark"
+                            app:srcCompat="@android:drawable/ic_notification_clear_all"
+                            tools:ignore="ContentDescription" />
+                    </LinearLayout>
 
                     <Button
                         android:id="@+id/button_chkbill"
@@ -711,26 +730,49 @@
                             android:layout_height="match_parent"
                             android:layout_weight="0.5"
                             android:text="@string/btnContact" />
+
                     </LinearLayout>
 
-                    <EditText
-                        android:id="@+id/editText_phonedays"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:layout_marginTop="8dp"
-                        android:background="@color/text_topup_pad"
-                        android:digits="0123456789"
-                        android:ems="10"
                         android:gravity="center"
-                        android:hint="@string/hintPhone"
-                        android:inputType="phone"
-                        android:maxLength="10"
-                        android:maxLines="1"
-                        android:padding="5dp"
-                        android:textColor="@color/bg_topup_pad_black"
-                        android:textSize="30sp"
-                        android:textStyle="bold" />
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/editText_phonedays"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="8dp"
+                            android:layout_weight="1"
+                            android:background="@color/text_topup_pad"
+                            android:digits="0123456789"
+                            android:ems="10"
+                            android:gravity="center"
+                            android:hint="@string/hintPhone"
+                            android:inputType="phone"
+                            android:maxLength="10"
+                            android:maxLines="1"
+                            android:padding="5dp"
+                            android:textColor="@color/bg_topup_pad_black"
+                            android:textSize="30sp"
+                            android:textStyle="bold" />
+
+                        <ImageButton
+                            android:id="@+id/imageButton_RepeatPhone"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_weight="4"
+                            android:background="@color/bg_topup_true"
+                            android:contentDescription=""
+                            app:srcCompat="@android:drawable/ic_menu_recent_history"
+                            tools:ignore="ContentDescription" />
+                    </LinearLayout>
 
                     <TextView
                         android:id="@+id/textViewN17"

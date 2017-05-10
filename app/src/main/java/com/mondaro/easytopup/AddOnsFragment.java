@@ -24,17 +24,19 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 public class AddOnsFragment extends Fragment {
-    String getmPayID,type,am_card,uid1, opBill,opDays,txtphoneContact;
+    String getmPayID,type,am_card,uid1, opBill,opDays,txtphoneContact,phoneTDRecent;
     EditText t_am,t_id, t_phoneCard,t_phoneBill,t_phoneDays;
     Spinner spn1,spn2,spn3,spn4;
     Button btnchkbal,btnchkcom,btnpass1,btnpass2, btnwh1,btnwh2,btnwh3,btnwh4,
             btnbuycard,btnaddmpayID,btnchkbill,btnpaybill,btntransdays,
             btnCntCard,btnCntBill,btnCntDays;
+    ImageButton imgbtnRecentTD,imgbtnResetPB;
     LinearLayout head0,head1,head2,head3,head4,content0,content1,content2,content3,content4;
     SharedPreferences sharedPref;
     SharedPreferences.Editor edt;
@@ -72,6 +74,8 @@ public class AddOnsFragment extends Fragment {
         btnCntCard = (Button)rootView.findViewById(R.id.button_contactBuyCard);
         btnCntBill = (Button)rootView.findViewById(R.id.button_contactBill);
         btnCntDays = (Button)rootView.findViewById(R.id.button_contactTransDay);
+        imgbtnRecentTD = (ImageButton)rootView.findViewById(R.id.imageButton_RepeatPhone);
+        imgbtnResetPB = (ImageButton)rootView.findViewById(R.id.imageButton_ResetPhoneBilll);
         head0 = (LinearLayout)rootView.findViewById(R.id.contentH0);
         head1 = (LinearLayout)rootView.findViewById(R.id.contentH1);
         head2 = (LinearLayout)rootView.findViewById(R.id.contentH2);
@@ -206,7 +210,6 @@ public class AddOnsFragment extends Fragment {
                     } catch (ActivityNotFoundException activityException) {
                         Log.d("dialing-example", "Call failed", activityException);
                     }
-                    ((MainActivity) getActivity()).displayView(0);
                 }
             }
         }});
@@ -246,7 +249,7 @@ public class AddOnsFragment extends Fragment {
             } catch (ActivityNotFoundException activityException) {
                 Log.d("dialing-example", "Call failed", activityException);
             }
-            ((MainActivity) getActivity()).displayView(0);
+            imgbtnResetPB.performClick();
         }});
 
         btntransdays.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
@@ -266,8 +269,22 @@ public class AddOnsFragment extends Fragment {
                 } catch (ActivityNotFoundException activityException) {
                     Log.d("dialing-example", "Call failed", activityException);
                 }
-                ((MainActivity) getActivity()).displayView(0);
             }
+            edt.putString("tdrecent",t_phoneDays.getText().toString().trim());
+            edt.apply();
+        }});
+
+        imgbtnRecentTD.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
+            phoneTDRecent = sharedPref.getString("tdrecent", "");
+            t_phoneDays.setText(phoneTDRecent);
+        }});
+
+        imgbtnResetPB.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
+            t_phoneBill.setText("");
+            t_phoneBill.setFocusableInTouchMode(true);
+            btnchkbill.setEnabled(true);
+            btnpaybill.setEnabled(false);
+            spn3.setClickable(false);
         }});
 
         spn1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
