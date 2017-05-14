@@ -579,8 +579,8 @@
 
                         <EditText
                             android:id="@+id/editText_phonebill"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
                             android:layout_gravity="center"
                             android:layout_marginTop="6dp"
                             android:layout_weight="1"
@@ -598,12 +598,12 @@
 
                         <ImageButton
                             android:id="@+id/imageButton_ResetPhoneBilll"
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="8dp"
                             android:layout_marginTop="8dp"
-                            android:layout_weight="4"
                             android:background="@android:color/holo_red_dark"
+                            android:padding="16dp"
                             app:srcCompat="@android:drawable/ic_notification_clear_all"
                             tools:ignore="ContentDescription" />
                     </LinearLayout>
@@ -742,8 +742,8 @@
 
                         <EditText
                             android:id="@+id/editText_phonedays"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
                             android:layout_gravity="center"
                             android:layout_marginTop="8dp"
                             android:layout_weight="1"
@@ -762,14 +762,14 @@
 
                         <ImageButton
                             android:id="@+id/imageButton_RepeatPhone"
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
                             android:layout_marginLeft="8dp"
                             android:layout_marginTop="8dp"
-                            android:layout_weight="4"
                             android:background="@color/bg_topup_true"
                             android:contentDescription=""
+                            android:padding="16dp"
                             app:srcCompat="@android:drawable/ic_menu_recent_history"
                             tools:ignore="ContentDescription" />
                     </LinearLayout>
