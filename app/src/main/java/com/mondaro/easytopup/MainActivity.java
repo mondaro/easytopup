@@ -49,7 +49,7 @@ public class MainActivity extends ActionBarActivity {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.list_slidermenu);
         navDrawerItems = new ArrayList<NavDrawerItem>();
-        Integer arrayLength = (Integer) navMenuTitles.length;
+        Integer arrayLength = navMenuTitles.length;
         for(int i=0;i<arrayLength;i++){
             navDrawerItems.add(new NavDrawerItem(navMenuTitles[i], navMenuIcons.getResourceId(i, -1)));
         }

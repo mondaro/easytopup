@@ -7,10 +7,8 @@
     <color name="list_item_title">#e9272b2f</color>
     <color name="counter_text_color">#ff3d2c</color>
     <color name="text_btn_pad">#e9272b2f</color>
-    <color name="text_btn_pad_black">#e9272b2f</color>
     <color name="text_topup_pad">#f5f8f7</color>
     <color name="text_topup_pad_black">#e9000000</color>
-    <color name="bg_topup_pad">#e9000000</color>
     <color name="bg_topup_pad_black">#e9000000</color>
     <color name="bg_topup_ais">#06b567</color>
     <color name="bg_topup_dtac">#139dd3</color>

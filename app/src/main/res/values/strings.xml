@@ -1,8 +1,5 @@
 <resources>
     <string name="app_name">เติมกะตังส์</string>
-    <string name="action_settings">ตั้งค่า</string>
-    <string name="drawer_open">รายการเมนูเปิด</string>
-    <string name="drawer_close">รายการเมนูปิด</string>
     <string-array name="nav_drawer_items">
         <item >เติมเงิน</item>
         <item >ยอดเงินคงเหลือ</item>
