@@ -10,8 +10,8 @@
     <color name="text_topup_pad">#f5f8f7</color>
     <color name="text_topup_pad_black">#e9000000</color>
     <color name="bg_topup_pad_black">#e9000000</color>
-    <color name="bg_topup_ais">#06b567</color>
+    <color name="bg_topup_ais">#0ac24a</color>
     <color name="bg_topup_dtac">#139dd3</color>
-    <color name="bg_topup_true">#f8680e</color>
+    <color name="bg_topup_true">#ed5902</color>
     <color name="bg_content_addons">#91cf0b</color>
 </resources>

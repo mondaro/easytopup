@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/text_topup_pad_black">
@@ -22,7 +23,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:padding="16dp"
-            android:src="@drawable/icon_ais" />
+            android:src="@mipmap/icon_mipm_ais"
+            tools:ignore="ContentDescription" />
 
         <ImageView
             android:id="@+id/imageViewDTAC"
@@ -30,7 +32,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:padding="16dp"
-            android:src="@drawable/icon_dtac" />
+            android:src="@mipmap/icon_mipm_dtac"
+            tools:ignore="ContentDescription" />
 
         <ImageView
             android:id="@+id/imageViewTRUE"
@@ -38,7 +41,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:padding="16dp"
-            android:src="@drawable/icon_truemove" />
+            android:src="@mipmap/icon_mipm_true"
+            tools:ignore="ContentDescription" />
     </LinearLayout>
 
     <TextView

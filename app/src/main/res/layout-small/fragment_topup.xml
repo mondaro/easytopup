@@ -48,7 +48,7 @@
                         android:text="@string/txtTel"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/text_topup_pad"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
 
                     <Button
                         android:id="@+id/btnHistory"
@@ -83,7 +83,7 @@
                     android:padding="6dp"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@color/text_topup_pad"
-                    android:textSize="30sp"
+                    android:textSize="28sp"
                     android:textStyle="bold" />
 
                 <LinearLayout
@@ -103,7 +103,7 @@
                         android:text="@string/txtAmount"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/text_topup_pad"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
 
                 </LinearLayout>
 
@@ -120,7 +120,7 @@
                     android:padding="6dp"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@color/text_topup_pad"
-                    android:textSize="30sp"
+                    android:textSize="28sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -153,7 +153,6 @@
                             android:layout_marginRight="6dp"
                             android:background="@drawable/button_normal"
                             android:padding="8dp"
-                            android:text="0879760072"
                             android:textColor="@color/list_divider"
                             android:textSize="18sp" />
 
@@ -203,6 +202,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@color/bg_topup_ais"
+                        android:gravity="center"
                         android:orientation="vertical">
 
                         <ImageView
@@ -213,20 +213,6 @@
                             android:src="@mipmap/icon_mipm_ais"
                             tools:ignore="ContentDescription" />
 
-                        <TextView
-                            android:id="@+id/textViewAIS"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:layout_marginRight="3dp"
-                            android:gravity="center"
-                            android:paddingLeft="6dp"
-                            android:paddingRight="6dp"
-                            android:rotation="-90"
-                            android:text="@string/item_AIS"
-                            android:textAppearance="?android:attr/textAppearanceLarge"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -235,6 +221,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@color/bg_topup_dtac"
+                        android:gravity="center"
                         android:orientation="vertical">
 
                         <ImageView
@@ -245,51 +232,28 @@
                             app:srcCompat="@mipmap/icon_mipm_dtac"
                             tools:ignore="ContentDescription" />
 
-                        <TextView
-                            android:id="@+id/textViewDTAC"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:layout_marginRight="3dp"
-                            android:gravity="center"
-                            android:paddingLeft="6dp"
-                            android:paddingRight="6dp"
-                            android:rotation="-90"
-                            android:text="@string/item_DTAC"
-                            android:textAppearance="?android:attr/textAppearanceLarge"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/sltTRUE"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_gravity="center"
                         android:layout_weight="1"
                         android:background="@color/bg_topup_true"
+                        android:foregroundGravity="center"
+                        android:gravity="center"
                         android:orientation="vertical">
 
                         <ImageView
                             android:id="@+id/imageView4"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:foregroundGravity="center"
                             app:srcCompat="@mipmap/icon_mipm_true"
                             tools:ignore="ContentDescription" />
 
-                        <TextView
-                            android:id="@+id/textViewTRUE"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:layout_marginRight="3dp"
-                            android:gravity="center"
-                            android:paddingLeft="6dp"
-                            android:paddingRight="6dp"
-                            android:rotation="-90"
-                            android:text="@string/item_TRUE"
-                            android:textAppearance="?android:attr/textAppearanceLarge"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
                     </LinearLayout>
 
                 </LinearLayout>

@@ -4,12 +4,14 @@ import android.Manifest;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.ActivityNotFoundException;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -22,16 +24,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.view.View.OnClickListener;
+
+import com.mondaro.easytopup.sqlite.DBHelper;
+import com.mondaro.easytopup.sqlite.SimpleDBDial;
 
 public class TopupFragment extends Fragment {
     String tmpDigit = "";
     char target ='1';
     int mode = 1;
-    TextView txtphone,txtcost,txtAIS,txtDTAC,txtTRUE;
+    TextView txtphone,txtcost,txtQuick1,txtQuick2,txtQuick3;
     Button btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btnOK,btnDel,btnContact,btnHistory;
+    LinearLayout sltAIS, sltDTAC, sltTRUE;
     FrameLayout bgcolor;
     String USERPIN1,USERPIN2,USERPIN3,LASTPHONE;
     SharedPreferences sharedPref;
@@ -64,6 +71,9 @@ public class TopupFragment extends Fragment {
             btnContact = (Button) rootView.findViewById(R.id.btnFindContact);
             txtphone = (TextView) rootView.findViewById(R.id.textViewPhone);
             txtcost = (TextView) rootView.findViewById(R.id.textViewCost);
+            txtQuick1 = (TextView) rootView.findViewById(R.id.textViewDial1);
+            txtQuick2 = (TextView) rootView.findViewById(R.id.textViewDial2);
+            txtQuick3 = (TextView) rootView.findViewById(R.id.textViewDial3);
             btn0 = (Button) rootView.findViewById(R.id.button0);
             btn1 = (Button) rootView.findViewById(R.id.button1);
             btn2 = (Button) rootView.findViewById(R.id.button2);
@@ -76,9 +86,9 @@ public class TopupFragment extends Fragment {
             btn9 = (Button) rootView.findViewById(R.id.button9);
             btnOK = (Button) rootView.findViewById(R.id.buttonTopup);
             btnDel = (Button) rootView.findViewById(R.id.buttonDel);
-            txtAIS = (TextView) rootView.findViewById(R.id.textViewAIS);
-            txtDTAC = (TextView) rootView.findViewById(R.id.textViewDTAC);
-            txtTRUE = (TextView) rootView.findViewById(R.id.textViewTRUE);
+            sltAIS = (LinearLayout) rootView.findViewById(R.id.sltAIS);
+            sltDTAC = (LinearLayout) rootView.findViewById(R.id.sltDTAC);
+            sltTRUE = (LinearLayout) rootView.findViewById(R.id.sltTRUE);
 
             btnHistory.setOnClickListener(new OnClickListener() {@Override public void onClick(View v) {
                 if(target=='1'){
@@ -96,15 +106,40 @@ public class TopupFragment extends Fragment {
                 target = '2';tmpDigit = txtcost.getText().toString().trim();
                 txtcost.setBackgroundResource(R.drawable.border_active);
                 txtphone.setBackgroundResource(R.drawable.border_inactive);}});
-            txtAIS.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
+            txtQuick1.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
+                /*if(!txtQuick1.getText().equals("")){
+                    txtphone.setText(txtQuick1.getText());
+                    target = '2';tmpDigit = "";
+                    txtphone.setBackgroundResource(R.drawable.border_inactive);
+                    txtcost.setBackgroundResource(R.drawable.border_active);
+                }*/
+                chkRepeatDB();
+            }});
+            txtQuick2.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
+                if(!txtQuick2.getText().equals("")){
+                    txtphone.setText(txtQuick2.getText());
+                    target = '2';tmpDigit = "";
+                    txtphone.setBackgroundResource(R.drawable.border_inactive);
+                    txtcost.setBackgroundResource(R.drawable.border_active);
+                }
+            }});
+            txtQuick3.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
+                if(!txtQuick3.getText().equals("")){
+                    txtphone.setText(txtQuick3.getText());
+                    target = '2';tmpDigit = "";
+                    txtphone.setBackgroundResource(R.drawable.border_inactive);
+                    txtcost.setBackgroundResource(R.drawable.border_active);
+                }
+            }});
+            sltAIS.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
                 bgcolor.setBackgroundResource(R.color.bg_topup_ais);
                 mode = 1;
             }});
-            txtDTAC.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
+            sltDTAC.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
                 bgcolor.setBackgroundResource(R.color.bg_topup_dtac);
                 mode = 2;
             }});
-            txtTRUE.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
+            sltTRUE.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
                 bgcolor.setBackgroundResource(R.color.bg_topup_true);
                 mode = 3;
             }});
@@ -191,8 +226,9 @@ public class TopupFragment extends Fragment {
                     switch (mode){
                         case 1: TopupAIS();break;
                         case 2: TopupDTAC();break;
-                        case 3:TopupTRUE();break;
+                        case 3: TopupTRUE();break;
                     }
+                    saveToDB();
                     edt.putString("LAST", txtphone.getText().toString().trim() );
                     edt.commit();
                     tmpDigit = "";
@@ -201,6 +237,9 @@ public class TopupFragment extends Fragment {
                     txtphone.setBackgroundResource(R.drawable.border_active);
                     txtcost.setBackgroundResource(R.drawable.border_inactive);
                     target = '1';
+                    txtQuick1.setText("");
+                    txtQuick2.setText("");
+                    txtQuick3.setText("");
                 }
 
             }
@@ -357,6 +396,31 @@ public class TopupFragment extends Fragment {
                 .setPositiveButton("OK", okListener)
                 .create()
                 .show();
+    }
+
+    private void saveToDB() {
+        SQLiteDatabase database = new DBHelper(getActivity()).getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(SimpleDBDial.ContactDial.COLS_CODE, txtphone.getText().toString().substring(0,3));
+        values.put(SimpleDBDial.ContactDial.COLS_PHONE, txtphone.getText().toString().substring(3,10));
+        values.put(SimpleDBDial.ContactDial.COLS_SCORE, 1);
+        long newRowId = database.insert(SimpleDBDial.ContactDial.TABLE_NAME, null, values);
+        Toast.makeText(getActivity(), "The new Row Id is " + newRowId, Toast.LENGTH_LONG).show();
+    }
+    private void chkRepeatDB(){
+        SQLiteDatabase database = new DBHelper(getActivity()).getReadableDatabase();
+        Cursor cursor = database.rawQuery(SimpleDBDial.ContactDial.SELECT_ALL,null);
+        Toast.makeText(getActivity(), "Count : " + cursor.getCount(), Toast.LENGTH_LONG).show();
+    }
+    private void chkCount(){
+        SQLiteDatabase database = new DBHelper(getActivity()).getReadableDatabase();
+        Cursor cursor = database.rawQuery(SimpleDBDial.ContactDial.SELECT_ALL,null);
+        Toast.makeText(getActivity(), "Count : " + cursor.getCount(), Toast.LENGTH_LONG).show();
+    }
+    private void updateToDB(){
+        SQLiteDatabase database = new DBHelper(getActivity()).getReadableDatabase();
+        Cursor cursor = database.rawQuery(SimpleDBDial.ContactDial.SELECT_ALL,null);
+        Toast.makeText(getActivity(), "Count : " + cursor.getCount(), Toast.LENGTH_LONG).show();
     }
 }
 

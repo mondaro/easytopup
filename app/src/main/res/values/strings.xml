@@ -22,7 +22,7 @@
     <!--navigation_Topup-->
     <string name="txtM122"> &#8212;> ปาดหน้าจอจาก [ซ้าย] ไป [ขวา] เพื่อดูเมนู</string>
     <string name="txtAmount">จำนวนเงิน</string>
-    <string name="btnContact">สมุดโทรศัพท์</string>
+    <string name="btnContact">สมุดรายชื่อ</string>
     <string name="btnLast">เบอร์ล่าสุด</string>
     <string name="txtTel">เบอร์โทรศัพท์</string>
     <string name="btnTopup">เติม</string>
