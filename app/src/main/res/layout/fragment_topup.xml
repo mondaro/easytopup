@@ -153,7 +153,6 @@
                             android:layout_marginRight="6dp"
                             android:background="@drawable/button_normal"
                             android:padding="8dp"
-                            android:text="0879760072"
                             android:textColor="@color/list_divider"
                             android:textSize="18sp" />
 

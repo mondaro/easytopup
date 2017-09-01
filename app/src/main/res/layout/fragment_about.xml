@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/accent_material_light">
+    android:background="@color/accent_material_light"
+    tools:ignore="PrivateResource">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,9 +18,9 @@
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:src="@mipmap/ic_launcher"
             android:contentDescription=""
+            android:padding="10dp"
+            app:srcCompat="@mipmap/ic_launcher"
             tools:ignore="ContentDescription" />
 
         <TextView
@@ -30,6 +32,13 @@
             android:text="@string/about_content1"
             android:textColor="@color/text_topup_pad"
             android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@mipmap/montech"
+            tools:ignore="ContentDescription" />
 
         <LinearLayout
             android:layout_width="match_parent"

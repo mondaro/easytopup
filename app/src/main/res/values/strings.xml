@@ -121,7 +121,7 @@
     <string name="settingAIS">วันทูคอล</string>
     <!--navigation_About-->
     <string name="about_content1">เติมกะตังส์\n</string>
-    <string name="about_content2">\n\nพัฒนาโดย\nMondaro Developer\n\n
+    <string name="about_content2">\n\nพัฒนาโดย\nMONDARO DEVTECH\n\n
     แอปพลิเคชันนี้ใช้อำนวยความสะดวกในการเติมเงินสำหรับหน่วยเติมเงินเท่านั้น บุคคลธรรมดาไม่สามารถใช้งานได้\n
     หากสนใจเป็นตัวแทนเติมเงิน กรุณาติดต่อที่ศูนย์บริการลูกค้าของแต่ละเครือข่ายใกล้บ้านท่าน</string>
     <string name="btnEmail">ติดต่อทีมงาน</string>

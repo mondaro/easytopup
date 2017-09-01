@@ -107,13 +107,12 @@ public class TopupFragment extends Fragment {
                 txtcost.setBackgroundResource(R.drawable.border_active);
                 txtphone.setBackgroundResource(R.drawable.border_inactive);}});
             txtQuick1.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
-                /*if(!txtQuick1.getText().equals("")){
+                if(!txtQuick1.getText().equals("")){
                     txtphone.setText(txtQuick1.getText());
                     target = '2';tmpDigit = "";
                     txtphone.setBackgroundResource(R.drawable.border_inactive);
                     txtcost.setBackgroundResource(R.drawable.border_active);
-                }*/
-                chkRepeatDB();
+                }
             }});
             txtQuick2.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
                 if(!txtQuick2.getText().equals("")){
@@ -259,6 +258,7 @@ public class TopupFragment extends Fragment {
             }
         }else{
             tmpDigit += tmp;
+            updateQuickDial();
             if(tmpDigit.length() == 11){
                 tmpDigit = tmp;
                 target = '2';
@@ -399,28 +399,87 @@ public class TopupFragment extends Fragment {
     }
 
     private void saveToDB() {
-        SQLiteDatabase database = new DBHelper(getActivity()).getWritableDatabase();
+        SQLiteDatabase _writedatabase = new DBHelper(getActivity()).getWritableDatabase();
+        SQLiteDatabase _readdatabase = new DBHelper(getActivity()).getReadableDatabase();
         ContentValues values = new ContentValues();
-        values.put(SimpleDBDial.ContactDial.COLS_CODE, txtphone.getText().toString().substring(0,3));
-        values.put(SimpleDBDial.ContactDial.COLS_PHONE, txtphone.getText().toString().substring(3,10));
-        values.put(SimpleDBDial.ContactDial.COLS_SCORE, 1);
-        long newRowId = database.insert(SimpleDBDial.ContactDial.TABLE_NAME, null, values);
-        Toast.makeText(getActivity(), "The new Row Id is " + newRowId, Toast.LENGTH_LONG).show();
+        int chk = chkDuplicateDB();
+        if(chk != 0){
+            int score = 0;
+            Log.d("TAG","Duplicate at _ID : " + chk );
+            String[] projection = {
+                    SimpleDBDial.ContactDial.COLS_SCORE
+            };
+
+            String selection =
+                    SimpleDBDial.ContactDial._ID + " = ?";
+
+            String[] args = {String.valueOf(chk)};
+
+            Cursor cursor = _readdatabase.query(
+                    SimpleDBDial.ContactDial.TABLE_NAME,
+                    projection,
+                    selection,
+                    args,
+                    null, null, null
+            );
+            if(cursor.getCount() != 0){
+                if (cursor.moveToFirst()){
+                    do{
+                        String data = cursor.getString(cursor.getColumnIndex("score"));
+                        score = Integer.valueOf(data);
+                    }while(cursor.moveToNext());
+                }
+                cursor.close();
+            }
+            score += 1;
+            Log.d("TAG","At _ID : " + chk + " new score : " + score);
+            values.put(SimpleDBDial.ContactDial.COLS_SCORE, score);
+            _writedatabase.update(SimpleDBDial.ContactDial.TABLE_NAME,values,selection,args);
+            Log.d("TAG","Update to DB completed");
+        }else{
+            values.put(SimpleDBDial.ContactDial.COLS_CARRIER, mode);
+            values.put(SimpleDBDial.ContactDial.COLS_PHONE, txtphone.getText().toString());
+            values.put(SimpleDBDial.ContactDial.COLS_SCORE, 1);
+            _writedatabase.insert(SimpleDBDial.ContactDial.TABLE_NAME, null, values);
+            Log.d("TAG","Insert to DB completed");
+        }
     }
-    private void chkRepeatDB(){
-        SQLiteDatabase database = new DBHelper(getActivity()).getReadableDatabase();
-        Cursor cursor = database.rawQuery(SimpleDBDial.ContactDial.SELECT_ALL,null);
-        Toast.makeText(getActivity(), "Count : " + cursor.getCount(), Toast.LENGTH_LONG).show();
+    private int chkDuplicateDB(){
+        int chk = 0;
+        SQLiteDatabase _findduplicatedatabase = new DBHelper(getActivity()).getReadableDatabase();
+        String[] projection = {
+                SimpleDBDial.ContactDial._ID
+        };
+
+        String selection = SimpleDBDial.ContactDial.COLS_PHONE + " like ?";
+
+        String[] args = {"%" + txtphone.getText().toString() + "%"};
+
+        Cursor cursor = _findduplicatedatabase.query(
+                SimpleDBDial.ContactDial.TABLE_NAME,
+                projection,
+                selection,
+                args,
+                null, null, null
+        );
+        if(cursor.getCount() != 0){
+            if (cursor.moveToFirst()){
+                do{
+                    String data = cursor.getString(cursor.getColumnIndex("_ID"));
+                    chk = Integer.valueOf(data);
+                }while(cursor.moveToNext());
+            }
+            cursor.close();
+        }
+        return chk;
     }
     private void chkCount(){
-        SQLiteDatabase database = new DBHelper(getActivity()).getReadableDatabase();
-        Cursor cursor = database.rawQuery(SimpleDBDial.ContactDial.SELECT_ALL,null);
+        SQLiteDatabase _countdatabase = new DBHelper(getActivity()).getReadableDatabase();
+        Cursor cursor = _countdatabase.rawQuery(SimpleDBDial.ContactDial.SELECT_ALL,null);
         Toast.makeText(getActivity(), "Count : " + cursor.getCount(), Toast.LENGTH_LONG).show();
     }
-    private void updateToDB(){
-        SQLiteDatabase database = new DBHelper(getActivity()).getReadableDatabase();
-        Cursor cursor = database.rawQuery(SimpleDBDial.ContactDial.SELECT_ALL,null);
-        Toast.makeText(getActivity(), "Count : " + cursor.getCount(), Toast.LENGTH_LONG).show();
+    private void updateQuickDial() {
+
     }
 }
 
