@@ -11,8 +11,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.mondaro.easytopup.R;
-
 public class AboutFragment extends Fragment {
     String version;
 
@@ -51,7 +49,7 @@ public class AboutFragment extends Fragment {
             PackageInfo pInfo = getActivity().getPackageManager().getPackageInfo(this.getActivity().getPackageName(), 0);
             version = pInfo.versionName ;
         }catch(Exception e){
-
+            //No coding
         }
         String shText = getResources().getString(R.string.about_content1) + "เวอร์ชั่น  " + version + getResources().getString(R.string.about_content2);
         tShow.setText(shText);

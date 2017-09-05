@@ -85,7 +85,8 @@
                         android:textColor="@color/text_topup_pad"
                         android:textColorHint="@color/background_material_light"
                         android:textSize="25sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        tools:ignore="PrivateResource" />
 
                     <Space
                         android:id="@+id/space5"
@@ -117,7 +118,8 @@
                         android:textColor="@color/text_topup_pad"
                         android:textColorHint="@color/background_material_light"
                         android:textSize="25sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        tools:ignore="PrivateResource" />
 
                     <Space
                         android:id="@+id/space2"
@@ -149,7 +151,8 @@
                         android:textColor="@color/text_topup_pad"
                         android:textColorHint="@color/background_material_light"
                         android:textSize="25sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        tools:ignore="PrivateResource" />
 
                 </LinearLayout>
             </ScrollView>

@@ -48,7 +48,7 @@
                         android:text="@string/txtTel"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/text_topup_pad"
-                        android:textSize="18sp" />
+                        android:textSize="16sp" />
 
                     <Button
                         android:id="@+id/btnHistory"
@@ -103,7 +103,7 @@
                         android:text="@string/txtAmount"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/text_topup_pad"
-                        android:textSize="18sp" />
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -142,38 +142,45 @@
                     android:layout_height="match_parent">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        tools:ignore="ScrollViewSize">
 
                         <TextView
                             android:id="@+id/textViewDial1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="6dp"
+                            android:layout_weight="1"
                             android:background="@drawable/button_normal"
                             android:padding="8dp"
                             android:textColor="@color/list_divider"
-                            android:textSize="18sp" />
+                            android:textSize="20sp"
+                            android:visibility="invisible" />
 
                         <TextView
                             android:id="@+id/textViewDial2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="6dp"
+                            android:layout_weight="1"
                             android:background="@drawable/button_normal"
                             android:padding="8dp"
                             android:textColor="@color/list_divider"
-                            android:textSize="18sp" />
+                            android:textSize="20sp"
+                            android:visibility="invisible" />
 
                         <TextView
                             android:id="@+id/textViewDial3"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:background="@drawable/button_normal"
                             android:padding="8dp"
                             android:textColor="@color/list_divider"
-                            android:textSize="18sp" />
+                            android:textSize="20sp"
+                            android:visibility="invisible" />
                     </LinearLayout>
                 </HorizontalScrollView>
 
@@ -202,13 +209,12 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@color/bg_topup_ais"
-                        android:gravity="center"
                         android:orientation="vertical">
 
                         <ImageView
                             android:id="@+id/imageView2"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_marginTop="4dp"
                             android:src="@mipmap/icon_mipm_ais"
                             tools:ignore="ContentDescription" />
@@ -221,13 +227,12 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@color/bg_topup_dtac"
-                        android:gravity="center"
                         android:orientation="vertical">
 
                         <ImageView
                             android:id="@+id/imageView3"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_marginTop="4dp"
                             app:srcCompat="@mipmap/icon_mipm_dtac"
                             tools:ignore="ContentDescription" />
@@ -238,19 +243,14 @@
                         android:id="@+id/sltTRUE"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_gravity="center"
                         android:layout_weight="1"
                         android:background="@color/bg_topup_true"
-                        android:foregroundGravity="center"
-                        android:gravity="center"
                         android:orientation="vertical">
 
                         <ImageView
                             android:id="@+id/imageView4"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:foregroundGravity="center"
+                            android:layout_height="match_parent"
                             app:srcCompat="@mipmap/icon_mipm_true"
                             tools:ignore="ContentDescription" />
 

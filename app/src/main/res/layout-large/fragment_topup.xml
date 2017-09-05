@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -26,8 +27,11 @@
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
                 android:orientation="vertical"
-                android:paddingBottom="10dp">
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -113,7 +117,6 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="30dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:background="@drawable/border_inactive"
@@ -128,63 +131,181 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/quickNumberPanel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="6dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingBottom="15dp"
+                android:paddingLeft="20dp"
+                android:paddingTop="15dp"
+                android:visibility="visible"
+                tools:ignore="RtlSymmetry">
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        tools:ignore="ScrollViewSize">
+
+                        <TextView
+                            android:id="@+id/textViewDial1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="6dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/button_normal"
+                            android:padding="8dp"
+                            android:textColor="@color/list_divider"
+                            android:textSize="18sp"
+                            android:visibility="invisible" />
+
+                        <TextView
+                            android:id="@+id/textViewDial2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="6dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/button_normal"
+                            android:padding="8dp"
+                            android:textColor="@color/list_divider"
+                            android:textSize="18sp"
+                            android:visibility="invisible" />
+
+                        <TextView
+                            android:id="@+id/textViewDial3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/button_normal"
+                            android:padding="8dp"
+                            android:textColor="@color/list_divider"
+                            android:textSize="18sp"
+                            android:visibility="invisible" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center_vertical|center|center_horizontal"
                 android:orientation="horizontal"
-                android:weightSum="3">
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:weightSum="3"
+                tools:ignore="DisableBaselineAlignment">
 
-                <TextView
-                    android:id="@+id/textViewAIS"
+                <LinearLayout
+                    android:id="@+id/sltAIS"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="3dp"
-                    android:layout_marginRight="3dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@color/bg_topup_ais"
-                    android:gravity="center"
-                    android:paddingBottom="8dp"
-                    android:paddingTop="8dp"
-                    android:text="@string/item_AIS"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textSize="26sp"
-                    android:textStyle="bold" />
+                    android:orientation="horizontal"
+                    android:padding="10dp">
 
-                <TextView
-                    android:id="@+id/textViewDTAC"
+                    <ImageView
+                        android:id="@+id/imageViewLAIS"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        app:srcCompat="@mipmap/icon_mipm_ais"
+                        tools:ignore="ContentDescription,NestedWeights" />
+
+                    <TextView
+                        android:id="@+id/textViewAIS"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="3dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:paddingBottom="8dp"
+                        android:paddingTop="8dp"
+                        android:text="@string/item_AIS"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="26sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/sltDTAC"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="3dp"
-                    android:layout_marginRight="3dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@color/bg_topup_dtac"
-                    android:gravity="center"
-                    android:paddingBottom="8dp"
-                    android:paddingTop="8dp"
-                    android:text="@string/item_DTAC"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textSize="26sp"
-                    android:textStyle="bold" />
+                    android:orientation="horizontal"
+                    android:padding="10dp">
 
-                <TextView
-                    android:id="@+id/textViewTRUE"
+                    <ImageView
+                        android:id="@+id/imageViewLDTAC"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        app:srcCompat="@mipmap/icon_mipm_dtac"
+                        tools:ignore="ContentDescription,NestedWeights" />
+
+                    <TextView
+                        android:id="@+id/textViewDTAC"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="3dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:paddingBottom="8dp"
+                        android:paddingTop="8dp"
+                        android:text="@string/item_DTAC"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="26sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/sltTRUE"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="3dp"
-                    android:layout_marginRight="3dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@color/bg_topup_true"
-                    android:gravity="center"
-                    android:paddingBottom="8dp"
-                    android:paddingTop="8dp"
-                    android:text="@string/item_TRUE"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textSize="26sp"
-                    android:textStyle="bold" />
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:id="@+id/imageViewLTRUE"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        app:srcCompat="@mipmap/icon_mipm_true"
+                        tools:ignore="ContentDescription,NestedWeights" />
+
+                    <TextView
+                        android:id="@+id/textViewTRUE"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="3dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:paddingBottom="8dp"
+                        android:paddingTop="8dp"
+                        android:text="@string/item_TRUE"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="26sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout
@@ -201,6 +322,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
                     android:gravity="center"
                     android:orientation="vertical"
                     android:paddingBottom="100dp"
