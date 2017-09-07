@@ -424,9 +424,9 @@ public class TopupFragment extends Fragment {
         ContentValues values = new ContentValues();
         int chk = chkDuplicateDB();
         if(chk != 0){
-            int score = 0;
+            int amount = 0;
             String[] projection = {
-                    SimpleDBDial.ContactDial.COLS_SCORE
+                    SimpleDBDial.ContactDial.COLS_AMOUNT
             };
 
             String selection =
@@ -444,19 +444,19 @@ public class TopupFragment extends Fragment {
             if(cursor.getCount() != 0){
                 if (cursor.moveToFirst()){
                     do{
-                        String data = cursor.getString(cursor.getColumnIndexOrThrow(SimpleDBDial.ContactDial.COLS_SCORE));
-                        score = Integer.valueOf(data);
+                        String data = cursor.getString(cursor.getColumnIndexOrThrow(SimpleDBDial.ContactDial.COLS_AMOUNT));
+                        amount = Integer.valueOf(data);
                     }while(cursor.moveToNext());
                 }
                 cursor.close();
             }
-            score += 1;
-            values.put(SimpleDBDial.ContactDial.COLS_SCORE, score);
+            amount += Integer.valueOf(txtcost.getText().toString());
+            values.put(SimpleDBDial.ContactDial.COLS_AMOUNT, amount);
             _writedatabase.update(SimpleDBDial.ContactDial.TABLE_NAME,values,selection,args);
         }else{
             values.put(SimpleDBDial.ContactDial.COLS_CARRIER, mode);
             values.put(SimpleDBDial.ContactDial.COLS_PHONE, txtphone.getText().toString());
-            values.put(SimpleDBDial.ContactDial.COLS_SCORE, 1);
+            values.put(SimpleDBDial.ContactDial.COLS_AMOUNT, Integer.valueOf(txtcost.getText().toString()));
             _writedatabase.insert(SimpleDBDial.ContactDial.TABLE_NAME, null, values);
         }
     }
@@ -509,7 +509,7 @@ public class TopupFragment extends Fragment {
                 selection,
                 args,
                 null, null,
-                SimpleDBDial.ContactDial.COLS_SCORE + " DESC",
+                SimpleDBDial.ContactDial.COLS_AMOUNT + " DESC",
                 "3"
         );
         getPhone = new ArrayList<>();
