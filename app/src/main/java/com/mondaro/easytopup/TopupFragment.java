@@ -31,6 +31,7 @@ import android.widget.Toast;
 import android.view.View.OnClickListener;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import com.mondaro.easytopup.sqlite.DBHelper;
@@ -67,6 +68,8 @@ public class TopupFragment extends Fragment {
         String getCheck = sharedPref.getString("CHK","");
         edt = sharedPref.edit();
         edt.apply();
+        int year = Calendar.getInstance().get(Calendar.YEAR);
+        chkNewRoll(year);
 
         if(getCheck.equals("")){
             Toast.makeText(getActivity(), "ผลการตรวจสอบ :\r\nเครื่องนี้ยังไม่ได้ทำรายการตั้งค่าคะ\r\n\n", Toast.LENGTH_LONG).show();
@@ -556,6 +559,32 @@ public class TopupFragment extends Fragment {
             case "2": sltDTAC.performClick();break;
             case "3": sltTRUE.performClick();break;
         }
+    }
+
+    private void chkNewRoll(int yearNow){
+        int yearOn = sharedPref.getInt("YEAR",0);
+        if(yearOn == 0){
+            edt.putInt("YEAR", Calendar.getInstance().get(Calendar.YEAR));
+            edt.commit();
+            yearOn = sharedPref.getInt("YEAR",0);
+        }
+        if(yearOn != yearNow){
+            edt.putInt("YEAR", Calendar.getInstance().get(Calendar.YEAR));
+            edt.commit();
+            try {
+                cleanAmount();
+            }catch (Exception e){
+                //Null
+            }
+        }
+    }
+
+    private void cleanAmount(){
+        SQLiteDatabase _writedatabase = new DBHelper(getActivity()).getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(SimpleDBDial.ContactDial.COLS_AMOUNT, 0);
+        _writedatabase.update(SimpleDBDial.ContactDial.TABLE_NAME,cv,null,null);
+
     }
 }
 
