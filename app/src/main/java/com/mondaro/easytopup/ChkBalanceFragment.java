@@ -18,12 +18,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.mondaro.easytopup.R;
 
 public class ChkBalanceFragment extends Fragment {
-    ImageView imgAIS,imgDTAC,imgTRUE;
+    LinearLayout imgAIS,imgDTAC,imgTRUE;
     final private int REQUEST_CALL_PHONE_PERMISSIONS = 123;
 
     public ChkBalanceFragment(){}
@@ -41,9 +42,9 @@ public class ChkBalanceFragment extends Fragment {
             Toast.makeText(getActivity(), "ผลการตรวจสอบ :\r\nเครื่องนี้ยังไม่ได้ทำรายการตั้งค่าคะ\r\n\n", Toast.LENGTH_LONG).show();
             ((MainActivity) getActivity()).displayView(4);
         }else{
-            imgAIS = (ImageView) rootView.findViewById(R.id.imageViewAIS);
-            imgDTAC = (ImageView) rootView.findViewById(R.id.imageViewDTAC);
-            imgTRUE = (ImageView) rootView.findViewById(R.id.imageViewTRUE);
+            imgAIS = (LinearLayout) rootView.findViewById(R.id.chkbalAIS);
+            imgDTAC = (LinearLayout) rootView.findViewById(R.id.chkbalDTAC);
+            imgTRUE = (LinearLayout) rootView.findViewById(R.id.chkbalTRUE);
 
             imgAIS.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -208,8 +208,10 @@
                     android:id="@+id/sltAIS"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
                     android:background="@color/bg_topup_ais"
+                    android:gravity="center"
                     android:orientation="horizontal"
                     android:padding="10dp">
 
@@ -234,7 +236,7 @@
                         android:paddingTop="8dp"
                         android:text="@string/item_AIS"
                         android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textSize="26sp"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -242,8 +244,10 @@
                     android:id="@+id/sltDTAC"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
                     android:background="@color/bg_topup_dtac"
+                    android:gravity="center"
                     android:orientation="horizontal"
                     android:padding="10dp">
 
@@ -268,7 +272,7 @@
                         android:paddingTop="8dp"
                         android:text="@string/item_DTAC"
                         android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textSize="26sp"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -276,8 +280,10 @@
                     android:id="@+id/sltTRUE"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
                     android:background="@color/bg_topup_true"
+                    android:gravity="center"
                     android:orientation="horizontal"
                     android:padding="10dp">
 
@@ -302,7 +308,7 @@
                         android:paddingTop="8dp"
                         android:text="@string/item_TRUE"
                         android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textSize="26sp"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
