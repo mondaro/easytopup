@@ -38,7 +38,7 @@
     <string name="btn8">8</string>
     <string name="btn9">9</string>
     <!--navigation_ChkBalance-->
-    <string name="header_CHKBalance">กรุณาเลือกระบบ\nที่ต้องการเช็คยอด</string>
+    <string name="header_CHKBalance">กรุณาเลือกระบบ\nที่ต้องการเช็คยอดเงินคงเหลือ</string>
     <!--navigation_Refund-->
     <string name="item_AIS">AIS</string>
     <string name="item_DTAC">DTAC</string>
@@ -114,18 +114,27 @@
                             3. กดปุ่ม โอนวัน ระบบจะทำการโอนวันตามจำนวนที่เลือกไปยังหมายเลขโทรศัพท์ที่ระบุให้ทันที\n\n</string>
     <!--navigation_Setting-->
     <string name="txtM123">รหัสประจำตัวคนขายออนไลน์</string>
-    <string name="txtM121">** หมายเหตุ **\nแอปพลิเคชันนี้ใช้สำหรับตัวแทนเติมเงินออนไลน์เท่านั้น!!!\nสงสัยหรือพบปัญหาสอบถามที่ mondaro23@gmail.com</string>
+    <string name="txtM121">** หมายเหตุ **\nแอปพลิเคชันนี้ใช้อำนวยความสะดวกในการเติมเงินสำหรับตัวแทนเติมเงินที่เป็นหน่วยเติมเงินที่ได้รับการรับรองจากศูนย์บริการเท่านั้น บุคคลธรรมดาไม่สามารถใช้งานได้!!!
+        \n\nรหัสประจำตัวคนขายออนไลน์ ได้มาจากศูนย์บริการกำหนดให้ท่าน กรุณากรอกให้ถูกตามระบบที่ใช้งาน
+        \n\nหากท่านใดใช้เครื่องที่รองรับระบบซิมคู่ กรุณาตั้งค่าการทำงานซิมเมื่อโทรออกให้เป็น "ถามเสมอ" เพื่อให้ระบบจัดการเติมเงินแยกเติมตามซิมเครือข่ายที่ถูกต้อง
+        \n\nสงสัยหรือพบปัญหาแจ้งได้ที่เมนู "เกี่ยวกับโปรแกรม"</string>
     <string name="btnOKSetting">ตั้งค่า</string>
     <string name="settingDTAC">ดีแทค</string>
     <string name="settingTRUE">ทรูมูฟ</string>
     <string name="settingAIS">วันทูคอล</string>
     <!--navigation_About-->
     <string name="about_content1">เติมกะตังส์\n</string>
-    <string name="about_content2">\n\nพัฒนาโดย\nMONDARO DEVTECH\n\n
-    แอปพลิเคชันนี้ใช้อำนวยความสะดวกในการเติมเงินสำหรับหน่วยเติมเงินเท่านั้น บุคคลธรรมดาไม่สามารถใช้งานได้\n
-    หากสนใจเป็นตัวแทนเติมเงิน กรุณาติดต่อที่ศูนย์บริการลูกค้าของแต่ละเครือข่ายใกล้บ้านท่าน</string>
-    <string name="btnEmail">ติดต่อทีมงาน</string>
-    <string name="btnWebsite">เข้าชม\nmondaro.cc</string>
+    <string name="about_content2">\n\n
+    แอปพลิเคชันนี้ใช้อำนวยความสะดวกในการเติมเงินสำหรับตัวแทนเติมเงินที่เป็นหน่วยเติมเงินที่ได้รับการรับรองจากศูนย์บริการเท่านั้น บุคคลธรรมดาไม่สามารถใช้งานได้
+        \nหากสนใจเป็นตัวแทนเติมเงิน กรุณาติดต่อที่ศูนย์บริการลูกค้าของแต่ละเครือข่ายใกล้บ้านท่าน
+        \nหรือโทร
+        \n AIS 02-271-9123
+        \n DTAC 02-202-8400
+        \n TRUE 02-647-9077
+        \n กรณีต้องการผูกบัญชีกับ mPay โทร 02-271-9299
+    \n\nพัฒนาโดย\nMONDARO DEVTECH</string>
+    <string name="btnEmail">แจ้งปัญหา</string>
+    <string name="btnWebsite">เข้าชมเว็บไซต์ผู้พัฒนา\nmondaro.cc</string>
     <!--hint-->
     <string name="hintmPay">รหัส mPay</string>
     <string name="hintPhone">เบอร์โทรศัพท์</string>

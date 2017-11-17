@@ -27,9 +27,6 @@ public class SettingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        Toast.makeText(getActivity(), "คำเตือน :\r\nกรุณาเลือกรายการระบบเติมเงินที่เครื่องเติมเงินรองรับ\nและทำการตั้งต่าหมายเลขประจำตัวคนเติมเงินให้ตรงตามระบบด้วยคะ",
-                Toast.LENGTH_LONG).show();
-
         View settingView = inflater.inflate(R.layout.fragment_setting, container, false);
 
         final InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
