@@ -79,6 +79,9 @@ public class SettingFragment extends Fragment {
                     txtUID_AIS.setBackgroundResource(R.drawable.border_inactive);
                     txtUID_AIS.setText("");
                     txtUID_AIS.setEnabled(false);
+                    edt.putString("UID1", "");
+                    edt.putString("CHK", "");
+                    edt.apply();
                 }
 
         }});
@@ -94,6 +97,9 @@ public class SettingFragment extends Fragment {
                     txtUID_TRUE.setBackgroundResource(R.drawable.border_inactive);
                     txtUID_TRUE.setText("");
                     txtUID_TRUE.setEnabled(false);
+                    edt.putString("UID2", "");
+                    edt.putString("CHK", "");
+                    edt.apply();
                 }
             }});
         chkbDTAC.setOnClickListener(new View.OnClickListener() {
@@ -108,18 +114,49 @@ public class SettingFragment extends Fragment {
                     txtUID_DTAC.setBackgroundResource(R.drawable.border_inactive);
                     txtUID_DTAC.setText("");
                     txtUID_DTAC.setEnabled(false);
+                    edt.putString("UID3", "");
+                    edt.putString("CHK", "");
+                    edt.apply();
                 }
             }});
 
         btnSet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                edt.putString("UID1", txtUID_AIS.getText().toString().trim());
-                edt.putString("UID2", txtUID_TRUE.getText().toString().trim());
-                edt.putString("UID3", txtUID_DTAC.getText().toString().trim());
-                if(!chkbAIS.isChecked() && !chkbTRUE.isChecked() && !chkbDTAC.isChecked()){
-                    edt.putString("CHK", "");
-                }else{
+                if(chkbAIS.isChecked()){
+                    if(txtUID_AIS.getText().toString().trim().equals("") || txtUID_AIS.getText().toString().trim().length() < 4){
+                        edt.putString("CHK", "");
+                        edt.apply();
+                        Toast.makeText(getActivity(), "ผลการตรวจสอบ :\r\nกรุณากรอกข้อมูลให้ถูกต้องก่อนคะ\r\n\n", Toast.LENGTH_LONG).show();
+                    }else{
+                        edt.putString("UID1", txtUID_AIS.getText().toString().trim());
+                        edt.putString("CHK", "PASS");
+                        edt.apply();
+                    }
+                }
+                if(chkbTRUE.isChecked()){
+                    if(txtUID_TRUE.getText().toString().trim().equals("") || txtUID_TRUE.getText().toString().trim().length() < 4){
+                        edt.putString("CHK", "");
+                        edt.apply();
+                        Toast.makeText(getActivity(), "ผลการตรวจสอบ :\r\nกรุณากรอกข้อมูลให้ถูกต้องก่อนคะ\r\n\n", Toast.LENGTH_LONG).show();
+                    }else{
+                        edt.putString("UID2", txtUID_TRUE.getText().toString().trim());
+                        edt.putString("CHK", "PASS");
+                        edt.apply();
+                    }
+                }
+                if(chkbDTAC.isChecked()){
+                    if(txtUID_DTAC.getText().toString().trim().equals("") || txtUID_DTAC.getText().toString().trim().length() < 4){
+                        edt.putString("CHK", "");
+                        edt.apply();
+                        Toast.makeText(getActivity(), "ผลการตรวจสอบ :\r\nกรุณากรอกข้อมูลให้ถูกต้องก่อนคะ\r\n\n", Toast.LENGTH_LONG).show();
+                    }else{
+                        edt.putString("UID3", txtUID_DTAC.getText().toString().trim());
+                        edt.putString("CHK", "PASS");
+                        edt.apply();
+                    }
+                }
+                if(sharedPrf.getString("CHK", "").equals("PASS")){
                     edt.putString("CHK", "TRUE");
                     edt.apply();
                     ((MainActivity) getActivity()).displayView(0);

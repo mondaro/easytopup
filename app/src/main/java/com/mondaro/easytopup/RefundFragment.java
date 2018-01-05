@@ -39,7 +39,7 @@ import java.util.Locale;
 
 public class RefundFragment extends Fragment {
     LinearLayout bg,panel;
-    Button btnReAIS,btnReDTAC,btnReTRUE,btnReturn,btnCancel;
+    Button btnReAIS,btnReDTAC,btnReTRUE, btnRefund,btnCancel;
     ListView listViewRe;
     SimpleCursorAdapter adapter;
     String addr,cid,USERPIN1,USERPIN2,USERPIN3,txtTel, strPhone, strAmount, strRef,txtVender;
@@ -56,14 +56,14 @@ public class RefundFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_refund, container, false);
-        bg = (LinearLayout) rootView.findViewById(R.id.list_returnBG);
+        bg = (LinearLayout) rootView.findViewById(R.id.list_refundBG);
         panel = (LinearLayout) rootView.findViewById(R.id.panelBtn);
         btnReAIS = (Button) rootView.findViewById(R.id.btn_smsAIS);
         btnReDTAC = (Button) rootView.findViewById(R.id.btn_smsDTAC);
         btnReTRUE = (Button) rootView.findViewById(R.id.btn_smsTRUE);
-        btnReturn = (Button) rootView.findViewById(R.id.btnReturn);
+        btnRefund = (Button) rootView.findViewById(R.id.btnRefund);
         btnCancel = (Button) rootView.findViewById(R.id.btnCancel);
-        listViewRe = (ListView) rootView.findViewById(R.id.listViewReturn);
+        listViewRe = (ListView) rootView.findViewById(R.id.listViewRefund);
 
         sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
         USERPIN1 = sharedPref.getString("UID1", "");
@@ -75,7 +75,8 @@ public class RefundFragment extends Fragment {
             Toast.makeText(getActivity(), "ผลการตรวจสอบ :\r\nเครื่องนี้ยังไม่ได้ทำรายการตั้งค่าคะ\r\n\n", Toast.LENGTH_LONG).show();
             ((MainActivity) getActivity()).displayView(4);
         }else{
-            if(!USERPIN1.equals("")){
+
+            /*if(!USERPIN1.equals("")){
                 loadSMS(1);
             }else{
                 Toast.makeText(getActivity(), "แจ้งเตือน :\r\nคุณไม่ได้ลงทะเบียนรหัสประจำตัวของระบบ AIS \n" +
@@ -85,7 +86,7 @@ public class RefundFragment extends Fragment {
                         R.id.lblMsg});
                 adapter.notifyDataSetChanged();
                 listViewRe.setAdapter(adapter);
-            }
+            }*/
 
             btnReAIS.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
                 bg.setBackgroundResource(R.color.bg_topup_ais);
@@ -132,7 +133,26 @@ public class RefundFragment extends Fragment {
                 }
             }});
 
-            btnReturn.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
+            if(USERPIN3.equals("")){
+                btnReDTAC.setVisibility(View.GONE);
+            }else{
+                btnReDTAC.setVisibility(View.VISIBLE);
+                btnReDTAC.performClick();
+            }
+            if(USERPIN2.equals("")){
+                btnReTRUE.setVisibility(View.GONE);
+            }else{
+                btnReTRUE.setVisibility(View.VISIBLE);
+                btnReTRUE.performClick();
+            }
+            if(USERPIN1.equals("")){
+                btnReAIS.setVisibility(View.GONE);
+            }else{
+                btnReAIS.setVisibility(View.VISIBLE);
+                btnReAIS.performClick();
+            }
+
+            btnRefund.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
                 switch (tag){
                     case 1:
                         try{

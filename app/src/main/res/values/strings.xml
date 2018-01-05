@@ -38,7 +38,7 @@
     <string name="btn8">8</string>
     <string name="btn9">9</string>
     <!--navigation_ChkBalance-->
-    <string name="header_CHKBalance">กรุณาเลือกระบบ\nที่ต้องการเช็คยอดเงินคงเหลือ</string>
+    <string name="header_CHKBalance">กรุณากดไอคอนระบบ\nเพื่อทำการเช็คยอดเงินคงเหลือ</string>
     <!--navigation_Refund-->
     <string name="item_AIS">AIS</string>
     <string name="item_DTAC">DTAC</string>

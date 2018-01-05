@@ -25,6 +25,7 @@ import com.mondaro.easytopup.R;
 
 public class ChkBalanceFragment extends Fragment {
     LinearLayout imgAIS,imgDTAC,imgTRUE;
+    String USERPIN_AIS, USERPIN_TRUE, USERPIN_DTAC;
     final private int REQUEST_CALL_PHONE_PERMISSIONS = 123;
 
     public ChkBalanceFragment(){}
@@ -33,6 +34,9 @@ public class ChkBalanceFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         SharedPreferences sharedPref = this.getActivity().getPreferences(Context.MODE_PRIVATE);
+        USERPIN_AIS = sharedPref.getString("UID1", "");
+        USERPIN_TRUE = sharedPref.getString("UID2", "");
+        USERPIN_DTAC = sharedPref.getString("UID3", "");
 
         View rootView = inflater.inflate(R.layout.fragment_chkbal, container, false);
 
@@ -60,6 +64,22 @@ public class ChkBalanceFragment extends Fragment {
                     chkBalance(3);
                 }
             });
+
+            if(USERPIN_TRUE.equals("")){
+                imgTRUE.setVisibility(View.GONE);
+            }else{
+                imgTRUE.setVisibility(View.VISIBLE);
+            }
+            if(USERPIN_DTAC.equals("")){
+                imgDTAC.setVisibility(View.GONE);
+            }else{
+                imgDTAC.setVisibility(View.VISIBLE);
+            }
+            if(USERPIN_AIS.equals("")){
+                imgAIS.setVisibility(View.GONE);
+            }else{
+                imgAIS.setVisibility(View.VISIBLE);
+            }
         }
 
         return rootView;

@@ -58,13 +58,13 @@
         android:paddingLeft="10dp"
         android:background="@color/bg_topup_ais"
         android:paddingBottom="10dp"
-        android:id="@+id/list_returnBG"
+        android:id="@+id/list_refundBG"
         android:layout_weight="1">
 
         <ListView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/listViewReturn"
+            android:id="@+id/listViewRefund"
             android:background="@color/list_background"
             android:choiceMode="singleChoice"
             android:listSelector="@drawable/bkg"
@@ -88,7 +88,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/btn_Refund"
-                android:id="@+id/btnReturn"
+                android:id="@+id/btnRefund"
                 android:layout_weight="1"
                 android:textSize="20sp"
                 android:background="@android:color/holo_orange_light" />

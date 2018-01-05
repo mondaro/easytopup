@@ -128,7 +128,7 @@
                         android:gravity="center"
                         android:text="@string/menu_MPAY"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="@color/text_topup_pad" />
+                        android:textColor="@color/list_divider" />
 
                     <Button
                         android:id="@+id/button_what0"
@@ -211,7 +211,7 @@
                         android:gravity="center"
                         android:text="@string/menu_TopupToWallet"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="@color/text_topup_pad" />
+                        android:textColor="@color/list_divider" />
 
                     <Button
                         android:id="@+id/button_what1"
@@ -395,7 +395,7 @@
                         android:gravity="center"
                         android:text="@string/menu_BuyCardAIS"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="@color/text_topup_pad" />
+                        android:textColor="@color/list_divider" />
 
                     <Button
                         android:id="@+id/button_what2"
@@ -525,7 +525,7 @@
                         android:gravity="center"
                         android:text="@string/menu_AISBill"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="@color/text_topup_pad" />
+                        android:textColor="@color/list_divider" />
 
                     <Button
                         android:id="@+id/button_what3"
@@ -684,7 +684,7 @@
                         android:gravity="center"
                         android:text="@string/menu_TransDays"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="@color/text_topup_pad" />
+                        android:textColor="@color/list_divider" />
 
                     <Button
                         android:id="@+id/button_what4"

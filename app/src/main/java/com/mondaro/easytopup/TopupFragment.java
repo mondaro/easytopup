@@ -40,12 +40,12 @@ import com.mondaro.easytopup.sqlite.SimpleDBDial;
 public class TopupFragment extends Fragment {
     String tmpDigit = "";
     char target ='1';
-    int mode = 1;
+    int mode = 0;
     TextView txtphone,txtcost,txtQuick1,txtQuick2,txtQuick3;
     Button btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btnOK,btnDel,btnContact,btnHistory;
     LinearLayout sltAIS, sltDTAC, sltTRUE;
     FrameLayout bgcolor;
-    String USERPIN1,USERPIN2,USERPIN3,LASTPHONE;
+    String USERPIN_AIS, USERPIN_TRUE, USERPIN_DTAC,LASTPHONE;
     List<String> getPhone;
     SharedPreferences sharedPref;
     SharedPreferences.Editor edt;
@@ -62,9 +62,9 @@ public class TopupFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_topup, container, false);
 
         sharedPref = this.getActivity().getPreferences(Context.MODE_PRIVATE);
-        USERPIN1 = sharedPref.getString("UID1", "");
-        USERPIN2 = sharedPref.getString("UID2", "");
-        USERPIN3 = sharedPref.getString("UID3", "");
+        USERPIN_AIS = sharedPref.getString("UID1", "");
+        USERPIN_TRUE = sharedPref.getString("UID2", "");
+        USERPIN_DTAC = sharedPref.getString("UID3", "");
         String getCheck = sharedPref.getString("CHK","");
         edt = sharedPref.edit();
         edt.apply();
@@ -157,6 +157,26 @@ public class TopupFragment extends Fragment {
                 bgcolor.setBackgroundResource(R.color.bg_topup_true);
                 mode = 3;
             }});
+
+
+            if(USERPIN_TRUE.equals("")){
+                sltTRUE.setVisibility(View.GONE);
+            }else{
+                sltTRUE.setVisibility(View.VISIBLE);
+                sltTRUE.performClick();
+            }
+            if(USERPIN_DTAC.equals("")){
+                sltDTAC.setVisibility(View.GONE);
+            }else{
+                sltDTAC.setVisibility(View.VISIBLE);
+                sltDTAC.performClick();
+            }
+            if(USERPIN_AIS.equals("")){
+                sltAIS.setVisibility(View.GONE);
+            }else{
+                sltAIS.setVisibility(View.VISIBLE);
+                sltAIS.performClick();
+            }
 
             btn0.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {InsDigit("0");}});
             btn1.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {InsDigit("1");}});
@@ -305,7 +325,7 @@ public class TopupFragment extends Fragment {
     private void TopupAIS() {
         try {
             Intent callIntent = new Intent(Intent.ACTION_CALL);
-            String txtTel = "*123*" + USERPIN1 + "*" + txtphone.getText().toString().trim() + "*" + txtcost.getText().toString().trim() + "%23";
+            String txtTel = "*123*" + USERPIN_AIS + "*" + txtphone.getText().toString().trim() + "*" + txtcost.getText().toString().trim() + "%23";
             callIntent.setData(Uri.parse("tel:" + txtTel));
             startActivity(callIntent);
         } catch (ActivityNotFoundException activityException) {
@@ -316,7 +336,7 @@ public class TopupFragment extends Fragment {
     private void TopupTRUE() {
         try {
             Intent callIntent = new Intent(Intent.ACTION_CALL);
-            String txtTel = "*666*" + txtphone.getText().toString().trim() + "*" + txtcost.getText().toString().trim() + "*" + USERPIN2 + "%23";
+            String txtTel = "*666*" + txtphone.getText().toString().trim() + "*" + txtcost.getText().toString().trim() + "*" + USERPIN_TRUE + "%23";
             callIntent.setData(Uri.parse("tel:" + txtTel));
             startActivity(callIntent);
         } catch (ActivityNotFoundException activityException) {
@@ -327,7 +347,7 @@ public class TopupFragment extends Fragment {
     private void TopupDTAC() {
         try {
             Intent callIntent = new Intent(Intent.ACTION_CALL);
-            String txtTel = "*211*1*" + txtphone.getText().toString().trim() + "*" + USERPIN3 + "*" + txtcost.getText().toString().trim() + "*1*" + "%23";
+            String txtTel = "*211*1*" + txtphone.getText().toString().trim() + "*" + USERPIN_DTAC + "*" + txtcost.getText().toString().trim() + "*1*" + "%23";
             callIntent.setData(Uri.parse("tel:" + txtTel));
             startActivity(callIntent);
         } catch (ActivityNotFoundException activityException) {
