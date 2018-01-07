@@ -8,10 +8,22 @@
         </shape>
     </item>
     <item android:state_pressed="false">
-        <shape android:shape="rectangle">
-            <corners android:radius="45dp"/>
-            <solid android:color="#f1f1f1"/>
-            <stroke android:width="1.0dip" android:color="#222"/>
-        </shape>
+        <layer-list>
+            <item>
+                <shape android:shape="rectangle">
+                    <padding android:left="0.5dp" android:right="0.5dp" android:bottom="1dp"/>
+                    <corners android:radius="30dp"/>
+                    <solid android:color="#b9b9b9"/>
+                </shape>
+            </item>
+            <item>
+                <shape android:shape="rectangle">
+                    <corners android:radius="30dp"/>
+                    <solid android:color="#ffffff"/>
+                    <stroke android:width="0.5dip" android:color="#222"/>
+                </shape>
+            </item>
+        </layer-list>
+
     </item>
 </selector>

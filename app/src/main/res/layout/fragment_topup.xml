@@ -133,12 +133,14 @@
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:paddingLeft="15dp"
+                android:paddingRight="15dp"
                 android:visibility="visible"
                 tools:ignore="RtlSymmetry">
 
                 <HorizontalScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:paddingLeft="15dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -195,105 +197,130 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
+                    android:background="@color/list_divider"
                     android:gravity="center_vertical|center|center_horizontal"
                     android:orientation="vertical">
 
                     <LinearLayout
-                        android:id="@+id/sltAIS"
+                        android:id="@+id/slt1"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@color/bg_topup_ais"
                         android:orientation="vertical">
 
-                        <ImageView
-                            android:id="@+id/imageView2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:src="@mipmap/icon_mipm_ais"
-                            tools:ignore="ContentDescription" />
-
-                        <TextView
-                            android:id="@+id/textViewAIS"
+                        <LinearLayout
+                            android:id="@+id/sltAIS"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:layout_marginRight="3dp"
                             android:layout_weight="1"
-                            android:gravity="center"
-                            android:paddingLeft="6dp"
-                            android:paddingRight="6dp"
-                            android:rotation="-90"
-                            android:text="@string/item_AIS"
-                            android:textAppearance="?android:attr/textAppearanceLarge"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
+                            android:background="@drawable/button_select_ais"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/imageView2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:src="@mipmap/icon_mipm_ais"
+                                tools:ignore="ContentDescription" />
+
+                            <TextView
+                                android:id="@+id/textViewAIS"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:layout_marginRight="3dp"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:paddingLeft="6dp"
+                                android:paddingRight="6dp"
+                                android:rotation="-90"
+                                android:text="@string/item_AIS"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/sltDTAC"
+                        android:id="@+id/slt2"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@color/bg_topup_dtac"
                         android:orientation="vertical">
 
-                        <ImageView
-                            android:id="@+id/imageView3"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            app:srcCompat="@mipmap/icon_mipm_dtac"
-                            tools:ignore="ContentDescription" />
-
-                        <TextView
-                            android:id="@+id/textViewDTAC"
+                        <LinearLayout
+                            android:id="@+id/sltDTAC"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:layout_marginRight="3dp"
                             android:layout_weight="1"
-                            android:gravity="center"
-                            android:paddingLeft="6dp"
-                            android:paddingRight="6dp"
-                            android:rotation="-90"
-                            android:text="@string/item_DTAC"
-                            android:textAppearance="?android:attr/textAppearanceLarge"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
+                            android:background="@drawable/button_select_dtac"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/imageView3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                app:srcCompat="@mipmap/icon_mipm_dtac"
+                                tools:ignore="ContentDescription" />
+
+                            <TextView
+                                android:id="@+id/textViewDTAC"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:layout_marginRight="3dp"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:paddingLeft="6dp"
+                                android:paddingRight="6dp"
+                                android:rotation="-90"
+                                android:text="@string/item_DTAC"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/sltTRUE"
+                        android:id="@+id/slt3"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@color/bg_topup_true"
                         android:orientation="vertical">
 
-                        <ImageView
-                            android:id="@+id/imageView4"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:srcCompat="@mipmap/icon_mipm_true"
-                            tools:ignore="ContentDescription" />
-
-                        <TextView
-                            android:id="@+id/textViewTRUE"
+                        <LinearLayout
+                            android:id="@+id/sltTRUE"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:layout_marginRight="3dp"
                             android:layout_weight="1"
-                            android:gravity="center"
-                            android:paddingLeft="6dp"
-                            android:paddingRight="6dp"
-                            android:rotation="-90"
-                            android:text="@string/item_TRUE"
-                            android:textAppearance="?android:attr/textAppearanceLarge"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
+                            android:background="@drawable/button_select_true"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/imageView4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:srcCompat="@mipmap/icon_mipm_true"
+                                tools:ignore="ContentDescription" />
+
+                            <TextView
+                                android:id="@+id/textViewTRUE"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:layout_marginRight="3dp"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:paddingLeft="6dp"
+                                android:paddingRight="6dp"
+                                android:rotation="-90"
+                                android:text="@string/item_TRUE"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
                     </LinearLayout>
 
                 </LinearLayout>

@@ -19,6 +19,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,9 +44,9 @@ public class TopupFragment extends Fragment {
     int mode = 0;
     TextView txtphone,txtcost,txtQuick1,txtQuick2,txtQuick3;
     Button btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btnOK,btnDel,btnContact,btnHistory;
-    LinearLayout sltAIS, sltDTAC, sltTRUE;
+    LinearLayout sltAIS, sltDTAC, sltTRUE, slt1, slt2, slt3;
     FrameLayout bgcolor;
-    String USERPIN_AIS, USERPIN_TRUE, USERPIN_DTAC,LASTPHONE;
+    String USERPIN_AIS, USERPIN_TRUE, USERPIN_DTAC,LASTPHONE,CHK_SH;
     List<String> getPhone;
     SharedPreferences sharedPref;
     SharedPreferences.Editor edt;
@@ -98,6 +99,9 @@ public class TopupFragment extends Fragment {
             sltAIS = (LinearLayout) rootView.findViewById(R.id.sltAIS);
             sltDTAC = (LinearLayout) rootView.findViewById(R.id.sltDTAC);
             sltTRUE = (LinearLayout) rootView.findViewById(R.id.sltTRUE);
+            slt1 = (LinearLayout) rootView.findViewById(R.id.slt1);
+            slt2 = (LinearLayout) rootView.findViewById(R.id.slt2);
+            slt3 = (LinearLayout) rootView.findViewById(R.id.slt3);
 
             btnHistory.setOnClickListener(new OnClickListener() {@Override public void onClick(View v) {
                 if(target=='1'){
@@ -148,22 +152,36 @@ public class TopupFragment extends Fragment {
 
 
             if(USERPIN_TRUE.equals("")){
-                sltTRUE.setVisibility(View.GONE);
+                CHK_SH = "0";
+                slt3.setVisibility(View.GONE);
             }else{
-                sltTRUE.setVisibility(View.VISIBLE);
+                CHK_SH = "1";
+                slt3.setVisibility(View.VISIBLE);
                 sltTRUE.performClick();
             }
             if(USERPIN_DTAC.equals("")){
-                sltDTAC.setVisibility(View.GONE);
+                CHK_SH = "0" + CHK_SH;
+                slt2.setVisibility(View.GONE);
             }else{
-                sltDTAC.setVisibility(View.VISIBLE);
+                CHK_SH = "1" + CHK_SH;
+                slt2.setVisibility(View.VISIBLE);
                 sltDTAC.performClick();
             }
             if(USERPIN_AIS.equals("")){
-                sltAIS.setVisibility(View.GONE);
+                CHK_SH = "0" + CHK_SH;
+                slt1.setVisibility(View.GONE);
             }else{
-                sltAIS.setVisibility(View.VISIBLE);
+                CHK_SH = "1" + CHK_SH;
+                slt1.setVisibility(View.VISIBLE);
                 sltAIS.performClick();
+            }
+            switch (CHK_SH){
+                case "110" :
+                    slt1.setBackgroundResource(R.color.bg_topup_dtac);break;
+                case "101" :
+                    slt1.setBackgroundResource(R.color.bg_topup_true);break;
+                case "011" :
+                    slt2.setBackgroundResource(R.color.bg_topup_true);break;
             }
 
             btn0.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {InsDigit("0");}});

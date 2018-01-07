@@ -75,19 +75,6 @@ public class RefundFragment extends Fragment {
             Toast.makeText(getActivity(), "ผลการตรวจสอบ :\r\nเครื่องนี้ยังไม่ได้ทำรายการตั้งค่าคะ\r\n\n", Toast.LENGTH_LONG).show();
             ((MainActivity) getActivity()).displayView(4);
         }else{
-
-            /*if(!USERPIN1.equals("")){
-                loadSMS(1);
-            }else{
-                Toast.makeText(getActivity(), "แจ้งเตือน :\r\nคุณไม่ได้ลงทะเบียนรหัสประจำตัวของระบบ AIS \n" +
-                        "กรุณาลงทะเบียนก่อนใช้งานด้วยคะ\r\n", Toast.LENGTH_LONG).show();
-                adapter = new SimpleCursorAdapter(getActivity(), R.layout.row_refund, null,
-                        new String[] { "body" }, new int[] {
-                        R.id.lblMsg});
-                adapter.notifyDataSetChanged();
-                listViewRe.setAdapter(adapter);
-            }*/
-
             btnReAIS.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
                 bg.setBackgroundResource(R.color.bg_topup_ais);
                 if(!USERPIN1.equals("")){
