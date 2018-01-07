@@ -119,31 +119,19 @@ public class TopupFragment extends Fragment {
                 if(!txtQuick1.getText().equals("")){
                     txtphone.setText(txtQuick1.getText());
                     chkCarrier(getPhone.get(0).substring(10,11));
-                    target = '2';tmpDigit = "";
-                    txtphone.setBackgroundResource(R.drawable.border_inactive);
-                    txtcost.setBackgroundResource(R.drawable.border_active);
                 }
-                promptQuickDial();
             }});
             txtQuick2.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
                 if(!txtQuick2.getText().equals("")){
                     txtphone.setText(txtQuick2.getText());
                     chkCarrier(getPhone.get(1).substring(10,11));
-                    target = '2';tmpDigit = "";
-                    txtphone.setBackgroundResource(R.drawable.border_inactive);
-                    txtcost.setBackgroundResource(R.drawable.border_active);
                 }
-                promptQuickDial();
             }});
             txtQuick3.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
                 if(!txtQuick3.getText().equals("")){
                     txtphone.setText(txtQuick3.getText());
                     chkCarrier(getPhone.get(2).substring(10,11));
-                    target = '2';tmpDigit = "";
-                    txtphone.setBackgroundResource(R.drawable.border_inactive);
-                    txtcost.setBackgroundResource(R.drawable.border_active);
                 }
-                promptQuickDial();
             }});
             sltAIS.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
                 bgcolor.setBackgroundResource(R.color.bg_topup_ais);
@@ -558,6 +546,25 @@ public class TopupFragment extends Fragment {
         }catch (Exception e){
             //No code
         }
+        try{
+            switch (getPhone.get(0).substring(10,11)){
+                case "1" :txtQuick1.setBackgroundResource(R.drawable.button_quick_ais);break;
+                case "2" :txtQuick1.setBackgroundResource(R.drawable.button_quick_dtac);break;
+                case "3" :txtQuick1.setBackgroundResource(R.drawable.button_quick_true);break;
+            }
+            switch (getPhone.get(1).substring(10,11)){
+                case "1" :txtQuick2.setBackgroundResource(R.drawable.button_quick_ais);break;
+                case "2" :txtQuick2.setBackgroundResource(R.drawable.button_quick_dtac);break;
+                case "3" :txtQuick2.setBackgroundResource(R.drawable.button_quick_true);break;
+            }
+            switch (getPhone.get(2).substring(10,11)){
+                case "1" :txtQuick3.setBackgroundResource(R.drawable.button_quick_ais);break;
+                case "2" :txtQuick3.setBackgroundResource(R.drawable.button_quick_dtac);break;
+                case "3" :txtQuick3.setBackgroundResource(R.drawable.button_quick_true);break;
+            }
+        }catch (Exception e){
+            //No code
+        }
         if(txtQuick1.getText() == ""){txtQuick1.setVisibility(View.INVISIBLE);}
         if(txtQuick2.getText() == ""){txtQuick2.setVisibility(View.INVISIBLE);}
         if(txtQuick3.getText() == ""){txtQuick3.setVisibility(View.INVISIBLE);}
@@ -575,10 +582,35 @@ public class TopupFragment extends Fragment {
 
     private void chkCarrier(String c){
         switch (c){
-            case "1": sltAIS.performClick();break;
-            case "2": sltDTAC.performClick();break;
-            case "3": sltTRUE.performClick();break;
+            case "1":
+                if(USERPIN_AIS.equals("")){
+                    Toast.makeText(getActivity(), "หมายเลขนี้อยู่ในระบบที่คุณไม่ได้ตั้งค่าไว้ค่ะ", Toast.LENGTH_LONG).show();
+                    txtphone.setText("");
+                }else{
+                    sltAIS.performClick();
+                }
+                break;
+            case "2":
+                if(USERPIN_DTAC.equals("")){
+                    Toast.makeText(getActivity(), "หมายเลขนี้อยู่ในระบบที่คุณไม่ได้ตั้งค่าไว้ค่ะ", Toast.LENGTH_LONG).show();
+                    txtphone.setText("");
+                }else{
+                    sltDTAC.performClick();
+                }
+                break;
+            case "3":
+                if(USERPIN_TRUE.equals("")){
+                    Toast.makeText(getActivity(), "หมายเลขนี้อยู่ในระบบที่คุณไม่ได้ตั้งค่าไว้ค่ะ", Toast.LENGTH_LONG).show();
+                    txtphone.setText("");
+                }else{
+                    sltTRUE.performClick();
+                }
+                break;
         }
+        target = '2';tmpDigit = "";
+        txtphone.setBackgroundResource(R.drawable.border_inactive);
+        txtcost.setBackgroundResource(R.drawable.border_active);
+        promptQuickDial();
     }
 
     private void chkNewRoll(int yearNow){

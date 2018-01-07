@@ -127,7 +127,7 @@ public class SettingFragment extends Fragment {
                     if(txtUID_AIS.getText().toString().trim().equals("") || txtUID_AIS.getText().toString().trim().length() < 4){
                         edt.putString("CHK", "");
                         edt.apply();
-                        Toast.makeText(getActivity(), "ผลการตรวจสอบ :\r\nกรุณากรอกข้อมูลให้ถูกต้องก่อนคะ\r\n\n", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(), "ผลการตรวจสอบ :\r\nกรุณากรอกข้อมูลให้ถูกต้องก่อนคะ\r\n\n", Toast.LENGTH_SHORT).show();
                     }else{
                         edt.putString("UID1", txtUID_AIS.getText().toString().trim());
                         edt.putString("CHK", "PASS");
@@ -138,7 +138,7 @@ public class SettingFragment extends Fragment {
                     if(txtUID_TRUE.getText().toString().trim().equals("") || txtUID_TRUE.getText().toString().trim().length() < 4){
                         edt.putString("CHK", "");
                         edt.apply();
-                        Toast.makeText(getActivity(), "ผลการตรวจสอบ :\r\nกรุณากรอกข้อมูลให้ถูกต้องก่อนคะ\r\n\n", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(), "ผลการตรวจสอบ :\r\nกรุณากรอกข้อมูลให้ถูกต้องก่อนคะ\r\n\n", Toast.LENGTH_SHORT).show();
                     }else{
                         edt.putString("UID2", txtUID_TRUE.getText().toString().trim());
                         edt.putString("CHK", "PASS");
@@ -149,7 +149,7 @@ public class SettingFragment extends Fragment {
                     if(txtUID_DTAC.getText().toString().trim().equals("") || txtUID_DTAC.getText().toString().trim().length() < 4){
                         edt.putString("CHK", "");
                         edt.apply();
-                        Toast.makeText(getActivity(), "ผลการตรวจสอบ :\r\nกรุณากรอกข้อมูลให้ถูกต้องก่อนคะ\r\n\n", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(), "ผลการตรวจสอบ :\r\nกรุณากรอกข้อมูลให้ถูกต้องก่อนคะ\r\n\n", Toast.LENGTH_SHORT).show();
                     }else{
                         edt.putString("UID3", txtUID_DTAC.getText().toString().trim());
                         edt.putString("CHK", "PASS");
