@@ -8,8 +8,8 @@ android {
         applicationId "com.mondaro.easytopup"
         minSdkVersion 15
         targetSdkVersion 23
-        versionCode 40
-        versionName "5.4.2"
+        versionCode 42
+        versionName "5.4.3b"
     }
     buildTypes {
         release {

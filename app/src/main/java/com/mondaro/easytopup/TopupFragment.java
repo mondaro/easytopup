@@ -481,6 +481,7 @@ public class TopupFragment extends Fragment {
             }
             amount += Integer.valueOf(txtcost.getText().toString());
             values.put(SimpleDBDial.ContactDial.COLS_AMOUNT, amount);
+            values.put(SimpleDBDial.ContactDial.COLS_CARRIER, mode);
             _writedatabase.update(SimpleDBDial.ContactDial.TABLE_NAME,values,selection,args);
         }else{
             values.put(SimpleDBDial.ContactDial.COLS_CARRIER, mode);

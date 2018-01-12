@@ -1,44 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/text_topup_pad_black">
+    android:background="@color/text_topup_pad_black"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView4"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="16dp"
-        android:text="@string/header_CHKBalance"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/text_topup_pad" />
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="@string/header_CHKBalance"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/text_topup_pad" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView4"
         android:background="@color/text_topup_pad"
-        android:gravity="center_vertical|center|center_horizontal"
+        android:gravity="center"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="32dp">
 
         <LinearLayout
             android:id="@+id/chkbalAIS"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_gravity="center"
             android:layout_weight="1"
+            android:background="@drawable/button_select_ais"
+            android:foregroundGravity="center"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/imageViewAIS"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:src="@mipmap/icon_mipm_ais"
+                app:srcCompat="@mipmap/icon_mipm_ais"
                 tools:ignore="ContentDescription" />
         </LinearLayout>
 
@@ -46,15 +54,17 @@
             android:id="@+id/chkbalDTAC"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_gravity="center"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:background="@drawable/button_select_dtac"
+            android:gravity="center"
+            android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/imageViewDTAC"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:src="@mipmap/icon_mipm_dtac"
+                app:srcCompat="@mipmap/icon_mipm_dtac"
                 tools:ignore="ContentDescription" />
         </LinearLayout>
 
@@ -62,18 +72,20 @@
             android:id="@+id/chkbalTRUE"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_gravity="center"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:background="@drawable/button_select_true"
+            android:gravity="center"
+            android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/imageViewTRUE"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:src="@mipmap/icon_mipm_true"
+                app:srcCompat="@mipmap/icon_mipm_true"
                 tools:ignore="ContentDescription" />
         </LinearLayout>
 
     </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>

@@ -21,7 +21,7 @@ public class AboutFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_about, container, false);
-        TextView tShow = (TextView) rootView.findViewById(R.id.txtLabel);
+        TextView versionT = (TextView) rootView.findViewById(R.id.textViewAboutVersion);
         Button btnEmail = (Button) rootView.findViewById(R.id.buttonEmail);
         Button btnWeb = (Button) rootView.findViewById(R.id.buttonWebsite);
 
@@ -51,8 +51,8 @@ public class AboutFragment extends Fragment {
         }catch(Exception e){
             //No coding
         }
-        String shText = getResources().getString(R.string.about_content1) + "เวอร์ชั่น  " + version + getResources().getString(R.string.about_content2);
-        tShow.setText(shText);
+        String shText = getResources().getString(R.string.about_version) + "  " + version;
+        versionT.setText(shText);;
 
         return rootView;
     }

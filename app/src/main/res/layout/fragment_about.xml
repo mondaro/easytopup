@@ -24,12 +24,54 @@
             tools:ignore="ContentDescription" />
 
         <TextView
-            android:id="@+id/txtLabel"
+            android:id="@+id/textViewTitleAbout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="8dp"
-            android:text="@string/about_content1"
+            android:text="@string/app_name"
+            android:textColor="@color/list_divider"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/textViewAboutVersion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="8dp"
+            android:textColor="@color/list_divider"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/txtLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="8dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="8dp"
+            android:text="@string/about_content"
+            android:textColor="@color/list_divider"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textViewSuggestion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="@string/about_contentSuggestion"
+            android:textColor="@color/list_divider"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textViewContent2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="@string/about_content2"
             android:textColor="@color/list_divider"
             android:textSize="18sp" />
 
@@ -40,9 +82,20 @@
             app:srcCompat="@mipmap/montech"
             tools:ignore="ContentDescription" />
 
+        <TextView
+            android:id="@+id/textViewCorpName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="@string/about_corpname"
+            android:textColor="@color/list_divider"
+            android:textSize="22sp" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:orientation="horizontal"
             android:padding="4dp">
 
