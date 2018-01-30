@@ -39,12 +39,13 @@ import java.util.Locale;
 
 public class RefundFragment extends Fragment {
     LinearLayout bg,panel;
-    Button btnReAIS,btnReDTAC,btnReTRUE, btnRefund,btnCancel;
+    Button btnReAIS,btnReDTAC,btnReTRUE,btnReCAT,btnRefund,btnCancel;
     ListView listViewRe;
     SimpleCursorAdapter adapter;
-    String addr,cid,USERPIN1,USERPIN2,USERPIN3,txtTel, strPhone, strAmount, strRef,txtVender;
+    String addr,cid, USERPIN_AIS, USERPIN_DTAC, USERPIN_TRUE,USERPIN_CAT,CHK_THEME,txtTel, strPhone, strAmount, strRef,txtVender;
     String[] separated;
     int tag;
+    int bgAIS,bgDTAC,bgTRUE,bgCAT;
     SharedPreferences sharedPref;
     final private int REQUEST_CALL_PHONE_PERMISSIONS = 123;
     final private int REQUEST_READ_SMS_PERMISSIONS = 131;
@@ -61,81 +62,81 @@ public class RefundFragment extends Fragment {
         btnReAIS = (Button) rootView.findViewById(R.id.btn_smsAIS);
         btnReDTAC = (Button) rootView.findViewById(R.id.btn_smsDTAC);
         btnReTRUE = (Button) rootView.findViewById(R.id.btn_smsTRUE);
+        btnReCAT = (Button) rootView.findViewById(R.id.btn_smsCAT);
         btnRefund = (Button) rootView.findViewById(R.id.btnRefund);
         btnCancel = (Button) rootView.findViewById(R.id.btnCancel);
         listViewRe = (ListView) rootView.findViewById(R.id.listViewRefund);
 
         sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-        USERPIN1 = sharedPref.getString("UID1", "");
-        USERPIN2 = sharedPref.getString("UID2", "");
-        USERPIN3 = sharedPref.getString("UID3", "");
-        String getCheck = sharedPref.getString("CHK","");
+        USERPIN_AIS = sharedPref.getString("UID_AIS", "");
+        USERPIN_DTAC = sharedPref.getString("UID_DTAC", "");
+        USERPIN_TRUE = sharedPref.getString("UID_TRUE", "");
+        USERPIN_CAT = sharedPref.getString("UID_CAT", "");
+        CHK_THEME = sharedPref.getString("THEME", "");
+        String getCheck = sharedPref.getString("CHK_OK","");
 
         if(getCheck.equals("")){
             Toast.makeText(getActivity(), "ผลการตรวจสอบ :\r\nเครื่องนี้ยังไม่ได้ทำรายการตั้งค่าคะ\r\n\n", Toast.LENGTH_LONG).show();
             ((MainActivity) getActivity()).displayView(4);
         }else{
+            if(CHK_THEME.equals("A")){
+                bgAIS = R.color.bg_topup_ais_default;
+                bgDTAC = R.color.bg_topup_dtac_default;
+                bgTRUE = R.color.bg_topup_true_default;
+                bgCAT = R.color.bg_topup_cat_default;
+            }else{
+                bgAIS = R.color.bg_topup_ais_pastel;
+                bgDTAC = R.color.bg_topup_dtac_pastel;
+                bgTRUE = R.color.bg_topup_true_pastel;
+                bgCAT = R.color.bg_topup_cat_pastel;
+            }
+
             btnReAIS.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
-                bg.setBackgroundResource(R.color.bg_topup_ais);
-                if(!USERPIN1.equals("")){
-                    loadSMS(1);
-                }else{
-                    Toast.makeText(getActivity(), "แจ้งเตือน :\r\nคุณไม่ได้ลงทะเบียนรหัสประจำตัวของระบบ AIS \n" +
-                            "กรุณาลงทะเบียนก่อนใช้งานด้วยคะ\r\n", Toast.LENGTH_LONG).show();
-                    adapter = new SimpleCursorAdapter(getActivity(), R.layout.row_refund, null,
-                            new String[] { "body" }, new int[] {
-                            R.id.lblMsg});
-                    adapter.notifyDataSetChanged();
-                    listViewRe.setAdapter(adapter);
-                }
+                bg.setBackgroundResource(bgAIS);
+                loadSMS(1);
             }});
 
             btnReDTAC.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
-                bg.setBackgroundResource(R.color.bg_topup_dtac);
-                if(!USERPIN3.equals("")){
-                    loadSMS(2);
-                }else{
-                    Toast.makeText(getActivity(), "แจ้งเตือน :\r\nคุณไม่ได้ลงทะเบียนรหัสประจำตัวของระบบ DTAC \n" +
-                            "กรุณาลงทะเบียนก่อนใช้งานด้วยคะ\r\n", Toast.LENGTH_LONG).show();
-                    adapter = new SimpleCursorAdapter(getActivity(), R.layout.row_refund, null,
-                            new String[] { "body" }, new int[] {
-                            R.id.lblMsg});
-                    adapter.notifyDataSetChanged();
-                    listViewRe.setAdapter(adapter);
-                }
+                bg.setBackgroundResource(bgDTAC);
+                loadSMS(2);
             }});
 
             btnReTRUE.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
-                bg.setBackgroundResource(R.color.bg_topup_true);
-                if(!USERPIN2.equals("")){
-                    loadSMS(3);
-                }else{
-                    Toast.makeText(getActivity(), "แจ้งเตือน :\r\nคุณไม่ได้ลงทะเบียนรหัสประจำตัวของระบบ TRUE \n" +
-                            "กรุณาลงทะเบียนก่อนใช้งานด้วยคะ\r\n", Toast.LENGTH_LONG).show();
-                    adapter = new SimpleCursorAdapter(getActivity(), R.layout.row_refund, null,
-                            new String[] { "body" }, new int[] {
-                            R.id.lblMsg});
-                    adapter.notifyDataSetChanged();
-                    listViewRe.setAdapter(adapter);
-                }
+                bg.setBackgroundResource(bgTRUE);
+                loadSMS(3);
             }});
 
-            if(USERPIN3.equals("")){
-                btnReDTAC.setVisibility(View.GONE);
+            btnReCAT.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
+                bg.setBackgroundResource(bgCAT);
+                loadSMS(4);
+            }});
+
+            if(USERPIN_CAT.equals("")){
+                btnReCAT.setVisibility(View.GONE);
             }else{
-                btnReDTAC.setVisibility(View.VISIBLE);
-                btnReDTAC.performClick();
+                btnReCAT.setVisibility(View.VISIBLE);
+                btnReCAT.setBackgroundResource(bgCAT);
+                btnReCAT.performClick();
             }
-            if(USERPIN2.equals("")){
+            if(USERPIN_TRUE.equals("")){
                 btnReTRUE.setVisibility(View.GONE);
             }else{
                 btnReTRUE.setVisibility(View.VISIBLE);
+                btnReTRUE.setBackgroundResource(bgTRUE);
                 btnReTRUE.performClick();
             }
-            if(USERPIN1.equals("")){
+            if(USERPIN_DTAC.equals("")){
+                btnReDTAC.setVisibility(View.GONE);
+            }else{
+                btnReDTAC.setVisibility(View.VISIBLE);
+                btnReDTAC.setBackgroundResource(bgDTAC);
+                btnReDTAC.performClick();
+            }
+            if(USERPIN_AIS.equals("")){
                 btnReAIS.setVisibility(View.GONE);
             }else{
                 btnReAIS.setVisibility(View.VISIBLE);
+                btnReAIS.setBackgroundResource(bgAIS);
                 btnReAIS.performClick();
             }
 
@@ -148,7 +149,7 @@ public class RefundFragment extends Fragment {
                             strAmount = separated[1].substring(4,separated[1].length()-13);
                             strRef = separated[0].substring(4,separated[0].length());
                             final String last4phone = strPhone.substring(strPhone.length()-4,strPhone.length());
-                            txtTel = "*321*" + USERPIN1 + "*" + last4phone + "*" + strRef + "%23";
+                            txtTel = "*321*" + USERPIN_AIS + "*" + last4phone + "*" + strRef + "%23";
                             txtVender = "AIS";
                             Log.d("dialing-example",txtTel);
                         }catch(Exception e){
@@ -161,7 +162,7 @@ public class RefundFragment extends Fragment {
                             strPhone = "0" + separated[0].substring(separated[0].length()-9,separated[0].length());
                             strAmount = separated[0].substring(4,separated[0].length()-14);
                             strRef = separated[1].substring(separated[1].length()-16,separated[1].length()-7);
-                            txtTel = "*211*8*" + strPhone + "*" + USERPIN3 + "*" + strAmount.substring(0,strAmount.length()-2) + "*1" + "%23";
+                            txtTel = "*211*8*" + strPhone + "*" + USERPIN_TRUE + "*" + strAmount.substring(0,strAmount.length()-2) + "*1" + "%23";
                             txtVender = "DTAC";
                             Log.d("dialing-example",txtTel);
                         }catch(Exception e){
@@ -176,6 +177,19 @@ public class RefundFragment extends Fragment {
                             strRef = separated[0];
                             cid = cid.substring(0,cid.length()-18);
                             txtVender = "TRUE";
+                            Log.d("dialing-example",cid);
+                        }catch(Exception e){
+                            //Null
+                        }
+                        break;
+                    case 4:
+                        try{
+                            separated = cid.split(" ");
+                            strPhone = separated[1];
+                            strAmount = separated[3];
+                            strRef = separated[8].substring(1,5);
+                            txtTel = "*215*1*" + strPhone + "*" + strRef + "%23";
+                            txtVender = "CAT";
                             Log.d("dialing-example",cid);
                         }catch(Exception e){
                             //Null
@@ -289,10 +303,11 @@ public class RefundFragment extends Fragment {
                 case 1: addr = "address='022719123'"; tag = 1; break;
                 case 2: addr = "address='dtacOnline'"; tag = 2; break;
                 case 3: addr = "address='MobileTopUp'"; tag = 3; break;
+                case 4: addr = "address='iTop'"; tag = 4; break;
             }
             try{
                 Uri inboxURI = Uri.parse("content://sms/inbox");
-                String[] reqCols = new String[] { "_id", "address", "body", "date" };
+                String[] reqCols = new String[] { "_id", "address", "body", "date"};
                 ContentResolver cr = getActivity().getContentResolver();
 
                 Cursor c = cr.query(inboxURI, reqCols, addr, null, null);
@@ -304,9 +319,9 @@ public class RefundFragment extends Fragment {
                     Long timestamp = Long.parseLong(date);
                     calendar.setTimeInMillis(timestamp);
                     Date finaldate = calendar.getTime();
-                    String smsDate = new SimpleDateFormat("dd/MM/yyyy",new Locale("th","TH")).format(finaldate);//finaldate.toString();
+                    String smsDate = new SimpleDateFormat("dd/MM/yyyy เวลา H:mm",new Locale("th","TH")).format(finaldate);//finaldate.toString();
                     String smsBody = c.getString(c.getColumnIndex("body"));
-                    items.add(smsBody + "\nวันที่ " +smsDate );
+                    items.add(smsBody + "\n\nวันที่ " +smsDate );
                 }
                 c.close();
 

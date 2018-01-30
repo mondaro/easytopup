@@ -34,7 +34,7 @@ public class ExitFragment extends Fragment {
             getActivity().finish();
         }});
         btnCancel.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
-            if(sharedPref.getString("CHK","").equals("TRUE")){
+            if(sharedPref.getString("CHK_OK","").equals("TRUE")){
                 ((MainActivity) getActivity()).displayView(0);
             }else{
                 ((MainActivity) getActivity()).displayView(2);

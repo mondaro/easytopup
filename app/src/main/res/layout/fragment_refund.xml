@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -13,62 +14,75 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center">
+            android:gravity="center"
+            tools:ignore="UselessParent">
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/item_AIS"
                 android:id="@+id/btn_smsAIS"
-                android:layout_weight="1"
-                android:background="@color/bg_topup_ais"
-                android:textStyle="bold"
-                android:textSize="20sp"
-                android:textColor="@color/list_background" />
-
-            <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/item_DTAC"
+                android:layout_weight="1"
+                android:text="@string/item_AIS"
+                android:textColor="@color/list_background"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:ignore="ButtonStyle" />
+
+            <Button
                 android:id="@+id/btn_smsDTAC"
-                android:layout_weight="1"
-                android:background="@color/bg_topup_dtac"
-                android:textStyle="bold"
-                android:textSize="20sp"
-                android:textColor="@color/list_background" />
-
-            <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/item_TRUE"
-                android:id="@+id/btn_smsTRUE"
                 android:layout_weight="1"
-                android:background="@color/bg_topup_true"
-                android:textStyle="bold"
+                android:text="@string/item_DTAC"
+                android:textColor="@color/list_background"
                 android:textSize="20sp"
-                android:textColor="@color/list_background" />
+                android:textStyle="bold"
+                tools:ignore="ButtonStyle" />
+
+            <Button
+                android:id="@+id/btn_smsTRUE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/item_TRUE"
+                android:textColor="@color/list_background"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:ignore="ButtonStyle"/>
+
+            <Button
+                android:id="@+id/btn_smsCAT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/item_CAT"
+                android:textColor="@color/list_background"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:ignore="ButtonStyle"
+                android:visibility="visible" />
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingTop="10dp"
-        android:paddingLeft="10dp"
-        android:background="@color/bg_topup_ais"
-        android:paddingBottom="10dp"
         android:id="@+id/list_refundBG"
-        android:layout_weight="1">
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp">
 
         <ListView
+            android:id="@+id/listViewRefund"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/listViewRefund"
+            android:layout_marginLeft="10dp"
             android:background="@color/list_background"
             android:choiceMode="singleChoice"
-            android:listSelector="@drawable/bkg"
-            android:clickable="true" />
+            android:clickable="true"
+            android:focusable="true"
+            android:listSelector="@drawable/bkg" />
     </LinearLayout>
 
     <LinearLayout
@@ -82,7 +96,8 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            tools:ignore="UselessParent">
 
             <Button
                 android:layout_width="wrap_content"
@@ -91,7 +106,8 @@
                 android:id="@+id/btnRefund"
                 android:layout_weight="1"
                 android:textSize="20sp"
-                android:background="@android:color/holo_orange_light" />
+                android:background="@android:color/holo_orange_light"
+                tools:ignore="ButtonStyle" />
 
             <Button
                 android:layout_width="wrap_content"
@@ -101,7 +117,8 @@
                 android:layout_weight="1"
                 android:textSize="20sp"
                 android:background="@android:color/holo_red_light"
-                android:layout_marginLeft="10dp" />
+                android:layout_marginLeft="10dp"
+                tools:ignore="ButtonStyle" />
         </LinearLayout>
     </LinearLayout>
 

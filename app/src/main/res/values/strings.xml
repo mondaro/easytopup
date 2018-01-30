@@ -3,11 +3,11 @@
     <string-array name="nav_drawer_items">
         <item >เติมเงิน</item>
         <item >ยอดเงินคงเหลือ</item>
-        <item >ประวัติทำรายการ/ดึงเงินคืน</item>
-        <item >เพิ่มเติม</item>
-        <item >ตั้งค่ารหัสคนขาย</item>
-        <item >เกี่ยวกับโปรแกรม</item>
-        <item >ออกโปรแกรม</item>
+        <item >ประวัติการทำรายการ /\nระบบดึงเงินคืน</item>
+        <item >บริการเสริม</item>
+        <item >ตั้งค่า</item>
+        <item >แนะนำ</item>
+        <item >ปิดแอปพลิเคชัน</item>
     </string-array>
     <string-array name="nav_drawer_icons">
         <item>@mipmap/ic_open_in_new_black_48dp</item>
@@ -20,11 +20,10 @@
     </string-array>
     <string name="desc_list_item_icon">Item Icon</string>
     <!--navigation_Topup-->
-    <string name="txtM122"> &#8212;> ปาดหน้าจอจาก [ซ้าย] ไป [ขวา] เพื่อดูเมนู</string>
     <string name="txtAmount">จำนวนเงิน</string>
-    <string name="btnContact">สมุดรายชื่อ</string>
-    <string name="btnLast">เบอร์ล่าสุด</string>
-    <string name="txtTel">เบอร์โทรศัพท์</string>
+    <string name="btnContact">สมุด\nรายชื่อ</string>
+    <string name="btnLast">เบอร์\nล่าสุด</string>
+    <string name="txtTel">หมายเลข</string>
     <string name="btnTopup">เติม</string>
     <string name="btnDel">ลบ</string>
     <string name="btn0">0</string>
@@ -38,22 +37,24 @@
     <string name="btn8">8</string>
     <string name="btn9">9</string>
     <!--navigation_ChkBalance-->
-    <string name="header_CHKBalance">กรุณากดไอคอนระบบ\nเพื่อทำการเช็คยอดเงินคงเหลือ</string>
+    <string name="checkbalanceHeader">กรุณากดไอคอนระบบ\nเพื่อทำการเช็คยอดเงินคงเหลือ</string>
     <!--navigation_Refund-->
     <string name="item_AIS">AIS</string>
     <string name="item_DTAC">DTAC</string>
     <string name="item_TRUE">TRUE</string>
+    <string name="item_CAT">CAT</string>
     <string name="btn_Refund">ดึงเงินคืน</string>
     <string name="btn_Cancel">ยกเลิก</string>
+    <string name="refundDialogCant">ระบบ my by CAT ยังไม่พร้อมให้บริการ\nทางผู้พัฒนาจะทำการอัพเดตให้เร็วๆนี้ครับ</string>
     <!--navigation_AddOns-->
     <string name="header_Addons">สำหรับคนขายเติมเงินระบบ AIS 1&#8211;2&#8211;call ที่ผูกบัญชีร่วมกับบริการ mPay</string>
-    <string name="txt_MPAY_ID">รหัสประจำตัว</string>
+    <string name="txt_MPAY_ID">รหัส\nประจำตัว</string>
     <string name="txt_plus">+</string>
     <string name="txt_question">\?</string>
     <!--menu_MPAY-->
     <string name="menu_MPAY">บัญชี mPay</string>
-    <string name="btn_ChkBal">ตรวจสอบยอดเงิน mPay Wallet</string>
-    <string name="btn_ChkCom">ตรวจสอบค่า Commision</string>
+    <string name="btn_ChkBal">ตรวจสอบยอดเงิน\nmPay Wallet</string>
+    <string name="btn_ChkCom">ตรวจสอบ\nค่า Commision</string>
     <!--menu_TopupToWallet-->
     <string name="menu_TopupToWallet">เติมเงินเข้ากระเป๋าขายออนไลน์</string>
     <string name="txt_InputAmount">1. กรอกจำนวนเงิน</string>
@@ -78,7 +79,7 @@
     <string name="btn_BuyCardAIS">ซื้อบัตรเงินสด</string>
     <!--menu_AISBill-->
     <string name="menu_AISBill">จ่ายบิล AIS รายเดือน</string>
-    <string name="txt_SelectBill">เลือกรายการที่จะชำระ</string>
+    <string name="txt_SelectBill">2. เลือกรายการที่จะชำระ</string>
     <string-array name="op_arrays">
         <item>0</item>
         <item>1</item>
@@ -93,6 +94,9 @@
         <item>20</item>
     </string-array>
     <string name="btn_TransDays">โอนวัน</string>
+    <!--menu_ChkCarrier-->
+    <string name="menu_ChkCarrier">ตรวจสอบระบบเครือข่าย\nจากหมายเลขโทรศัพท์</string>
+
     <!--Popup-->
     <string name="btn_ClosePopup">ปิดหน้าต่างนี้</string>
     <string name="txt_TopupWallet_Description">1. กรอกจำนวนเงินที่ต้องการเติมลงไป\n\n
@@ -117,11 +121,16 @@
     <string name="txtM121">** หมายเหตุ **\nแอปพลิเคชันนี้ใช้อำนวยความสะดวกในการเติมเงินสำหรับตัวแทนเติมเงินที่เป็นหน่วยเติมเงินที่ได้รับการรับรองจากศูนย์บริการเท่านั้น บุคคลธรรมดาไม่สามารถใช้งานได้!!!
         \n\nรหัสประจำตัวคนขายออนไลน์ ได้มาจากศูนย์บริการกำหนดให้ท่าน กรุณากรอกให้ถูกตามระบบที่ใช้งาน
         \n\nหากท่านใดใช้เครื่องที่รองรับระบบซิมคู่ กรุณาตั้งค่าการทำงานซิมเมื่อโทรออกให้เป็น "ถามเสมอ" เพื่อให้ระบบจัดการเติมเงินแยกเติมตามซิมเครือข่ายที่ถูกต้อง
-        \n\nสงสัยหรือพบปัญหาแจ้งได้ที่เมนู "เกี่ยวกับโปรแกรม"</string>
+        \n\nสงสัยหรือพบปัญหาแจ้งได้ที่เมนู \"แนะนำ\"</string>
     <string name="btnOKSetting">ตั้งค่า</string>
-    <string name="settingDTAC">ดีแทค</string>
-    <string name="settingTRUE">ทรูมูฟ</string>
-    <string name="settingAIS">วันทูคอล</string>
+    <string name="settingDTAC">DTAC</string>
+    <string name="settingTRUE">TRUEMOVE-H</string>
+    <string name="settingAIS">AIS 1-2-CALL</string>
+    <string name="settingCAT">My by CAT</string>
+    <string name="settingCAT_1">ใช้ได้ทั้งโอนเงินเข้าคนขายและเติมให้ลูกค้า</string>
+    <string name="settingThemeHeader">เลือกสไตล์ชุดสี</string>
+    <string name="settingTheme1">ชุดสีพาสเทล</string>
+    <string name="settingTheme2">ชุดสีดั้งเดิม</string>
     <!--navigation_About-->
     <string name="about_version">เวอร์ชัน</string>
     <string name="about_content">\t\tแอปพลิเคชันนี้ใช้อำนวยความสะดวกในการเติมเงินสำหรับตัวแทนเติมเงินที่เป็นหน่วยเติมเงินที่ได้รับการรับรองจากศูนย์บริการเท่านั้น บุคคลธรรมดาไม่สามารถใช้งานได้\n
@@ -142,6 +151,11 @@
     <string name="hintAmount">ยอดเงิน</string>
     <string name="hintPhoneGetCard">เบอร์โทรคนซื้อ</string>
     <string name="hintPhoneBill">เบอร์โทรรายเดือน</string>
+    <string name="hintReport">** พบข้อผิดพลาด **\nกรุณาแจ้งผู้พัฒนาระบบที่เมนู \"แนะนำ\"</string>
+    <!--navigation_Exit-->
+    <string name="exit_msg">คุณต้องการ\nปิดแอปพลิเคชัน \?</string>
+    <string name="exit_done">ปิดเดี๋ยวนี้</string>
+    <string name="exit_cancel">ยกเลิก</string>
 
 
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="10dp">
 
@@ -41,122 +41,281 @@
             android:orientation="vertical"
             android:padding="10dp">
 
-            <ScrollView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:orientation="vertical"
                 tools:ignore="UselessParent">
+
+                <TextView
+                    android:id="@+id/textView19"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:text="@string/txtM123"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxAIS"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:text="@string/settingAIS"
+                    android:textColor="@color/text_topup_pad_black"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/editTextAIS"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_inactive"
+                    android:digits="0123456789"
+                    android:enabled="false"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:maxLength="4"
+                    android:maxLines="1"
+                    android:padding="8dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/text_topup_pad"
+                    android:textColorHint="@color/background_material_light"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    tools:ignore="PrivateResource" />
+
+                <Space
+                    android:id="@+id/space5"
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxDTAC"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:text="@string/settingDTAC"
+                    android:textColor="@color/text_topup_pad_black"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/editTextDTAC"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_inactive"
+                    android:digits="0123456789"
+                    android:enabled="false"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:maxLength="4"
+                    android:maxLines="1"
+                    android:padding="8dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/text_topup_pad"
+                    android:textColorHint="@color/background_material_light"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    tools:ignore="PrivateResource" />
+
+                <Space
+                    android:id="@+id/space2"
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxTRUE"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:text="@string/settingTRUE"
+                    android:textColor="@color/text_topup_pad_black"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/editTextTRUE"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_inactive"
+                    android:digits="0123456789"
+                    android:enabled="false"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:maxLength="4"
+                    android:maxLines="1"
+                    android:padding="8dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/text_topup_pad"
+                    android:textColorHint="@color/background_material_light"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    tools:ignore="PrivateResource" />
+
+                <Space
+                    android:id="@+id/space3"
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxCAT"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:text="@string/settingCAT"
+                    android:textColor="@color/text_topup_pad_black"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/textView18"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settingCAT_1" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                tools:ignore="UselessParent">
+
+                <TextView
+                    android:id="@+id/textView22"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="8dp"
+                    android:text="@string/settingThemeHeader"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxThemeDefault"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:padding="8dp"
+                    android:text="@string/settingTheme2"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical" >
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/textView19"
+                        android:id="@+id/textView26"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="20dp"
-                        android:text="@string/txtM123"
-                        android:textColor="@android:color/black"
-                        android:textSize="20sp" />
+                        android:layout_weight="1"
+                        android:background="@drawable/button_select_ais_default"
+                        android:gravity="right"
+                        android:padding="16dp"
+                        android:text="@string/item_AIS"
+                        android:textColor="@android:color/black" />
 
-                    <CheckBox
-                        android:id="@+id/checkBoxAIS"
+                    <TextView
+                        android:id="@+id/textView27"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:checked="false"
-                        android:text="@string/settingAIS"
-                        android:textColor="@color/text_topup_pad_black"
-                        android:textSize="20sp" />
+                        android:layout_weight="1"
+                        android:background="@drawable/button_select_dtac_default"
+                        android:gravity="right"
+                        android:padding="16dp"
+                        android:text="@string/item_DTAC"
+                        android:textColor="@android:color/black" />
 
-                    <EditText
-                        android:id="@+id/editTextAIS"
+                    <TextView
+                        android:id="@+id/textView28"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/border_inactive"
-                        android:digits="0123456789"
-                        android:enabled="false"
-                        android:gravity="center"
-                        android:inputType="number"
-                        android:maxLength="4"
-                        android:maxLines="1"
-                        android:padding="8dp"
-                        android:textAlignment="center"
-                        android:textColor="@color/text_topup_pad"
-                        android:textColorHint="@color/background_material_light"
-                        android:textSize="25sp"
-                        android:textStyle="bold"
-                        tools:ignore="PrivateResource" />
+                        android:layout_weight="1"
+                        android:background="@drawable/button_select_true_default"
+                        android:gravity="right"
+                        android:padding="16dp"
+                        android:text="@string/item_TRUE"
+                        android:textColor="@android:color/black" />
 
-                    <Space
-                        android:id="@+id/space5"
-                        android:layout_width="match_parent"
-                        android:layout_height="10dp" />
-
-                    <CheckBox
-                        android:id="@+id/checkBoxDTAC"
+                    <TextView
+                        android:id="@+id/textView92"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:checked="false"
-                        android:text="@string/settingDTAC"
-                        android:textColor="@color/text_topup_pad_black"
-                        android:textSize="20sp" />
-
-                    <EditText
-                        android:id="@+id/editTextDTAC"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/border_inactive"
-                        android:digits="0123456789"
-                        android:enabled="false"
-                        android:gravity="center"
-                        android:inputType="number"
-                        android:maxLength="4"
-                        android:maxLines="1"
-                        android:padding="8dp"
-                        android:textAlignment="center"
-                        android:textColor="@color/text_topup_pad"
-                        android:textColorHint="@color/background_material_light"
-                        android:textSize="25sp"
-                        android:textStyle="bold"
-                        tools:ignore="PrivateResource" />
-
-                    <Space
-                        android:id="@+id/space2"
-                        android:layout_width="match_parent"
-                        android:layout_height="10dp" />
-
-                    <CheckBox
-                        android:id="@+id/checkBoxTRUE"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:checked="false"
-                        android:text="@string/settingTRUE"
-                        android:textColor="@color/text_topup_pad_black"
-                        android:textSize="20sp" />
-
-                    <EditText
-                        android:id="@+id/editTextTRUE"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/border_inactive"
-                        android:digits="0123456789"
-                        android:enabled="false"
-                        android:gravity="center"
-                        android:inputType="number"
-                        android:maxLength="4"
-                        android:maxLines="1"
-                        android:padding="8dp"
-                        android:textAlignment="center"
-                        android:textColor="@color/text_topup_pad"
-                        android:textColorHint="@color/background_material_light"
-                        android:textSize="25sp"
-                        android:textStyle="bold"
-                        tools:ignore="PrivateResource" />
-
+                        android:layout_weight="1"
+                        android:background="@drawable/button_select_cat_default"
+                        android:gravity="right"
+                        android:padding="16dp"
+                        android:text="@string/item_CAT"
+                        android:textColor="@android:color/black" />
                 </LinearLayout>
-            </ScrollView>
 
+                <CheckBox
+                    android:id="@+id/checkBoxThemePastel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:padding="8dp"
+                    android:text="@string/settingTheme1"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView25"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_select_ais_pastel"
+                        android:gravity="right"
+                        android:padding="16dp"
+                        android:text="@string/item_AIS"
+                        android:textColor="@android:color/black" />
+
+                    <TextView
+                        android:id="@+id/textView24"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_select_dtac_pastel"
+                        android:gravity="right"
+                        android:padding="16dp"
+                        android:text="@string/item_DTAC"
+                        android:textColor="@android:color/black" />
+
+                    <TextView
+                        android:id="@+id/textView23"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_select_true_pastel"
+                        android:gravity="right"
+                        android:padding="16dp"
+                        android:text="@string/item_TRUE"
+                        android:textColor="@android:color/black" />
+
+                    <TextView
+                        android:id="@+id/textView91"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_select_cat_pastel"
+                        android:gravity="right"
+                        android:padding="16dp"
+                        android:text="@string/item_CAT"
+                        android:textColor="@android:color/black" />
+                </LinearLayout>
+
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -184,4 +343,4 @@
     </LinearLayout>
 
 
-</RelativeLayout>
+</ScrollView>

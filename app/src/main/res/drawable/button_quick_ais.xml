@@ -12,12 +12,12 @@
             <item>
                 <shape android:shape="rectangle">
                     <corners android:radius="8dp" />
-                    <solid android:color="@color/bg_topup_ais" />
+                    <solid android:color="@color/bg_topup_ais_pastel" />
                     <stroke android:width="3.0dip" android:color="#fff" />
                     <gradient android:angle="180" android:type="linear"
                         android:startColor="#fff"
                         android:centerColor="#fff"
-                        android:endColor="@color/bg_topup_ais" />
+                        android:endColor="@color/bg_topup_ais_pastel" />
                 </shape>
             </item>
         </layer-list>

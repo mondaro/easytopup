@@ -13,8 +13,10 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -39,14 +41,14 @@ import com.mondaro.easytopup.sqlite.DBHelper;
 import com.mondaro.easytopup.sqlite.SimpleDBDial;
 
 public class TopupFragment extends Fragment {
-    String tmpDigit = "";
+    String tmpDigit = "",tmpLabel = "";
     char target ='1';
     int mode = 0;
-    TextView txtphone,txtcost,txtQuick1,txtQuick2,txtQuick3;
+    TextView txtphone,txtcost,txtQuick1,txtQuick2,txtQuick3,labelAIS,labelDTAC,labelTRUE,labelCAT;
     Button btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btnOK,btnDel,btnContact,btnHistory;
-    LinearLayout sltAIS, sltDTAC, sltTRUE, slt1, slt2, slt3;
-    FrameLayout bgcolor;
-    String USERPIN_AIS, USERPIN_TRUE, USERPIN_DTAC,LASTPHONE,CHK_SH;
+    LinearLayout bgcolor,sltAIS, sltDTAC, sltTRUE, sltCAT, slt1, slt2, slt3, slt4;
+    String USERPIN_AIS, USERPIN_DTAC, USERPIN_TRUE, USERPIN_CAT,LASTPHONE,CHK_THEME;
+    int bgAIS,bgDTAC,bgTRUE,bgCAT,tabAIS,tabDTAC,tabTRUE,tabCAT;
     List<String> getPhone;
     SharedPreferences sharedPref;
     SharedPreferences.Editor edt;
@@ -63,11 +65,14 @@ public class TopupFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_topup, container, false);
 
         sharedPref = this.getActivity().getPreferences(Context.MODE_PRIVATE);
-        USERPIN_AIS = sharedPref.getString("UID1", "");
-        USERPIN_TRUE = sharedPref.getString("UID2", "");
-        USERPIN_DTAC = sharedPref.getString("UID3", "");
-        String getCheck = sharedPref.getString("CHK","");
+        USERPIN_AIS = sharedPref.getString("UID_AIS", "");
+        USERPIN_DTAC = sharedPref.getString("UID_DTAC", "");
+        USERPIN_TRUE = sharedPref.getString("UID_TRUE", "");
+        USERPIN_CAT = sharedPref.getString("UID_CAT", "");
+        CHK_THEME = sharedPref.getString("THEME", "");
+        String getCheck = sharedPref.getString("CHK_OK","");
         edt = sharedPref.edit();
+        edt.putString("UID1", "");edt.putString("UID2", "");edt.putString("UID3", "");edt.putString("CHK", "");
         edt.apply();
         int year = Calendar.getInstance().get(Calendar.YEAR);
         chkNewRoll(year);
@@ -76,7 +81,7 @@ public class TopupFragment extends Fragment {
             Toast.makeText(getActivity(), "ผลการตรวจสอบ :\r\nเครื่องนี้ยังไม่ได้ทำรายการตั้งค่าคะ\r\n\n", Toast.LENGTH_LONG).show();
             ((MainActivity) getActivity()).displayView(4);
         }else{
-            bgcolor = (FrameLayout)rootView.findViewById(R.id.bgTheme);
+            bgcolor = (LinearLayout)rootView.findViewById(R.id.bgTheme);
             btnHistory = (Button) rootView.findViewById(R.id.btnHistory);
             btnContact = (Button) rootView.findViewById(R.id.btnFindContact);
             txtphone = (TextView) rootView.findViewById(R.id.textViewPhone);
@@ -84,6 +89,10 @@ public class TopupFragment extends Fragment {
             txtQuick1 = (TextView) rootView.findViewById(R.id.textViewDial1);
             txtQuick2 = (TextView) rootView.findViewById(R.id.textViewDial2);
             txtQuick3 = (TextView) rootView.findViewById(R.id.textViewDial3);
+            labelAIS = (TextView) rootView.findViewById(R.id.textViewAIS);
+            labelDTAC = (TextView) rootView.findViewById(R.id.textViewDTAC);
+            labelTRUE = (TextView) rootView.findViewById(R.id.textViewTRUE);
+            labelCAT = (TextView) rootView.findViewById(R.id.textViewCAT);
             btn0 = (Button) rootView.findViewById(R.id.button0);
             btn1 = (Button) rootView.findViewById(R.id.button1);
             btn2 = (Button) rootView.findViewById(R.id.button2);
@@ -99,9 +108,31 @@ public class TopupFragment extends Fragment {
             sltAIS = (LinearLayout) rootView.findViewById(R.id.sltAIS);
             sltDTAC = (LinearLayout) rootView.findViewById(R.id.sltDTAC);
             sltTRUE = (LinearLayout) rootView.findViewById(R.id.sltTRUE);
+            sltCAT = (LinearLayout) rootView.findViewById(R.id.sltCAT);
             slt1 = (LinearLayout) rootView.findViewById(R.id.slt1);
             slt2 = (LinearLayout) rootView.findViewById(R.id.slt2);
             slt3 = (LinearLayout) rootView.findViewById(R.id.slt3);
+            slt4 = (LinearLayout) rootView.findViewById(R.id.slt4);
+
+            if(CHK_THEME.equals("A")){
+                bgAIS = R.color.bg_topup_ais_default;
+                bgDTAC = R.color.bg_topup_dtac_default;
+                bgTRUE = R.color.bg_topup_true_default;
+                bgCAT = R.color.bg_topup_cat_default;
+                tabAIS = R.drawable.button_select_ais_default;
+                tabDTAC = R.drawable.button_select_dtac_default;
+                tabTRUE = R.drawable.button_select_true_default;
+                tabCAT = R.drawable.button_select_cat_default;
+            }else{
+                bgAIS = R.color.bg_topup_ais_pastel;
+                bgDTAC = R.color.bg_topup_dtac_pastel;
+                bgTRUE = R.color.bg_topup_true_pastel;
+                bgCAT = R.color.bg_topup_cat_pastel;
+                tabAIS = R.drawable.button_select_ais_pastel;
+                tabDTAC = R.drawable.button_select_dtac_pastel;
+                tabTRUE = R.drawable.button_select_true_pastel;
+                tabCAT = R.drawable.button_select_cat_pastel;
+            }
 
             btnHistory.setOnClickListener(new OnClickListener() {@Override public void onClick(View v) {
                 if(target=='1'){
@@ -138,51 +169,68 @@ public class TopupFragment extends Fragment {
                 }
             }});
             sltAIS.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
-                bgcolor.setBackgroundResource(R.color.bg_topup_ais);
+                bgcolor.setBackgroundResource(bgAIS);
                 mode = 1;
+                showLabel("1000");
             }});
             sltDTAC.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
-                bgcolor.setBackgroundResource(R.color.bg_topup_dtac);
+                bgcolor.setBackgroundResource(bgDTAC);
                 mode = 2;
+                showLabel("0100");
             }});
             sltTRUE.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
-                bgcolor.setBackgroundResource(R.color.bg_topup_true);
+                bgcolor.setBackgroundResource(bgTRUE);
                 mode = 3;
+                showLabel("0010");
+            }});
+            sltCAT.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
+                bgcolor.setBackgroundResource(bgCAT);
+                mode = 4;
+                showLabel("0001");
             }});
 
-
+            if(USERPIN_CAT.equals("")){
+                tmpLabel = "0";
+                slt4.setVisibility(View.GONE);
+            }else{
+                tmpLabel = "1";
+                slt4.setVisibility(View.VISIBLE);
+                sltCAT.setBackgroundResource(tabCAT);
+                bgcolor.setBackgroundResource(bgCAT);
+                sltCAT.performClick();
+            }
             if(USERPIN_TRUE.equals("")){
-                CHK_SH = "0";
+                tmpLabel = "0" + tmpLabel;
                 slt3.setVisibility(View.GONE);
             }else{
-                CHK_SH = "1";
+                tmpLabel = "1" + tmpLabel;
                 slt3.setVisibility(View.VISIBLE);
+                sltTRUE.setBackgroundResource(tabTRUE);
+                bgcolor.setBackgroundResource(bgTRUE);
                 sltTRUE.performClick();
             }
             if(USERPIN_DTAC.equals("")){
-                CHK_SH = "0" + CHK_SH;
+                tmpLabel = "0" + tmpLabel;
                 slt2.setVisibility(View.GONE);
             }else{
-                CHK_SH = "1" + CHK_SH;
+                tmpLabel = "1" + tmpLabel;
                 slt2.setVisibility(View.VISIBLE);
+                sltDTAC.setBackgroundResource(tabDTAC);
+                bgcolor.setBackgroundResource(bgDTAC);
                 sltDTAC.performClick();
             }
             if(USERPIN_AIS.equals("")){
-                CHK_SH = "0" + CHK_SH;
+                tmpLabel = "0" + tmpLabel;
                 slt1.setVisibility(View.GONE);
             }else{
-                CHK_SH = "1" + CHK_SH;
+                tmpLabel = "1" + tmpLabel;
                 slt1.setVisibility(View.VISIBLE);
+                sltAIS.setBackgroundResource(tabAIS);
+                bgcolor.setBackgroundResource(bgAIS);
                 sltAIS.performClick();
             }
-            switch (CHK_SH){
-                case "110" :
-                    slt1.setBackgroundResource(R.color.bg_topup_dtac);break;
-                case "101" :
-                    slt1.setBackgroundResource(R.color.bg_topup_true);break;
-                case "011" :
-                    slt2.setBackgroundResource(R.color.bg_topup_true);break;
-            }
+
+            showLabel(tmpLabel);
 
             btn0.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {InsDigit("0");}});
             btn1.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {InsDigit("1");}});
@@ -251,6 +299,7 @@ public class TopupFragment extends Fragment {
                     if (hasCallPhonePermission != PackageManager.PERMISSION_GRANTED) {
                         if (!ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
                                 Manifest.permission.CALL_PHONE)) {
+                            tmpDigit = "";
                             showMessageOK("ต้องการยืนยันการอนุญาตเข้าถึง\n\n[ระบบการโทร]\n\nเพื่อให้แอปพลิเคชันทำงานได้",
                                     new DialogInterface.OnClickListener() {
                                         @Override
@@ -276,6 +325,9 @@ public class TopupFragment extends Fragment {
                                 break;
                             case 3:
                                 TopupTRUE();
+                                break;
+                            case 4:
+                                TopupCAT();
                                 break;
                         }
                         saveToDB();
@@ -329,9 +381,21 @@ public class TopupFragment extends Fragment {
     }
 
     private void TopupAIS() {
+        Log.d("Test", "To this");
         try {
             Intent callIntent = new Intent(Intent.ACTION_CALL);
             String txtTel = "*123*" + USERPIN_AIS + "*" + txtphone.getText().toString().trim() + "*" + txtcost.getText().toString().trim() + "%23";
+            callIntent.setData(Uri.parse("tel:" + txtTel));
+            startActivity(callIntent);
+        } catch (ActivityNotFoundException activityException) {
+            Log.d("dialing-example", "Call failed", activityException);
+        }
+    }
+
+    private void TopupDTAC() {
+        try {
+            Intent callIntent = new Intent(Intent.ACTION_CALL);
+            String txtTel = "*211*1*" + txtphone.getText().toString().trim() + "*" + USERPIN_DTAC + "*" + txtcost.getText().toString().trim() + "*1*" + "%23";
             callIntent.setData(Uri.parse("tel:" + txtTel));
             startActivity(callIntent);
         } catch (ActivityNotFoundException activityException) {
@@ -350,10 +414,10 @@ public class TopupFragment extends Fragment {
         }
     }
 
-    private void TopupDTAC() {
+    private void TopupCAT() {
         try {
             Intent callIntent = new Intent(Intent.ACTION_CALL);
-            String txtTel = "*211*1*" + txtphone.getText().toString().trim() + "*" + USERPIN_DTAC + "*" + txtcost.getText().toString().trim() + "*1*" + "%23";
+            String txtTel = "*215*" + txtphone.getText().toString().trim() + "*" + txtcost.getText().toString().trim() + "%23";
             callIntent.setData(Uri.parse("tel:" + txtTel));
             startActivity(callIntent);
         } catch (ActivityNotFoundException activityException) {
@@ -570,16 +634,19 @@ public class TopupFragment extends Fragment {
                 case "1" :txtQuick1.setBackgroundResource(R.drawable.button_quick_ais);break;
                 case "2" :txtQuick1.setBackgroundResource(R.drawable.button_quick_dtac);break;
                 case "3" :txtQuick1.setBackgroundResource(R.drawable.button_quick_true);break;
+                case "4" :txtQuick1.setBackgroundResource(R.drawable.button_quick_cat);break;
             }
             switch (getPhone.get(1).substring(10,11)){
                 case "1" :txtQuick2.setBackgroundResource(R.drawable.button_quick_ais);break;
                 case "2" :txtQuick2.setBackgroundResource(R.drawable.button_quick_dtac);break;
                 case "3" :txtQuick2.setBackgroundResource(R.drawable.button_quick_true);break;
+                case "4" :txtQuick2.setBackgroundResource(R.drawable.button_quick_cat);break;
             }
             switch (getPhone.get(2).substring(10,11)){
                 case "1" :txtQuick3.setBackgroundResource(R.drawable.button_quick_ais);break;
                 case "2" :txtQuick3.setBackgroundResource(R.drawable.button_quick_dtac);break;
                 case "3" :txtQuick3.setBackgroundResource(R.drawable.button_quick_true);break;
+                case "4" :txtQuick3.setBackgroundResource(R.drawable.button_quick_cat);break;
             }
         }catch (Exception e){
             //No code
@@ -625,6 +692,14 @@ public class TopupFragment extends Fragment {
                     sltTRUE.performClick();
                 }
                 break;
+            case "4":
+                if(USERPIN_CAT.equals("")){
+                    Toast.makeText(getActivity(), "หมายเลขนี้อยู่ในระบบที่คุณไม่ได้ตั้งค่าไว้ค่ะ", Toast.LENGTH_LONG).show();
+                    txtphone.setText("");
+                }else{
+                    sltCAT.performClick();
+                }
+                break;
         }
         target = '2';tmpDigit = "";
         txtphone.setBackgroundResource(R.drawable.border_inactive);
@@ -656,6 +731,111 @@ public class TopupFragment extends Fragment {
         cv.put(SimpleDBDial.ContactDial.COLS_AMOUNT, 0);
         _writedatabase.update(SimpleDBDial.ContactDial.TABLE_NAME,cv,null,null);
 
+    }
+
+    private void showLabel(String lb){
+        switch (lb){
+            case "1000" :case "1100" :case "1010" :case "1001" :
+                labelAIS.setVisibility(View.VISIBLE);
+                labelDTAC.setVisibility(View.GONE);
+                labelTRUE.setVisibility(View.GONE);
+                labelCAT.setVisibility(View.GONE);
+                slt1.setLayoutParams(new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT,
+                        1.0f));
+                slt2.setLayoutParams(new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT,
+                        0.0f));
+                slt3.setLayoutParams(new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT,
+                        0.0f));
+                slt4.setLayoutParams(new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT,
+                        0.0f));
+                break;
+            case "0100" :case "0110" :case "0101" :
+                labelAIS.setVisibility(View.GONE);
+                labelDTAC.setVisibility(View.VISIBLE);
+                labelTRUE.setVisibility(View.GONE);
+                labelCAT.setVisibility(View.GONE);
+                slt1.setLayoutParams(new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT,
+                        0.0f));
+                slt2.setLayoutParams(new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT,
+                        1.0f));
+                slt3.setLayoutParams(new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT,
+                        0.0f));
+                slt4.setLayoutParams(new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT,
+                        0.0f));
+                break;
+            case "0010" :case "0011" :
+                labelAIS.setVisibility(View.GONE);
+                labelDTAC.setVisibility(View.GONE);
+                labelTRUE.setVisibility(View.VISIBLE);
+                labelCAT.setVisibility(View.GONE);
+                slt1.setLayoutParams(new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT,
+                        0.0f));
+                slt2.setLayoutParams(new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT,
+                        0.0f));
+                slt3.setLayoutParams(new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT,
+                        1.0f));
+                slt4.setLayoutParams(new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT,
+                        0.0f));
+                break;
+            case "0001" :
+                labelAIS.setVisibility(View.GONE);
+                labelDTAC.setVisibility(View.GONE);
+                labelTRUE.setVisibility(View.GONE);
+                labelCAT.setVisibility(View.VISIBLE);
+                slt1.setLayoutParams(new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT,
+                        0.0f));
+                slt2.setLayoutParams(new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT,
+                        0.0f));
+                slt3.setLayoutParams(new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT,
+                        0.0f));
+                slt4.setLayoutParams(new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT,
+                        1.0f));
+                break;
+        }
+    }
+    public static void setBackgroundResource(@NonNull View view, @DrawableRes int resId) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            int paddingTop = view.getPaddingTop();
+            int paddingLeft = view.getPaddingLeft();
+            int paddingRight = view.getPaddingRight();
+            int paddingBottom = view.getPaddingBottom();
+            view.setBackgroundResource(resId);
+            view.setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom);
+        } else {
+            view.setBackgroundResource(resId);
+        }
     }
 }
 

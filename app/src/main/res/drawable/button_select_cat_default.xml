@@ -26,7 +26,7 @@
             <item>
                 <shape android:shape="rectangle">
                     <corners android:bottomLeftRadius="25dp"/>
-                    <solid android:color="@color/bg_topup_dtac"/>
+                    <solid android:color="@color/bg_topup_cat_default"/>
                 </shape>
             </item>
         </layer-list>

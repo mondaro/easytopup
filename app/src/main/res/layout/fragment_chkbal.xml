@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="16dp"
-            android:text="@string/header_CHKBalance"
+            android:text="@string/checkbalanceHeader"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/text_topup_pad" />
     </LinearLayout>
@@ -26,7 +26,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/text_topup_pad"
+        android:background="@color/counter_text_bg"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="32dp">
@@ -36,18 +36,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
+            android:layout_marginBottom="8dp"
             android:layout_weight="1"
-            android:background="@drawable/button_select_ais"
-            android:foregroundGravity="center"
+            android:background="@drawable/button_quick_ais"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="2dp">
 
             <ImageView
                 android:id="@+id/imageViewAIS"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:srcCompat="@mipmap/icon_mipm_ais"
+                app:srcCompat="@drawable/icon_ais"
                 tools:ignore="ContentDescription" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -55,17 +57,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
+            android:layout_marginBottom="8dp"
             android:layout_weight="1"
-            android:background="@drawable/button_select_dtac"
+            android:background="@drawable/button_quick_dtac"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            android:padding="2dp">
 
             <ImageView
                 android:id="@+id/imageViewDTAC"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:srcCompat="@mipmap/icon_mipm_dtac"
+                app:srcCompat="@drawable/icon_dtac"
                 tools:ignore="ContentDescription" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -73,17 +78,42 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
+            android:layout_marginBottom="8dp"
             android:layout_weight="1"
-            android:background="@drawable/button_select_true"
+            android:background="@drawable/button_quick_true"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            android:padding="2dp">
 
             <ImageView
                 android:id="@+id/imageViewTRUE"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:srcCompat="@mipmap/icon_mipm_true"
+                app:srcCompat="@drawable/icon_truemove"
                 tools:ignore="ContentDescription" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/chkbalCAT"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_quick_cat"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="2dp"
+            android:visibility="visible">
+
+            <ImageView
+                android:id="@+id/imageViewCAT"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/icon_cat"
+                tools:ignore="ContentDescription" />
+
         </LinearLayout>
 
     </LinearLayout>

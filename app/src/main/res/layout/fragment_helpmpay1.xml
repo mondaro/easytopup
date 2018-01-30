@@ -38,7 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:background="@color/bg_topup_true"
+            android:background="@drawable/button_exit"
             android:padding="10dp"
             android:text="@string/btn_ClosePopup"
             android:textSize="20sp" />

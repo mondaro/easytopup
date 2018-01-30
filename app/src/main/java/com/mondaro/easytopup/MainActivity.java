@@ -87,7 +87,7 @@ public class MainActivity extends ActionBarActivity {
         });
 
         if (savedInstanceState == null) {
-            String getCheck = sharedPref.getString("CHK","");
+            String getCheck = sharedPref.getString("CHK_OK","");
             if(getCheck.equals("")){
                 Toast.makeText(MainActivity.this, "ผลการตรวจสอบ :\r\n\nเครื่องนี้ยังไม่ได้ทำรายการตั้งค่าคะ\r\n\n", Toast.LENGTH_LONG).show();
                 displayView(4);

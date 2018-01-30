@@ -3,15 +3,20 @@
     <color name="list_divider">#2c4c53</color>
     <color name="list_background">#fdffff</color>
     <color name="list_background_pressed">#ea4b49</color>
-    <color name="counter_text_bg">#fff47a</color>
+    <color name="counter_text_bg">#fce354</color>
     <color name="list_item_title">#e9272b2f</color>
     <color name="counter_text_color">#ff695c</color>
     <color name="text_btn_pad">#272b2f</color>
     <color name="text_topup_pad">#f5f8f7</color>
     <color name="text_topup_pad_black">#e9000000</color>
     <color name="bg_topup_pad_black">#e9000000</color>
-    <color name="bg_topup_ais">#6adab4</color>
-    <color name="bg_topup_dtac">#69d8e2</color>
-    <color name="bg_topup_true">#fa8765</color>
-    <color name="bg_content_addons">#ade23b</color>
+    <color name="bg_topup_ais_pastel">#6adab4</color>
+    <color name="bg_topup_dtac_pastel">#57ced9</color>
+    <color name="bg_topup_true_pastel">#fa6866</color>
+    <color name="bg_topup_cat_pastel">#fac848</color>
+    <color name="bg_topup_ais_default">#15c13e</color>
+    <color name="bg_topup_dtac_default">#13b1d9</color>
+    <color name="bg_topup_true_default">#ff260d</color>
+    <color name="bg_topup_cat_default">#ffa303</color>
+    <color name="bg_content_addons">#7fd926</color>
 </resources>

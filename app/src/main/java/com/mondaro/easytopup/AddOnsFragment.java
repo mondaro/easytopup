@@ -21,6 +21,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,7 +31,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 public class AddOnsFragment extends Fragment {
-    String getmPayID,type,am_card,uid1, opBill,opDays,txtphoneContact,phoneTDRecent;
+    String getmPayID,type,am_card, uidAIS, opBill,opDays,txtphoneContact,phoneTDRecent;
     EditText t_am,t_id, t_phoneCard,t_phoneBill,t_phoneDays;
     Spinner spn1,spn2,spn3,spn4;
     Button btnchkbal,btnchkcom,btnpass1,btnpass2, btnwh1,btnwh2,btnwh3,btnwh4,
@@ -87,9 +88,11 @@ public class AddOnsFragment extends Fragment {
         content3 = (LinearLayout)rootView.findViewById(R.id.contentC3);
         content4 = (LinearLayout)rootView.findViewById(R.id.contentC4);
 
+        final InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+
         sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-        getmPayID = sharedPref.getString("mpay","");
-        uid1 = sharedPref.getString("UID1", "");
+        getmPayID = sharedPref.getString("MPAY","");
+        uidAIS = sharedPref.getString("UID_AIS", "");
         edt = sharedPref.edit();
 
         if(getmPayID.equals("")){
@@ -97,7 +100,7 @@ public class AddOnsFragment extends Fragment {
         }else{
             t_id.setText(getmPayID.trim());
             t_id.setEnabled(false);
-            btnaddmpayID.setVisibility(View.GONE);
+            btnaddmpayID.setText("-");
         }
 
         type = "0";
@@ -203,7 +206,7 @@ public class AddOnsFragment extends Fragment {
                 }else{
                     try {
                         Intent callIntent = new Intent(Intent.ACTION_CALL);
-                        String txtTel = "*228*" + uid1 + "*" + t_phoneCard.getText().toString().trim()
+                        String txtTel = "*228*" + uidAIS + "*" + t_phoneCard.getText().toString().trim()
                                 + "*" + am_card + "%23";
                         callIntent.setData(Uri.parse("tel:" + txtTel));
                         startActivity(callIntent);
@@ -361,18 +364,26 @@ public class AddOnsFragment extends Fragment {
         btnaddmpayID.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(t_id.getText().toString().trim().equals("")){
-                    Toast.makeText(getActivity(), "แจ้งเตือน :\r\nกรุณากรอกรหัสประจำตัว mPay ก่อนทำการบันทึกคะ\r\n",
-                            Toast.LENGTH_SHORT).show();
-                }else if(t_id.getText().length()<4){
-                    Toast.makeText(getActivity(), "แจ้งเตือน :\r\nกรุณากรอกรหัสประจำตัว mPay ให้ครบ 4 หลักด้วยคะ\r\n",
-                            Toast.LENGTH_SHORT).show();
-                }else{
-                    edt.putString("mpay",t_id.getText().toString().trim());
+                if(btnaddmpayID.getText().equals("-")){
+                    t_id.setText("");
+                    getmPayID = "";
+                    edt.putString("MPAY","");
                     edt.apply();
-                    Toast.makeText(getActivity(), "แจ้งเตือน :\r\nบันทึกรหัสประจำตัว mPay เรียบร้อยแล้วคะ\r\n",
-                            Toast.LENGTH_SHORT).show();
                     ((MainActivity) getActivity()).displayView(3);
+                }else{
+                    if(t_id.getText().toString().trim().equals("")){
+                        Toast.makeText(getActivity(), "แจ้งเตือน :\r\nกรุณากรอกรหัสประจำตัว mPay ก่อนทำการบันทึกคะ\r\n",
+                                Toast.LENGTH_SHORT).show();
+                    }else if(t_id.getText().length()<4){
+                        Toast.makeText(getActivity(), "แจ้งเตือน :\r\nกรุณากรอกรหัสประจำตัว mPay ให้ครบ 4 หลักด้วยคะ\r\n",
+                                Toast.LENGTH_SHORT).show();
+                    }else{
+                        edt.putString("MPAY",t_id.getText().toString().trim());
+                        edt.apply();
+                        Toast.makeText(getActivity(), "แจ้งเตือน :\r\nบันทึกรหัสประจำตัว mPay เรียบร้อยแล้วคะ\r\n",
+                                Toast.LENGTH_SHORT).show();
+                        ((MainActivity) getActivity()).displayView(3);
+                    }
                 }
             }
         });
@@ -639,21 +650,21 @@ public class AddOnsFragment extends Fragment {
             try{
                 t_phoneCard.setText(number);
             }catch (Exception e){
-                Toast.makeText(getActivity(), "\n** พบข้อผิดพลาด **\n\nกรุณาแจ้งผู้พัฒนาระบบ\n\nmondaro23@gmail.com\n\n\n",
+                Toast.makeText(getActivity(), R.string.hintReport,
                         Toast.LENGTH_LONG).show();
             }
         }else if(requestCode == 2){
             try{
                 t_phoneBill.setText(number);
             }catch (Exception e){
-                Toast.makeText(getActivity(), "\n** พบข้อผิดพลาด **\n\nกรุณาแจ้งผู้พัฒนาระบบ\n\nmondaro23@gmail.com\n\n\n",
+                Toast.makeText(getActivity(), R.string.hintReport,
                         Toast.LENGTH_LONG).show();
             }
         }else if(requestCode == 3){
             try{
                 t_phoneDays.setText(number);
             }catch (Exception e){
-                Toast.makeText(getActivity(), "\n** พบข้อผิดพลาด **\n\nกรุณาแจ้งผู้พัฒนาระบบ\n\nmondaro23@gmail.com\n\n\n",
+                Toast.makeText(getActivity(), R.string.hintReport,
                         Toast.LENGTH_LONG).show();
             }
         }

@@ -52,7 +52,6 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:layout_weight="3"
-                    android:background="@color/bg_content_addons"
                     android:gravity="center"
                     android:orientation="horizontal"
                     tools:ignore="NestedWeights">
@@ -63,10 +62,12 @@
                         android:layout_height="match_parent"
                         android:layout_gravity="left"
                         android:layout_weight="1"
+                        android:background="@color/bg_content_addons"
                         android:gravity="center_vertical|center_horizontal"
                         android:text="@string/txt_MPAY_ID"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="@color/text_topup_pad" />
+                        android:textColor="@color/text_topup_pad"
+                        android:textSize="14sp" />
 
                     <EditText
                         android:id="@+id/editText_ID"
@@ -79,9 +80,9 @@
                         android:hint="@string/hintmPay"
                         android:inputType="phone"
                         android:maxLength="4"
-                        android:padding="5dp"
+                        android:padding="4dp"
                         android:textColor="@color/bg_topup_pad_black"
-                        android:textSize="30sp"
+                        android:textSize="24sp"
                         android:textStyle="bold" />
 
                     <Button
@@ -90,8 +91,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_gravity="right"
-                        android:layout_weight="0.5"
-                        android:background="@android:color/holo_red_light"
+                        android:layout_marginLeft="8dp"
+                        android:background="@drawable/button_exit"
                         android:gravity="center_vertical|center_horizontal"
                         android:text="@string/txt_plus"
                         android:textColor="@color/background_material_light"
@@ -219,7 +220,7 @@
                         android:layout_height="50dp"
                         android:layout_gravity="right"
                         android:layout_marginRight="10dp"
-                        android:background="@android:color/holo_purple"
+                        android:background="@drawable/button_info"
                         android:gravity="center"
                         android:text="@string/txt_question"
                         android:textSize="25sp" />
@@ -403,7 +404,7 @@
                         android:layout_height="50dp"
                         android:layout_gravity="right"
                         android:layout_marginRight="10dp"
-                        android:background="@android:color/holo_purple"
+                        android:background="@drawable/button_info"
                         android:gravity="center"
                         android:text="@string/txt_question"
                         android:textSize="25sp" />
@@ -430,6 +431,7 @@
                             android:layout_height="match_parent"
                             android:layout_marginTop="8dp"
                             android:layout_weight="1"
+                            android:gravity="center_vertical"
                             android:text="@string/txt_phoneBuyCard"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:textColor="@color/text_topup_pad" />
@@ -437,8 +439,9 @@
                         <Button
                             android:id="@+id/button_contactBuyCard"
                             android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.5"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@mipmap/ic_account_circle_black_36dp"
+                            android:padding="8dp"
                             android:text="@string/btnContact" />
                     </LinearLayout>
 
@@ -456,7 +459,6 @@
                         android:inputType="phone"
                         android:maxLength="10"
                         android:maxLines="1"
-                        android:padding="5dp"
                         android:textColor="@color/bg_topup_pad_black"
                         android:textSize="30sp"
                         android:textStyle="bold" />
@@ -533,7 +535,7 @@
                         android:layout_height="50dp"
                         android:layout_gravity="right"
                         android:layout_marginRight="10dp"
-                        android:background="@android:color/holo_purple"
+                        android:background="@drawable/button_info"
                         android:gravity="center"
                         android:text="@string/txt_question"
                         android:textSize="25sp" />
@@ -560,6 +562,7 @@
                             android:layout_height="match_parent"
                             android:layout_marginTop="8dp"
                             android:layout_weight="1"
+                            android:gravity="center_vertical"
                             android:text="@string/txt_phoneBuyCard"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:textColor="@color/text_topup_pad" />
@@ -568,30 +571,31 @@
                             android:id="@+id/button_contactBill"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.5"
+                            android:drawableLeft="@mipmap/ic_account_circle_black_36dp"
+                            android:padding="8dp"
                             android:text="@string/btnContact" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="horizontal">
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal"
+                        android:padding="8dp">
 
                         <EditText
                             android:id="@+id/editText_phonebill"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
-                            android:layout_marginTop="6dp"
                             android:layout_weight="1"
                             android:background="@color/text_topup_pad"
                             android:digits="0123456789"
                             android:ems="10"
                             android:gravity="center"
-                            android:hint="@string/hintPhoneBill"
+                            android:hint="@string/hintPhone"
                             android:inputType="phone"
                             android:maxLength="10"
-                            android:padding="5dp"
                             android:textColor="@color/bg_topup_pad_black"
                             android:textSize="30sp"
                             android:textStyle="bold" />
@@ -601,10 +605,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="8dp"
-                            android:layout_marginTop="8dp"
-                            android:background="@android:color/holo_red_dark"
-                            android:padding="16dp"
-                            app:srcCompat="@android:drawable/ic_notification_clear_all"
+                            android:background="@drawable/button_exit"
+                            android:padding="8dp"
+                            app:srcCompat="@mipmap/ic_refresh_black_36dp"
                             tools:ignore="ContentDescription" />
                     </LinearLayout>
 
@@ -692,7 +695,7 @@
                         android:layout_height="50dp"
                         android:layout_gravity="right"
                         android:layout_marginRight="10dp"
-                        android:background="@android:color/holo_purple"
+                        android:background="@drawable/button_info"
                         android:gravity="center"
                         android:text="@string/txt_question"
                         android:textSize="25sp" />
@@ -715,19 +718,21 @@
 
                         <TextView
                             android:id="@+id/textViewN1"
-                            android:layout_width="0dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_marginTop="8dp"
                             android:layout_weight="1"
+                            android:gravity="center_vertical"
                             android:text="@string/txt_phoneBuyCard"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:textColor="@color/text_topup_pad" />
 
                         <Button
                             android:id="@+id/button_contactTransDay"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@mipmap/ic_account_circle_black_36dp"
+                            android:padding="8dp"
                             android:text="@string/btnContact" />
 
                     </LinearLayout>
@@ -736,15 +741,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
+                        android:layout_marginTop="8dp"
                         android:gravity="center"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:padding="8dp">
 
                         <EditText
                             android:id="@+id/editText_phonedays"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
-                            android:layout_marginTop="8dp"
                             android:layout_weight="1"
                             android:background="@color/text_topup_pad"
                             android:digits="0123456789"
@@ -753,8 +759,6 @@
                             android:hint="@string/hintPhone"
                             android:inputType="phone"
                             android:maxLength="10"
-                            android:maxLines="1"
-                            android:padding="5dp"
                             android:textColor="@color/bg_topup_pad_black"
                             android:textSize="30sp"
                             android:textStyle="bold" />
@@ -765,11 +769,10 @@
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
                             android:layout_marginLeft="8dp"
-                            android:layout_marginTop="8dp"
-                            android:background="@color/bg_topup_true"
+                            android:background="@drawable/button_exit"
                             android:contentDescription=""
-                            android:padding="16dp"
-                            app:srcCompat="@android:drawable/ic_menu_recent_history"
+                            android:padding="8dp"
+                            app:srcCompat="@mipmap/ic_refresh_black_36dp"
                             tools:ignore="ContentDescription" />
                     </LinearLayout>
 

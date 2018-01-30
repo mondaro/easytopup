@@ -24,8 +24,8 @@ import android.widget.Toast;
 import com.mondaro.easytopup.R;
 
 public class ChkBalanceFragment extends Fragment {
-    LinearLayout imgAIS,imgDTAC,imgTRUE;
-    String USERPIN_AIS, USERPIN_TRUE, USERPIN_DTAC;
+    LinearLayout imgAIS,imgDTAC,imgTRUE,imgCAT;
+    String USERPIN_AIS, USERPIN_DTAC, USERPIN_TRUE, USERPIN_CAT;
     final private int REQUEST_CALL_PHONE_PERMISSIONS = 123;
 
     public ChkBalanceFragment(){}
@@ -33,15 +33,15 @@ public class ChkBalanceFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        SharedPreferences sharedPref = this.getActivity().getPreferences(Context.MODE_PRIVATE);
-        USERPIN_AIS = sharedPref.getString("UID1", "");
-        USERPIN_TRUE = sharedPref.getString("UID2", "");
-        USERPIN_DTAC = sharedPref.getString("UID3", "");
-
         View rootView = inflater.inflate(R.layout.fragment_chkbal, container, false);
+        SharedPreferences sharedPref = this.getActivity().getPreferences(Context.MODE_PRIVATE);
 
+        USERPIN_AIS = sharedPref.getString("UID_AIS", "");
+        USERPIN_DTAC = sharedPref.getString("UID_DTAC", "");
+        USERPIN_TRUE = sharedPref.getString("UID_TRUE", "");
+        USERPIN_CAT = sharedPref.getString("UID_CAT", "");
+        String getCheck = sharedPref.getString("CHK_OK","");
 
-        String getCheck = sharedPref.getString("CHK","");
         if(getCheck.equals("")){
             Toast.makeText(getActivity(), "ผลการตรวจสอบ :\r\nเครื่องนี้ยังไม่ได้ทำรายการตั้งค่าคะ\r\n\n", Toast.LENGTH_LONG).show();
             ((MainActivity) getActivity()).displayView(4);
@@ -49,22 +49,13 @@ public class ChkBalanceFragment extends Fragment {
             imgAIS = (LinearLayout) rootView.findViewById(R.id.chkbalAIS);
             imgDTAC = (LinearLayout) rootView.findViewById(R.id.chkbalDTAC);
             imgTRUE = (LinearLayout) rootView.findViewById(R.id.chkbalTRUE);
+            imgCAT = (LinearLayout) rootView.findViewById(R.id.chkbalCAT);
 
-            imgAIS.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    chkBalance(1);}});
-            imgDTAC.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    chkBalance(2);}});
-            imgTRUE.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    chkBalance(3);
-                }
-            });
-
+            if(USERPIN_CAT.equals("")){
+                imgCAT.setVisibility(View.GONE);
+            }else{
+                imgCAT.setVisibility(View.VISIBLE);
+            }
             if(USERPIN_TRUE.equals("")){
                 imgTRUE.setVisibility(View.GONE);
             }else{
@@ -80,6 +71,27 @@ public class ChkBalanceFragment extends Fragment {
             }else{
                 imgAIS.setVisibility(View.VISIBLE);
             }
+
+            imgAIS.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    chkBalance(1);}});
+            imgDTAC.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    chkBalance(2);}});
+            imgTRUE.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    chkBalance(3);
+                }
+            });
+            imgCAT.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    chkBalance(4);
+                }
+            });
         }
 
         return rootView;
@@ -113,6 +125,7 @@ public class ChkBalanceFragment extends Fragment {
                     case 1: txtTel = "*533" + "%23";break;
                     case 2: txtTel = "*211*2" + "%23";break;
                     case 3: txtTel = "*123" + "%23";break;
+                    case 4:txtTel = "*902" + "%23";break;
                 }
                 ((MainActivity) getActivity()).displayView(0);
                 callIntent.setData(Uri.parse("tel:" + txtTel));
