@@ -772,7 +772,7 @@
                             android:background="@drawable/button_exit"
                             android:contentDescription=""
                             android:padding="8dp"
-                            app:srcCompat="@mipmap/ic_refresh_black_36dp"
+                            app:srcCompat="@mipmap/ic_history_black_36dp"
                             tools:ignore="ContentDescription" />
                     </LinearLayout>
 

@@ -41,6 +41,7 @@ public class RefundFragment extends Fragment {
     LinearLayout bg,panel;
     Button btnReAIS,btnReDTAC,btnReTRUE,btnReCAT,btnRefund,btnCancel;
     ListView listViewRe;
+    TextView countRows;
     SimpleCursorAdapter adapter;
     String addr,cid, USERPIN_AIS, USERPIN_DTAC, USERPIN_TRUE,USERPIN_CAT,CHK_THEME,txtTel, strPhone, strAmount, strRef,txtVender;
     String[] separated;
@@ -66,6 +67,7 @@ public class RefundFragment extends Fragment {
         btnRefund = (Button) rootView.findViewById(R.id.btnRefund);
         btnCancel = (Button) rootView.findViewById(R.id.btnCancel);
         listViewRe = (ListView) rootView.findViewById(R.id.listViewRefund);
+        countRows = (TextView) rootView.findViewById(R.id.textViewCountRowsRefund);
 
         sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
         USERPIN_AIS = sharedPref.getString("UID_AIS", "");
@@ -77,7 +79,7 @@ public class RefundFragment extends Fragment {
 
         if(getCheck.equals("")){
             Toast.makeText(getActivity(), "ผลการตรวจสอบ :\r\nเครื่องนี้ยังไม่ได้ทำรายการตั้งค่าคะ\r\n\n", Toast.LENGTH_LONG).show();
-            ((MainActivity) getActivity()).displayView(4);
+            ((MainActivity)getActivity()).displayView(4);
         }else{
             if(CHK_THEME.equals("A")){
                 bgAIS = R.color.bg_topup_ais_default;
@@ -311,6 +313,7 @@ public class RefundFragment extends Fragment {
                 ContentResolver cr = getActivity().getContentResolver();
 
                 Cursor c = cr.query(inboxURI, reqCols, addr, null, null);
+                countRows.setText("พบ " + String.valueOf(c.getCount()) + " รายการ");
 
                 List<String> items = new ArrayList<String>();
                 while(c.moveToNext()) {

@@ -51,7 +51,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="1"
-                        android:drawableLeft="@mipmap/ic_refresh_black_36dp"
+                        android:drawableLeft="@mipmap/ic_history_black_36dp"
                         android:gravity="center"
                         android:padding="8dp"
                         android:text="@string/btnLast" />

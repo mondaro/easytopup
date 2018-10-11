@@ -1,6 +1,8 @@
 package com.mondaro.easytopup;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.net.Uri;
@@ -28,11 +30,21 @@ public class AboutFragment extends Fragment {
         btnEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-                        "mailto","mondaro23@gmail.com", null));
-                intent.putExtra(Intent.EXTRA_SUBJECT, "ติดต่อจากแอปพลิเคชั่นเติมกะตังส์");
-                intent.putExtra(Intent.EXTRA_TEXT, "");
-                startActivity(Intent.createChooser(intent, "Choose an Email client :"));
+                new AlertDialog.Builder(getActivity())
+                        .setIcon(android.R.drawable.ic_menu_info_details)
+                        .setTitle("อ่านสักนิด!!!")
+                        .setMessage("ช่องทางนี้สำหรับแจ้งปัญหาของแอปพลิเคชันเท่านั้น \nหากต้องการสมัครเป็นตัวแทนเติมเงิน กรุณากลับไปอ่านรายละเอียดหน้าเมนู \"แนะนำ\" ใหม่อีกครั้ง!!!")
+                        .setPositiveButton("เข้าใจแล้ว",new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                                        "mailto","mondaro23@gmail.com", null));
+                                intent.putExtra(Intent.EXTRA_SUBJECT, "ติดต่อจากแอปพลิเคชั่นเติมกะตังส์");
+                                intent.putExtra(Intent.EXTRA_TEXT, "");
+                                startActivity(Intent.createChooser(intent, "Choose an Email client :"));
+                            }
+                        })
+                        .show();
             }
         });
 

@@ -58,7 +58,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="1"
-                        android:drawableLeft="@android:drawable/ic_menu_recent_history"
+                        android:drawableLeft="@mipmap/ic_restore_black_48dp"
                         android:padding="3dp"
                         android:text="@string/btnLast" />
 
@@ -67,7 +67,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:drawableLeft="@android:drawable/ic_menu_view"
+                        android:drawableLeft="@mipmap/ic_account_circle_black_36dp"
                         android:gravity="center"
                         android:text="@string/btnContact" />
 
@@ -205,7 +205,7 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:background="@color/bg_topup_ais"
+                    android:background="@color/bg_topup_ais_default"
                     android:gravity="center"
                     android:orientation="horizontal"
                     android:padding="10dp">
@@ -241,7 +241,7 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:background="@color/bg_topup_dtac"
+                    android:background="@color/bg_topup_dtac_default"
                     android:gravity="center"
                     android:orientation="horizontal"
                     android:padding="10dp">
@@ -277,7 +277,7 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:background="@color/bg_topup_true"
+                    android:background="@color/bg_topup_true_default"
                     android:gravity="center"
                     android:orientation="horizontal"
                     android:padding="10dp">
