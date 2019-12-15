@@ -7,9 +7,10 @@ android {
     defaultConfig {
         applicationId "com.mondaro.easytopup"
         minSdkVersion 18
+        //noinspection ExpiredTargetSdkVersion
         targetSdkVersion 23
-        versionCode 46
-        versionName "6.1b"
+        versionCode 47
+        versionName "6.2"
     }
     buildTypes {
         release {
