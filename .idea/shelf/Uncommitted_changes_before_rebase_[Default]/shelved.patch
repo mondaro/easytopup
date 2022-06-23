@@ -1,0 +1,633 @@
+Index: app/release/output.json
+===================================================================
+diff --git a/app/release/output.json b/app/release/output.json
+deleted file mode 100644
+--- a/app/release/output.json	(revision 2d8f184014a88ca2eac8b27b5648571b54e75da8)
++++ /dev/null	(revision 2d8f184014a88ca2eac8b27b5648571b54e75da8)
+@@ -1,1 +0,0 @@
+-[{"outputType":{"type":"APK"},"apkInfo":{"type":"MAIN","splits":[],"versionCode":47,"versionName":"6.2","enabled":true,"outputFile":"app-release.apk","fullName":"release","baseName":"release"},"path":"app-release.apk","properties":{}}]
+\ No newline at end of file
+Index: app/app.iml
+===================================================================
+diff --git a/app/app.iml b/app/app.iml
+deleted file mode 100644
+--- a/app/app.iml	(revision 2d8f184014a88ca2eac8b27b5648571b54e75da8)
++++ /dev/null	(revision 2d8f184014a88ca2eac8b27b5648571b54e75da8)
+@@ -1,100 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<module external.linked.project.id=":app" external.linked.project.path="$MODULE_DIR$" external.root.project.path="$MODULE_DIR$/.." external.system.id="GRADLE" type="JAVA_MODULE" version="4">
+-  <component name="FacetManager">
+-    <facet type="android-gradle" name="Android-Gradle">
+-      <configuration>
+-        <option name="GRADLE_PROJECT_PATH" value=":app" />
+-        <option name="LAST_SUCCESSFUL_SYNC_AGP_VERSION" value="3.5.3" />
+-        <option name="LAST_KNOWN_AGP_VERSION" value="3.5.3" />
+-      </configuration>
+-    </facet>
+-    <facet type="android" name="Android">
+-      <configuration>
+-        <option name="SELECTED_BUILD_VARIANT" value="debug" />
+-        <option name="ASSEMBLE_TASK_NAME" value="assembleDebug" />
+-        <option name="COMPILE_JAVA_TASK_NAME" value="compileDebugSources" />
+-        <afterSyncTasks>
+-          <task>generateDebugSources</task>
+-        </afterSyncTasks>
+-        <option name="ALLOW_USER_CONFIGURATION" value="false" />
+-        <option name="MANIFEST_FILE_RELATIVE_PATH" value="/src/main/AndroidManifest.xml" />
+-        <option name="RES_FOLDER_RELATIVE_PATH" value="/src/main/res" />
+-        <option name="RES_FOLDERS_RELATIVE_PATH" value="file://$MODULE_DIR$/src/main/res;file://$MODULE_DIR$/build/generated/res/resValues/debug" />
+-        <option name="TEST_RES_FOLDERS_RELATIVE_PATH" value="" />
+-        <option name="ASSETS_FOLDER_RELATIVE_PATH" value="/src/main/assets" />
+-      </configuration>
+-    </facet>
+-  </component>
+-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7">
+-    <output url="file://$MODULE_DIR$/build/intermediates/javac/debug/classes" />
+-    <output-test url="file://$MODULE_DIR$/build/intermediates/javac/debugUnitTest/classes" />
+-    <exclude-output />
+-    <content url="file://$MODULE_DIR$">
+-      <sourceFolder url="file://$MODULE_DIR$/build/generated/ap_generated_sources/debug/out" isTestSource="false" generated="true" />
+-      <sourceFolder url="file://$MODULE_DIR$/build/generated/aidl_source_output_dir/debug/compileDebugAidl/out" isTestSource="false" generated="true" />
+-      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/buildConfig/debug" isTestSource="false" generated="true" />
+-      <sourceFolder url="file://$MODULE_DIR$/build/generated/renderscript_source_output_dir/debug/compileDebugRenderscript/out" isTestSource="false" generated="true" />
+-      <sourceFolder url="file://$MODULE_DIR$/build/generated/res/rs/debug" type="java-resource" generated="true" />
+-      <sourceFolder url="file://$MODULE_DIR$/build/generated/res/resValues/debug" type="java-resource" generated="true" />
+-      <sourceFolder url="file://$MODULE_DIR$/build/generated/ap_generated_sources/debugAndroidTest/out" isTestSource="true" generated="true" />
+-      <sourceFolder url="file://$MODULE_DIR$/build/generated/aidl_source_output_dir/debugAndroidTest/compileDebugAndroidTestAidl/out" isTestSource="true" generated="true" />
+-      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/buildConfig/androidTest/debug" isTestSource="true" generated="true" />
+-      <sourceFolder url="file://$MODULE_DIR$/build/generated/renderscript_source_output_dir/debugAndroidTest/compileDebugAndroidTestRenderscript/out" isTestSource="true" generated="true" />
+-      <sourceFolder url="file://$MODULE_DIR$/build/generated/res/rs/androidTest/debug" type="java-test-resource" generated="true" />
+-      <sourceFolder url="file://$MODULE_DIR$/build/generated/res/resValues/androidTest/debug" type="java-test-resource" generated="true" />
+-      <sourceFolder url="file://$MODULE_DIR$/build/generated/ap_generated_sources/debugUnitTest/out" isTestSource="true" generated="true" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/debug/res" type="java-resource" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/debug/resources" type="java-resource" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/debug/assets" type="java-resource" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/debug/aidl" isTestSource="false" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/debug/java" isTestSource="false" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/debug/rs" isTestSource="false" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/debug/shaders" isTestSource="false" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestDebug/res" type="java-test-resource" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestDebug/resources" type="java-test-resource" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestDebug/assets" type="java-test-resource" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestDebug/aidl" isTestSource="true" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestDebug/java" isTestSource="true" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestDebug/rs" isTestSource="true" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestDebug/shaders" isTestSource="true" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/testDebug/res" type="java-test-resource" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/testDebug/resources" type="java-test-resource" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/testDebug/assets" type="java-test-resource" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/testDebug/aidl" isTestSource="true" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/testDebug/java" isTestSource="true" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/testDebug/rs" isTestSource="true" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/testDebug/shaders" isTestSource="true" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/main/res" type="java-resource" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/main/assets" type="java-resource" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/main/aidl" isTestSource="false" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/main/rs" isTestSource="false" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/main/shaders" isTestSource="false" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/res" type="java-test-resource" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/resources" type="java-test-resource" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/assets" type="java-test-resource" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/aidl" isTestSource="true" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/java" isTestSource="true" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/rs" isTestSource="true" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/shaders" isTestSource="true" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/test/res" type="java-test-resource" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/test/resources" type="java-test-resource" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/test/assets" type="java-test-resource" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/test/aidl" isTestSource="true" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/test/rs" isTestSource="true" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/test/shaders" isTestSource="true" />
+-      <excludeFolder url="file://$MODULE_DIR$/build" />
+-    </content>
+-    <orderEntry type="jdk" jdkName="Android API 23 Platform" jdkType="Android SDK" />
+-    <orderEntry type="sourceFolder" forTests="false" />
+-    <orderEntry type="library" name="Gradle: com.android.support:support-annotations:23.4.0@jar" level="project" />
+-    <orderEntry type="library" name="Gradle: com.android.support:design:23.4.0@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: com.android.support:appcompat-v7:23.4.0@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: com.android.support:animated-vector-drawable:23.4.0@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: com.android.support:support-vector-drawable:23.4.0@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: com.android.support:recyclerview-v7:23.4.0@aar" level="project" />
+-    <orderEntry type="library" name="Gradle: com.android.support:support-v4:23.4.0@aar" level="project" />
+-  </component>
+-</module>
+\ No newline at end of file
+Index: .idea/runConfigurations.xml
+===================================================================
+diff --git a/.idea/runConfigurations.xml b/.idea/runConfigurations.xml
+deleted file mode 100644
+--- a/.idea/runConfigurations.xml	(revision 2d8f184014a88ca2eac8b27b5648571b54e75da8)
++++ /dev/null	(revision 2d8f184014a88ca2eac8b27b5648571b54e75da8)
+@@ -1,12 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="RunConfigurationProducerService">
+-    <option name="ignoredProducers">
+-      <set>
+-        <option value="org.jetbrains.plugins.gradle.execution.test.runner.AllInPackageGradleConfigurationProducer" />
+-        <option value="org.jetbrains.plugins.gradle.execution.test.runner.TestClassGradleConfigurationProducer" />
+-        <option value="org.jetbrains.plugins.gradle.execution.test.runner.TestMethodGradleConfigurationProducer" />
+-      </set>
+-    </option>
+-  </component>
+-</project>
+\ No newline at end of file
+Index: app/src/main/res/values/strings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><resources>\r\n    <string name=\"app_name\">เติมกะตังส์</string>\r\n    <string-array name=\"nav_drawer_items\">\r\n        <item >เติมเงิน</item>\r\n        <item >ยอดเงินคงเหลือ</item>\r\n        <item >ประวัติการทำรายการ /\\nระบบดึงเงินคืน</item>\r\n        <item >บริการเสริม</item>\r\n        <item >ตั้งค่า</item>\r\n        <item >แนะนำ</item>\r\n        <item >ปิดแอปพลิเคชัน</item>\r\n    </string-array>\r\n    <string-array name=\"nav_drawer_icons\">\r\n        <item>@mipmap/ic_open_in_new_black_48dp</item>\r\n        <item>@mipmap/ic_account_balance_wallet_black_48dp</item>\r\n        <item>@mipmap/ic_restore_black_48dp</item>\r\n        <item>@mipmap/ic_extension_black_48dp</item>\r\n        <item>@mipmap/ic_settings_black_48dp</item>\r\n        <item>@mipmap/ic_info_outline_black_48dp</item>\r\n        <item>@mipmap/ic_exit_to_app_black_48dp</item>\r\n    </string-array>\r\n    <string name=\"desc_list_item_icon\">Item Icon</string>\r\n    <!--navigation_Topup-->\r\n    <string name=\"txtAmount\">จำนวนเงิน</string>\r\n    <string name=\"btnContact\">สมุด\\nรายชื่อ</string>\r\n    <string name=\"btnLast\">เบอร์\\nล่าสุด</string>\r\n    <string name=\"txtTel\">หมายเลข</string>\r\n    <string name=\"btnTopup\">เติม</string>\r\n    <string name=\"btnDel\">ลบ</string>\r\n    <string name=\"btn0\">0</string>\r\n    <string name=\"btn1\">1</string>\r\n    <string name=\"btn2\">2</string>\r\n    <string name=\"btn3\">3</string>\r\n    <string name=\"btn4\">4</string>\r\n    <string name=\"btn5\">5</string>\r\n    <string name=\"btn6\">6</string>\r\n    <string name=\"btn7\">7</string>\r\n    <string name=\"btn8\">8</string>\r\n    <string name=\"btn9\">9</string>\r\n    <!--navigation_ChkBalance-->\r\n    <string name=\"checkbalanceHeader\">กรุณากดไอคอนระบบ\\nเพื่อทำการเช็คยอดเงินคงเหลือ</string>\r\n    <!--navigation_Refund-->\r\n    <string name=\"item_AIS\">AIS</string>\r\n    <string name=\"item_DTAC\">DTAC</string>\r\n    <string name=\"item_TRUE\">TRUE</string>\r\n    <string name=\"item_CAT\">CAT</string>\r\n    <string name=\"btn_Refund\">ดึงเงินคืน</string>\r\n    <string name=\"btn_Cancel\">ยกเลิก</string>\r\n    <string name=\"refundDialogCant\">ระบบ my by CAT ยังไม่พร้อมให้บริการ\\nทางผู้พัฒนาจะทำการอัพเดตให้เร็วๆนี้ครับ</string>\r\n    <!--navigation_AddOns-->\r\n    <string name=\"header_Addons\">สำหรับคนขายเติมเงินระบบ AIS 1&#8211;2&#8211;call ที่ผูกบัญชีร่วมกับบริการ mPay</string>\r\n    <string name=\"txt_MPAY_ID\">รหัส\\nประจำตัว</string>\r\n    <string name=\"txt_plus\">+</string>\r\n    <string name=\"txt_question\">\\?</string>\r\n    <!--menu_MPAY-->\r\n    <string name=\"menu_MPAY\">บัญชี mPay</string>\r\n    <string name=\"btn_ChkBal\">ตรวจสอบยอดเงิน\\nmPay Wallet</string>\r\n    <string name=\"btn_ChkCom\">ตรวจสอบ\\nค่า Commision</string>\r\n    <!--menu_TopupToWallet-->\r\n    <string name=\"menu_TopupToWallet\">เติมเงินเข้ากระเป๋าขายออนไลน์</string>\r\n    <string name=\"txt_InputAmount\">1. กรอกจำนวนเงิน</string>\r\n    <string name=\"btn_process_1\">ทำรายการ(1)</string>\r\n    <string name=\"txt_SelectAcc\">2. เลือกบัญชีที่ต้องการหักเงิน</string>\r\n    <string-array name=\"type_arrays\">\r\n        <item>บัญชี mPay</item>\r\n        <item>บัญชี ธนาคาร</item>\r\n    </string-array>\r\n    <string name=\"btn_process_2\">ทำรายการ(2)</string>\r\n    <!--menu_BuyCardAIS-->\r\n    <string name=\"menu_BuyCardAIS\">ซื้อบัตรเงินสด 1&#8211;2&#8211;Call</string>\r\n    <string name=\"txt_phoneBuyCard\">1. กรอกหมายเลขโทรศัพท์</string>\r\n    <string name=\"txt_SelectCardValue\">2. เลือกราคาบัตรเงินสด 1&#8211;2&#8211;Call</string>\r\n    <string-array name=\"amount_arrays\">\r\n        <item>50</item>\r\n        <item>100</item>\r\n        <item>300</item>\r\n        <item>500</item>\r\n        <item>1000</item>\r\n    </string-array>\r\n    <string name=\"btn_BuyCardAIS\">ซื้อบัตรเงินสด</string>\r\n    <!--menu_AISBill-->\r\n    <string name=\"menu_AISBill\">จ่ายบิล AIS รายเดือน</string>\r\n    <string name=\"txt_SelectBill\">2. เลือกรายการที่จะชำระ</string>\r\n    <string-array name=\"op_arrays\">\r\n        <item>0</item>\r\n        <item>1</item>\r\n        <item>2</item>\r\n    </string-array>\r\n    <!--menu_TransDays-->\r\n    <string name=\"menu_TransDays\">โอนวัน AIS ระบบเติมเงิน</string>\r\n    <string name=\"txt_SelectDays\">2. เลือกจำนวนวัน</string>\r\n    <string-array name=\"days_arrays\">\r\n        <item>5</item>\r\n        <item>10</item>\r\n        <item>20</item>\r\n    </string-array>\r\n    <string name=\"btn_TransDays\">โอนวัน</string>\r\n    <!--menu_ChkCarrier-->\r\n    <string name=\"menu_ChkCarrier\">ตรวจสอบระบบเครือข่าย\\nจากหมายเลขโทรศัพท์</string>\r\n\r\n    <!--Popup-->\r\n    <string name=\"btn_ClosePopup\">ปิดหน้าต่างนี้</string>\r\n    <string name=\"txt_TopupWallet_Description\">1. กรอกจำนวนเงินที่ต้องการเติมลงไป\\n\\n\r\n                            2. กดปุ่ม ทำรายการ(1) รอจนได้รับข้อความเลือกบัญชีเติมเงินเข้ากระเป๋าขาย\\n\\n\r\n                            3. เลือกบัญชีที่ต้องการให้หักเงินเติมเข้ากระเป๋าขายออนไลน์\\n\\n\r\n                            4. กดปุ่ม ทำรายการ(2) ระบบจะทำการเติมเงินเข้ากระเป๋าขายออนไลน์ให้ทันทีโดยหักเงินจากบัญชีที่เลือกไว้\\n\\n\r\n                            ** หมายเหตุ ** หากไม่มีบัญชี mPay รบกวนติดต่อศูนย์บริการของ AIS ได้เลยครับ\\n\\n</string>\r\n    <string name=\"txt_BuyCard_Description\">1. กรอกหมายเลขโทรศัพท์ที่ต้องการบัตรเติมเงินเติมลงไป\\n\\n\r\n                            2. เลือกจำนวนเงินบัตรเติมเงินที่ต้องการซื้อ\\n\\n\r\n                            3. กดปุ่ม ซื้อบัตรเงินสด เสร็จขั้นตอน ลูกค้าจะได้รับข้อความรหัสบัตรทันที\\n\\n\r\n                            ** หมายเหตุ ** หากไม่มีบัญชี mPay รบกวนติดต่อศูนย์บริการของ AIS ได้เลยครับ\\n\\n</string>\r\n    <string name=\"txt_AISBill_Description\">1. กรอกหมายเลขโทรศัพท์ที่ต้องการชำระ\\n\\n\r\n                            2. กดปุ่ม ทำรายการ(1) รอจนได้รับข้อความแจ้งยอดเงินที่ต้องชำระ\\n\\n\r\n                            3. เลือกหมายเลขยอดชำระจากตัวเลือก\\n\\n\r\n                            4. กดปุ่ม ทำรายการ(2) ระบบจะทำการชำระค่าโทรศัพท์ให้ทันทีโดยหักเงินจากบัญชี mPay\\n\\n\r\n                            ** หมายเหตุ ** หากไม่มีบัญชี mPay รบกวนติดต่อศูนย์บริการของ AIS ได้เลยครับ\\n\\n</string>\r\n    <string name=\"txt_AISTransDays_Description\">1. กรอกหมายเลขโทรศัพท์ที่ต้องการโอนวันให้\\n\\n\r\n                            2. เลือกจำนวนวันที่ต้องการโอน จากตัวเลือก\\n\\n\r\n                            3. กดปุ่ม โอนวัน ระบบจะทำการโอนวันตามจำนวนที่เลือกไปยังหมายเลขโทรศัพท์ที่ระบุให้ทันที\\n\\n</string>\r\n    <!--navigation_Setting-->\r\n    <string name=\"txtM123\">รหัสประจำตัวคนขายออนไลน์</string>\r\n    <string name=\"txtM121\">** หมายเหตุ **\\nแอปพลิเคชันนี้ใช้อำนวยความสะดวกในการเติมเงินสำหรับตัวแทนเติมเงินที่เป็นหน่วยเติมเงินที่ได้รับการรับรองจากศูนย์บริการเท่านั้น บุคคลธรรมดาไม่สามารถใช้งานได้!!!\r\n        \\n\\nรหัสประจำตัวคนขายออนไลน์ ได้มาจากศูนย์บริการกำหนดให้ท่าน กรุณากรอกให้ถูกตามระบบที่ใช้งาน\r\n        \\n\\nหากท่านใดใช้เครื่องที่รองรับระบบซิมคู่ กรุณาตั้งค่าการทำงานซิมเมื่อโทรออกให้เป็น \\\"ถามเสมอ\\\" เพื่อให้ระบบจัดการเติมเงินแยกเติมตามซิมเครือข่ายที่ถูกต้อง\r\n        \\n\\nสงสัยหรือพบปัญหาแจ้งได้ที่เมนู \\\"แนะนำ\\\"</string>\r\n    <string name=\"btnOKSetting\">ตั้งค่า</string>\r\n    <string name=\"settingDTAC\">DTAC</string>\r\n    <string name=\"settingTRUE\">TRUEMOVE-H</string>\r\n    <string name=\"settingAIS\">AIS 1-2-CALL</string>\r\n    <string name=\"settingCAT\">My by CAT</string>\r\n    <string name=\"settingCAT_1\">ใช้ได้ทั้งโอนเงินเข้าคนขายและเติมให้ลูกค้า</string>\r\n    <string name=\"settingThemeHeader\">เลือกสไตล์ชุดสี</string>\r\n    <string name=\"settingTheme1\">ชุดสีพาสเทล</string>\r\n    <string name=\"settingTheme2\">ชุดสีดั้งเดิม</string>\r\n    <!--navigation_About-->\r\n    <string name=\"about_version\">เวอร์ชัน</string>\r\n    <string name=\"about_content\">\\t\\tแอปพลิเคชันนี้ใช้อำนวยความสะดวกในการเติมเงินสำหรับตัวแทนเติมเงินที่เป็นหน่วยเติมเงินที่ได้รับการรับรองจากศูนย์บริการเท่านั้น บุคคลธรรมดาไม่สามารถใช้งานได้\\n\r\n    \\t\\tหากสนใจเป็นตัวแทนเติมเงิน กรุณาติดต่อที่ศูนย์บริการลูกค้าของแต่ละเครือข่ายใกล้บ้านท่าน</string>\r\n    <string name=\"about_content2\">พัฒนาโดย</string>\r\n    <string name=\"about_corpname\">MONDARO DEVTECH</string>\r\n    <string name=\"about_contentSuggestion\">\r\n        หรือโทร\r\n        \\n AIS 02-271-9123\r\n        \\n DTAC 02-202-8400\r\n        \\n TRUE 02-647-9077\r\n        \\n กรณีต้องการผูกบัญชีกับ mPay โทร 02-271-9299</string>\r\n    <string name=\"btnEmail\">แจ้งปัญหา</string>\r\n    <string name=\"btnWebsite\">เข้าชมเว็บไซต์ผู้พัฒนา\\nmondaro.cc</string>\r\n    <!--hint-->\r\n    <string name=\"hintmPay\">รหัส mPay</string>\r\n    <string name=\"hintPhone\">เบอร์โทรศัพท์</string>\r\n    <string name=\"hintAmount\">ยอดเงิน</string>\r\n    <string name=\"hintPhoneGetCard\">เบอร์โทรคนซื้อ</string>\r\n    <string name=\"hintPhoneBill\">เบอร์โทรรายเดือน</string>\r\n    <string name=\"hintReport\">** พบข้อผิดพลาด **\\nกรุณาแจ้งผู้พัฒนาระบบที่เมนู \\\"แนะนำ\\\"</string>\r\n    <!--navigation_Exit-->\r\n    <string name=\"exit_msg\">คุณต้องการ\\nปิดแอปพลิเคชัน \\?</string>\r\n    <string name=\"exit_done\">ปิดเดี๋ยวนี้</string>\r\n    <string name=\"exit_cancel\">ยกเลิก</string>\r\n\r\n\r\n\r\n</resources>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/strings.xml b/app/src/main/res/values/strings.xml
+--- a/app/src/main/res/values/strings.xml	(revision 2d8f184014a88ca2eac8b27b5648571b54e75da8)
++++ b/app/src/main/res/values/strings.xml	(date 1655953607013)
+@@ -144,7 +144,7 @@
+         \n TRUE 02-647-9077
+         \n กรณีต้องการผูกบัญชีกับ mPay โทร 02-271-9299</string>
+     <string name="btnEmail">แจ้งปัญหา</string>
+-    <string name="btnWebsite">เข้าชมเว็บไซต์ผู้พัฒนา\nmondaro.cc</string>
++    <string name="btnWebsite">เข้าชมเว็บไซต์ผู้พัฒนา\nagoodmany.world</string>
+     <!--hint-->
+     <string name="hintmPay">รหัส mPay</string>
+     <string name="hintPhone">เบอร์โทรศัพท์</string>
+Index: .idea/modules/app/easytopup.app.main.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/modules/app/easytopup.app.main.iml b/.idea/modules/app/easytopup.app.main.iml
+new file mode 100644
+--- /dev/null	(date 1655948046164)
++++ b/.idea/modules/app/easytopup.app.main.iml	(date 1655948046164)
+@@ -0,0 +1,50 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module external.linked.project.id=":app:main" external.linked.project.path="$MODULE_DIR$/../../../app" external.root.project.path="$MODULE_DIR$/../../.." external.system.id="GRADLE" external.system.module.type="sourceSet" type="JAVA_MODULE" version="4">
++  <component name="FacetManager">
++    <facet type="android" name="Android">
++      <configuration>
++        <option name="SELECTED_BUILD_VARIANT" value="debug" />
++        <option name="ASSEMBLE_TASK_NAME" value="assembleDebug" />
++        <option name="COMPILE_JAVA_TASK_NAME" value="compileDebugSources" />
++        <afterSyncTasks>
++          <task>generateDebugSources</task>
++        </afterSyncTasks>
++        <option name="ALLOW_USER_CONFIGURATION" value="false" />
++        <option name="MANIFEST_FILE_RELATIVE_PATH" value="/src/main/AndroidManifest.xml" />
++        <option name="RES_FOLDER_RELATIVE_PATH" value="/src/main/res" />
++        <option name="RES_FOLDERS_RELATIVE_PATH" value="file://$MODULE_DIR$/../../../app/src/main/res;file://$MODULE_DIR$/../../../app/src/debug/res;file://$MODULE_DIR$/../../../app/build/generated/res/rs/debug;file://$MODULE_DIR$/../../../app/build/generated/res/resValues/debug" />
++        <option name="TEST_RES_FOLDERS_RELATIVE_PATH" value="file://$MODULE_DIR$/../../../app/src/androidTest/res;file://$MODULE_DIR$/../../../app/src/androidTestDebug/res;file://$MODULE_DIR$/../../../app/build/generated/res/rs/androidTest/debug;file://$MODULE_DIR$/../../../app/build/generated/res/resValues/androidTest/debug" />
++        <option name="ASSETS_FOLDER_RELATIVE_PATH" value="/src/main/assets" />
++      </configuration>
++    </facet>
++  </component>
++  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7" inherit-compiler-output="true">
++    <exclude-output />
++    <content url="file://$MODULE_DIR$/../../../app/build/generated/aidl_source_output_dir/debug/compileDebugAidl/out" />
++    <content url="file://$MODULE_DIR$/../../../app/build/generated/ap_generated_sources/debug/out">
++      <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/ap_generated_sources/debug/out" isTestSource="false" generated="true" />
++    </content>
++    <content url="file://$MODULE_DIR$/../../../app/build/generated/renderscript_source_output_dir/debug/compileDebugRenderscript/out" />
++    <content url="file://$MODULE_DIR$/../../../app/build/generated/res/resValues/debug">
++      <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/res/resValues/debug" type="java-resource" />
++    </content>
++    <content url="file://$MODULE_DIR$/../../../app/build/generated/res/rs/debug" />
++    <content url="file://$MODULE_DIR$/../../../app/build/generated/source/buildConfig/debug">
++      <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/source/buildConfig/debug" isTestSource="false" generated="true" />
++    </content>
++    <content url="file://$MODULE_DIR$/../../../app/src/debug" />
++    <content url="file://$MODULE_DIR$/../../../app/src/main">
++      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/main/java" isTestSource="false" />
++      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/main/res" type="java-resource" />
++    </content>
++    <orderEntry type="jdk" jdkName="Android API 23 Platform" jdkType="Android SDK" />
++    <orderEntry type="sourceFolder" forTests="false" />
++    <orderEntry type="library" name="Gradle: com.android.support:support-annotations:23.4.0" level="project" />
++    <orderEntry type="library" name="Gradle: com.android.support:design:23.4.0@aar" level="project" />
++    <orderEntry type="library" name="Gradle: com.android.support:appcompat-v7:23.4.0@aar" level="project" />
++    <orderEntry type="library" name="Gradle: com.android.support:animated-vector-drawable:23.4.0@aar" level="project" />
++    <orderEntry type="library" name="Gradle: com.android.support:support-vector-drawable:23.4.0@aar" level="project" />
++    <orderEntry type="library" name="Gradle: com.android.support:recyclerview-v7:23.4.0@aar" level="project" />
++    <orderEntry type="library" name="Gradle: com.android.support:support-v4:23.4.0@aar" level="project" />
++  </component>
++</module>
+\ No newline at end of file
+Index: .idea/modules/app/easytopup.app.unitTest.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/modules/app/easytopup.app.unitTest.iml b/.idea/modules/app/easytopup.app.unitTest.iml
+new file mode 100644
+--- /dev/null	(date 1655948046182)
++++ b/.idea/modules/app/easytopup.app.unitTest.iml	(date 1655948046182)
+@@ -0,0 +1,37 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module external.linked.project.id=":app:unitTest" external.linked.project.path="$MODULE_DIR$/../../../app" external.root.project.path="$MODULE_DIR$/../../.." external.system.id="GRADLE" external.system.module.type="sourceSet" type="JAVA_MODULE" version="4">
++  <component name="FacetManager">
++    <facet type="android" name="Android">
++      <configuration>
++        <option name="SELECTED_BUILD_VARIANT" value="debug" />
++        <option name="ASSEMBLE_TASK_NAME" value="assembleDebug" />
++        <option name="COMPILE_JAVA_TASK_NAME" value="compileDebugSources" />
++        <afterSyncTasks>
++          <task>generateDebugSources</task>
++        </afterSyncTasks>
++        <option name="ALLOW_USER_CONFIGURATION" value="false" />
++        <option name="MANIFEST_FILE_RELATIVE_PATH" value="/src/main/AndroidManifest.xml" />
++        <option name="RES_FOLDER_RELATIVE_PATH" value="/src/main/res" />
++        <option name="RES_FOLDERS_RELATIVE_PATH" value="file://$MODULE_DIR$/../../../app/src/main/res;file://$MODULE_DIR$/../../../app/src/debug/res;file://$MODULE_DIR$/../../../app/build/generated/res/rs/debug;file://$MODULE_DIR$/../../../app/build/generated/res/resValues/debug" />
++        <option name="TEST_RES_FOLDERS_RELATIVE_PATH" value="file://$MODULE_DIR$/../../../app/src/androidTest/res;file://$MODULE_DIR$/../../../app/src/androidTestDebug/res;file://$MODULE_DIR$/../../../app/build/generated/res/rs/androidTest/debug;file://$MODULE_DIR$/../../../app/build/generated/res/resValues/androidTest/debug" />
++        <option name="ASSETS_FOLDER_RELATIVE_PATH" value="/src/main/assets" />
++      </configuration>
++    </facet>
++  </component>
++  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7" inherit-compiler-output="true">
++    <exclude-output />
++    <content url="file://$MODULE_DIR$/../../../app/build/generated/ap_generated_sources/debugUnitTest/out" />
++    <content url="file://$MODULE_DIR$/../../../app/src/test" />
++    <content url="file://$MODULE_DIR$/../../../app/src/testDebug" />
++    <orderEntry type="jdk" jdkName="Android API 23 Platform" jdkType="Android SDK" />
++    <orderEntry type="sourceFolder" forTests="false" />
++    <orderEntry type="library" scope="TEST" name="Gradle: com.android.support:support-annotations:23.4.0" level="project" />
++    <orderEntry type="library" scope="TEST" name="Gradle: com.android.support:design:23.4.0@aar" level="project" />
++    <orderEntry type="library" scope="TEST" name="Gradle: com.android.support:appcompat-v7:23.4.0@aar" level="project" />
++    <orderEntry type="library" scope="TEST" name="Gradle: com.android.support:animated-vector-drawable:23.4.0@aar" level="project" />
++    <orderEntry type="library" scope="TEST" name="Gradle: com.android.support:support-vector-drawable:23.4.0@aar" level="project" />
++    <orderEntry type="library" scope="TEST" name="Gradle: com.android.support:recyclerview-v7:23.4.0@aar" level="project" />
++    <orderEntry type="library" scope="TEST" name="Gradle: com.android.support:support-v4:23.4.0@aar" level="project" />
++  </component>
++  <component name="TestModuleProperties" production-module="easytopup.app.main" />
++</module>
+\ No newline at end of file
+Index: .idea/modules/app/easytopup.app.androidTest.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/modules/app/easytopup.app.androidTest.iml b/.idea/modules/app/easytopup.app.androidTest.iml
+new file mode 100644
+--- /dev/null	(date 1655948046194)
++++ b/.idea/modules/app/easytopup.app.androidTest.iml	(date 1655948046194)
+@@ -0,0 +1,44 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module external.linked.project.id=":app:androidTest" external.linked.project.path="$MODULE_DIR$/../../../app" external.root.project.path="$MODULE_DIR$/../../.." external.system.id="GRADLE" external.system.module.type="sourceSet" type="JAVA_MODULE" version="4">
++  <component name="FacetManager">
++    <facet type="android" name="Android">
++      <configuration>
++        <option name="SELECTED_BUILD_VARIANT" value="debug" />
++        <option name="ASSEMBLE_TASK_NAME" value="assembleDebug" />
++        <option name="COMPILE_JAVA_TASK_NAME" value="compileDebugSources" />
++        <afterSyncTasks>
++          <task>generateDebugSources</task>
++        </afterSyncTasks>
++        <option name="ALLOW_USER_CONFIGURATION" value="false" />
++        <option name="MANIFEST_FILE_RELATIVE_PATH" value="/src/main/AndroidManifest.xml" />
++        <option name="RES_FOLDER_RELATIVE_PATH" value="/src/main/res" />
++        <option name="RES_FOLDERS_RELATIVE_PATH" value="file://$MODULE_DIR$/../../../app/src/main/res;file://$MODULE_DIR$/../../../app/src/debug/res;file://$MODULE_DIR$/../../../app/build/generated/res/rs/debug;file://$MODULE_DIR$/../../../app/build/generated/res/resValues/debug" />
++        <option name="TEST_RES_FOLDERS_RELATIVE_PATH" value="file://$MODULE_DIR$/../../../app/src/androidTest/res;file://$MODULE_DIR$/../../../app/src/androidTestDebug/res;file://$MODULE_DIR$/../../../app/build/generated/res/rs/androidTest/debug;file://$MODULE_DIR$/../../../app/build/generated/res/resValues/androidTest/debug" />
++        <option name="ASSETS_FOLDER_RELATIVE_PATH" value="/src/main/assets" />
++      </configuration>
++    </facet>
++  </component>
++  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7" inherit-compiler-output="true">
++    <exclude-output />
++    <content url="file://$MODULE_DIR$/../../../app/build/generated/aidl_source_output_dir/debugAndroidTest/compileDebugAndroidTestAidl/out" />
++    <content url="file://$MODULE_DIR$/../../../app/build/generated/ap_generated_sources/debugAndroidTest/out" />
++    <content url="file://$MODULE_DIR$/../../../app/build/generated/renderscript_source_output_dir/debugAndroidTest/compileDebugAndroidTestRenderscript/out" />
++    <content url="file://$MODULE_DIR$/../../../app/build/generated/res/resValues/androidTest/debug" />
++    <content url="file://$MODULE_DIR$/../../../app/build/generated/res/rs/androidTest/debug" />
++    <content url="file://$MODULE_DIR$/../../../app/build/generated/source/buildConfig/androidTest/debug">
++      <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/source/buildConfig/androidTest/debug" isTestSource="true" generated="true" />
++    </content>
++    <content url="file://$MODULE_DIR$/../../../app/src/androidTest" />
++    <content url="file://$MODULE_DIR$/../../../app/src/androidTestDebug" />
++    <orderEntry type="jdk" jdkName="Android API 23 Platform" jdkType="Android SDK" />
++    <orderEntry type="sourceFolder" forTests="false" />
++    <orderEntry type="library" scope="TEST" name="Gradle: com.android.support:support-annotations:23.4.0" level="project" />
++    <orderEntry type="library" scope="TEST" name="Gradle: com.android.support:design:23.4.0@aar" level="project" />
++    <orderEntry type="library" scope="TEST" name="Gradle: com.android.support:appcompat-v7:23.4.0@aar" level="project" />
++    <orderEntry type="library" scope="TEST" name="Gradle: com.android.support:animated-vector-drawable:23.4.0@aar" level="project" />
++    <orderEntry type="library" scope="TEST" name="Gradle: com.android.support:support-vector-drawable:23.4.0@aar" level="project" />
++    <orderEntry type="library" scope="TEST" name="Gradle: com.android.support:recyclerview-v7:23.4.0@aar" level="project" />
++    <orderEntry type="library" scope="TEST" name="Gradle: com.android.support:support-v4:23.4.0@aar" level="project" />
++  </component>
++  <component name="TestModuleProperties" production-module="easytopup.app.main" />
++</module>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"NullableNotNullManager\">\r\n    <option name=\"myDefaultNullable\" value=\"android.support.annotation.Nullable\" />\r\n    <option name=\"myDefaultNotNull\" value=\"android.support.annotation.NonNull\" />\r\n    <option name=\"myNullables\">\r\n      <value>\r\n        <list size=\"12\">\r\n          <item index=\"0\" class=\"java.lang.String\" itemvalue=\"org.jetbrains.annotations.Nullable\" />\r\n          <item index=\"1\" class=\"java.lang.String\" itemvalue=\"javax.annotation.Nullable\" />\r\n          <item index=\"2\" class=\"java.lang.String\" itemvalue=\"javax.annotation.CheckForNull\" />\r\n          <item index=\"3\" class=\"java.lang.String\" itemvalue=\"edu.umd.cs.findbugs.annotations.Nullable\" />\r\n          <item index=\"4\" class=\"java.lang.String\" itemvalue=\"android.support.annotation.Nullable\" />\r\n          <item index=\"5\" class=\"java.lang.String\" itemvalue=\"androidx.annotation.Nullable\" />\r\n          <item index=\"6\" class=\"java.lang.String\" itemvalue=\"androidx.annotation.RecentlyNullable\" />\r\n          <item index=\"7\" class=\"java.lang.String\" itemvalue=\"android.annotation.Nullable\" />\r\n          <item index=\"8\" class=\"java.lang.String\" itemvalue=\"org.checkerframework.checker.nullness.qual.Nullable\" />\r\n          <item index=\"9\" class=\"java.lang.String\" itemvalue=\"org.checkerframework.checker.nullness.compatqual.NullableDecl\" />\r\n          <item index=\"10\" class=\"java.lang.String\" itemvalue=\"org.checkerframework.checker.nullness.compatqual.NullableType\" />\r\n          <item index=\"11\" class=\"java.lang.String\" itemvalue=\"com.android.annotations.Nullable\" />\r\n        </list>\r\n      </value>\r\n    </option>\r\n    <option name=\"myNotNulls\">\r\n      <value>\r\n        <list size=\"11\">\r\n          <item index=\"0\" class=\"java.lang.String\" itemvalue=\"org.jetbrains.annotations.NotNull\" />\r\n          <item index=\"1\" class=\"java.lang.String\" itemvalue=\"javax.annotation.Nonnull\" />\r\n          <item index=\"2\" class=\"java.lang.String\" itemvalue=\"edu.umd.cs.findbugs.annotations.NonNull\" />\r\n          <item index=\"3\" class=\"java.lang.String\" itemvalue=\"android.support.annotation.NonNull\" />\r\n          <item index=\"4\" class=\"java.lang.String\" itemvalue=\"androidx.annotation.NonNull\" />\r\n          <item index=\"5\" class=\"java.lang.String\" itemvalue=\"androidx.annotation.RecentlyNonNull\" />\r\n          <item index=\"6\" class=\"java.lang.String\" itemvalue=\"android.annotation.NonNull\" />\r\n          <item index=\"7\" class=\"java.lang.String\" itemvalue=\"org.checkerframework.checker.nullness.qual.NonNull\" />\r\n          <item index=\"8\" class=\"java.lang.String\" itemvalue=\"org.checkerframework.checker.nullness.compatqual.NonNullDecl\" />\r\n          <item index=\"9\" class=\"java.lang.String\" itemvalue=\"org.checkerframework.checker.nullness.compatqual.NonNullType\" />\r\n          <item index=\"10\" class=\"java.lang.String\" itemvalue=\"com.android.annotations.NonNull\" />\r\n        </list>\r\n      </value>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_1_7\" project-jdk-name=\"1.8\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\r\n  </component>\r\n  <component name=\"ProjectType\">\r\n    <option name=\"id\" value=\"Android\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 2d8f184014a88ca2eac8b27b5648571b54e75da8)
++++ b/.idea/misc.xml	(date 1655952153761)
+@@ -1,11 +1,23 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
++  <component name="DesignSurface">
++    <option name="filePathToZoomLevelMap">
++      <map>
++        <entry key="..\:/Documents/Android Apps/easytopup/app/src/main/res/drawable/button_normal.xml" value="0.2505" />
++        <entry key="..\:/Documents/Android Apps/easytopup/app/src/main/res/drawable/button_ok.xml" value="0.2505" />
++        <entry key="..\:/Documents/Android Apps/easytopup/app/src/main/res/layout-large/fragment_topup.xml" value="0.18359375" />
++        <entry key="..\:/Documents/Android Apps/easytopup/app/src/main/res/layout-sw360dp/fragment_topup.xml" value="0.15878378378378377" />
++        <entry key="..\:/Documents/Android Apps/easytopup/app/src/main/res/layout-sw600dp/fragment_topup.xml" value="0.18359375" />
++        <entry key="..\:/Documents/Android Apps/easytopup/app/src/main/res/layout/fragment_topup.xml" value="0.15878378378378377" />
++      </map>
++    </option>
++  </component>
+   <component name="NullableNotNullManager">
+     <option name="myDefaultNullable" value="android.support.annotation.Nullable" />
+     <option name="myDefaultNotNull" value="android.support.annotation.NonNull" />
+     <option name="myNullables">
+       <value>
+-        <list size="12">
++        <list size="13">
+           <item index="0" class="java.lang.String" itemvalue="org.jetbrains.annotations.Nullable" />
+           <item index="1" class="java.lang.String" itemvalue="javax.annotation.Nullable" />
+           <item index="2" class="java.lang.String" itemvalue="javax.annotation.CheckForNull" />
+@@ -18,12 +30,13 @@
+           <item index="9" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.compatqual.NullableDecl" />
+           <item index="10" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.compatqual.NullableType" />
+           <item index="11" class="java.lang.String" itemvalue="com.android.annotations.Nullable" />
++          <item index="12" class="java.lang.String" itemvalue="org.eclipse.jdt.annotation.Nullable" />
+         </list>
+       </value>
+     </option>
+     <option name="myNotNulls">
+       <value>
+-        <list size="11">
++        <list size="12">
+           <item index="0" class="java.lang.String" itemvalue="org.jetbrains.annotations.NotNull" />
+           <item index="1" class="java.lang.String" itemvalue="javax.annotation.Nonnull" />
+           <item index="2" class="java.lang.String" itemvalue="edu.umd.cs.findbugs.annotations.NonNull" />
+@@ -35,11 +48,12 @@
+           <item index="8" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.compatqual.NonNullDecl" />
+           <item index="9" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.compatqual.NonNullType" />
+           <item index="10" class="java.lang.String" itemvalue="com.android.annotations.NonNull" />
++          <item index="11" class="java.lang.String" itemvalue="org.eclipse.jdt.annotation.NonNull" />
+         </list>
+       </value>
+     </option>
+   </component>
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" project-jdk-name="1.8" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/build/classes" />
+   </component>
+   <component name="ProjectType">
+Index: app/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>apply plugin: 'com.android.application'\r\n\r\nandroid {\r\n    compileSdkVersion 23\r\n    buildToolsVersion '28.0.3'\r\n\r\n    defaultConfig {\r\n        applicationId \"com.mondaro.easytopup\"\r\n        minSdkVersion 18\r\n        //noinspection ExpiredTargetSdkVersion\r\n        targetSdkVersion 23\r\n        versionCode 47\r\n        versionName \"6.2\"\r\n    }\r\n    buildTypes {\r\n        release {\r\n            minifyEnabled true\r\n            shrinkResources true\r\n            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'\r\n        }\r\n    }\r\n}\r\n\r\ndependencies {\r\n    implementation fileTree(dir: 'libs', include: ['*.jar'])\r\n    implementation 'com.android.support:appcompat-v7:23.4.0'\r\n    implementation 'com.android.support:design:23.4.0'\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/build.gradle b/app/build.gradle
+--- a/app/build.gradle	(revision 2d8f184014a88ca2eac8b27b5648571b54e75da8)
++++ b/app/build.gradle	(date 1655948960258)
+@@ -10,7 +10,7 @@
+         //noinspection ExpiredTargetSdkVersion
+         targetSdkVersion 23
+         versionCode 47
+-        versionName "6.2"
++        versionName "6.2b"
+     }
+     buildTypes {
+         release {
+Index: EasyTopup.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<module external.linked.project.id=\"easytopup\" external.linked.project.path=\"$MODULE_DIR$\" external.root.project.path=\"$MODULE_DIR$\" external.system.id=\"GRADLE\" type=\"JAVA_MODULE\" version=\"4\">\r\n  <component name=\"FacetManager\">\r\n    <facet type=\"java-gradle\" name=\"Java-Gradle\">\r\n      <configuration>\r\n        <option name=\"BUILD_FOLDER_PATH\" value=\"$MODULE_DIR$/build\" />\r\n        <option name=\"BUILDABLE\" value=\"false\" />\r\n      </configuration>\r\n    </facet>\r\n  </component>\r\n  <component name=\"NewModuleRootManager\" LANGUAGE_LEVEL=\"JDK_1_7\" inherit-compiler-output=\"true\">\r\n    <exclude-output />\r\n    <content url=\"file://$MODULE_DIR$\">\r\n      <excludeFolder url=\"file://$MODULE_DIR$/.gradle\" />\r\n    </content>\r\n    <orderEntry type=\"inheritedJdk\" />\r\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\r\n  </component>\r\n</module>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/EasyTopup.iml b/EasyTopup.iml
+--- a/EasyTopup.iml	(revision 2d8f184014a88ca2eac8b27b5648571b54e75da8)
++++ b/EasyTopup.iml	(date 1655948046105)
+@@ -1,17 +1,18 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<module external.linked.project.id="easytopup" external.linked.project.path="$MODULE_DIR$" external.root.project.path="$MODULE_DIR$" external.system.id="GRADLE" type="JAVA_MODULE" version="4">
++<module external.linked.project.id="easytopup" external.linked.project.path="$MODULE_DIR$" external.root.project.path="$MODULE_DIR$" external.system.id="GRADLE" external.system.module.group="" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
+   <component name="FacetManager">
+     <facet type="java-gradle" name="Java-Gradle">
+       <configuration>
+-        <option name="BUILD_FOLDER_PATH" value="$MODULE_DIR$/build" />
+         <option name="BUILDABLE" value="false" />
+       </configuration>
+     </facet>
+   </component>
+-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7" inherit-compiler-output="true">
++  <component name="NewModuleRootManager" inherit-compiler-output="true">
+     <exclude-output />
+     <content url="file://$MODULE_DIR$">
+       <excludeFolder url="file://$MODULE_DIR$/.gradle" />
++      <excludeFolder url="file://$MODULE_DIR$/build" />
++      <excludeFolder url="file://$MODULE_DIR$/out" />
+     </content>
+     <orderEntry type="inheritedJdk" />
+     <orderEntry type="sourceFolder" forTests="false" />
+Index: app/src/main/java/com/mondaro/easytopup/AboutFragment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.mondaro.easytopup;\r\n\r\nimport android.app.AlertDialog;\r\nimport android.app.Fragment;\r\nimport android.content.DialogInterface;\r\nimport android.content.Intent;\r\nimport android.content.pm.PackageInfo;\r\nimport android.net.Uri;\r\nimport android.os.Bundle;\r\nimport android.view.LayoutInflater;\r\nimport android.view.View;\r\nimport android.view.ViewGroup;\r\nimport android.widget.Button;\r\nimport android.widget.TextView;\r\n\r\npublic class AboutFragment extends Fragment {\r\n    String version;\r\n\r\n    public AboutFragment(){}\r\n\r\n    @Override\r\n    public View onCreateView(LayoutInflater inflater, ViewGroup container,\r\n                             Bundle savedInstanceState) {\r\n\r\n        View rootView = inflater.inflate(R.layout.fragment_about, container, false);\r\n        TextView versionT = (TextView) rootView.findViewById(R.id.textViewAboutVersion);\r\n        Button btnEmail = (Button) rootView.findViewById(R.id.buttonEmail);\r\n        Button btnWeb = (Button) rootView.findViewById(R.id.buttonWebsite);\r\n\r\n        btnEmail.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                new AlertDialog.Builder(getActivity())\r\n                        .setIcon(android.R.drawable.ic_menu_info_details)\r\n                        .setTitle(\"อ่านสักนิด!!!\")\r\n                        .setMessage(\"ช่องทางนี้สำหรับแจ้งปัญหาของแอปพลิเคชันเท่านั้น \\nหากต้องการสมัครเป็นตัวแทนเติมเงิน กรุณากลับไปอ่านรายละเอียดหน้าเมนู \\\"แนะนำ\\\" ใหม่อีกครั้ง!!!\")\r\n                        .setPositiveButton(\"เข้าใจแล้ว\",new DialogInterface.OnClickListener() {\r\n                            @Override\r\n                            public void onClick(DialogInterface dialog, int which) {\r\n                                Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(\r\n                                        \"mailto\",\"mondaro23@gmail.com\", null));\r\n                                intent.putExtra(Intent.EXTRA_SUBJECT, \"ติดต่อจากแอปพลิเคชั่นเติมกะตังส์\");\r\n                                intent.putExtra(Intent.EXTRA_TEXT, \"\");\r\n                                startActivity(Intent.createChooser(intent, \"Choose an Email client :\"));\r\n                            }\r\n                        })\r\n                        .show();\r\n            }\r\n        });\r\n\r\n        btnWeb.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                Uri uri = Uri.parse(\"https://mondaro.cc\");\r\n                Intent intent = new Intent(Intent.ACTION_VIEW, uri);\r\n                startActivity(intent);\r\n            }\r\n        });\r\n\r\n        try{\r\n            PackageInfo pInfo = getActivity().getPackageManager().getPackageInfo(this.getActivity().getPackageName(), 0);\r\n            version = pInfo.versionName ;\r\n        }catch(Exception e){\r\n            //No coding\r\n        }\r\n        String shText = getResources().getString(R.string.about_version) + \"  \" + version;\r\n        versionT.setText(shText);;\r\n\r\n        return rootView;\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/mondaro/easytopup/AboutFragment.java b/app/src/main/java/com/mondaro/easytopup/AboutFragment.java
+--- a/app/src/main/java/com/mondaro/easytopup/AboutFragment.java	(revision 2d8f184014a88ca2eac8b27b5648571b54e75da8)
++++ b/app/src/main/java/com/mondaro/easytopup/AboutFragment.java	(date 1655948886269)
+@@ -51,7 +51,7 @@
+         btnWeb.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+-                Uri uri = Uri.parse("https://mondaro.cc");
++                Uri uri = Uri.parse("https://agoodmany.world");
+                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                 startActivity(intent);
+             }
+Index: app/src/main/java/com/mondaro/easytopup/TopupFragment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.mondaro.easytopup;\r\n\r\nimport android.Manifest;\r\nimport android.app.Activity;\r\nimport android.app.Fragment;\r\nimport android.content.ActivityNotFoundException;\r\nimport android.content.ContentValues;\r\nimport android.content.Context;\r\nimport android.content.DialogInterface;\r\nimport android.content.Intent;\r\nimport android.content.SharedPreferences;\r\nimport android.content.pm.PackageManager;\r\nimport android.database.Cursor;\r\nimport android.database.sqlite.SQLiteDatabase;\r\nimport android.net.Uri;\r\nimport android.os.Build;\r\nimport android.os.Bundle;\r\nimport android.provider.ContactsContract;\r\nimport android.support.annotation.DrawableRes;\r\nimport android.support.annotation.NonNull;\r\nimport android.support.v4.app.ActivityCompat;\r\nimport android.support.v4.content.ContextCompat;\r\nimport android.support.v7.app.AlertDialog;\r\nimport android.util.Base64;\r\nimport android.util.Log;\r\nimport android.view.LayoutInflater;\r\nimport android.view.View;\r\nimport android.view.ViewGroup;\r\nimport android.widget.Button;\r\nimport android.widget.FrameLayout;\r\nimport android.widget.LinearLayout;\r\nimport android.widget.TextView;\r\nimport android.widget.Toast;\r\nimport android.view.View.OnClickListener;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.Calendar;\r\nimport java.util.List;\r\n\r\nimport com.mondaro.easytopup.sqlite.DBHelper;\r\nimport com.mondaro.easytopup.sqlite.SimpleDBDial;\r\n\r\npublic class TopupFragment extends Fragment {\r\n    String tmpDigit = \"\",tmpLabel = \"\";\r\n    char target ='1';\r\n    int mode = 0;\r\n    TextView txtphone,txtcost,txtQuick1,txtQuick2,txtQuick3,labelAIS,labelDTAC,labelTRUE,labelCAT;\r\n    Button btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btnOK,btnDel,btnContact,btnHistory;\r\n    LinearLayout bgcolor,sltAIS, sltDTAC, sltTRUE, sltCAT, slt1, slt2, slt3, slt4;\r\n    String USERPIN_AIS, USERPIN_DTAC, USERPIN_TRUE, USERPIN_CAT,LASTPHONE,CHK_THEME;\r\n    int bgAIS,bgDTAC,bgTRUE,bgCAT,tabAIS,tabDTAC,tabTRUE,tabCAT;\r\n    List<String> getPhone;\r\n    SharedPreferences sharedPref;\r\n    SharedPreferences.Editor edt;\r\n    static final int PICK_CONTACT_REQUEST = 1;\r\n    final private int REQUEST_READ_CONTACTS_PERMISSIONS = 112;\r\n    final private int REQUEST_CALL_PHONE_PERMISSIONS = 123;\r\n\r\n    public TopupFragment(){}\r\n\r\n    @Override\r\n    public View onCreateView(LayoutInflater inflater, ViewGroup container,\r\n                             Bundle savedInstanceState) {\r\n\r\n        View rootView = inflater.inflate(R.layout.fragment_topup, container, false);\r\n\r\n        sharedPref = this.getActivity().getPreferences(Context.MODE_PRIVATE);\r\n        USERPIN_AIS = sharedPref.getString(\"UID_AIS\", \"\");\r\n        USERPIN_DTAC = sharedPref.getString(\"UID_DTAC\", \"\");\r\n        USERPIN_TRUE = sharedPref.getString(\"UID_TRUE\", \"\");\r\n        USERPIN_CAT = sharedPref.getString(\"UID_CAT\", \"\");\r\n        CHK_THEME = sharedPref.getString(\"THEME\", \"\");\r\n        String getCheck = sharedPref.getString(\"CHK_OK\",\"\");\r\n        edt = sharedPref.edit();\r\n        edt.putString(\"UID1\", \"\");edt.putString(\"UID2\", \"\");edt.putString(\"UID3\", \"\");edt.putString(\"CHK\", \"\");\r\n        edt.apply();\r\n        int year = Calendar.getInstance().get(Calendar.YEAR);\r\n        chkNewRoll(year);\r\n\r\n        if(getCheck.equals(\"\")){\r\n            Toast.makeText(getActivity(), \"ผลการตรวจสอบ :\\r\\nเครื่องนี้ยังไม่ได้ทำรายการตั้งค่าคะ\\r\\n\\n\", Toast.LENGTH_LONG).show();\r\n            ((MainActivity) getActivity()).displayView(4);\r\n        }else{\r\n            bgcolor = (LinearLayout)rootView.findViewById(R.id.bgTheme);\r\n            btnHistory = (Button) rootView.findViewById(R.id.btnHistory);\r\n            btnContact = (Button) rootView.findViewById(R.id.btnFindContact);\r\n            txtphone = (TextView) rootView.findViewById(R.id.textViewPhone);\r\n            txtcost = (TextView) rootView.findViewById(R.id.textViewCost);\r\n            txtQuick1 = (TextView) rootView.findViewById(R.id.textViewDial1);\r\n            txtQuick2 = (TextView) rootView.findViewById(R.id.textViewDial2);\r\n            txtQuick3 = (TextView) rootView.findViewById(R.id.textViewDial3);\r\n            labelAIS = (TextView) rootView.findViewById(R.id.textViewAIS);\r\n            labelDTAC = (TextView) rootView.findViewById(R.id.textViewDTAC);\r\n            labelTRUE = (TextView) rootView.findViewById(R.id.textViewTRUE);\r\n            labelCAT = (TextView) rootView.findViewById(R.id.textViewCAT);\r\n            btn0 = (Button) rootView.findViewById(R.id.button0);\r\n            btn1 = (Button) rootView.findViewById(R.id.button1);\r\n            btn2 = (Button) rootView.findViewById(R.id.button2);\r\n            btn3 = (Button) rootView.findViewById(R.id.button3);\r\n            btn4 = (Button) rootView.findViewById(R.id.button4);\r\n            btn5 = (Button) rootView.findViewById(R.id.button5);\r\n            btn6 = (Button) rootView.findViewById(R.id.button6);\r\n            btn7 = (Button) rootView.findViewById(R.id.button7);\r\n            btn8 = (Button) rootView.findViewById(R.id.button8);\r\n            btn9 = (Button) rootView.findViewById(R.id.button9);\r\n            btnOK = (Button) rootView.findViewById(R.id.buttonTopup);\r\n            btnDel = (Button) rootView.findViewById(R.id.buttonDel);\r\n            sltAIS = (LinearLayout) rootView.findViewById(R.id.sltAIS);\r\n            sltDTAC = (LinearLayout) rootView.findViewById(R.id.sltDTAC);\r\n            sltTRUE = (LinearLayout) rootView.findViewById(R.id.sltTRUE);\r\n            sltCAT = (LinearLayout) rootView.findViewById(R.id.sltCAT);\r\n            slt1 = (LinearLayout) rootView.findViewById(R.id.slt1);\r\n            slt2 = (LinearLayout) rootView.findViewById(R.id.slt2);\r\n            slt3 = (LinearLayout) rootView.findViewById(R.id.slt3);\r\n            slt4 = (LinearLayout) rootView.findViewById(R.id.slt4);\r\n\r\n            if(CHK_THEME.equals(\"A\")){\r\n                bgAIS = R.color.bg_topup_ais_default;\r\n                bgDTAC = R.color.bg_topup_dtac_default;\r\n                bgTRUE = R.color.bg_topup_true_default;\r\n                bgCAT = R.color.bg_topup_cat_default;\r\n                tabAIS = R.drawable.button_select_ais_default;\r\n                tabDTAC = R.drawable.button_select_dtac_default;\r\n                tabTRUE = R.drawable.button_select_true_default;\r\n                tabCAT = R.drawable.button_select_cat_default;\r\n            }else{\r\n                bgAIS = R.color.bg_topup_ais_pastel;\r\n                bgDTAC = R.color.bg_topup_dtac_pastel;\r\n                bgTRUE = R.color.bg_topup_true_pastel;\r\n                bgCAT = R.color.bg_topup_cat_pastel;\r\n                tabAIS = R.drawable.button_select_ais_pastel;\r\n                tabDTAC = R.drawable.button_select_dtac_pastel;\r\n                tabTRUE = R.drawable.button_select_true_pastel;\r\n                tabCAT = R.drawable.button_select_cat_pastel;\r\n            }\r\n\r\n            btnHistory.setOnClickListener(new OnClickListener() {@Override public void onClick(View v) {\r\n                if(target=='1'){\r\n                    tmpDigit = \"\";\r\n                    LASTPHONE = sharedPref.getString(\"LAST\",\"\");\r\n                    InsDigit(LASTPHONE);\r\n                }}});\r\n            btnContact.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {\r\n                pickContact();}});\r\n            txtphone.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {\r\n                target = '1';tmpDigit = txtphone.getText().toString().trim();\r\n                txtphone.setBackgroundResource(R.drawable.border_active);\r\n                txtcost.setBackgroundResource(R.drawable.border_inactive);}});\r\n            txtcost.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {\r\n                target = '2';tmpDigit = txtcost.getText().toString().trim();\r\n                txtcost.setBackgroundResource(R.drawable.border_active);\r\n                txtphone.setBackgroundResource(R.drawable.border_inactive);}});\r\n            txtQuick1.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {\r\n                if(!txtQuick1.getText().equals(\"\")){\r\n                    txtphone.setText(txtQuick1.getText());\r\n                    chkCarrier(getPhone.get(0).substring(10,11));\r\n                }\r\n            }});\r\n            txtQuick2.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {\r\n                if(!txtQuick2.getText().equals(\"\")){\r\n                    txtphone.setText(txtQuick2.getText());\r\n                    chkCarrier(getPhone.get(1).substring(10,11));\r\n                }\r\n            }});\r\n            txtQuick3.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {\r\n                if(!txtQuick3.getText().equals(\"\")){\r\n                    txtphone.setText(txtQuick3.getText());\r\n                    chkCarrier(getPhone.get(2).substring(10,11));\r\n                }\r\n            }});\r\n            sltAIS.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {\r\n                bgcolor.setBackgroundResource(bgAIS);\r\n                mode = 1;\r\n                showLabel(\"1000\");\r\n            }});\r\n            sltDTAC.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {\r\n                bgcolor.setBackgroundResource(bgDTAC);\r\n                mode = 2;\r\n                showLabel(\"0100\");\r\n            }});\r\n            sltTRUE.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {\r\n                bgcolor.setBackgroundResource(bgTRUE);\r\n                mode = 3;\r\n                showLabel(\"0010\");\r\n            }});\r\n            sltCAT.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {\r\n                bgcolor.setBackgroundResource(bgCAT);\r\n                mode = 4;\r\n                showLabel(\"0001\");\r\n            }});\r\n\r\n            if(USERPIN_CAT.equals(\"\")){\r\n                tmpLabel = \"0\";\r\n                slt4.setVisibility(View.GONE);\r\n            }else{\r\n                tmpLabel = \"1\";\r\n                slt4.setVisibility(View.VISIBLE);\r\n                sltCAT.setBackgroundResource(tabCAT);\r\n                bgcolor.setBackgroundResource(bgCAT);\r\n                sltCAT.performClick();\r\n            }\r\n            if(USERPIN_TRUE.equals(\"\")){\r\n                tmpLabel = \"0\" + tmpLabel;\r\n                slt3.setVisibility(View.GONE);\r\n            }else{\r\n                tmpLabel = \"1\" + tmpLabel;\r\n                slt3.setVisibility(View.VISIBLE);\r\n                sltTRUE.setBackgroundResource(tabTRUE);\r\n                bgcolor.setBackgroundResource(bgTRUE);\r\n                sltTRUE.performClick();\r\n            }\r\n            if(USERPIN_DTAC.equals(\"\")){\r\n                tmpLabel = \"0\" + tmpLabel;\r\n                slt2.setVisibility(View.GONE);\r\n            }else{\r\n                tmpLabel = \"1\" + tmpLabel;\r\n                slt2.setVisibility(View.VISIBLE);\r\n                sltDTAC.setBackgroundResource(tabDTAC);\r\n                bgcolor.setBackgroundResource(bgDTAC);\r\n                sltDTAC.performClick();\r\n            }\r\n            if(USERPIN_AIS.equals(\"\")){\r\n                tmpLabel = \"0\" + tmpLabel;\r\n                slt1.setVisibility(View.GONE);\r\n            }else{\r\n                tmpLabel = \"1\" + tmpLabel;\r\n                slt1.setVisibility(View.VISIBLE);\r\n                sltAIS.setBackgroundResource(tabAIS);\r\n                bgcolor.setBackgroundResource(bgAIS);\r\n                sltAIS.performClick();\r\n            }\r\n\r\n            showLabel(tmpLabel);\r\n\r\n            btn0.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {InsDigit(\"0\");}});\r\n            btn1.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {InsDigit(\"1\");}});\r\n            btn2.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {InsDigit(\"2\");}});\r\n            btn3.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {InsDigit(\"3\");}});\r\n            btn4.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {InsDigit(\"4\");}});\r\n            btn5.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {InsDigit(\"5\");}});\r\n            btn6.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {InsDigit(\"6\");}});\r\n            btn7.setOnClickListener(new View.OnClickListener() {\r\n                @Override\r\n                public void onClick(View v) {\r\n                    InsDigit(\"7\");\r\n                }\r\n            });\r\n            btn8.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {InsDigit(\"8\");}});\r\n            btn9.setOnClickListener(new View.OnClickListener() {\r\n                @Override\r\n                public void onClick(View v) {\r\n                    InsDigit(\"9\");\r\n                }\r\n            });\r\n            btnOK.setOnClickListener(new View.OnClickListener() {\r\n                @Override public void onClick(View v) {InsDigit(\"OK\");promptQuickDial();}});\r\n            btnDel.setOnClickListener(new View.OnClickListener() {\r\n                @Override public void onClick(View v) {\r\n                    InsDigit(\"DEL\");\r\n                    if(txtphone.getText().toString().equals(\"\")){\r\n                        promptQuickDial();\r\n                    }\r\n                }\r\n            });\r\n            txtphone.setBackgroundResource(R.drawable.border_active);\r\n\r\n            btnDel.setOnLongClickListener(new View.OnLongClickListener() {\r\n                @Override\r\n                public boolean onLongClick(View v) {\r\n                    if(target=='1'){\r\n                        txtphone.setText(\"\");\r\n                        txtphone.setBackgroundResource(R.drawable.border_active);\r\n                        txtcost.setBackgroundResource(R.drawable.border_inactive);\r\n                    }else{\r\n                        txtcost.setText(\"\");\r\n                        txtphone.setBackgroundResource(R.drawable.border_inactive);\r\n                        txtcost.setBackgroundResource(R.drawable.border_active);\r\n                    }\r\n                    return false;\r\n                }\r\n            });\r\n        }\r\n\r\n        return rootView;\r\n    }\r\n\r\n    void InsDigit(String tmp){\r\n        switch (tmp) {\r\n            case \"OK\":\r\n                if (txtphone.getText().toString().equals(\"\") || txtcost.getText().toString().equals(\"\")) {\r\n                    Toast.makeText(getActivity(), \"ผิดพลาด :\\r\\nกรุณากรอกหมายเลขโทรศัพท์\\nและจำนวนเงินที่ต้องการเติมเงินด้วยคะ\", Toast.LENGTH_SHORT).show();\r\n                } else if (txtphone.getText().length() > 10 || txtphone.getText().length() < 10) {\r\n                    Toast.makeText(getActivity(), \"ผิดพลาด :\\r\\nกรุณากรอกหมายเลขโทรศัพท์\\nให้ครบ 10 หลักด้วยคะ\", Toast.LENGTH_SHORT).show();\r\n                } else if (txtcost.getText().length() < 1) {\r\n                    Toast.makeText(getActivity(), \"ผิดพลาด :\\r\\nกรุณากรอกจำนวนเงิน\\nให้ถูกต้องด้วยคะ\", Toast.LENGTH_SHORT).show();\r\n                } else {\r\n                    int hasCallPhonePermission = ContextCompat.checkSelfPermission(getActivity(),\r\n                            Manifest.permission.CALL_PHONE);\r\n                    if (hasCallPhonePermission != PackageManager.PERMISSION_GRANTED) {\r\n                        if (!ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),\r\n                                Manifest.permission.CALL_PHONE)) {\r\n                            tmpDigit = \"\";\r\n                            showMessageOK(\"ต้องการยืนยันการอนุญาตเข้าถึง\\n\\n[ระบบการโทร]\\n\\nเพื่อให้แอปพลิเคชันทำงานได้\",\r\n                                    new DialogInterface.OnClickListener() {\r\n                                        @Override\r\n                                        public void onClick(DialogInterface dialog, int which) {\r\n                                            ActivityCompat.requestPermissions(getActivity(),\r\n                                                    new String[]{Manifest.permission.CALL_PHONE},\r\n                                                    REQUEST_CALL_PHONE_PERMISSIONS);\r\n                                        }\r\n                                    });\r\n                            return;\r\n                        }\r\n                        ActivityCompat.requestPermissions(getActivity(),\r\n                                new String[]{Manifest.permission.CALL_PHONE},\r\n                                REQUEST_CALL_PHONE_PERMISSIONS);\r\n                        return;\r\n                    } else {\r\n                        switch (mode) {\r\n                            case 1:\r\n                                TopupAIS();\r\n                                break;\r\n                            case 2:\r\n                                TopupDTAC();\r\n                                break;\r\n                            case 3:\r\n                                TopupTRUE();\r\n                                break;\r\n                            case 4:\r\n                                TopupCAT();\r\n                                break;\r\n                        }\r\n                        saveToDB();\r\n                        edt.putString(\"LAST\", txtphone.getText().toString().trim());\r\n                        edt.commit();\r\n                        tmpDigit = \"\";\r\n                        txtphone.setText(\"\");\r\n                        txtcost.setText(\"\");\r\n                        txtphone.setBackgroundResource(R.drawable.border_active);\r\n                        txtcost.setBackgroundResource(R.drawable.border_inactive);\r\n                        target = '1';\r\n                        txtQuick1.setText(\"\");\r\n                        txtQuick2.setText(\"\");\r\n                        txtQuick3.setText(\"\");\r\n                    }\r\n                }\r\n                break;\r\n            case \"DEL\":\r\n                if (target == '1') {\r\n                    tmpDigit = txtphone.getText().toString();\r\n                    if (tmpDigit.length() > 0) {\r\n                        tmpDigit = tmpDigit.substring(0, tmpDigit.length() - 1);\r\n                    }\r\n                    txtphone.setText(tmpDigit);\r\n                    updateQuickDial(tmpDigit);\r\n                } else {\r\n                    tmpDigit = txtcost.getText().toString();\r\n                    if (tmpDigit.length() > 0) {\r\n                        tmpDigit = tmpDigit.substring(0, tmpDigit.length() - 1);\r\n                    }\r\n                    txtcost.setText(tmpDigit);\r\n                }\r\n                break;\r\n            default:\r\n                tmpDigit += tmp;\r\n                if (tmpDigit.length() == 11) {\r\n                    tmpDigit = tmp;\r\n                    target = '2';\r\n                    txtphone.setBackgroundResource(R.drawable.border_inactive);\r\n                    txtcost.setBackgroundResource(R.drawable.border_active);\r\n                }\r\n                break;\r\n        }\r\n        if(target == '1'){\r\n            txtphone.setBackgroundResource(R.drawable.border_active);\r\n            txtphone.setText(tmpDigit);\r\n            updateQuickDial(tmpDigit);\r\n        }else{\r\n            txtcost.setText(tmpDigit);\r\n        }\r\n    }\r\n\r\n    private void TopupAIS() {\r\n        Log.d(\"Test\", \"To this\");\r\n        try {\r\n            Intent callIntent = new Intent(Intent.ACTION_CALL);\r\n            String txtTel = \"*123*\" + USERPIN_AIS + \"*\" + txtphone.getText().toString().trim() + \"*\" + txtcost.getText().toString().trim() + \"%23\";\r\n            callIntent.setData(Uri.parse(\"tel:\" + txtTel));\r\n            startActivity(callIntent);\r\n        } catch (ActivityNotFoundException activityException) {\r\n            Log.d(\"dialing-example\", \"Call failed\", activityException);\r\n        }\r\n    }\r\n\r\n    private void TopupDTAC() {\r\n        try {\r\n            Intent callIntent = new Intent(Intent.ACTION_CALL);\r\n            String txtTel = \"*211*1*\" + txtphone.getText().toString().trim() + \"*\" + USERPIN_DTAC + \"*\" + txtcost.getText().toString().trim() + \"*1*\" + \"%23\";\r\n            callIntent.setData(Uri.parse(\"tel:\" + txtTel));\r\n            startActivity(callIntent);\r\n        } catch (ActivityNotFoundException activityException) {\r\n            Log.d(\"dialing-example\", \"Call failed\", activityException);\r\n        }\r\n    }\r\n\r\n    private void TopupTRUE() {\r\n        try {\r\n            Intent callIntent = new Intent(Intent.ACTION_CALL);\r\n            String txtTel = \"*666*\" + txtphone.getText().toString().trim() + \"*\" + txtcost.getText().toString().trim() + \"*\" + USERPIN_TRUE + \"%23\";\r\n            callIntent.setData(Uri.parse(\"tel:\" + txtTel));\r\n            startActivity(callIntent);\r\n        } catch (ActivityNotFoundException activityException) {\r\n            Log.d(\"dialing-example\", \"Call failed\", activityException);\r\n        }\r\n    }\r\n\r\n    private void TopupCAT() {\r\n        try {\r\n            Intent callIntent = new Intent(Intent.ACTION_CALL);\r\n            String txtTel = \"*215*\" + txtphone.getText().toString().trim() + \"*\" + txtcost.getText().toString().trim() + \"%23\";\r\n            callIntent.setData(Uri.parse(\"tel:\" + txtTel));\r\n            startActivity(callIntent);\r\n        } catch (ActivityNotFoundException activityException) {\r\n            Log.d(\"dialing-example\", \"Call failed\", activityException);\r\n        }\r\n    }\r\n\r\n    private void pickContact() {\r\n        int hasReadContactsPermission = ContextCompat.checkSelfPermission(getActivity(),\r\n                Manifest.permission.READ_CONTACTS);\r\n        if (hasReadContactsPermission != PackageManager.PERMISSION_GRANTED){\r\n            if (!ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),\r\n                    Manifest.permission.READ_CONTACTS)) {\r\n                showMessageOK(\"ต้องการยืนยันการอนุญาตเข้าถึง\\n\\n[สมุดรายชื่อ]\\n\\nเพื่อให้แอปพลิเคชันทำงานได้\",\r\n                        new DialogInterface.OnClickListener() {\r\n                            @Override\r\n                            public void onClick(DialogInterface dialog, int which) {\r\n                                ActivityCompat.requestPermissions(getActivity(),\r\n                                        new String[] {Manifest.permission.READ_CONTACTS},\r\n                                        REQUEST_READ_CONTACTS_PERMISSIONS);\r\n                            }\r\n                        });\r\n                return;\r\n            }\r\n            ActivityCompat.requestPermissions(getActivity(),\r\n                    new String[] {Manifest.permission.READ_CONTACTS},\r\n                    REQUEST_READ_CONTACTS_PERMISSIONS);\r\n            //return;\r\n        }else{\r\n            tmpDigit = \"\";\r\n            Intent pickContactIntent = new Intent( Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI );\r\n            pickContactIntent.setType(ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE);\r\n            startActivityForResult(pickContactIntent, PICK_CONTACT_REQUEST);\r\n        }\r\n\r\n    }\r\n\r\n    @Override\r\n    public void onActivityResult( int requestCode, int resultCode, Intent data ) {\r\n    super.onActivityResult(requestCode, resultCode, data);\r\n        String number = \"\";\r\n        if ( requestCode == PICK_CONTACT_REQUEST ) {\r\n            if ( resultCode == Activity.RESULT_OK ) {\r\n                Uri contactData = data.getData();\r\n                String[] projection = { ContactsContract.CommonDataKinds.Phone.NUMBER, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME };\r\n                Cursor cursor = getActivity().getContentResolver().query(contactData, projection,\r\n                        null, null, null);\r\n                if (cursor != null) {\r\n                    cursor.moveToFirst();\r\n                    int numberColumnIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);\r\n                    number = cursor.getString(numberColumnIndex).replace(\"(\", \"\").replace(\")\", \"\").replace(\"-\", \"\").replace(\" \", \"\").trim();\r\n                    cursor.close();\r\n                }\r\n                try{\r\n                    txtphone.setText(number);\r\n                    target = '2';\r\n                    txtcost.setBackgroundResource(R.drawable.border_active);\r\n                    txtphone.setBackgroundResource(R.drawable.border_inactive);\r\n                }catch (Exception e){\r\n                    Toast.makeText(getActivity(), \"\\n** พบข้อผิดพลาด **\\n\\nกรุณาแจ้งผู้พัฒนาระบบ\\n\\nmondaro23@gmail.com\\n\\n\\n\", Toast.LENGTH_LONG).show();\r\n                }\r\n            }\r\n        }\r\n    }\r\n\r\n    @Override\r\n    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {\r\n        switch(requestCode){\r\n            case REQUEST_READ_CONTACTS_PERMISSIONS:\r\n                if(grantResults[0] != PackageManager.PERMISSION_GRANTED){\r\n                    Toast.makeText(getActivity(), \"READ_CONTACTS Denied\", Toast.LENGTH_SHORT)\r\n                            .show();\r\n                }\r\n                break;\r\n            case REQUEST_CALL_PHONE_PERMISSIONS:\r\n                if(grantResults[0] != PackageManager.PERMISSION_GRANTED){\r\n                    Toast.makeText(getActivity(), \"CALL_PHONE Denied\", Toast.LENGTH_SHORT)\r\n                            .show();\r\n                }\r\n                break;\r\n            default:\r\n                super.onRequestPermissionsResult(requestCode, permissions, grantResults);\r\n        }\r\n    }\r\n\r\n    private void showMessageOK(String message, DialogInterface.OnClickListener okListener) {\r\n        new AlertDialog.Builder(getActivity())\r\n                .setMessage(message)\r\n                .setPositiveButton(\"OK\", okListener)\r\n                .create()\r\n                .show();\r\n    }\r\n\r\n    private void saveToDB() {\r\n        SQLiteDatabase _writedatabase = new DBHelper(getActivity()).getWritableDatabase();\r\n        SQLiteDatabase _readdatabase = new DBHelper(getActivity()).getReadableDatabase();\r\n        ContentValues values = new ContentValues();\r\n        int chk = chkDuplicateDB();\r\n        if(chk != 0){\r\n            int amount = 0;\r\n            String[] projection = {\r\n                    SimpleDBDial.ContactDial.COLS_AMOUNT\r\n            };\r\n\r\n            String selection =\r\n                    SimpleDBDial.ContactDial._ID + \" = ?\";\r\n\r\n            String[] args = {String.valueOf(chk)};\r\n\r\n            Cursor cursor = _readdatabase.query(\r\n                    SimpleDBDial.ContactDial.TABLE_NAME,\r\n                    projection,\r\n                    selection,\r\n                    args,\r\n                    null, null, null\r\n            );\r\n            if(cursor.getCount() != 0){\r\n                if (cursor.moveToFirst()){\r\n                    do{\r\n                        String data = cursor.getString(cursor.getColumnIndexOrThrow(SimpleDBDial.ContactDial.COLS_AMOUNT));\r\n                        amount = Integer.valueOf(data);\r\n                    }while(cursor.moveToNext());\r\n                }\r\n                cursor.close();\r\n            }\r\n            amount += Integer.valueOf(txtcost.getText().toString());\r\n            values.put(SimpleDBDial.ContactDial.COLS_AMOUNT, amount);\r\n            values.put(SimpleDBDial.ContactDial.COLS_CARRIER, mode);\r\n            _writedatabase.update(SimpleDBDial.ContactDial.TABLE_NAME,values,selection,args);\r\n        }else{\r\n            values.put(SimpleDBDial.ContactDial.COLS_CARRIER, mode);\r\n            values.put(SimpleDBDial.ContactDial.COLS_PHONE, txtphone.getText().toString());\r\n            values.put(SimpleDBDial.ContactDial.COLS_AMOUNT, Integer.valueOf(txtcost.getText().toString()));\r\n            _writedatabase.insert(SimpleDBDial.ContactDial.TABLE_NAME, null, values);\r\n        }\r\n    }\r\n\r\n    private int chkDuplicateDB(){\r\n        int chk = 0;\r\n        SQLiteDatabase _findduplicatedatabase = new DBHelper(getActivity()).getReadableDatabase();\r\n        String[] projection = {\r\n                SimpleDBDial.ContactDial._ID\r\n        };\r\n\r\n        String selection = SimpleDBDial.ContactDial.COLS_PHONE + \" LIKE ?\";\r\n\r\n        String[] args = {txtphone.getText().toString() + \"%\"};\r\n\r\n        Cursor cursor = _findduplicatedatabase.query(\r\n                SimpleDBDial.ContactDial.TABLE_NAME,\r\n                projection,\r\n                selection,\r\n                args,\r\n                null, null, null\r\n        );\r\n        if(cursor.getCount() != 0){\r\n            if (cursor.moveToFirst()){\r\n                do{\r\n                    String data = cursor.getString(cursor.getColumnIndexOrThrow(SimpleDBDial.ContactDial._ID));\r\n                    chk = Integer.valueOf(data);\r\n                }while(cursor.moveToNext());\r\n            }\r\n            cursor.close();\r\n        }\r\n        return chk;\r\n    }\r\n\r\n    private void updateQuickDial(String t) {\r\n        promptQuickDial();\r\n        SQLiteDatabase _getquickphone = new DBHelper(getActivity()).getReadableDatabase();\r\n        String[] projection = {\r\n                SimpleDBDial.ContactDial.COLS_CARRIER,\r\n                SimpleDBDial.ContactDial.COLS_PHONE\r\n        };\r\n\r\n        String selection = SimpleDBDial.ContactDial.COLS_PHONE + \" LIKE ?\";\r\n\r\n        String[] args = {t + \"%\"};\r\n\r\n        Cursor cur = _getquickphone.query(\r\n                SimpleDBDial.ContactDial.TABLE_NAME,\r\n                projection,\r\n                selection,\r\n                args,\r\n                null, null,\r\n                SimpleDBDial.ContactDial.COLS_AMOUNT + \" DESC\",\r\n                \"3\"\r\n        );\r\n        getPhone = new ArrayList<>();\r\n        String carrier;\r\n        String phone;\r\n        if(cur.getCount() != 0){\r\n            if (cur.moveToFirst()){\r\n                do{\r\n                    carrier = cur.getString(cur.getColumnIndexOrThrow(SimpleDBDial.ContactDial.COLS_CARRIER));\r\n                    phone = cur.getString(cur.getColumnIndexOrThrow(SimpleDBDial.ContactDial.COLS_PHONE));\r\n                    getPhone.add(phone+carrier);\r\n                }while(cur.moveToNext());\r\n            }\r\n            cur.close();\r\n        }\r\n        try{\r\n            txtQuick1.setVisibility(View.VISIBLE);\r\n            txtQuick2.setVisibility(View.VISIBLE);\r\n            txtQuick3.setVisibility(View.VISIBLE);\r\n            txtQuick1.setText(getPhone.get(0).substring(0,10));\r\n            txtQuick2.setText(getPhone.get(1).substring(0,10));\r\n            txtQuick3.setText(getPhone.get(2).substring(0,10));\r\n        }catch (Exception e){\r\n            //No code\r\n        }\r\n        try{\r\n            switch (getPhone.get(0).substring(10,11)){\r\n                case \"1\" :txtQuick1.setBackgroundResource(R.drawable.button_quick_ais);break;\r\n                case \"2\" :txtQuick1.setBackgroundResource(R.drawable.button_quick_dtac);break;\r\n                case \"3\" :txtQuick1.setBackgroundResource(R.drawable.button_quick_true);break;\r\n                case \"4\" :txtQuick1.setBackgroundResource(R.drawable.button_quick_cat);break;\r\n            }\r\n            switch (getPhone.get(1).substring(10,11)){\r\n                case \"1\" :txtQuick2.setBackgroundResource(R.drawable.button_quick_ais);break;\r\n                case \"2\" :txtQuick2.setBackgroundResource(R.drawable.button_quick_dtac);break;\r\n                case \"3\" :txtQuick2.setBackgroundResource(R.drawable.button_quick_true);break;\r\n                case \"4\" :txtQuick2.setBackgroundResource(R.drawable.button_quick_cat);break;\r\n            }\r\n            switch (getPhone.get(2).substring(10,11)){\r\n                case \"1\" :txtQuick3.setBackgroundResource(R.drawable.button_quick_ais);break;\r\n                case \"2\" :txtQuick3.setBackgroundResource(R.drawable.button_quick_dtac);break;\r\n                case \"3\" :txtQuick3.setBackgroundResource(R.drawable.button_quick_true);break;\r\n                case \"4\" :txtQuick3.setBackgroundResource(R.drawable.button_quick_cat);break;\r\n            }\r\n        }catch (Exception e){\r\n            //No code\r\n        }\r\n        if(txtQuick1.getText() == \"\"){txtQuick1.setVisibility(View.INVISIBLE);}\r\n        if(txtQuick2.getText() == \"\"){txtQuick2.setVisibility(View.INVISIBLE);}\r\n        if(txtQuick3.getText() == \"\"){txtQuick3.setVisibility(View.INVISIBLE);}\r\n    }\r\n\r\n    private void promptQuickDial(){\r\n        txtQuick1.setText(\"\");\r\n        txtQuick1.setVisibility(View.INVISIBLE);\r\n        txtQuick2.setText(\"\");\r\n        txtQuick2.setVisibility(View.INVISIBLE);\r\n        txtQuick3.setText(\"\");\r\n        txtQuick3.setVisibility(View.INVISIBLE);\r\n        txtcost.setText(\"\");\r\n    }\r\n\r\n    private void chkCarrier(String c){\r\n        switch (c){\r\n            case \"1\":\r\n                if(USERPIN_AIS.equals(\"\")){\r\n                    Toast.makeText(getActivity(), \"หมายเลขนี้อยู่ในระบบที่คุณไม่ได้ตั้งค่าไว้ค่ะ\", Toast.LENGTH_LONG).show();\r\n                    txtphone.setText(\"\");\r\n                }else{\r\n                    sltAIS.performClick();\r\n                }\r\n                break;\r\n            case \"2\":\r\n                if(USERPIN_DTAC.equals(\"\")){\r\n                    Toast.makeText(getActivity(), \"หมายเลขนี้อยู่ในระบบที่คุณไม่ได้ตั้งค่าไว้ค่ะ\", Toast.LENGTH_LONG).show();\r\n                    txtphone.setText(\"\");\r\n                }else{\r\n                    sltDTAC.performClick();\r\n                }\r\n                break;\r\n            case \"3\":\r\n                if(USERPIN_TRUE.equals(\"\")){\r\n                    Toast.makeText(getActivity(), \"หมายเลขนี้อยู่ในระบบที่คุณไม่ได้ตั้งค่าไว้ค่ะ\", Toast.LENGTH_LONG).show();\r\n                    txtphone.setText(\"\");\r\n                }else{\r\n                    sltTRUE.performClick();\r\n                }\r\n                break;\r\n            case \"4\":\r\n                if(USERPIN_CAT.equals(\"\")){\r\n                    Toast.makeText(getActivity(), \"หมายเลขนี้อยู่ในระบบที่คุณไม่ได้ตั้งค่าไว้ค่ะ\", Toast.LENGTH_LONG).show();\r\n                    txtphone.setText(\"\");\r\n                }else{\r\n                    sltCAT.performClick();\r\n                }\r\n                break;\r\n        }\r\n        target = '2';tmpDigit = \"\";\r\n        txtphone.setBackgroundResource(R.drawable.border_inactive);\r\n        txtcost.setBackgroundResource(R.drawable.border_active);\r\n        promptQuickDial();\r\n    }\r\n\r\n    private void chkNewRoll(int yearNow){\r\n        int yearOn = sharedPref.getInt(\"YEAR\",0);\r\n        if(yearOn == 0){\r\n            edt.putInt(\"YEAR\", Calendar.getInstance().get(Calendar.YEAR));\r\n            edt.commit();\r\n            yearOn = sharedPref.getInt(\"YEAR\",0);\r\n        }\r\n        if(yearOn != yearNow){\r\n            edt.putInt(\"YEAR\", Calendar.getInstance().get(Calendar.YEAR));\r\n            edt.commit();\r\n            try {\r\n                cleanAmount();\r\n            }catch (Exception e){\r\n                //Null\r\n            }\r\n        }\r\n    }\r\n\r\n    private void cleanAmount(){\r\n        SQLiteDatabase _writedatabase = new DBHelper(getActivity()).getWritableDatabase();\r\n        ContentValues cv = new ContentValues();\r\n        cv.put(SimpleDBDial.ContactDial.COLS_AMOUNT, 0);\r\n        _writedatabase.update(SimpleDBDial.ContactDial.TABLE_NAME,cv,null,null);\r\n\r\n    }\r\n\r\n    private void showLabel(String lb){\r\n        switch (lb){\r\n            case \"1000\" :case \"1100\" :case \"1010\" :case \"1001\" :\r\n                labelAIS.setVisibility(View.VISIBLE);\r\n                labelDTAC.setVisibility(View.GONE);\r\n                labelTRUE.setVisibility(View.GONE);\r\n                labelCAT.setVisibility(View.GONE);\r\n                slt1.setLayoutParams(new LinearLayout.LayoutParams(\r\n                        LinearLayout.LayoutParams.MATCH_PARENT,\r\n                        LinearLayout.LayoutParams.WRAP_CONTENT,\r\n                        1.0f));\r\n                slt2.setLayoutParams(new LinearLayout.LayoutParams(\r\n                        LinearLayout.LayoutParams.MATCH_PARENT,\r\n                        LinearLayout.LayoutParams.WRAP_CONTENT,\r\n                        0.0f));\r\n                slt3.setLayoutParams(new LinearLayout.LayoutParams(\r\n                        LinearLayout.LayoutParams.MATCH_PARENT,\r\n                        LinearLayout.LayoutParams.WRAP_CONTENT,\r\n                        0.0f));\r\n                slt4.setLayoutParams(new LinearLayout.LayoutParams(\r\n                        LinearLayout.LayoutParams.MATCH_PARENT,\r\n                        LinearLayout.LayoutParams.WRAP_CONTENT,\r\n                        0.0f));\r\n                break;\r\n            case \"0100\" :case \"0110\" :case \"0101\" :\r\n                labelAIS.setVisibility(View.GONE);\r\n                labelDTAC.setVisibility(View.VISIBLE);\r\n                labelTRUE.setVisibility(View.GONE);\r\n                labelCAT.setVisibility(View.GONE);\r\n                slt1.setLayoutParams(new LinearLayout.LayoutParams(\r\n                        LinearLayout.LayoutParams.MATCH_PARENT,\r\n                        LinearLayout.LayoutParams.WRAP_CONTENT,\r\n                        0.0f));\r\n                slt2.setLayoutParams(new LinearLayout.LayoutParams(\r\n                        LinearLayout.LayoutParams.MATCH_PARENT,\r\n                        LinearLayout.LayoutParams.WRAP_CONTENT,\r\n                        1.0f));\r\n                slt3.setLayoutParams(new LinearLayout.LayoutParams(\r\n                        LinearLayout.LayoutParams.MATCH_PARENT,\r\n                        LinearLayout.LayoutParams.WRAP_CONTENT,\r\n                        0.0f));\r\n                slt4.setLayoutParams(new LinearLayout.LayoutParams(\r\n                        LinearLayout.LayoutParams.MATCH_PARENT,\r\n                        LinearLayout.LayoutParams.WRAP_CONTENT,\r\n                        0.0f));\r\n                break;\r\n            case \"0010\" :case \"0011\" :\r\n                labelAIS.setVisibility(View.GONE);\r\n                labelDTAC.setVisibility(View.GONE);\r\n                labelTRUE.setVisibility(View.VISIBLE);\r\n                labelCAT.setVisibility(View.GONE);\r\n                slt1.setLayoutParams(new LinearLayout.LayoutParams(\r\n                        LinearLayout.LayoutParams.MATCH_PARENT,\r\n                        LinearLayout.LayoutParams.WRAP_CONTENT,\r\n                        0.0f));\r\n                slt2.setLayoutParams(new LinearLayout.LayoutParams(\r\n                        LinearLayout.LayoutParams.MATCH_PARENT,\r\n                        LinearLayout.LayoutParams.WRAP_CONTENT,\r\n                        0.0f));\r\n                slt3.setLayoutParams(new LinearLayout.LayoutParams(\r\n                        LinearLayout.LayoutParams.MATCH_PARENT,\r\n                        LinearLayout.LayoutParams.WRAP_CONTENT,\r\n                        1.0f));\r\n                slt4.setLayoutParams(new LinearLayout.LayoutParams(\r\n                        LinearLayout.LayoutParams.MATCH_PARENT,\r\n                        LinearLayout.LayoutParams.WRAP_CONTENT,\r\n                        0.0f));\r\n                break;\r\n            case \"0001\" :\r\n                labelAIS.setVisibility(View.GONE);\r\n                labelDTAC.setVisibility(View.GONE);\r\n                labelTRUE.setVisibility(View.GONE);\r\n                labelCAT.setVisibility(View.VISIBLE);\r\n                slt1.setLayoutParams(new LinearLayout.LayoutParams(\r\n                        LinearLayout.LayoutParams.MATCH_PARENT,\r\n                        LinearLayout.LayoutParams.WRAP_CONTENT,\r\n                        0.0f));\r\n                slt2.setLayoutParams(new LinearLayout.LayoutParams(\r\n                        LinearLayout.LayoutParams.MATCH_PARENT,\r\n                        LinearLayout.LayoutParams.WRAP_CONTENT,\r\n                        0.0f));\r\n                slt3.setLayoutParams(new LinearLayout.LayoutParams(\r\n                        LinearLayout.LayoutParams.MATCH_PARENT,\r\n                        LinearLayout.LayoutParams.WRAP_CONTENT,\r\n                        0.0f));\r\n                slt4.setLayoutParams(new LinearLayout.LayoutParams(\r\n                        LinearLayout.LayoutParams.MATCH_PARENT,\r\n                        LinearLayout.LayoutParams.WRAP_CONTENT,\r\n                        1.0f));\r\n                break;\r\n        }\r\n    }\r\n    public static void setBackgroundResource(@NonNull View view, @DrawableRes int resId) {\r\n        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {\r\n            int paddingTop = view.getPaddingTop();\r\n            int paddingLeft = view.getPaddingLeft();\r\n            int paddingRight = view.getPaddingRight();\r\n            int paddingBottom = view.getPaddingBottom();\r\n            view.setBackgroundResource(resId);\r\n            view.setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom);\r\n        } else {\r\n            view.setBackgroundResource(resId);\r\n        }\r\n    }\r\n}\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/mondaro/easytopup/TopupFragment.java b/app/src/main/java/com/mondaro/easytopup/TopupFragment.java
+--- a/app/src/main/java/com/mondaro/easytopup/TopupFragment.java	(revision 2d8f184014a88ca2eac8b27b5648571b54e75da8)
++++ b/app/src/main/java/com/mondaro/easytopup/TopupFragment.java	(date 1655948028964)
+@@ -395,7 +395,7 @@
+     private void TopupDTAC() {
+         try {
+             Intent callIntent = new Intent(Intent.ACTION_CALL);
+-            String txtTel = "*211*1*" + txtphone.getText().toString().trim() + "*" + USERPIN_DTAC + "*" + txtcost.getText().toString().trim() + "*1*" + "%23";
++            String txtTel = "*211*1*" + txtphone.getText().toString().trim() + "*" + USERPIN_DTAC + "*" + txtcost.getText().toString().trim() + "*1" + "%23";
+             callIntent.setData(Uri.parse("tel:" + txtTel));
+             startActivity(callIntent);
+         } catch (ActivityNotFoundException activityException) {
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/compiler.xml b/.idea/compiler.xml
+new file mode 100644
+--- /dev/null	(date 1645850892721)
++++ b/.idea/compiler.xml	(date 1645850892721)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="CompilerConfiguration">
++    <bytecodeTargetLevel target="11" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ProjectModuleManager\">\r\n    <modules>\r\n      <module fileurl=\"file://$PROJECT_DIR$/app/app.iml\" filepath=\"$PROJECT_DIR$/app/app.iml\" />\r\n      <module fileurl=\"file://$PROJECT_DIR$/easytopup.iml\" filepath=\"$PROJECT_DIR$/easytopup.iml\" />\r\n    </modules>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/modules.xml b/.idea/modules.xml
+--- a/.idea/modules.xml	(revision 2d8f184014a88ca2eac8b27b5648571b54e75da8)
++++ b/.idea/modules.xml	(date 1655948046203)
+@@ -2,8 +2,11 @@
+ <project version="4">
+   <component name="ProjectModuleManager">
+     <modules>
+-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+       <module fileurl="file://$PROJECT_DIR$/easytopup.iml" filepath="$PROJECT_DIR$/easytopup.iml" />
++      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/easytopup.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/easytopup.app.iml" />
++      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/easytopup.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/easytopup.app.androidTest.iml" />
++      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/easytopup.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/easytopup.app.main.iml" />
++      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/easytopup.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/easytopup.app.unitTest.iml" />
+     </modules>
+   </component>
+ </project>
+\ No newline at end of file
+Index: .idea/gradle.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"GradleSettings\">\r\n    <option name=\"linkedExternalProjectsSettings\">\r\n      <GradleProjectSettings>\r\n        <compositeConfiguration>\r\n          <compositeBuild compositeDefinitionSource=\"SCRIPT\" />\r\n        </compositeConfiguration>\r\n        <option name=\"distributionType\" value=\"DEFAULT_WRAPPED\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"modules\">\r\n          <set>\r\n            <option value=\"$PROJECT_DIR$\" />\r\n            <option value=\"$PROJECT_DIR$/app\" />\r\n          </set>\r\n        </option>\r\n        <option name=\"resolveModulePerSourceSet\" value=\"false\" />\r\n        <option name=\"testRunner\" value=\"PLATFORM\" />\r\n      </GradleProjectSettings>\r\n    </option>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/gradle.xml b/.idea/gradle.xml
+--- a/.idea/gradle.xml	(revision 2d8f184014a88ca2eac8b27b5648571b54e75da8)
++++ b/.idea/gradle.xml	(date 1655947980854)
+@@ -1,11 +1,11 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
++  <component name="GradleMigrationSettings" migrationVersion="1" />
+   <component name="GradleSettings">
+     <option name="linkedExternalProjectsSettings">
+       <GradleProjectSettings>
+-        <compositeConfiguration>
+-          <compositeBuild compositeDefinitionSource="SCRIPT" />
+-        </compositeConfiguration>
++        <option name="delegatedBuild" value="false" />
++        <option name="testRunner" value="GRADLE" />
+         <option name="distributionType" value="DEFAULT_WRAPPED" />
+         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+         <option name="modules">
+@@ -14,8 +14,6 @@
+             <option value="$PROJECT_DIR$/app" />
+           </set>
+         </option>
+-        <option name="resolveModulePerSourceSet" value="false" />
+-        <option name="testRunner" value="PLATFORM" />
+       </GradleProjectSettings>
+     </option>
+   </component>
+Index: .idea/jarRepositories.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/jarRepositories.xml b/.idea/jarRepositories.xml
+new file mode 100644
+--- /dev/null	(date 1645851862737)
++++ b/.idea/jarRepositories.xml	(date 1645851862737)
+@@ -0,0 +1,25 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="RemoteRepositoriesConfiguration">
++    <remote-repository>
++      <option name="id" value="central" />
++      <option name="name" value="Maven Central repository" />
++      <option name="url" value="https://repo1.maven.org/maven2" />
++    </remote-repository>
++    <remote-repository>
++      <option name="id" value="jboss.community" />
++      <option name="name" value="JBoss Community repository" />
++      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
++    </remote-repository>
++    <remote-repository>
++      <option name="id" value="BintrayJCenter" />
++      <option name="name" value="BintrayJCenter" />
++      <option name="url" value="https://jcenter.bintray.com/" />
++    </remote-repository>
++    <remote-repository>
++      <option name="id" value="Google" />
++      <option name="name" value="Google" />
++      <option name="url" value="https://dl.google.com/dl/android/maven2/" />
++    </remote-repository>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/modules/app/easytopup.app.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/modules/app/easytopup.app.iml b/.idea/modules/app/easytopup.app.iml
+new file mode 100644
+--- /dev/null	(date 1655949033886)
++++ b/.idea/modules/app/easytopup.app.iml	(date 1655949033886)
+@@ -0,0 +1,38 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module external.linked.project.id=":app" external.linked.project.path="$MODULE_DIR$/../../../app" external.root.project.path="$MODULE_DIR$/../../.." external.system.id="GRADLE" external.system.module.group="easytopup" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
++  <component name="FacetManager">
++    <facet type="android-gradle" name="Android-Gradle">
++      <configuration>
++        <option name="GRADLE_PROJECT_PATH" value=":app" />
++        <option name="LAST_SUCCESSFUL_SYNC_AGP_VERSION" value="3.5.3" />
++        <option name="LAST_KNOWN_AGP_VERSION" value="3.5.3" />
++      </configuration>
++    </facet>
++    <facet type="android" name="Android">
++      <configuration>
++        <option name="SELECTED_BUILD_VARIANT" value="debug" />
++        <option name="ASSEMBLE_TASK_NAME" value="assembleDebug" />
++        <option name="COMPILE_JAVA_TASK_NAME" value="compileDebugSources" />
++        <afterSyncTasks>
++          <task>generateDebugSources</task>
++        </afterSyncTasks>
++        <option name="ALLOW_USER_CONFIGURATION" value="false" />
++        <option name="MANIFEST_FILE_RELATIVE_PATH" value="/src/main/AndroidManifest.xml" />
++        <option name="RES_FOLDER_RELATIVE_PATH" value="/src/main/res" />
++        <option name="RES_FOLDERS_RELATIVE_PATH" value="file://$MODULE_DIR$/../../../app/src/main/res;file://$MODULE_DIR$/../../../app/src/debug/res;file://$MODULE_DIR$/../../../app/build/generated/res/rs/debug;file://$MODULE_DIR$/../../../app/build/generated/res/resValues/debug" />
++        <option name="TEST_RES_FOLDERS_RELATIVE_PATH" value="file://$MODULE_DIR$/../../../app/src/androidTest/res;file://$MODULE_DIR$/../../../app/src/androidTestDebug/res;file://$MODULE_DIR$/../../../app/build/generated/res/rs/androidTest/debug;file://$MODULE_DIR$/../../../app/build/generated/res/resValues/androidTest/debug" />
++        <option name="ASSETS_FOLDER_RELATIVE_PATH" value="/src/main/assets" />
++      </configuration>
++    </facet>
++  </component>
++  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7">
++    <exclude-output />
++    <content url="file://$MODULE_DIR$/../../../app">
++      <excludeFolder url="file://$MODULE_DIR$/../../../app/.gradle" />
++      <excludeFolder url="file://$MODULE_DIR$/../../../app/build" />
++      <excludeFolder url="file://$MODULE_DIR$/../../../app/out" />
++    </content>
++    <orderEntry type="jdk" jdkName="Android API 23 Platform" jdkType="Android SDK" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file

@@ -395,7 +395,7 @@ public class TopupFragment extends Fragment {
     private void TopupDTAC() {
         try {
             Intent callIntent = new Intent(Intent.ACTION_CALL);
-            String txtTel = "*211*1*" + txtphone.getText().toString().trim() + "*" + USERPIN_DTAC + "*" + txtcost.getText().toString().trim() + "*1*" + "%23";
+            String txtTel = "*211*1*" + txtphone.getText().toString().trim() + "*" + USERPIN_DTAC + "*" + txtcost.getText().toString().trim() + "*1" + "%23";
             callIntent.setData(Uri.parse("tel:" + txtTel));
             startActivity(callIntent);
         } catch (ActivityNotFoundException activityException) {

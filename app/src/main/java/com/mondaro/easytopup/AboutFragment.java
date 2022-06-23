@@ -26,6 +26,7 @@ public class AboutFragment extends Fragment {
         TextView versionT = (TextView) rootView.findViewById(R.id.textViewAboutVersion);
         Button btnEmail = (Button) rootView.findViewById(R.id.buttonEmail);
         Button btnWeb = (Button) rootView.findViewById(R.id.buttonWebsite);
+        Button btnApp = (Button) rootView.findViewById(R.id.buttonAppSite);
 
         btnEmail.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,7 +52,16 @@ public class AboutFragment extends Fragment {
         btnWeb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri uri = Uri.parse("https://mondaro.cc");
+                Uri uri = Uri.parse("https://agoodmany.world");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+
+        btnApp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("https://agoodmany.world/mondaro_devtech");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
             }

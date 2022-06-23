@@ -161,10 +161,10 @@ public class RefundFragment extends Fragment {
                     case 2:
                         try{
                             separated = cid.split(" ");
-                            strPhone = "0" + separated[0].substring(separated[0].length()-9,separated[0].length());
-                            strAmount = separated[0].substring(4,separated[0].length()-14);
-                            strRef = separated[1].substring(separated[1].length()-16,separated[1].length()-7);
-                            txtTel = "*211*8*" + strPhone + "*" + USERPIN_TRUE + "*" + strAmount.substring(0,strAmount.length()-2) + "*1" + "%23";
+                            strPhone = "0" + separated[2].substring(2,separated[2].length());
+                            strAmount = separated[1].substring(0,separated[1].length()-3);
+                            strRef = separated[4].substring(3,separated[4].length()-6);
+                            txtTel = "*211*8*" + strPhone + "*" + USERPIN_DTAC + "*" + strAmount.substring(0,strAmount.length()-2) + "*1" + "%23";
                             txtVender = "DTAC";
                             Log.d("dialing-example",txtTel);
                         }catch(Exception e){
@@ -177,7 +177,7 @@ public class RefundFragment extends Fragment {
                             strPhone = separated[5];
                             strAmount = separated[2] + " " + separated[3];
                             strRef = separated[0];
-                            cid = cid.substring(0,cid.length()-18);
+                            //cid = cid.substring(0,cid.length());
                             txtVender = "TRUE";
                             Log.d("dialing-example",cid);
                         }catch(Exception e){
@@ -187,10 +187,11 @@ public class RefundFragment extends Fragment {
                     case 4:
                         try{
                             separated = cid.split(" ");
-                            strPhone = separated[1];
-                            strAmount = separated[3];
-                            strRef = separated[8].substring(1,5);
+                            strPhone = separated[4];
+                            strAmount = separated[1];
+                            strRef = separated[9].substring(0,5);
                             txtTel = "*215*1*" + strPhone + "*" + strRef + "%23";
+                            cid = txtTel;
                             txtVender = "CAT";
                             Log.d("dialing-example",cid);
                         }catch(Exception e){
@@ -263,6 +264,13 @@ public class RefundFragment extends Fragment {
                                             sms.sendTextMessage("97322", null, cid, null, null);
                                         } catch (ActivityNotFoundException activityException) {
                                         }
+                                        new AlertDialog.Builder(getActivity())
+                                                .setIcon(android.R.drawable.ic_menu_revert)
+                                                .setTitle("แจ้งข้อความ")
+                                                .setMessage("\tกรุณา \"ส่งต่อ\" ข้อความที่เติมเงินผิดไปที่เบอร์ 97322 ด้วยตนเองภายใน 2 ชั่วโมง\n" +
+                                                        "\tหากเกินกำหนดกรุณาติดต่อหมายเลขโทรศัพท์\n\n \t027009933\tหรือ\t8700")
+                                                .setPositiveButton("เข้าใจแล้ว",null)
+                                                .show();
                                     }
                                 }
                             }

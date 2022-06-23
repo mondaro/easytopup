@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">เติมกะตังส์</string>
     <string-array name="nav_drawer_items">
         <item >เติมเงิน</item>
@@ -137,6 +137,9 @@
     \t\tหากสนใจเป็นตัวแทนเติมเงิน กรุณาติดต่อที่ศูนย์บริการลูกค้าของแต่ละเครือข่ายใกล้บ้านท่าน</string>
     <string name="about_content2">พัฒนาโดย</string>
     <string name="about_corpname">MONDARO DEVTECH</string>
+    <string name="about_content3" tools:ignore="ExtraTranslation">แอพนี้พัฒนาภายนอก Google Play Store เนื่องจากปัญหาการขอร้องสิทธิ์การเข้าถึงส่วนสำคัญในการใช้งานอย่างการโทรเพื่อเติมเงิน
+        การเข้าถึงข้อความสำหรับดึงเงินคืน ซึ่งสามารถตรวจสอบการทำงานของโปรแกรมได้ที่ github ของผู้พัฒนา
+        หรือหากต้องการติดตามการอัพเดตโปรแกรมเวอร์ชันใหม่ๆ กรุณาเข้าไปที่ ปุ่มเมนูด้านล่าง</string>
     <string name="about_contentSuggestion">
         หรือโทร
         \n AIS 02-271-9123
@@ -144,7 +147,8 @@
         \n TRUE 02-647-9077
         \n กรณีต้องการผูกบัญชีกับ mPay โทร 02-271-9299</string>
     <string name="btnEmail">แจ้งปัญหา</string>
-    <string name="btnWebsite">เข้าชมเว็บไซต์ผู้พัฒนา\nmondaro.cc</string>
+    <string name="btnWebsite">เข้าชมเว็บไซต์ผู้พัฒนา\nagoodmany.world</string>
+    <string name="btnAppSite">Portal App</string>
     <!--hint-->
     <string name="hintmPay">รหัส mPay</string>
     <string name="hintPhone">เบอร์โทรศัพท์</string>
