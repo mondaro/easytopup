@@ -1,3 +1,0 @@
-Unknown command: com.android.dialer
-Bad activity command, or no activities match: com.android.dialer
-Use -h for help.
