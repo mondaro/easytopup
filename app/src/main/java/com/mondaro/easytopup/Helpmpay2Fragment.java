@@ -1,6 +1,7 @@
 package com.mondaro.easytopup;
 
 import android.app.Fragment;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ public class Helpmpay2Fragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_helpmpay2, container, false);
+        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         closePop = (Button)rootView.findViewById(R.id.button_close_helpmpay);
 
         closePop.setOnClickListener(new View.OnClickListener() {

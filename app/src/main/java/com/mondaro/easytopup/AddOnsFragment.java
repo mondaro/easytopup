@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
@@ -50,6 +51,7 @@ public class AddOnsFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         final View rootView = inflater.inflate(R.layout.fragment_addons, container, false);
+        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         t_am = (EditText)rootView.findViewById(R.id.editText_Amount);
         t_id  = (EditText)rootView.findViewById(R.id.editText_ID);
         t_phoneCard = (EditText)rootView.findViewById(R.id.editText_phonecard);

@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
 import android.net.Uri;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ public class AboutFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_about, container, false);
+        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         TextView versionT = (TextView) rootView.findViewById(R.id.textViewAboutVersion);
         Button btnEmail = (Button) rootView.findViewById(R.id.buttonEmail);
         Button btnWeb = (Button) rootView.findViewById(R.id.buttonWebsite);

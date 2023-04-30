@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
@@ -58,6 +59,8 @@ public class RefundFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_refund, container, false);
+        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         bg = (LinearLayout) rootView.findViewById(R.id.list_refundBG);
         panel = (LinearLayout) rootView.findViewById(R.id.panelBtn);
         btnReAIS = (Button) rootView.findViewById(R.id.btn_smsAIS);
