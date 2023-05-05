@@ -29,8 +29,9 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal|center"
+                    android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="horizontal">
 
@@ -74,11 +75,12 @@
                 <TextView
                     android:id="@+id/textViewPhone"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="2dp"
                     android:layout_marginRight="10dp"
+                    android:layout_weight="1"
                     android:background="@drawable/border_inactive"
                     android:clickable="true"
                     android:gravity="center_vertical|center_horizontal"
@@ -90,9 +92,10 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="2dp"
+                    android:layout_weight="1"
                     android:orientation="horizontal"
                     android:padding="4dp">
 
@@ -113,10 +116,11 @@
                 <TextView
                     android:id="@+id/textViewCost"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
+                    android:layout_weight="1"
                     android:background="@drawable/border_inactive"
                     android:clickable="true"
                     android:gravity="center_vertical|center_horizontal"
@@ -129,10 +133,11 @@
                 <LinearLayout
                     android:id="@+id/quickNumberPanel"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:layout_marginTop="4dp"
                     android:layout_marginBottom="4dp"
+                    android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="horizontal"
                     android:paddingLeft="15dp"
@@ -189,8 +194,9 @@
                 <LinearLayout
                     android:id="@+id/sidePanelSltCarrier"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
+                    android:layout_weight="1"
                     android:background="@color/list_divider"
                     android:gravity="top"
                     android:orientation="horizontal">
@@ -366,8 +372,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:orientation="vertical"
-                android:padding="10dp">
+                android:padding="40dp">
 
                 <LinearLayout
                     android:id="@+id/numberPad"

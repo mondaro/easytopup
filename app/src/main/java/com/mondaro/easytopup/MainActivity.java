@@ -41,6 +41,7 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        MainActivity.this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR);
         sharedPref = getPreferences(Context.MODE_PRIVATE);
 
         mTitle = mDrawerTitle = getTitle();
@@ -173,7 +174,18 @@ public class MainActivity extends ActionBarActivity {
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         mDrawerToggle.onConfigurationChanged(newConfig);
+        if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            //your code
+        } else if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            //your code
+            //displayView(1);
+        }
     }
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
+
     @Override
     public void onBackPressed() {
         displayView(6);

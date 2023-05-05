@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
@@ -286,6 +287,15 @@ public class TopupFragment extends Fragment {
         return rootView;
     }
 
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            //your code
+        } else if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            //((MainActivity) getActivity()).displayView(1);
+        }
+    }
     void InsDigit(String tmp){
         switch (tmp) {
             case "OK":
@@ -738,7 +748,7 @@ public class TopupFragment extends Fragment {
     private void showLabel(String lb){
         switch (lb){
             case "1000" :case "1100" :case "1010" :case "1001" :
-                labelAIS.setVisibility(View.VISIBLE);
+                //labelAIS.setVisibility(View.VISIBLE);
                 labelDTAC.setVisibility(View.GONE);
                 labelTRUE.setVisibility(View.GONE);
                 labelCAT.setVisibility(View.GONE);
@@ -761,7 +771,7 @@ public class TopupFragment extends Fragment {
                 break;
             case "0100" :case "0110" :case "0101" :
                 labelAIS.setVisibility(View.GONE);
-                labelDTAC.setVisibility(View.VISIBLE);
+                //labelDTAC.setVisibility(View.VISIBLE);
                 labelTRUE.setVisibility(View.GONE);
                 labelCAT.setVisibility(View.GONE);
                 slt1.setLayoutParams(new LinearLayout.LayoutParams(
@@ -784,7 +794,7 @@ public class TopupFragment extends Fragment {
             case "0010" :case "0011" :
                 labelAIS.setVisibility(View.GONE);
                 labelDTAC.setVisibility(View.GONE);
-                labelTRUE.setVisibility(View.VISIBLE);
+                //labelTRUE.setVisibility(View.VISIBLE);
                 labelCAT.setVisibility(View.GONE);
                 slt1.setLayoutParams(new LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
@@ -807,7 +817,7 @@ public class TopupFragment extends Fragment {
                 labelAIS.setVisibility(View.GONE);
                 labelDTAC.setVisibility(View.GONE);
                 labelTRUE.setVisibility(View.GONE);
-                labelCAT.setVisibility(View.VISIBLE);
+                //labelCAT.setVisibility(View.VISIBLE);
                 slt1.setLayoutParams(new LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
                         LinearLayout.LayoutParams.WRAP_CONTENT,

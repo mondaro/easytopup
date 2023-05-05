@@ -3,27 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
 
     <LinearLayout
         android:id="@+id/bgTheme"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingBottom="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingTop="30dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
                 android:orientation="vertical"
-                android:paddingBottom="6dp">
+                android:padding="25dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -75,22 +77,22 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginRight="10dp"
-                    android:layout_marginTop="16dp"
                     android:background="@drawable/border_inactive"
                     android:clickable="true"
                     android:gravity="center_vertical|center_horizontal"
-                    android:padding="16dp"
+                    android:padding="6dp"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@color/text_topup_pad"
-                    android:textSize="34sp"
+                    android:textSize="32sp"
                     android:textStyle="bold" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:orientation="horizontal"
                     android:padding="4dp">
 
@@ -115,14 +117,13 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:layout_marginTop="16dp"
                     android:background="@drawable/border_inactive"
                     android:clickable="true"
                     android:gravity="center_vertical|center_horizontal"
-                    android:padding="16dp"
+                    android:padding="6dp"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@color/text_topup_pad"
-                    android:textSize="34sp"
+                    android:textSize="32sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -132,8 +133,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginBottom="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:paddingLeft="15dp"
@@ -143,7 +144,7 @@
                 <HorizontalScrollView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingLeft="12dp">
+                    android:paddingLeft="15dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -157,9 +158,9 @@
                             android:layout_height="wrap_content"
                             android:layout_marginRight="6dp"
                             android:layout_weight="1"
-                            android:padding="16dp"
+                            android:padding="8dp"
                             android:textColor="@color/list_divider"
-                            android:textSize="24sp"
+                            android:textSize="18sp"
                             android:visibility="invisible" />
 
                         <TextView
@@ -168,9 +169,9 @@
                             android:layout_height="wrap_content"
                             android:layout_marginRight="6dp"
                             android:layout_weight="1"
-                            android:padding="16dp"
+                            android:padding="8dp"
                             android:textColor="@color/list_divider"
-                            android:textSize="24sp"
+                            android:textSize="18sp"
                             android:visibility="invisible" />
 
                         <TextView
@@ -178,9 +179,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:padding="16dp"
+                            android:padding="8dp"
                             android:textColor="@color/list_divider"
-                            android:textSize="24sp"
+                            android:textSize="18sp"
                             android:visibility="invisible" />
                     </LinearLayout>
                 </HorizontalScrollView>
@@ -215,8 +216,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:gravity="center"
-                            android:orientation="vertical"
-                            android:padding="16dp">
+                            android:orientation="vertical">
 
                             <ImageView
                                 android:id="@+id/imageView2"
@@ -257,8 +257,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:gravity="center"
-                            android:orientation="vertical"
-                            android:padding="16dp">
+                            android:orientation="vertical">
 
                             <ImageView
                                 android:id="@+id/imageView3"
@@ -299,8 +298,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:gravity="center"
-                            android:orientation="vertical"
-                            android:padding="16dp">
+                            android:orientation="vertical">
 
                             <ImageView
                                 android:id="@+id/imageView4"
@@ -341,8 +339,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:gravity="center"
-                            android:orientation="vertical"
-                            android:padding="16dp">
+                            android:orientation="vertical">
 
                             <ImageView
                                 android:id="@+id/imageView5"
@@ -380,10 +377,9 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_weight="1"
                     android:orientation="vertical"
-                    android:paddingBottom="32dp"
-                    android:paddingLeft="64dp"
-                    android:paddingRight="64dp"
-                    android:paddingTop="32dp"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="40dp"
+                    android:paddingBottom="90dp"
                     android:weightSum="4">
 
                     <LinearLayout
@@ -393,16 +389,16 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:orientation="horizontal"
-                        android:paddingBottom="4dp"
-                        android:paddingLeft="8dp"
-                        android:paddingRight="8dp"
-                        android:paddingTop="4dp"
+                        android:paddingTop="2dp"
+                        android:paddingBottom="2dp"
                         android:weightSum="3">
 
                         <Button
                             android:id="@+id/button1"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
                             android:layout_weight="1"
                             android:background="@drawable/button_normal"
                             android:gravity="center"
@@ -415,6 +411,8 @@
                             android:id="@+id/button2"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
                             android:layout_weight="1"
                             android:background="@drawable/button_normal"
                             android:gravity="center"
@@ -427,6 +425,8 @@
                             android:id="@+id/button3"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
                             android:layout_weight="1"
                             android:background="@drawable/button_normal"
                             android:gravity="center"
@@ -443,16 +443,16 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:orientation="horizontal"
-                        android:paddingBottom="4dp"
-                        android:paddingLeft="8dp"
-                        android:paddingRight="8dp"
-                        android:paddingTop="4dp"
+                        android:paddingTop="2dp"
+                        android:paddingBottom="2dp"
                         android:weightSum="3">
 
                         <Button
                             android:id="@+id/button4"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
                             android:layout_weight="1"
                             android:background="@drawable/button_normal"
                             android:gravity="center"
@@ -465,6 +465,8 @@
                             android:id="@+id/button5"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
                             android:layout_weight="1"
                             android:background="@drawable/button_normal"
                             android:gravity="center"
@@ -477,6 +479,8 @@
                             android:id="@+id/button6"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
                             android:layout_weight="1"
                             android:background="@drawable/button_normal"
                             android:gravity="center"
@@ -493,16 +497,16 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:orientation="horizontal"
-                        android:paddingBottom="4dp"
-                        android:paddingLeft="8dp"
-                        android:paddingRight="8dp"
-                        android:paddingTop="4dp"
+                        android:paddingTop="2dp"
+                        android:paddingBottom="2dp"
                         android:weightSum="3">
 
                         <Button
                             android:id="@+id/button7"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
                             android:layout_weight="1"
                             android:background="@drawable/button_normal"
                             android:gravity="center"
@@ -515,6 +519,8 @@
                             android:id="@+id/button8"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
                             android:layout_weight="1"
                             android:background="@drawable/button_normal"
                             android:gravity="center"
@@ -527,6 +533,8 @@
                             android:id="@+id/button9"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
                             android:layout_weight="1"
                             android:background="@drawable/button_normal"
                             android:gravity="center"
@@ -543,23 +551,22 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:orientation="horizontal"
-                        android:paddingBottom="4dp"
-                        android:paddingLeft="8dp"
-                        android:paddingRight="8dp"
-                        android:paddingTop="4dp"
+                        android:paddingTop="2dp"
+                        android:paddingBottom="2dp"
                         android:weightSum="3">
 
                         <Button
                             android:id="@+id/buttonDel"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
+                            android:layout_marginRight="1dp"
                             android:layout_weight="1"
                             android:background="@drawable/button_del"
                             android:gravity="center"
                             android:longClickable="true"
                             android:text="@string/btnDel"
                             android:textColor="@color/text_topup_pad"
-                            android:textSize="35sp"
+                            android:textSize="25sp"
                             android:textStyle="bold"
                             tools:ignore="ButtonStyle" />
 
@@ -567,6 +574,8 @@
                             android:id="@+id/button0"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
                             android:layout_weight="1"
                             android:background="@drawable/button_normal"
                             android:gravity="center"
@@ -579,12 +588,13 @@
                             android:id="@+id/buttonTopup"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
+                            android:layout_marginLeft="1dp"
                             android:layout_weight="1"
                             android:background="@drawable/button_ok"
                             android:gravity="center"
                             android:text="@string/btnTopup"
                             android:textColor="@color/text_topup_pad"
-                            android:textSize="35sp"
+                            android:textSize="25sp"
                             android:textStyle="bold"
                             tools:ignore="ButtonStyle" />
                     </LinearLayout>
