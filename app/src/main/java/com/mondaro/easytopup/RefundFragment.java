@@ -1,6 +1,7 @@
 package com.mondaro.easytopup;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.ActivityNotFoundException;
@@ -54,6 +55,7 @@ public class RefundFragment extends Fragment {
     final private int REQUEST_SEND_SMS_PERMISSIONS = 132;
 
     public RefundFragment(){}
+    @SuppressLint("SourceLockedOrientationActivity")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

@@ -144,17 +144,20 @@ public class MainActivity extends ActionBarActivity {
                 case 6: fragment = new ExitFragment();break;
                 default:    break;
             }
+            try{
+                if (fragment != null) {
+                    FragmentManager fragmentManager = getFragmentManager();
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.frame_container, fragment).commit();
+                    mDrawerList.setItemChecked(position, true);
+                    mDrawerList.setSelection(position);
+                    setTitle(navMenuTitles[position]);
+                    mDrawerLayout.closeDrawer(mDrawerList);
+                } else {
+                    Log.e("MainActivity", "Error in creating fragment");
+                }
+            }catch (Exception e){
 
-            if (fragment != null) {
-                FragmentManager fragmentManager = getFragmentManager();
-                fragmentManager.beginTransaction()
-                        .replace(R.id.frame_container, fragment).commit();
-                mDrawerList.setItemChecked(position, true);
-                mDrawerList.setSelection(position);
-                setTitle(navMenuTitles[position]);
-                mDrawerLayout.closeDrawer(mDrawerList);
-            } else {
-                Log.e("MainActivity", "Error in creating fragment");
             }
     }
 
@@ -175,10 +178,9 @@ public class MainActivity extends ActionBarActivity {
         super.onConfigurationChanged(newConfig);
         mDrawerToggle.onConfigurationChanged(newConfig);
         if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
-            //your code
+            //setContentView(R.layout.activity_main);
         } else if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            //your code
-            //displayView(1);
+            //setContentView(R.layout.activity_main);
         }
     }
     @Override

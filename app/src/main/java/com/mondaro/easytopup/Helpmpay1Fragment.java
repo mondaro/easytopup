@@ -1,5 +1,6 @@
 package com.mondaro.easytopup;
 
+import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.widget.Button;
 
 public class Helpmpay1Fragment extends Fragment {
     Button closePop;
+    @SuppressLint("SourceLockedOrientationActivity")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

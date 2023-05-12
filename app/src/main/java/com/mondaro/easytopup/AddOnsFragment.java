@@ -1,6 +1,7 @@
 package com.mondaro.easytopup;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
@@ -46,6 +47,7 @@ public class AddOnsFragment extends Fragment {
     final private int REQUEST_CALL_PHONE_PERMISSIONS = 123;
 
     public AddOnsFragment(){}
+    @SuppressLint("SourceLockedOrientationActivity")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

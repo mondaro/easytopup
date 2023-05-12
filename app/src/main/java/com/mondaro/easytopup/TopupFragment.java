@@ -3,6 +3,7 @@ package com.mondaro.easytopup;
 import android.Manifest;
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.content.ActivityNotFoundException;
 import android.content.ContentValues;
 import android.content.Context;
@@ -291,9 +292,19 @@ public class TopupFragment extends Fragment {
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
-            //your code
+            try {
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                ft.detach(this).attach(this).commit();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         } else if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            //((MainActivity) getActivity()).displayView(1);
+            try {
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                ft.detach(this).attach(this).commit();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
     void InsDigit(String tmp){

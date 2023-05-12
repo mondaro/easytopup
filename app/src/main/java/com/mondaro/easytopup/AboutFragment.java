@@ -1,5 +1,6 @@
 package com.mondaro.easytopup;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.DialogInterface;
@@ -19,6 +20,7 @@ public class AboutFragment extends Fragment {
 
     public AboutFragment(){}
 
+    @SuppressLint("SourceLockedOrientationActivity")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

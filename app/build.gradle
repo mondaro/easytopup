@@ -9,7 +9,7 @@ android {
         //noinspection ExpiredTargetSdkVersion
         targetSdkVersion 23
         versionCode 47
-        versionName "6.4a"
+        versionName "6.5"
     }
     buildTypes {
         release {
