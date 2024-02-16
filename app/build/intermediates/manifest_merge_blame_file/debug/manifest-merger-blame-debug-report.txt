@@ -1,0 +1,96 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.mondaro.easytopup"
+4    android:versionCode="47"
+5    android:versionName="6.5" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="18"
+8-->/Users/mondaro/Documents/GitHub/easytopup/app/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="23" />
+9-->/Users/mondaro/Documents/GitHub/easytopup/app/src/main/AndroidManifest.xml
+10
+11    <uses-feature
+11-->/Users/mondaro/Documents/GitHub/easytopup/app/src/main/AndroidManifest.xml:5:5-7:36
+12        android:name="android.hardware.telephony"
+12-->/Users/mondaro/Documents/GitHub/easytopup/app/src/main/AndroidManifest.xml:6:9-50
+13        android:required="false" />
+13-->/Users/mondaro/Documents/GitHub/easytopup/app/src/main/AndroidManifest.xml:7:9-33
+14
+15    <uses-permission android:name="android.permission.CALL_PHONE" />
+15-->/Users/mondaro/Documents/GitHub/easytopup/app/src/main/AndroidManifest.xml:9:5-69
+15-->/Users/mondaro/Documents/GitHub/easytopup/app/src/main/AndroidManifest.xml:9:22-66
+16    <uses-permission android:name="android.permission.READ_CONTACTS" />
+16-->/Users/mondaro/Documents/GitHub/easytopup/app/src/main/AndroidManifest.xml:10:5-72
+16-->/Users/mondaro/Documents/GitHub/easytopup/app/src/main/AndroidManifest.xml:10:22-69
+17    <uses-permission android:name="android.permission.READ_SMS" />
+17-->/Users/mondaro/Documents/GitHub/easytopup/app/src/main/AndroidManifest.xml:11:5-67
+17-->/Users/mondaro/Documents/GitHub/easytopup/app/src/main/AndroidManifest.xml:11:22-64
+18    <uses-permission android:name="android.permission.SEND_SMS" />
+18-->/Users/mondaro/Documents/GitHub/easytopup/app/src/main/AndroidManifest.xml:12:5-66
+18-->/Users/mondaro/Documents/GitHub/easytopup/app/src/main/AndroidManifest.xml:12:22-64
+19
+20    <application
+20-->/Users/mondaro/Documents/GitHub/easytopup/app/src/main/AndroidManifest.xml:14:5-42:19
+21        android:allowBackup="true"
+21-->/Users/mondaro/Documents/GitHub/easytopup/app/src/main/AndroidManifest.xml:15:9-35
+22        android:debuggable="true"
+23        android:icon="@mipmap/ic_launcher"
+23-->/Users/mondaro/Documents/GitHub/easytopup/app/src/main/AndroidManifest.xml:16:9-43
+24        android:label="@string/app_name"
+24-->/Users/mondaro/Documents/GitHub/easytopup/app/src/main/AndroidManifest.xml:17:9-41
+25        android:testOnly="true"
+26        android:theme="@style/AppThemeDark" >
+26-->/Users/mondaro/Documents/GitHub/easytopup/app/src/main/AndroidManifest.xml:18:9-44
+27        <activity
+27-->/Users/mondaro/Documents/GitHub/easytopup/app/src/main/AndroidManifest.xml:19:9-33:20
+28            android:name="com.mondaro.easytopup.MainActivity"
+28-->/Users/mondaro/Documents/GitHub/easytopup/app/src/main/AndroidManifest.xml:20:13-62
+29            android:configChanges="orientation|screenSize"
+29-->/Users/mondaro/Documents/GitHub/easytopup/app/src/main/AndroidManifest.xml:22:13-59
+30            android:exported="true"
+30-->/Users/mondaro/Documents/GitHub/easytopup/app/src/main/AndroidManifest.xml:27:13-36
+31            android:label="@string/app_name"
+31-->/Users/mondaro/Documents/GitHub/easytopup/app/src/main/AndroidManifest.xml:21:13-45
+32            android:launchMode="singleTask"
+32-->/Users/mondaro/Documents/GitHub/easytopup/app/src/main/AndroidManifest.xml:25:13-44
+33            android:screenOrientation="fullSensor"
+33-->/Users/mondaro/Documents/GitHub/easytopup/app/src/main/AndroidManifest.xml:24:13-51
+34            android:windowSoftInputMode="adjustPan" >
+34-->/Users/mondaro/Documents/GitHub/easytopup/app/src/main/AndroidManifest.xml:23:13-52
+35            <intent-filter>
+35-->/Users/mondaro/Documents/GitHub/easytopup/app/src/main/AndroidManifest.xml:28:13-32:29
+36                <action android:name="android.intent.action.MAIN" />
+36-->/Users/mondaro/Documents/GitHub/easytopup/app/src/main/AndroidManifest.xml:29:17-69
+36-->/Users/mondaro/Documents/GitHub/easytopup/app/src/main/AndroidManifest.xml:29:25-66
+37
+38                <category android:name="android.intent.category.LAUNCHER" />
+38-->/Users/mondaro/Documents/GitHub/easytopup/app/src/main/AndroidManifest.xml:30:17-77
+38-->/Users/mondaro/Documents/GitHub/easytopup/app/src/main/AndroidManifest.xml:30:27-74
+39                <category android:name="android.intent.category.MULTIWINDOW_LAUNCHER" />
+39-->/Users/mondaro/Documents/GitHub/easytopup/app/src/main/AndroidManifest.xml:31:17-89
+39-->/Users/mondaro/Documents/GitHub/easytopup/app/src/main/AndroidManifest.xml:31:27-86
+40            </intent-filter>
+41        </activity>
+42
+43        <meta-data
+43-->/Users/mondaro/Documents/GitHub/easytopup/app/src/main/AndroidManifest.xml:34:9-36:36
+44            android:name="com.samsung.android.sdk.multiwindow.enable"
+44-->/Users/mondaro/Documents/GitHub/easytopup/app/src/main/AndroidManifest.xml:35:13-70
+45            android:value="true" />
+45-->/Users/mondaro/Documents/GitHub/easytopup/app/src/main/AndroidManifest.xml:36:13-33
+46        <meta-data
+46-->/Users/mondaro/Documents/GitHub/easytopup/app/src/main/AndroidManifest.xml:37:9-39:36
+47            android:name="com.samsung.android.sdk.multiwindow.multiinstance.enable"
+47-->/Users/mondaro/Documents/GitHub/easytopup/app/src/main/AndroidManifest.xml:38:13-84
+48            android:value="true" />
+48-->/Users/mondaro/Documents/GitHub/easytopup/app/src/main/AndroidManifest.xml:39:13-33
+49        <meta-data
+49-->/Users/mondaro/Documents/GitHub/easytopup/app/src/main/AndroidManifest.xml:40:9-41:42
+50            android:name="android.max_aspect"
+50-->/Users/mondaro/Documents/GitHub/easytopup/app/src/main/AndroidManifest.xml:40:20-53
+51            android:value="ratio_float" />
+51-->/Users/mondaro/Documents/GitHub/easytopup/app/src/main/AndroidManifest.xml:41:13-40
+52    </application>
+53
+54</manifest>

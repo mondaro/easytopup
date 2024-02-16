@@ -1,0 +1,10 @@
+com.mondaro.easytopup.app-appcompat-v7-23.4.0-0 /Users/mondaro/.gradle/caches/transforms-3/26e2033cd9e7b2973264e4c37c3abf2e/transformed/appcompat-v7-23.4.0/res
+com.mondaro.easytopup.app-design-23.4.0-1 /Users/mondaro/.gradle/caches/transforms-3/716c80712c92513f023699d0a452d271/transformed/design-23.4.0/res
+com.mondaro.easytopup.app-recyclerview-v7-23.4.0-2 /Users/mondaro/.gradle/caches/transforms-3/be793d632679606a740e8a7b202e6165/transformed/recyclerview-v7-23.4.0/res
+com.mondaro.easytopup.app-pngs-3 /Users/mondaro/Documents/GitHub/easytopup/app/build/generated/res/pngs/debug
+com.mondaro.easytopup.app-resValues-4 /Users/mondaro/Documents/GitHub/easytopup/app/build/generated/res/resValues/debug
+com.mondaro.easytopup.app-mergeDebugResources-5 /Users/mondaro/Documents/GitHub/easytopup/app/build/intermediates/incremental/debug/mergeDebugResources/merged.dir
+com.mondaro.easytopup.app-mergeDebugResources-6 /Users/mondaro/Documents/GitHub/easytopup/app/build/intermediates/incremental/debug/mergeDebugResources/stripped.dir
+com.mondaro.easytopup.app-merged_res-7 /Users/mondaro/Documents/GitHub/easytopup/app/build/intermediates/merged_res/debug
+com.mondaro.easytopup.app-debug-8 /Users/mondaro/Documents/GitHub/easytopup/app/src/debug/res
+com.mondaro.easytopup.app-main-9 /Users/mondaro/Documents/GitHub/easytopup/app/src/main/res

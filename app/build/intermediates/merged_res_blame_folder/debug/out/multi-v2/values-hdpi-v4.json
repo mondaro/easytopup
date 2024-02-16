@@ -1,0 +1,20 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.mondaro.easytopup.app-mergeDebugResources-5:/values-hdpi-v4/values-hdpi-v4.xml",
+            "map": [
+                {
+                    "source": "/Users/mondaro/.gradle/caches/transforms-3/26e2033cd9e7b2973264e4c37c3abf2e/transformed/appcompat-v7-23.4.0/res/values-hdpi-v4/values-hdpi-v4.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "6",
+                        "endColumns": "13",
+                        "endOffsets": "327"
+                    }
+                }
+            ]
+        }
+    ]
+}

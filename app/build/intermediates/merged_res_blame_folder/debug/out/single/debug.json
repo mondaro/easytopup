@@ -1,0 +1,630 @@
+[
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable_button_info.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable/button_info.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/layout-port_fragment_helpmpay2.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/layout-port/fragment_helpmpay2.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-mdpi_ic_refresh_black_36dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-mdpi/ic_refresh_black_36dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-xhdpi_ic_exit_to_app_black_48dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-xhdpi/ic_exit_to_app_black_48dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable_border_active.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable/border_active.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/layout-port_fragment_addons.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/layout-port/fragment_addons.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-xxxhdpi_ic_extension_black_48dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-xxxhdpi/ic_extension_black_48dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-xxxhdpi_icon_mipm_ais.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-xxxhdpi/icon_mipm_ais.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable-sw360dp_button_select_cat_pastel.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable-sw360dp/button_select_cat_pastel.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable-xhdpi_icon_cat.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable-xhdpi/icon_cat.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable_bkg.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable/bkg.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-hdpi_icon_mipm_ais.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-hdpi/icon_mipm_ais.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-mdpi_ic_account_balance_wallet_black_48dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-mdpi/ic_account_balance_wallet_black_48dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-xhdpi_icon_mipm_ais.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-xhdpi/icon_mipm_ais.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-xxhdpi_ic_account_circle_black_36dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-xxhdpi/ic_account_circle_black_36dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-xxhdpi_ic_info_outline_black_48dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-xxhdpi/ic_info_outline_black_48dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-hdpi_ic_account_balance_wallet_black_48dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-hdpi/ic_account_balance_wallet_black_48dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable-xxhdpi_icon_cat.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable-xxhdpi/icon_cat.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable-hdpi_icon_dtac.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable-hdpi/icon_dtac.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable_button_quick_ais.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable/button_quick_ais.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-mdpi_icon_mipm_true.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-mdpi/icon_mipm_true.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-mdpi_montech.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-mdpi/montech.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-hdpi_icon_mipm_true.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-hdpi/icon_mipm_true.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-xxhdpi_icon_mipm_true.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-xxhdpi/icon_mipm_true.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable_button_ok.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable/button_ok.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable_button_del.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable/button_del.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-mdpi_icon_mipm_cat.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-mdpi/icon_mipm_cat.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable_button_select_ais_pastel.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable/button_select_ais_pastel.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-hdpi_ic_history_black_36dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-hdpi/ic_history_black_36dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/layout-land_activity_main.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/layout-land/activity_main.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/layout-port_fragment_helpmpay1.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/layout-port/fragment_helpmpay1.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-xxhdpi_icon_mipm_cat.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-xxhdpi/icon_mipm_cat.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable_button_exit.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable/button_exit.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/layout-large-land_fragment_topup.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/layout-large-land/fragment_topup.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/layout-port_fragment_helpmpay4.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/layout-port/fragment_helpmpay4.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/layout-sw600dp-port_fragment_topup.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/layout-sw600dp-port/fragment_topup.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-xxxhdpi_ic_restore_black_48dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-xxxhdpi/ic_restore_black_48dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable-xxhdpi_icon_truemove.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable-xxhdpi/icon_truemove.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-mdpi_icon_mipm_dtac.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-mdpi/icon_mipm_dtac.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-xxhdpi_icon_mipm_ais.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-xxhdpi/icon_mipm_ais.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-xxhdpi_ic_account_balance_wallet_black_48dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-xxhdpi/ic_account_balance_wallet_black_48dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-xhdpi_ic_settings_black_48dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-xhdpi/ic_settings_black_48dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-mdpi_ic_account_circle_black_36dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-mdpi/ic_account_circle_black_36dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable-sw360dp_button_select_dtac_pastel.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable-sw360dp/button_select_dtac_pastel.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-xxxhdpi_ic_info_outline_black_48dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-xxxhdpi/ic_info_outline_black_48dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable-mdpi_icon_dtac.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable-mdpi/icon_dtac.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable-xxxhdpi_icon_dtac.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable-xxxhdpi/icon_dtac.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable-hdpi_icon_ais.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable-hdpi/icon_ais.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable_button_quick_true.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable/button_quick_true.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable-xxxhdpi_icon_cat.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable-xxxhdpi/icon_cat.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-mdpi_icon_mipm_ais.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-mdpi/icon_mipm_ais.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-xxhdpi_icon_mipm_dtac.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-xxhdpi/icon_mipm_dtac.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-xhdpi_ic_history_black_36dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-xhdpi/ic_history_black_36dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable_counter_bg.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable/counter_bg.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/layout-port_fragment_setting.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/layout-port/fragment_setting.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-hdpi_icon_mipm_dtac.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-hdpi/icon_mipm_dtac.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable_button_normal.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable/button_normal.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable-sw360dp_button_select_cat_default.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable-sw360dp/button_select_cat_default.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable-xxhdpi_icon_dtac.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable-xxhdpi/icon_dtac.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/layout-sw360dp-land_fragment_topup.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/layout-sw360dp-land/fragment_topup.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/layout-sw400dp-land_fragment_topup.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/layout-sw400dp-land/fragment_topup.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/layout-port_row_refund.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/layout-port/row_refund.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable-xxxhdpi_icon_ais.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable-xxxhdpi/icon_ais.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-xhdpi_ic_refresh_black_36dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-xhdpi/ic_refresh_black_36dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-hdpi_ic_refresh_black_36dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-hdpi/ic_refresh_black_36dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable-mdpi_icon_truemove.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable-mdpi/icon_truemove.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-xxhdpi_ic_refresh_black_36dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-xxhdpi/ic_refresh_black_36dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-xxxhdpi_montech.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-xxxhdpi/montech.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-xhdpi_ic_open_in_new_black_48dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-xhdpi/ic_open_in_new_black_48dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-xhdpi_ic_account_balance_wallet_black_48dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-xhdpi/ic_account_balance_wallet_black_48dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-hdpi_montech.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-hdpi/montech.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-xxhdpi_ic_extension_black_48dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-xxhdpi/ic_extension_black_48dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable_button_select_dtac_default.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable/button_select_dtac_default.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable_button_select_true_default.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable/button_select_true_default.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable-hdpi_icon_truemove.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable-hdpi/icon_truemove.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable_pressed.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable/pressed.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-xhdpi_ic_extension_black_48dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-xhdpi/ic_extension_black_48dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-xhdpi_icon_mipm_cat.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-xhdpi/icon_mipm_cat.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-xxxhdpi_icon_mipm_cat.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-xxxhdpi/icon_mipm_cat.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable_button_quick_dtac.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable/button_quick_dtac.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable-mdpi_icon_ais.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable-mdpi/icon_ais.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-xxhdpi_ic_exit_to_app_black_48dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-xxhdpi/ic_exit_to_app_black_48dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable_button_quick_cat.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable/button_quick_cat.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-xxxhdpi_ic_account_circle_black_36dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-xxxhdpi/ic_account_circle_black_36dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable_button_select_cat_pastel.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable/button_select_cat_pastel.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-hdpi_ic_exit_to_app_black_48dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-hdpi/ic_exit_to_app_black_48dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-xhdpi_icon_mipm_true.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-xhdpi/icon_mipm_true.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-mdpi_ic_settings_black_48dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-mdpi/ic_settings_black_48dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/layout-port_fragment_topup.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/layout-port/fragment_topup.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable_list_selector.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable/list_selector.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-xhdpi_montech.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-xhdpi/montech.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/layout-sw360dp-port_fragment_topup.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/layout-sw360dp-port/fragment_topup.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable-sw360dp_button_select_ais_pastel.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable-sw360dp/button_select_ais_pastel.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-hdpi_icon_mipm_cat.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-hdpi/icon_mipm_cat.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable-xhdpi_icon_ais.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable-xhdpi/icon_ais.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-mdpi_ic_history_black_36dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-mdpi/ic_history_black_36dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable_button_select_dtac_pastel.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable/button_select_dtac_pastel.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-hdpi_ic_info_outline_black_48dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-hdpi/ic_info_outline_black_48dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable_button_select_ais_default.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable/button_select_ais_default.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable_list_item_bg_normal.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable/list_item_bg_normal.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable_button_select_cat_default.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable/button_select_cat_default.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-mdpi_ic_open_in_new_black_48dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-mdpi/ic_open_in_new_black_48dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable-xxxhdpi_icon_truemove.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable-xxxhdpi/icon_truemove.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/menu_menu_main.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/menu/menu_main.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-xxxhdpi_icon_mipm_true.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-xxxhdpi/icon_mipm_true.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-hdpi_ic_account_circle_black_36dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-hdpi/ic_account_circle_black_36dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-hdpi_ic_settings_black_48dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-hdpi/ic_settings_black_48dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable_button_select_true_pastel.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable/button_select_true_pastel.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/layout-sw600dp-land_fragment_topup.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/layout-sw600dp-land/fragment_topup.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable_list_item_bg_pressed.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable/list_item_bg_pressed.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/layout-port_fragment_about.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/layout-port/fragment_about.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-mdpi_ic_extension_black_48dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-mdpi/ic_extension_black_48dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable-sw360dp_button_select_dtac_default.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable-sw360dp/button_select_dtac_default.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/layout-sw400dp-port_fragment_topup.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/layout-sw400dp-port/fragment_topup.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable-hdpi_icon_cat.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable-hdpi/icon_cat.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable-sw360dp_button_select_true_default.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable-sw360dp/button_select_true_default.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-xhdpi_ic_account_circle_black_36dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-xhdpi/ic_account_circle_black_36dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-xxxhdpi_ic_settings_black_48dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-xxxhdpi/ic_settings_black_48dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-xxhdpi_montech.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-xxhdpi/montech.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-xxhdpi_ic_settings_black_48dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-xxhdpi/ic_settings_black_48dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable_border_inactive.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable/border_inactive.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable-xxhdpi_icon_ais.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable-xxhdpi/icon_ais.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-mdpi_ic_restore_black_48dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-mdpi/ic_restore_black_48dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-xxxhdpi_icon_mipm_dtac.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-xxxhdpi/icon_mipm_dtac.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/layout-port_drawer_list_item.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/layout-port/drawer_list_item.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-mdpi_ic_info_outline_black_48dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-mdpi/ic_info_outline_black_48dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/layout-port_fragment_chkbal.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/layout-port/fragment_chkbal.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-mdpi_ic_exit_to_app_black_48dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-mdpi/ic_exit_to_app_black_48dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-xhdpi_ic_restore_black_48dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-xhdpi/ic_restore_black_48dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-hdpi_ic_open_in_new_black_48dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-hdpi/ic_open_in_new_black_48dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable_normal.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable/normal.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-xxhdpi_ic_open_in_new_black_48dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-xxhdpi/ic_open_in_new_black_48dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-xxxhdpi_ic_account_balance_wallet_black_48dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-xxxhdpi/ic_account_balance_wallet_black_48dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable-sw360dp_button_select_ais_default.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable-sw360dp/button_select_ais_default.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable-xhdpi_icon_truemove.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable-xhdpi/icon_truemove.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/layout-large-port_fragment_topup.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/layout-large-port/fragment_topup.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/layout-port_fragment_refund.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/layout-port/fragment_refund.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-hdpi_ic_extension_black_48dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-hdpi/ic_extension_black_48dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/layout-port_activity_main.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/layout-port/activity_main.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-xxxhdpi_ic_open_in_new_black_48dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-xxxhdpi/ic_open_in_new_black_48dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/layout-port_fragment_helpmpay3.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/layout-port/fragment_helpmpay3.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-xxhdpi_ic_restore_black_48dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-xxhdpi/ic_restore_black_48dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-xhdpi_icon_mipm_dtac.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-xhdpi/icon_mipm_dtac.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-xhdpi_ic_info_outline_black_48dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-xhdpi/ic_info_outline_black_48dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/layout-land_fragment_topup.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/layout-land/fragment_topup.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable-xhdpi_icon_dtac.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable-xhdpi/icon_dtac.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable-mdpi_icon_cat.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable-mdpi/icon_cat.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-hdpi_ic_restore_black_48dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-hdpi/ic_restore_black_48dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-xxxhdpi_ic_refresh_black_36dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-xxxhdpi/ic_refresh_black_36dp.png"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/drawable-sw360dp_button_select_true_pastel.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/drawable-sw360dp/button_select_true_pastel.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/layout-port_fragment_exit.xml.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/layout-port/fragment_exit.xml"
+    },
+    {
+        "merged": "com.mondaro.easytopup.app-merged_res-7:/mipmap-xxxhdpi_ic_exit_to_app_black_48dp.png.flat",
+        "source": "com.mondaro.easytopup.app-main-9:/mipmap-xxxhdpi/ic_exit_to_app_black_48dp.png"
+    }
+]

@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.mondaro.easytopup.app-mergeDebugResources-5:/values-w500dp-v13/values-w500dp-v13.xml",
+            "map": [
+                {
+                    "source": "/Users/mondaro/.gradle/caches/transforms-3/26e2033cd9e7b2973264e4c37c3abf2e/transformed/appcompat-v7-23.4.0/res/values-w500dp-v13/values-w500dp-v13.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "54",
+                        "endOffsets": "105"
+                    }
+                }
+            ]
+        }
+    ]
+}
