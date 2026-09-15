@@ -1,68 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  Refunds no longer read the SMS inbox: Google Play restricts READ_SMS to the
+  device's default messaging app. The user shares or pastes the carrier's
+  confirmation message instead, which needs no permission at all.
+-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="horizontal"
-            tools:ignore="UselessParent">
+        <Button
+            android:id="@+id/btn_smsAIS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/item_AIS"
+            android:textColor="@color/list_background"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:ignore="ButtonStyle" />
 
-            <Button
-                android:id="@+id/btn_smsAIS"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/item_AIS"
-                android:textColor="@color/list_background"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                tools:ignore="ButtonStyle" />
+        <Button
+            android:id="@+id/btn_smsDTAC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/item_DTAC"
+            android:textColor="@color/list_background"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:ignore="ButtonStyle" />
 
-            <Button
-                android:id="@+id/btn_smsDTAC"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/item_DTAC"
-                android:textColor="@color/list_background"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                tools:ignore="ButtonStyle" />
+        <Button
+            android:id="@+id/btn_smsTRUE"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/item_TRUE"
+            android:textColor="@color/list_background"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:ignore="ButtonStyle" />
 
-            <Button
-                android:id="@+id/btn_smsTRUE"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/item_TRUE"
-                android:textColor="@color/list_background"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                tools:ignore="ButtonStyle" />
-
-            <Button
-                android:id="@+id/btn_smsCAT"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/item_CAT"
-                android:textColor="@color/list_background"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:visibility="visible"
-                tools:ignore="ButtonStyle" />
-        </LinearLayout>
-
+        <Button
+            android:id="@+id/btn_smsCAT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/item_CAT"
+            android:textColor="@color/list_background"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:ignore="ButtonStyle" />
     </LinearLayout>
 
     <LinearLayout
@@ -71,66 +67,93 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="vertical"
-        android:paddingTop="6dp"
-        android:paddingBottom="6dp">
+        android:padding="10dp">
 
         <TextView
-            android:id="@+id/textViewCountRowsRefund"
+            android:id="@+id/textViewRefundHint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
             android:background="@color/list_background"
-            android:gravity="center"
+            android:padding="8dp"
+            android:text="@string/refund_hint"
             android:textColor="@color/text_btn_pad"
             android:textSize="14sp" />
 
-        <ListView
-            android:id="@+id/listViewRefund"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:background="@color/list_background"
-            android:choiceMode="singleChoice"
-            android:clickable="true"
-            android:focusable="true"
-            android:listSelector="@drawable/bkg" />
+            android:layout_height="0dp"
+            android:layout_marginTop="6dp"
+            android:layout_weight="1"
+            android:background="@color/list_background">
+
+            <EditText
+                android:id="@+id/editTextSmsBody"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:gravity="top|start"
+                android:hint="@string/refund_paste_hint"
+                android:inputType="textMultiLine"
+                android:minLines="5"
+                android:padding="8dp"
+                android:textColor="@color/text_btn_pad"
+                android:textSize="15sp" />
+        </ScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnPasteSms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/refund_paste"
+                android:textSize="16sp"
+                tools:ignore="ButtonStyle" />
+
+            <Button
+                android:id="@+id/btnClearSms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:text="@string/refund_clear"
+                android:textSize="16sp"
+                tools:ignore="ButtonStyle" />
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="vertical"
+        android:id="@+id/panelBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:visibility="gone"
-        android:id="@+id/panelBtn">
+        android:orientation="horizontal"
+        android:padding="10dp">
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/btnRefund"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:ignore="UselessParent">
+            android:layout_weight="1"
+            android:background="@android:color/holo_orange_light"
+            android:text="@string/btn_Refund"
+            android:textSize="20sp"
+            tools:ignore="ButtonStyle" />
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/btn_Refund"
-                android:id="@+id/btnRefund"
-                android:layout_weight="1"
-                android:textSize="20sp"
-                android:background="@android:color/holo_orange_light"
-                tools:ignore="ButtonStyle" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/btn_Cancel"
-                android:id="@+id/btnCancel"
-                android:layout_weight="1"
-                android:textSize="20sp"
-                android:background="@android:color/holo_red_light"
-                android:layout_marginLeft="10dp"
-                tools:ignore="ButtonStyle" />
-        </LinearLayout>
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:background="@android:color/holo_red_light"
+            android:text="@string/btn_Cancel"
+            android:textSize="20sp"
+            tools:ignore="ButtonStyle" />
     </LinearLayout>
 
 </LinearLayout>

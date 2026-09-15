@@ -3,7 +3,7 @@
     <string-array name="nav_drawer_items">
         <item >เติมเงิน</item>
         <item >ยอดเงินคงเหลือ</item>
-        <item >ประวัติการทำรายการ /\nระบบดึงเงินคืน</item>
+        <item >ระบบดึงเงินคืน</item>
         <item >บริการเสริม</item>
         <item >ตั้งค่า</item>
         <item >แนะนำ</item>
@@ -174,8 +174,6 @@
 
     <!-- permissions -->
     <string name="rationale_call_phone">ต้องการยืนยันการอนุญาตเข้าถึง\n\n[ระบบการโทร]\n\nเพื่อให้แอปพลิเคชันทำงานได้</string>
-    <string name="rationale_read_sms">ต้องการยืนยันการอนุญาตเข้าถึง\n\n[การอ่าน SMS]\n\nเพื่อให้แอปพลิเคชันทำงานได้</string>
-    <string name="rationale_send_sms">ต้องการยืนยันการอนุญาตเข้าถึง\n\n[การส่ง SMS]\n\nเพื่อให้แอปพลิเคชันทำงานได้</string>
 
     <!-- contacts -->
     <string name="contact_no_number">รายชื่อที่เลือกไม่มีหมายเลขโทรศัพท์คะ</string>
@@ -204,17 +202,22 @@
     <string name="setting_legacy_dialer_hint">ปกติแอปจะส่งรหัสให้เครือข่ายโดยตรงและแสดงผลลัพธ์ในแอป ซึ่งไม่ทิ้งรหัสลับไว้ในประวัติการโทร เปิดตัวเลือกนี้เฉพาะเมื่อเครื่องของคุณส่งรหัสแบบใหม่ไม่ผ่าน</string>
 
     <!-- refund -->
-    <string name="refund_date_prefix">วันที่</string>
-    <string name="refund_found_count">พบ %1$d รายการ</string>
-    <string name="refund_select_first">กรุณาเลือกรายการก่อนคะ</string>
+    <string name="refund_hint">เลือกระบบเครือข่าย แล้วนำข้อความยืนยันการเติมเงินมาวางในช่องด้านล่าง\n\nวิธีที่สะดวกที่สุด : เปิดแอปข้อความ กดค้างที่ข้อความของเครือข่าย แล้วเลือก \"แชร์\" มาที่แอปเติมกะตังส์</string>
+    <string name="refund_paste_hint">วางข้อความยืนยันการเติมเงินที่นี่</string>
+    <string name="refund_paste">วางจากคลิปบอร์ด</string>
+    <string name="refund_clear">ล้างข้อความ</string>
+    <string name="refund_clipboard_empty">ไม่พบข้อความในคลิปบอร์ดคะ</string>
+    <string name="refund_select_first">กรุณาวางข้อความยืนยันการเติมเงินก่อนคะ</string>
+    <string name="refund_true_instructions">ระบบ TRUE ต้องส่งคำขอด้วยตนเองคะ\n\nวิธีทำ :\n1. เปิดแอปข้อความของเครื่อง\n2. \"ส่งต่อ\" ข้อความยืนยันการเติมเงินฉบับเดิม (ห้ามพิมพ์ใหม่หรือแก้ไขข้อความ)\n3. ส่งไปที่เบอร์ %1$s ภายใน 2 ชั่วโมง\n\nรายการที่จะดึงคืน :\nหมายเลข %2$s\nจำนวน %3$s\n\nหากเกิน 2 ชั่วโมงแล้ว กรุณาติดต่อ 027009933 หรือ 8700</string>
+    <string name="refund_copy_message">คัดลอกข้อความ</string>
+    <string name="refund_copied">คัดลอกข้อความแล้ว นำไปวางในแอปข้อความได้เลยคะ</string>
+    <string name="refund_clip_label">ข้อความดึงเงินคืน TRUE</string>
     <string name="refund_unreadable_title">อ่านรายการนี้ไม่ได้</string>
     <string name="refund_unreadable_body">รูปแบบข้อความของเครือข่ายไม่ตรงกับที่แอปรู้จัก จึงยังไม่ได้ส่งคำขอใด ๆ ออกไป\n\nกรุณาดึงเงินคืนผ่านช่องทางของเครือข่ายโดยตรง และแจ้งผู้พัฒนาที่ mondaro23@gmail.com</string>
     <string name="refund_confirm_title">ยืนยันการดึงเงินคืน</string>
     <string name="refund_confirm_body">ระบบ %1$s\nจากหมายเลข : %2$s\nจำนวน : %3$s\nREF : %4$s</string>
     <string name="refund_do_it">ดึงเงิน</string>
     <string name="refund_true_title">แจ้งข้อความ</string>
-    <string name="refund_true_sent">ส่งคำขอดึงเงินคืนไปที่หมายเลข 97322 เรียบร้อยแล้วคะ\nกรุณารอ SMS ยืนยันจากเครือข่าย</string>
-    <string name="refund_true_failed">ส่งคำขอไม่สำเร็จคะ\n\nกรุณา \"ส่งต่อ\" ข้อความที่เติมเงินผิดไปที่เบอร์ 97322 ด้วยตนเองภายใน 2 ชั่วโมง\nหากเกินกำหนดกรุณาติดต่อ 027009933 หรือ 8700</string>
 
     <!-- mPay -->
     <string name="mpay_id_too_short">แจ้งเตือน :\nกรุณากรอกรหัสประจำตัว mPay ให้ครบ 4 หลักด้วยคะ</string>

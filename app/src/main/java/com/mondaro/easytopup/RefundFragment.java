@@ -1,17 +1,15 @@
 package com.mondaro.easytopup;
 
-import android.Manifest;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,39 +18,41 @@ import androidx.appcompat.app.AlertDialog;
 import com.mondaro.easytopup.data.Carrier;
 import com.mondaro.easytopup.data.RefundRequest;
 import com.mondaro.easytopup.data.SecurePrefs;
-import com.mondaro.easytopup.data.SmsRepository;
-import com.mondaro.easytopup.telephony.SmsSender;
 import com.mondaro.easytopup.telephony.UssdCodes;
 import com.mondaro.easytopup.ui.BaseFragment;
-
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
+import com.mondaro.easytopup.util.PhoneNumbers;
 
 /**
- * History of top-up confirmations, and the "pull the money back" flow for a
- * top-up sent to the wrong number.
+ * Pulls back a top-up that went to the wrong number.
+ *
+ * <p>The carrier's confirmation message arrives here by being shared from the
+ * messaging app or pasted in - the app no longer reads the inbox, because Google
+ * Play grants {@code READ_SMS} only to the device's default SMS handler. For the
+ * same reason the app never sends anything itself: the TRUE flow explains what
+ * the user has to forward, and to which short code.
  */
 public class RefundFragment extends BaseFragment {
 
-    private static final Locale THAI = new Locale("th", "TH");
+    private static final String ARG_SHARED_TEXT = "shared_text";
 
     private LinearLayout background;
-    private View actionPanel;
-    private ListView messageList;
-    private TextView countLabel;
+    private EditText smsBody;
     private Button[] carrierTabs;
 
-    private final Handler main = new Handler(Looper.getMainLooper());
-    private List<SmsRepository.Message> messages = Collections.emptyList();
     @Carrier.Id
     private int carrier = Carrier.NONE;
-    private int selectedIndex = -1;
-
     private int[] tabColors;
+
+    @NonNull
+    public static RefundFragment newInstance(@Nullable String sharedText) {
+        RefundFragment fragment = new RefundFragment();
+        if (sharedText != null && !sharedText.isEmpty()) {
+            Bundle args = new Bundle(1);
+            args.putString(ARG_SHARED_TEXT, sharedText);
+            fragment.setArguments(args);
+        }
+        return fragment;
+    }
 
     @Nullable
     @Override
@@ -68,9 +68,7 @@ public class RefundFragment extends BaseFragment {
         }
 
         background = root.findViewById(R.id.list_refundBG);
-        actionPanel = root.findViewById(R.id.panelBtn);
-        messageList = root.findViewById(R.id.listViewRefund);
-        countLabel = root.findViewById(R.id.textViewCountRowsRefund);
+        smsBody = root.findViewById(R.id.editTextSmsBody);
         carrierTabs = new Button[]{
                 root.findViewById(R.id.btn_smsAIS),
                 root.findViewById(R.id.btn_smsDTAC),
@@ -99,59 +97,65 @@ public class RefundFragment extends BaseFragment {
             }
         }
 
-        actionPanel.setVisibility(View.GONE);
-        messageList.setOnItemClickListener((parent, view, position, id) -> {
-            selectedIndex = position;
-            actionPanel.setVisibility(View.VISIBLE);
-        });
-        root.findViewById(R.id.btnCancel).setOnClickListener(v -> clearSelection());
+        root.findViewById(R.id.btnPasteSms).setOnClickListener(v -> pasteFromClipboard());
+        root.findViewById(R.id.btnClearSms).setOnClickListener(v -> smsBody.setText(""));
+        root.findViewById(R.id.btnCancel).setOnClickListener(v -> smsBody.setText(""));
         root.findViewById(R.id.btnRefund).setOnClickListener(v -> confirmRefund());
 
         if (firstEnabled != Carrier.NONE) {
             selectCarrier(firstEnabled);
         }
+
+        Bundle args = getArguments();
+        if (args != null) {
+            String shared = args.getString(ARG_SHARED_TEXT, "");
+            if (!shared.isEmpty()) {
+                smsBody.setText(shared);
+                // Consume it, so rotating the screen does not silently refill the box.
+                args.remove(ARG_SHARED_TEXT);
+            }
+        }
+
         return root;
     }
 
     private void selectCarrier(@Carrier.Id int id) {
         carrier = id;
         background.setBackgroundResource(tabColors[id - 1]);
-        clearSelection();
-        withPermission(Manifest.permission.READ_SMS, R.string.rationale_read_sms, this::loadMessages);
     }
 
-    private void loadMessages() {
-        SmsRepository.get(requireContext()).load(carrier, main, loaded -> {
-            if (!isAdded()) {
-                return;
-            }
-            messages = loaded;
-            List<String> rows = new ArrayList<>(loaded.size());
-            SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy เวลา H:mm", THAI);
-            for (SmsRepository.Message message : loaded) {
-                rows.add(message.body + "\n\n" + getString(R.string.refund_date_prefix) + " "
-                        + format.format(new Date(message.timestamp)));
-            }
-            countLabel.setText(getString(R.string.refund_found_count, loaded.size()));
-            messageList.setAdapter(new ArrayAdapter<>(requireContext(),
-                    android.R.layout.simple_list_item_2, android.R.id.text1, rows));
-        });
-    }
-
-    private void clearSelection() {
-        selectedIndex = -1;
-        actionPanel.setVisibility(View.GONE);
+    private void pasteFromClipboard() {
+        ClipboardManager clipboard =
+                (ClipboardManager) requireContext().getSystemService(Context.CLIPBOARD_SERVICE);
+        if (clipboard == null || !clipboard.hasPrimaryClip()) {
+            toast(R.string.refund_clipboard_empty);
+            return;
+        }
+        ClipData clip = clipboard.getPrimaryClip();
+        if (clip == null || clip.getItemCount() == 0) {
+            toast(R.string.refund_clipboard_empty);
+            return;
+        }
+        CharSequence text = clip.getItemAt(0).coerceToText(requireContext());
+        if (text == null || text.toString().trim().isEmpty()) {
+            toast(R.string.refund_clipboard_empty);
+            return;
+        }
+        smsBody.setText(text.toString());
     }
 
     private void confirmRefund() {
-        if (selectedIndex < 0 || selectedIndex >= messages.size()) {
+        String body = smsBody.getText().toString().trim();
+        if (body.isEmpty()) {
             toast(R.string.refund_select_first);
             return;
         }
-        // Parse the raw SMS body, never the list row - the row also carries the
-        // formatted date, which used to end up inside the forwarded request.
-        final RefundRequest request =
-                RefundRequest.parse(carrier, messages.get(selectedIndex).body);
+        if (carrier == Carrier.NONE) {
+            toast(R.string.error_no_carrier);
+            return;
+        }
+
+        final RefundRequest request = RefundRequest.parse(carrier, body);
         if (request == null) {
             new AlertDialog.Builder(requireContext())
                     .setTitle(R.string.refund_unreadable_title)
@@ -179,7 +183,6 @@ public class RefundFragment extends BaseFragment {
     }
 
     private void execute(@NonNull RefundRequest request) {
-        clearSelection();
         if (request.carrier == Carrier.TRUE) {
             forwardTrueRefund(request);
             return;
@@ -188,8 +191,7 @@ public class RefundFragment extends BaseFragment {
         String ussd;
         switch (request.carrier) {
             case Carrier.AIS:
-                ussd = UssdCodes.refundAis(pin,
-                        com.mondaro.easytopup.util.PhoneNumbers.lastFour(request.phone),
+                ussd = UssdCodes.refundAis(pin, PhoneNumbers.lastFour(request.phone),
                         request.reference);
                 break;
             case Carrier.DTAC:
@@ -201,25 +203,35 @@ public class RefundFragment extends BaseFragment {
             default:
                 return;
         }
-        sendUssd(ussd, null);
+        sendUssd(ussd, () -> smsBody.setText(""));
     }
 
-    /** TRUE takes the original confirmation message forwarded to its short code. */
+    /**
+     * TRUE wants the original confirmation message forwarded to its short code.
+     * The app does not send it: it explains what to send and where, and offers to
+     * put the message on the clipboard so the user can paste it into their own
+     * messaging app.
+     */
     private void forwardTrueRefund(@NonNull RefundRequest request) {
-        withPermission(Manifest.permission.SEND_SMS, R.string.rationale_send_sms, () ->
-                SmsSender.send(requireContext(), UssdCodes.TRUE_REFUND_SHORTCODE, request.rawBody,
-                        sent -> {
-                            if (!isAdded()) {
-                                return;
-                            }
-                            new AlertDialog.Builder(requireContext())
-                                    .setIcon(android.R.drawable.ic_menu_revert)
-                                    .setTitle(R.string.refund_true_title)
-                                    .setMessage(sent
-                                            ? R.string.refund_true_sent
-                                            : R.string.refund_true_failed)
-                                    .setPositiveButton(R.string.understood, null)
-                                    .show();
-                        }));
+        new AlertDialog.Builder(requireContext())
+                .setIcon(android.R.drawable.ic_dialog_info)
+                .setTitle(R.string.refund_true_title)
+                .setMessage(getString(R.string.refund_true_instructions,
+                        UssdCodes.TRUE_REFUND_SHORTCODE, request.phone, request.amountText))
+                .setPositiveButton(R.string.refund_copy_message,
+                        (d, w) -> copyToClipboard(request.rawBody))
+                .setNegativeButton(R.string.understood, null)
+                .show();
+    }
+
+    private void copyToClipboard(@NonNull String text) {
+        ClipboardManager clipboard =
+                (ClipboardManager) requireContext().getSystemService(Context.CLIPBOARD_SERVICE);
+        if (clipboard == null) {
+            return;
+        }
+        clipboard.setPrimaryClip(
+                ClipData.newPlainText(getString(R.string.refund_clip_label), text));
+        toast(R.string.refund_copied);
     }
 }

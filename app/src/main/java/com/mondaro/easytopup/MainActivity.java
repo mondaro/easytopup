@@ -1,7 +1,11 @@
 package com.mondaro.easytopup;
 
+import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -44,6 +48,9 @@ public class MainActivity extends AppCompatActivity {
     private NavDrawerAdapter drawerAdapter;
     private ActionBarDrawerToggle drawerToggle;
     private String[] navMenuTitles;
+    /** Text shared into the app, handed to the refund screen once it is created. */
+    @Nullable
+    private String pendingSharedText;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -58,13 +65,48 @@ public class MainActivity extends AppCompatActivity {
         setUpBackHandling();
 
         if (savedInstanceState == null) {
-            if (SecurePrefs.get(this).isConfigured()) {
-                displayView(VIEW_TOPUP);
-            } else {
+            if (!SecurePrefs.get(this).isConfigured()) {
                 Toast.makeText(this, R.string.not_configured_yet, Toast.LENGTH_LONG).show();
                 displayView(VIEW_SETTING);
+            } else if (!handleSharedText(getIntent())) {
+                displayView(VIEW_TOPUP);
             }
         }
+    }
+
+    @Override
+    protected void onNewIntent(@NonNull Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+        handleSharedText(intent);
+    }
+
+    /**
+     * A carrier confirmation message shared from the messaging app opens the
+     * refund screen with the text already in place. This is what lets the app do
+     * refunds without the SMS permissions Google Play reserves for the default
+     * messaging app.
+     *
+     * @return true when the intent carried text and the refund screen was opened
+     */
+    private boolean handleSharedText(@Nullable Intent intent) {
+        if (intent == null || !Intent.ACTION_SEND.equals(intent.getAction())) {
+            return false;
+        }
+        CharSequence shared = intent.getCharSequenceExtra(Intent.EXTRA_TEXT);
+        if (shared == null || shared.toString().trim().isEmpty()) {
+            return false;
+        }
+        if (!SecurePrefs.get(this).isConfigured()) {
+            Toast.makeText(this, R.string.not_configured_yet, Toast.LENGTH_LONG).show();
+            displayView(VIEW_SETTING);
+            return true;
+        }
+        // Consume it so a configuration change does not reopen the screen.
+        intent.removeExtra(Intent.EXTRA_TEXT);
+        pendingSharedText = shared.toString();
+        displayView(VIEW_REFUND);
+        return true;
     }
 
     /**
@@ -97,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
         drawerList.setHasFixedSize(true);
         DividerItemDecoration divider =
                 new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
-        android.graphics.drawable.Drawable dividerDrawable =
+        Drawable dividerDrawable =
                 ContextCompat.getDrawable(this, R.drawable.nav_divider);
         if (dividerDrawable != null) {
             divider.setDrawable(dividerDrawable);
@@ -143,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull android.view.MenuItem item) {
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         return drawerToggle.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
     }
 
@@ -173,8 +215,11 @@ public class MainActivity extends AppCompatActivity {
                 return new TopupFragment();
             case VIEW_BALANCE:
                 return new ChkBalanceFragment();
-            case VIEW_REFUND:
-                return new RefundFragment();
+            case VIEW_REFUND: {
+                String shared = pendingSharedText;
+                pendingSharedText = null;
+                return RefundFragment.newInstance(shared);
+            }
             case VIEW_ADDONS:
                 return new AddOnsFragment();
             case VIEW_SETTING:
@@ -203,7 +248,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onConfigurationChanged(@NonNull android.content.res.Configuration newConfig) {
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         drawerToggle.onConfigurationChanged(newConfig);
     }

@@ -7,8 +7,6 @@
         android:required="false" />
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-permission android:name="android.permission.READ_SMS" />
-    <uses-permission android:name="android.permission.SEND_SMS" />
 
     <!-- Needed to resolve the contact picker / mail / browser targets on API 30+. -->
     <queries>
@@ -48,6 +46,16 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <!--
+              The refund screen is fed by sharing the carrier's confirmation
+              message from the messaging app, which is what lets the app drop the
+              restricted SMS permissions entirely.
+            -->
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
             </intent-filter>
         </activity>
 

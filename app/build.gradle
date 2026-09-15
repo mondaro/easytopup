@@ -2,6 +2,21 @@ plugins {
     id 'com.android.application'
 }
 
+// Release signing details live outside the repository. Create a
+// keystore.properties next to this file (it is gitignored) containing
+// storeFile, storePassword, keyAlias and keyPassword, or set the matching
+// EASYTOPUP_* environment variables on the build machine. Without either, the
+// release build is simply left unsigned instead of failing.
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+def keystoreProperties = new Properties()
+if (keystorePropertiesFile.exists()) {
+    keystorePropertiesFile.withInputStream { keystoreProperties.load(it) }
+}
+
+def signingValue = { String key, String env ->
+    keystoreProperties.getProperty(key) ?: System.getenv(env)
+}
+
 android {
     namespace 'com.mondaro.easytopup'
     compileSdk 35
@@ -18,11 +33,26 @@ android {
         resourceConfigurations += ["th", "en"]
     }
 
+    signingConfigs {
+        release {
+            def storePath = signingValue("storeFile", "EASYTOPUP_STORE_FILE")
+            if (storePath != null) {
+                storeFile file(storePath)
+                storePassword signingValue("storePassword", "EASYTOPUP_STORE_PASSWORD")
+                keyAlias signingValue("keyAlias", "EASYTOPUP_KEY_ALIAS")
+                keyPassword signingValue("keyPassword", "EASYTOPUP_KEY_PASSWORD")
+            }
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            if (signingValue("storeFile", "EASYTOPUP_STORE_FILE") != null) {
+                signingConfig signingConfigs.release
+            }
         }
         debug {
             minifyEnabled false
