@@ -1,46 +1,28 @@
 package com.mondaro.easytopup;
 
-import android.app.Fragment;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
-import com.mondaro.easytopup.R;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
-public class ExitFragment extends Fragment {
+import com.mondaro.easytopup.ui.BaseFragment;
 
-    Button btnExit,btnCancel;
-    SharedPreferences sharedPref;
+public class ExitFragment extends BaseFragment {
 
-    public ExitFragment(){}
-
+    @Nullable
     @Override
-    public View onCreateView(final LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        View root = inflater.inflate(R.layout.fragment_exit, container, false);
 
-        final View rootView = inflater.inflate(R.layout.fragment_exit, container, false);
+        root.findViewById(R.id.buttonExit).setOnClickListener(v -> requireActivity().finish());
+        root.findViewById(R.id.buttonCancel).setOnClickListener(v ->
+                ((MainActivity) requireActivity()).displayView(
+                        prefs().isConfigured() ? MainActivity.VIEW_TOPUP : MainActivity.VIEW_SETTING));
 
-        sharedPref = this.getActivity().getPreferences(Context.MODE_PRIVATE);
-
-        btnExit = (Button) rootView.findViewById(R.id.buttonExit);
-        btnCancel = (Button) rootView.findViewById(R.id.buttonCancel);
-
-        btnExit.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
-            getActivity().moveTaskToBack(true);
-            getActivity().finish();
-        }});
-        btnCancel.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
-            if(sharedPref.getString("CHK_OK","").equals("TRUE")){
-                ((MainActivity) getActivity()).displayView(0);
-            }else{
-                ((MainActivity) getActivity()).displayView(2);
-            }
-        }});
-
-        return rootView;
+        return root;
     }
 }

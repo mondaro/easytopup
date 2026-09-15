@@ -1,5 +1,8 @@
 <resources>
-    <!-- Base application theme. -->
-    <style name="AppThemeDark" parent="Base.Theme.AppCompat.Light.DarkActionBar" />
-    <style name="AppThemeLight" parent="Base.Theme.AppCompat.Light" />
+    <!--
+      Base.* variants are internal to AppCompat and are not meant to be used as a
+      parent directly; the public themes carry the same look.
+    -->
+    <style name="AppThemeDark" parent="Theme.AppCompat.Light.DarkActionBar" />
+    <style name="AppThemeLight" parent="Theme.AppCompat.Light" />
 </resources>

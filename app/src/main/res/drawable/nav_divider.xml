@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A ColorDrawable has no intrinsic height, so DividerItemDecoration would
+     draw nothing. A shape with an explicit size does. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <size android:height="1dp" />
+    <solid android:color="@color/list_divider" />
+</shape>

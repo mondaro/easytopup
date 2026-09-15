@@ -163,4 +163,68 @@
 
 
 
+
+    <!-- ==== Added in 7.0 ==== -->
+    <string name="drawer_open">เปิดเมนู</string>
+    <string name="drawer_close">ปิดเมนู</string>
+    <string name="not_configured_yet">ผลการตรวจสอบ :\nเครื่องนี้ยังไม่ได้ทำรายการตั้งค่าคะ</string>
+    <string name="permission_denied">ไม่ได้รับอนุญาต จึงทำรายการต่อไม่ได้คะ</string>
+    <string name="no_app_to_handle">ไม่พบแอปสำหรับเปิดรายการนี้คะ</string>
+    <string name="understood">เข้าใจแล้ว</string>
+
+    <!-- permissions -->
+    <string name="rationale_call_phone">ต้องการยืนยันการอนุญาตเข้าถึง\n\n[ระบบการโทร]\n\nเพื่อให้แอปพลิเคชันทำงานได้</string>
+    <string name="rationale_read_sms">ต้องการยืนยันการอนุญาตเข้าถึง\n\n[การอ่าน SMS]\n\nเพื่อให้แอปพลิเคชันทำงานได้</string>
+    <string name="rationale_send_sms">ต้องการยืนยันการอนุญาตเข้าถึง\n\n[การส่ง SMS]\n\nเพื่อให้แอปพลิเคชันทำงานได้</string>
+
+    <!-- contacts -->
+    <string name="contact_no_number">รายชื่อที่เลือกไม่มีหมายเลขโทรศัพท์คะ</string>
+    <string name="contact_picker_missing">ไม่พบสมุดรายชื่อในเครื่องนี้คะ</string>
+
+    <!-- USSD -->
+    <string name="ussd_result_title">ผลการทำรายการ</string>
+    <string name="ussd_failed_title">ทำรายการไม่สำเร็จ</string>
+    <string name="ussd_failed_body">%1$s\n\nกรุณาตรวจสอบยอดเงินและ SMS ยืนยันก่อนทำรายการซ้ำ เพราะเครือข่ายอาจรับรายการไปแล้ว</string>
+    <string name="ussd_failed_network">เครือข่ายปฏิเสธรายการนี้</string>
+    <string name="ussd_failed_unsupported">เครื่องหรือซิมนี้ไม่รองรับการส่งรหัสจากในแอป</string>
+    <string name="ussd_retry_dialer">ลองใหม่ผ่านหน้าโทรออก</string>
+
+    <!-- top-up -->
+    <string name="error_phone_and_amount">ผิดพลาด :\nกรุณากรอกหมายเลขโทรศัพท์\nและจำนวนเงินที่ต้องการเติมเงินด้วยคะ</string>
+    <string name="error_phone_length">ผิดพลาด :\nกรุณากรอกหมายเลขโทรศัพท์\nให้ครบ 10 หลักด้วยคะ</string>
+    <string name="error_amount">ผิดพลาด :\nกรุณากรอกจำนวนเงิน\nให้ถูกต้องด้วยคะ</string>
+    <string name="error_no_carrier">กรุณาเลือกระบบเครือข่ายก่อนคะ</string>
+    <string name="carrier_not_configured">หมายเลขนี้อยู่ในระบบที่คุณไม่ได้ตั้งค่าไว้ค่ะ</string>
+
+    <!-- settings -->
+    <string name="setting_invalid_pin">ผลการตรวจสอบ :\nกรุณากรอกรหัสให้ครบ 4 หลักก่อนคะ</string>
+    <string name="setting_pick_one">กรุณาเลือกอย่างน้อย 1 ระบบก่อนคะ</string>
+    <string name="setting_saved">บันทึกการตั้งค่าเรียบร้อยแล้วคะ</string>
+    <string name="setting_legacy_dialer">ส่งรหัสผ่านหน้าโทรออก (แบบเดิม)</string>
+    <string name="setting_legacy_dialer_hint">ปกติแอปจะส่งรหัสให้เครือข่ายโดยตรงและแสดงผลลัพธ์ในแอป ซึ่งไม่ทิ้งรหัสลับไว้ในประวัติการโทร เปิดตัวเลือกนี้เฉพาะเมื่อเครื่องของคุณส่งรหัสแบบใหม่ไม่ผ่าน</string>
+
+    <!-- refund -->
+    <string name="refund_date_prefix">วันที่</string>
+    <string name="refund_found_count">พบ %1$d รายการ</string>
+    <string name="refund_select_first">กรุณาเลือกรายการก่อนคะ</string>
+    <string name="refund_unreadable_title">อ่านรายการนี้ไม่ได้</string>
+    <string name="refund_unreadable_body">รูปแบบข้อความของเครือข่ายไม่ตรงกับที่แอปรู้จัก จึงยังไม่ได้ส่งคำขอใด ๆ ออกไป\n\nกรุณาดึงเงินคืนผ่านช่องทางของเครือข่ายโดยตรง และแจ้งผู้พัฒนาที่ mondaro23@gmail.com</string>
+    <string name="refund_confirm_title">ยืนยันการดึงเงินคืน</string>
+    <string name="refund_confirm_body">ระบบ %1$s\nจากหมายเลข : %2$s\nจำนวน : %3$s\nREF : %4$s</string>
+    <string name="refund_do_it">ดึงเงิน</string>
+    <string name="refund_true_title">แจ้งข้อความ</string>
+    <string name="refund_true_sent">ส่งคำขอดึงเงินคืนไปที่หมายเลข 97322 เรียบร้อยแล้วคะ\nกรุณารอ SMS ยืนยันจากเครือข่าย</string>
+    <string name="refund_true_failed">ส่งคำขอไม่สำเร็จคะ\n\nกรุณา \"ส่งต่อ\" ข้อความที่เติมเงินผิดไปที่เบอร์ 97322 ด้วยตนเองภายใน 2 ชั่วโมง\nหากเกินกำหนดกรุณาติดต่อ 027009933 หรือ 8700</string>
+
+    <!-- mPay -->
+    <string name="mpay_id_too_short">แจ้งเตือน :\nกรุณากรอกรหัสประจำตัว mPay ให้ครบ 4 หลักด้วยคะ</string>
+    <string name="mpay_id_saved">บันทึกรหัสประจำตัว mPay เรียบร้อยแล้วคะ</string>
+    <string name="mpay_id_save">+</string>
+    <string name="mpay_id_clear">-</string>
+
+    <!-- about -->
+    <string name="about_email_warning_title">อ่านสักนิด!!!</string>
+    <string name="about_email_warning_body">ช่องทางนี้สำหรับแจ้งปัญหาของแอปพลิเคชันเท่านั้น \nหากต้องการสมัครเป็นตัวแทนเติมเงิน กรุณากลับไปอ่านรายละเอียดหน้าเมนู \"แนะนำ\" ใหม่อีกครั้ง!!!</string>
+    <string name="about_email_subject">ติดต่อจากแอปพลิเคชันเติมกะตังส์</string>
+    <string name="about_email_chooser">เลือกแอปอีเมล</string>
 </resources>

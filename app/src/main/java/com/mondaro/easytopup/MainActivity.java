@@ -1,195 +1,210 @@
 package com.mondaro.easytopup;
 
-import com.mondaro.easytopup.model.NavDrawerItem;
-import com.mondaro.easytopup.adapter.NavDrawerListAdapter;
-
-import java.util.ArrayList;
-
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
-import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.Toast;
 
-public class MainActivity extends ActionBarActivity {
-    private DrawerLayout mDrawerLayout;
-    private ListView mDrawerList;
-    private ActionBarDrawerToggle mDrawerToggle;
-    private CharSequence mDrawerTitle;
-    private CharSequence mTitle;
+import androidx.activity.OnBackPressedCallback;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.mondaro.easytopup.adapter.NavDrawerAdapter;
+import com.mondaro.easytopup.data.SecurePrefs;
+import com.mondaro.easytopup.model.NavDrawerItem;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity {
+
+    public static final int VIEW_TOPUP = 0;
+    public static final int VIEW_BALANCE = 1;
+    public static final int VIEW_REFUND = 2;
+    public static final int VIEW_ADDONS = 3;
+    public static final int VIEW_SETTING = 4;
+    public static final int VIEW_ABOUT = 5;
+    public static final int VIEW_EXIT = 6;
+
+    private DrawerLayout drawerLayout;
+    private RecyclerView drawerList;
+    private NavDrawerAdapter drawerAdapter;
+    private ActionBarDrawerToggle drawerToggle;
     private String[] navMenuTitles;
-    private TypedArray navMenuIcons;
-    private ArrayList<NavDrawerItem> navDrawerItems;
-    private NavDrawerListAdapter adapter;
-    public String chkUID;
-    SharedPreferences sharedPref;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        MainActivity.this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR);
-        sharedPref = getPreferences(Context.MODE_PRIVATE);
 
-        mTitle = mDrawerTitle = getTitle();
+        drawerLayout = findViewById(R.id.drawer_layout);
+        drawerList = findViewById(R.id.list_slidermenu);
+
+        applySystemBarInsets();
+        setUpDrawer();
+        setUpBackHandling();
+
+        if (savedInstanceState == null) {
+            if (SecurePrefs.get(this).isConfigured()) {
+                displayView(VIEW_TOPUP);
+            } else {
+                Toast.makeText(this, R.string.not_configured_yet, Toast.LENGTH_LONG).show();
+                displayView(VIEW_SETTING);
+            }
+        }
+    }
+
+    /**
+     * Android 15 draws apps edge to edge, so the content has to keep clear of the
+     * status and navigation bars itself.
+     */
+    private void applySystemBarInsets() {
+        ViewCompat.setOnApplyWindowInsetsListener(drawerLayout, (view, windowInsets) -> {
+            Insets bars = windowInsets.getInsets(
+                    WindowInsetsCompat.Type.systemBars() | WindowInsetsCompat.Type.displayCutout());
+            View content = findViewById(R.id.frame_container);
+            content.setPadding(bars.left, bars.top, bars.right, bars.bottom);
+            drawerList.setPadding(bars.left, bars.top, bars.right, bars.bottom);
+            return windowInsets;
+        });
+    }
+
+    private void setUpDrawer() {
         navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
-        navMenuIcons = getResources()
-                .obtainTypedArray(R.array.nav_drawer_icons);
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerList = (ListView) findViewById(R.id.list_slidermenu);
-        navDrawerItems = new ArrayList<NavDrawerItem>();
-        Integer arrayLength = navMenuTitles.length;
-        for(int i=0;i<arrayLength;i++){
+        TypedArray navMenuIcons = getResources().obtainTypedArray(R.array.nav_drawer_icons);
+        List<NavDrawerItem> navDrawerItems = new ArrayList<>(navMenuTitles.length);
+        for (int i = 0; i < navMenuTitles.length; i++) {
             navDrawerItems.add(new NavDrawerItem(navMenuTitles[i], navMenuIcons.getResourceId(i, -1)));
         }
         navMenuIcons.recycle();
-        mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
-        adapter = new NavDrawerListAdapter(getApplicationContext(),
-                navDrawerItems);
-        mDrawerList.setAdapter(adapter);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
 
-        mDrawerToggle = new ActionBarDrawerToggle(
-                this,
-                mDrawerLayout,
-                R.string.app_name,
-                R.string.app_name
-        ) {
+        drawerAdapter = new NavDrawerAdapter(navDrawerItems, this::displayView);
+        drawerList.setLayoutManager(new LinearLayoutManager(this));
+        // The item count is fixed, so the list can skip re-measuring on every bind.
+        drawerList.setHasFixedSize(true);
+        DividerItemDecoration divider =
+                new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+        android.graphics.drawable.Drawable dividerDrawable =
+                ContextCompat.getDrawable(this, R.drawable.nav_divider);
+        if (dividerDrawable != null) {
+            divider.setDrawable(dividerDrawable);
+        }
+        drawerList.addItemDecoration(divider);
+        drawerList.setAdapter(drawerAdapter);
+
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeButtonEnabled(true);
+            actionBar.setTitle(R.string.app_name);
+        }
+
+        drawerToggle = new ActionBarDrawerToggle(
+                this, drawerLayout, R.string.drawer_open, R.string.drawer_close) {
+            @Override
             public void onDrawerClosed(View view) {
-                getSupportActionBar().setTitle(R.string.app_name);
+                super.onDrawerClosed(view);
                 invalidateOptionsMenu();
             }
 
+            @Override
             public void onDrawerOpened(View drawerView) {
-                //getSupportActionBar().setTitle(mDrawerTitle);
+                super.onDrawerOpened(drawerView);
                 invalidateOptionsMenu();
             }
         };
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        drawerLayout.addDrawerListener(drawerToggle);
+    }
 
-        mDrawerLayout.post(new Runnable() {
+    private void setUpBackHandling() {
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
             @Override
-            public void run() {
-                mDrawerToggle.syncState();
+            public void handleOnBackPressed() {
+                if (drawerLayout.isDrawerOpen(drawerList)) {
+                    drawerLayout.closeDrawer(drawerList);
+                } else {
+                    displayView(VIEW_EXIT);
+                }
             }
         });
-
-        if (savedInstanceState == null) {
-            String getCheck = sharedPref.getString("CHK_OK","");
-            if(getCheck.equals("")){
-                Toast.makeText(MainActivity.this, "ผลการตรวจสอบ :\r\n\nเครื่องนี้ยังไม่ได้ทำรายการตั้งค่าคะ\r\n\n", Toast.LENGTH_LONG).show();
-                displayView(4);
-                getSupportActionBar().setTitle(R.string.app_name);
-            }else{
-                displayView(0);
-                getSupportActionBar().setTitle(R.string.app_name);
-            }
-
-        }
-    }
-
-    private class SlideMenuClickListener implements ListView.OnItemClickListener {
-        @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {displayView(position);}
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        //int id = item.getItemId();
-        /*if (id == R.id.action_settings) {
-            return true;
-        }*/
-        if (mDrawerToggle.onOptionsItemSelected(item)) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        /*boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
-        menu.findItem(R.id.action_settings).setVisible(!drawerOpen);*/
-        return super.onPrepareOptionsMenu(menu);
+    public boolean onOptionsItemSelected(@NonNull android.view.MenuItem item) {
+        return drawerToggle.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
     }
 
     public void displayView(int position) {
-            Fragment fragment = null;
-            switch (position) {
-                case 0: fragment = new TopupFragment();break;
-                case 1: fragment = new ChkBalanceFragment();break;
-                case 2: fragment = new RefundFragment();break;
-                case 3: fragment = new AddOnsFragment();break;
-                case 4: fragment = new SettingFragment();break;
-                case 5: fragment = new AboutFragment();break;
-                case 6: fragment = new ExitFragment();break;
-                default:    break;
-            }
-            try{
-                if (fragment != null) {
-                    FragmentManager fragmentManager = getFragmentManager();
-                    fragmentManager.beginTransaction()
-                            .replace(R.id.frame_container, fragment).commit();
-                    mDrawerList.setItemChecked(position, true);
-                    mDrawerList.setSelection(position);
-                    setTitle(navMenuTitles[position]);
-                    mDrawerLayout.closeDrawer(mDrawerList);
-                } else {
-                    Log.e("MainActivity", "Error in creating fragment");
-                }
-            }catch (Exception e){
+        Fragment fragment = createFragment(position);
+        if (fragment == null) {
+            return;
+        }
+        FragmentManager manager = getSupportFragmentManager();
+        if (isFinishing() || manager.isStateSaved()) {
+            return;
+        }
+        manager.beginTransaction()
+                .replace(R.id.frame_container, fragment)
+                .commit();
+        drawerAdapter.setSelectedPosition(position);
+        if (position < navMenuTitles.length) {
+            setTitle(navMenuTitles[position]);
+        }
+        drawerLayout.closeDrawer(drawerList);
+    }
 
-            }
+    @Nullable
+    private Fragment createFragment(int position) {
+        switch (position) {
+            case VIEW_TOPUP:
+                return new TopupFragment();
+            case VIEW_BALANCE:
+                return new ChkBalanceFragment();
+            case VIEW_REFUND:
+                return new RefundFragment();
+            case VIEW_ADDONS:
+                return new AddOnsFragment();
+            case VIEW_SETTING:
+                return new SettingFragment();
+            case VIEW_ABOUT:
+                return new AboutFragment();
+            case VIEW_EXIT:
+                return new ExitFragment();
+            default:
+                return null;
+        }
     }
 
     @Override
     public void setTitle(CharSequence title) {
-        mTitle = title;
-        getSupportActionBar().setTitle(mTitle);
-    }
-
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        mDrawerToggle.syncState();
-    }
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        mDrawerToggle.onConfigurationChanged(newConfig);
-        if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
-            //setContentView(R.layout.activity_main);
-        } else if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            //setContentView(R.layout.activity_main);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setTitle(title);
         }
     }
+
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
+    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        drawerToggle.syncState();
     }
 
     @Override
-    public void onBackPressed() {
-        displayView(6);
+    public void onConfigurationChanged(@NonNull android.content.res.Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        drawerToggle.onConfigurationChanged(newConfig);
     }
 }

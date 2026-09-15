@@ -1,85 +1,76 @@
 package com.mondaro.easytopup;
 
-import android.annotation.SuppressLint;
-import android.app.AlertDialog;
-import android.app.Fragment;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
-public class AboutFragment extends Fragment {
-    String version;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 
-    public AboutFragment(){}
+import com.mondaro.easytopup.ui.BaseFragment;
 
-    @SuppressLint("SourceLockedOrientationActivity")
+public class AboutFragment extends BaseFragment {
+
+    private static final String SUPPORT_EMAIL = "mondaro23@gmail.com";
+    private static final String WEBSITE = "https://agoodmany.world";
+    private static final String APP_SITE = "https://agoodmany.world/mondaro_devtech";
+
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        View root = inflater.inflate(R.layout.fragment_about, container, false);
+        lockPortrait();
 
-        View rootView = inflater.inflate(R.layout.fragment_about, container, false);
-        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        TextView versionT = (TextView) rootView.findViewById(R.id.textViewAboutVersion);
-        Button btnEmail = (Button) rootView.findViewById(R.id.buttonEmail);
-        Button btnWeb = (Button) rootView.findViewById(R.id.buttonWebsite);
-        Button btnApp = (Button) rootView.findViewById(R.id.buttonAppSite);
+        TextView version = root.findViewById(R.id.textViewAboutVersion);
+        version.setText(getString(R.string.about_version) + "  " + appVersion());
 
-        btnEmail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new AlertDialog.Builder(getActivity())
+        root.findViewById(R.id.buttonEmail).setOnClickListener(v ->
+                new AlertDialog.Builder(requireContext())
                         .setIcon(android.R.drawable.ic_menu_info_details)
-                        .setTitle("อ่านสักนิด!!!")
-                        .setMessage("ช่องทางนี้สำหรับแจ้งปัญหาของแอปพลิเคชันเท่านั้น \nหากต้องการสมัครเป็นตัวแทนเติมเงิน กรุณากลับไปอ่านรายละเอียดหน้าเมนู \"แนะนำ\" ใหม่อีกครั้ง!!!")
-                        .setPositiveButton("เข้าใจแล้ว",new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-                                        "mailto","mondaro23@gmail.com", null));
-                                intent.putExtra(Intent.EXTRA_SUBJECT, "ติดต่อจากแอปพลิเคชั่นเติมกะตังส์");
-                                intent.putExtra(Intent.EXTRA_TEXT, "");
-                                startActivity(Intent.createChooser(intent, "Choose an Email client :"));
-                            }
-                        })
-                        .show();
-            }
-        });
+                        .setTitle(R.string.about_email_warning_title)
+                        .setMessage(R.string.about_email_warning_body)
+                        .setPositiveButton(R.string.understood, (d, w) -> sendSupportEmail())
+                        .show());
+        root.findViewById(R.id.buttonWebsite).setOnClickListener(v -> openUrl(WEBSITE));
+        root.findViewById(R.id.buttonAppSite).setOnClickListener(v -> openUrl(APP_SITE));
 
-        btnWeb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Uri uri = Uri.parse("https://agoodmany.world");
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(intent);
-            }
-        });
+        return root;
+    }
 
-        btnApp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Uri uri = Uri.parse("https://agoodmany.world/mondaro_devtech");
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(intent);
-            }
-        });
-
-        try{
-            PackageInfo pInfo = getActivity().getPackageManager().getPackageInfo(this.getActivity().getPackageName(), 0);
-            version = pInfo.versionName ;
-        }catch(Exception e){
-            //No coding
+    private String appVersion() {
+        try {
+            PackageInfo info = requireContext().getPackageManager()
+                    .getPackageInfo(requireContext().getPackageName(), 0);
+            return info.versionName == null ? "" : info.versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            return "";
         }
-        String shText = getResources().getString(R.string.about_version) + "  " + version;
-        versionT.setText(shText);;
+    }
 
-        return rootView;
+    private void sendSupportEmail() {
+        Intent intent = new Intent(Intent.ACTION_SENDTO,
+                Uri.fromParts("mailto", SUPPORT_EMAIL, null));
+        intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.about_email_subject));
+        startActivitySafely(Intent.createChooser(intent, getString(R.string.about_email_chooser)));
+    }
+
+    private void openUrl(@NonNull String url) {
+        startActivitySafely(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+    }
+
+    private void startActivitySafely(@NonNull Intent intent) {
+        try {
+            startActivity(intent);
+        } catch (Exception e) {
+            toast(R.string.no_app_to_handle);
+        }
     }
 }
