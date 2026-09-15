@@ -1,34 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android" >
-    <item android:state_pressed="true">
-        <shape android:shape="rectangle">
-            <corners android:bottomLeftRadius="25dp"/>
-            <solid android:color="#f67bfd"/>
-            <stroke android:width="3.0dip" android:color="#222" />
-        </shape>
-    </item>
-    <item android:state_pressed="false">
+<!-- Selected carrier tab. The ground behind it is already this colour, so the
+     tab reads as part of the screen and the brass edge is what marks it.
+     The bar is drawn by letting a brass layer show through 3dp below the
+     carrier layer - inset, not gravity, so it also works on Android 5. -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/ripple_light">
+    <item>
         <layer-list>
             <item>
                 <shape android:shape="rectangle">
-                    <padding android:left="1.5dp" android:bottom="2dp"/>
-                    <corners android:bottomLeftRadius="25dp"/>
-                    <solid android:color="#b9b9b9"/>
+                    <corners android:topLeftRadius="12dp" android:topRightRadius="12dp" />
+                    <solid android:color="@color/brass" />
                 </shape>
             </item>
-            <item>
+            <item android:bottom="3dp">
                 <shape android:shape="rectangle">
-                    <padding android:left="0.3dp" android:bottom="2dp"/>
-                    <corners android:bottomLeftRadius="25dp"/>
-                    <solid android:color="#fff"/>
-                </shape>
-            </item>
-            <item>
-                <shape android:shape="rectangle">
-                    <corners android:bottomLeftRadius="25dp"/>
-                    <solid android:color="@color/bg_topup_cat_default"/>
+                    <corners android:topLeftRadius="12dp" android:topRightRadius="12dp" />
+                    <solid android:color="@color/bg_topup_cat_default" />
                 </shape>
             </item>
         </layer-list>
     </item>
-</selector>
+</ripple>

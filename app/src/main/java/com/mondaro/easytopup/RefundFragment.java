@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.content.ContextCompat;
 
 import com.mondaro.easytopup.data.Carrier;
 import com.mondaro.easytopup.data.RefundRequest;
@@ -42,6 +43,9 @@ public class RefundFragment extends BaseFragment {
     @Carrier.Id
     private int carrier = Carrier.NONE;
     private int[] tabColors;
+    private int[] tabDrawables;
+    /** Tab labels flip with the theme: the soft grounds are too light for white. */
+    private int tabTextColor;
 
     @NonNull
     public static RefundFragment newInstance(@Nullable String sharedText) {
@@ -81,6 +85,14 @@ public class RefundFragment extends BaseFragment {
                 R.color.bg_topup_true_default, R.color.bg_topup_cat_default}
                 : new int[]{R.color.bg_topup_ais_pastel, R.color.bg_topup_dtac_pastel,
                 R.color.bg_topup_true_pastel, R.color.bg_topup_cat_pastel};
+        tabDrawables = defaultTheme
+                ? new int[]{R.drawable.button_select_ais_default, R.drawable.button_select_dtac_default,
+                R.drawable.button_select_true_default, R.drawable.button_select_cat_default}
+                : new int[]{R.drawable.button_select_ais_pastel, R.drawable.button_select_dtac_pastel,
+                R.drawable.button_select_true_pastel, R.drawable.button_select_cat_pastel};
+
+        tabTextColor = ContextCompat.getColor(requireContext(),
+                defaultTheme ? R.color.text_topup_pad : R.color.ink);
 
         int firstEnabled = Carrier.NONE;
         for (int id = Carrier.AIS; id <= Carrier.CAT; id++) {
@@ -89,7 +101,7 @@ public class RefundFragment extends BaseFragment {
             boolean enabled = !prefs().pinFor(id).isEmpty();
             carrierTabs[index].setVisibility(enabled ? View.VISIBLE : View.GONE);
             if (enabled) {
-                carrierTabs[index].setBackgroundResource(tabColors[index]);
+                carrierTabs[index].setTextColor(tabTextColor);
                 carrierTabs[index].setOnClickListener(v -> selectCarrier(carrierId));
                 if (firstEnabled == Carrier.NONE) {
                     firstEnabled = id;
@@ -121,7 +133,12 @@ public class RefundFragment extends BaseFragment {
 
     private void selectCarrier(@Carrier.Id int id) {
         carrier = id;
-        background.setBackgroundResource(tabColors[id - 1]);
+        int index = id - 1;
+        background.setBackgroundResource(tabColors[index]);
+        for (int i = 0; i < carrierTabs.length; i++) {
+            carrierTabs[i].setBackgroundResource(
+                    i == index ? tabDrawables[i] : R.drawable.tab_inactive);
+        }
     }
 
     private void pasteFromClipboard() {

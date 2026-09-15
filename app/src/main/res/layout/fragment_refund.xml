@@ -139,8 +139,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@android:color/holo_orange_light"
+            android:background="@drawable/button_ok"
             android:text="@string/btn_Refund"
+            android:textColor="@color/text_topup_pad"
             android:textSize="20sp"
             tools:ignore="ButtonStyle" />
 
@@ -150,8 +151,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_weight="1"
-            android:background="@android:color/holo_red_light"
+            android:background="@drawable/button_normal"
             android:text="@string/btn_Cancel"
+            android:textColor="@color/text_btn_pad"
             android:textSize="20sp"
             tools:ignore="ButtonStyle" />
     </LinearLayout>

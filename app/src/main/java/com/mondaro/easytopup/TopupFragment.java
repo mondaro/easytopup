@@ -201,11 +201,8 @@ public class TopupFragment extends BaseFragment {
             int index = id - 1;
             boolean enabled = !prefs.pinFor(id).isEmpty();
             carrierSlots[index].setVisibility(enabled ? View.VISIBLE : View.GONE);
-            if (enabled) {
-                carrierTabs[index].setBackgroundResource(tabBackgrounds[index]);
-                if (firstEnabled == Carrier.NONE) {
-                    firstEnabled = id;
-                }
+            if (enabled && firstEnabled == Carrier.NONE) {
+                firstEnabled = id;
             }
         }
         // Keep the tab the user had chosen when the view is rebuilt on rotation.
@@ -220,9 +217,14 @@ public class TopupFragment extends BaseFragment {
         carrier = id;
         int index = id - 1;
         bgColor.setBackgroundResource(tabColors[index]);
-        // Mutating the weight keeps the margins the XML set; rebuilding the
-        // LayoutParams - as the old code did - threw them away on every tap.
         for (int i = 0; i < carrierSlots.length; i++) {
+            // The selected tab carries its carrier colour and a brass edge; the
+            // rest are a scrim over whichever ground is behind them. Width alone
+            // used to be the only thing marking the selection.
+            carrierTabs[i].setBackgroundResource(
+                    i == index ? tabBackgrounds[i] : R.drawable.tab_inactive);
+            // Mutating the weight keeps the margins the XML set; rebuilding the
+            // LayoutParams - as the old code did - threw them away on every tap.
             ViewGroup.LayoutParams params = carrierSlots[i].getLayoutParams();
             if (params instanceof LinearLayout.LayoutParams) {
                 ((LinearLayout.LayoutParams) params).weight = (i == index) ? 1f : 0f;

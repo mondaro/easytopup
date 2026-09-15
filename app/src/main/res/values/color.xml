@@ -1,22 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="list_divider">#2c4c53</color>
-    <color name="list_background">#fdffff</color>
-    <color name="list_background_pressed">#ea4b49</color>
-    <color name="counter_text_bg">#fce354</color>
-    <color name="list_item_title">#e9272b2f</color>
-    <color name="counter_text_color">#ff695c</color>
-    <color name="text_btn_pad">#272b2f</color>
-    <color name="text_topup_pad">#f5f8f7</color>
-    <color name="text_topup_pad_black">#e9000000</color>
-    <color name="bg_topup_pad_black">#e9000000</color>
-    <color name="bg_topup_ais_pastel">#6adab4</color>
-    <color name="bg_topup_dtac_pastel">#57ced9</color>
-    <color name="bg_topup_true_pastel">#fa6866</color>
-    <color name="bg_topup_cat_pastel">#fac848</color>
-    <color name="bg_topup_ais_default">#15c13e</color>
-    <color name="bg_topup_dtac_default">#13b1d9</color>
-    <color name="bg_topup_true_default">#ff260d</color>
-    <color name="bg_topup_cat_default">#ffa303</color>
-    <color name="bg_content_addons">#7fd926</color>
+
+    <!--
+      Palette, v7.0.
+
+      One accent only: brass. It marks the thing that is currently active and
+      nothing else. The previous palette used red, yellow, lime and magenta as
+      accents at the same time, which left nothing actually emphasised.
+    -->
+
+    <!-- ==== neutrals ==== -->
+    <color name="ink">#FF191E24</color>
+    <color name="ink_muted">#FF6A717B</color>
+    <color name="stone">#FFEFEDE8</color>
+    <color name="stone_edge">#FFD6D1C6</color>
+    <color name="surface">#FFFFFFFF</color>
+    <color name="hairline">#FFE4E0D8</color>
+    <color name="panel_dark">#FF242C35</color>
+    <!-- The number and amount fields: the darkest well on the screen, because
+         they hold the one piece of data that must not be wrong. -->
+    <color name="well_fill">#FF131A21</color>
+    <color name="well_edge">#FF2B3540</color>
+
+    <!-- ==== accent ==== -->
+    <color name="brass">#FFB08B4F</color>
+    <color name="brass_dark">#FF8A6A35</color>
+    <color name="brass_soft">#FFEDE2CC</color>
+
+    <!-- ==== semantic ==== -->
+    <color name="jade">#FF1D6B4F</color>
+    <color name="claret">#FF8A2F38</color>
+
+    <!-- ==== feedback ==== -->
+    <color name="ripple_dark">#33000000</color>
+    <color name="ripple_light">#33FFFFFF</color>
+    <color name="scrim_soft">#26000000</color>
+    <color name="shadow_soft">#1F000000</color>
+
+    <!-- ==== carrier grounds, rich set (theme "A") ====
+         Still recognisably each brand, but taken down to a depth that can sit
+         behind a keypad all day. -->
+    <color name="bg_topup_ais_default">#FF1E7156</color>
+    <color name="bg_topup_dtac_default">#FF1D5E7E</color>
+    <color name="bg_topup_true_default">#FF8E3A3F</color>
+    <color name="bg_topup_cat_default">#FF9A6B2A</color>
+
+    <!-- ==== carrier grounds, soft set (theme "B") ====
+         The original pastels, kept exactly as they were for anyone who prefers
+         the lighter screen. -->
+    <color name="bg_topup_ais_pastel">#FF6ADAB4</color>
+    <color name="bg_topup_dtac_pastel">#FF57CED9</color>
+    <color name="bg_topup_true_pastel">#FFFA6866</color>
+    <color name="bg_topup_cat_pastel">#FFFAC848</color>
+
+    <!-- ==== names the layouts already reference ====
+         Kept so the nine top-up layout variants and the other screens pick the
+         new palette up without being edited one by one. -->
+    <!-- text on light chips, and the dark side rail on the top-up screen -->
+    <color name="list_divider">#FF28313A</color>
+    <color name="list_background">#FFFFFFFF</color>
+    <color name="list_background_pressed">#FFF1E7D6</color>
+    <color name="list_item_title">#FF191E24</color>
+    <color name="counter_text_bg">#FFEDE2CC</color>
+    <color name="counter_text_color">#FF8A6A35</color>
+    <!-- text on light surfaces -->
+    <color name="text_btn_pad">#FF191E24</color>
+    <!-- text on dark surfaces, and the pale ground of the settings screen -->
+    <color name="text_topup_pad">#FFF6F4EF</color>
+    <color name="text_topup_pad_black">#F2131A21</color>
+    <color name="bg_topup_pad_black">#F2131A21</color>
+    <!-- add-on service panels: dark, so the pale labels inside them read -->
+    <color name="bg_content_addons">#FF242C35</color>
+
 </resources>
