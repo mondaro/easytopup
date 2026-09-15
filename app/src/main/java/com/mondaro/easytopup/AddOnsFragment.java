@@ -1,708 +1,282 @@
 package com.mondaro.easytopup;
 
-import android.Manifest;
-import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentTransaction;
-import android.content.ActivityNotFoundException;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
-import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.Toast;
 
-public class AddOnsFragment extends Fragment {
-    String getmPayID,type,am_card, uidAIS, opBill,opDays,txtphoneContact,phoneTDRecent;
-    EditText t_am,t_id, t_phoneCard,t_phoneBill,t_phoneDays;
-    Spinner spn1,spn2,spn3,spn4;
-    Button btnchkbal,btnchkcom,btnpass1,btnpass2, btnwh1,btnwh2,btnwh3,btnwh4,
-            btnbuycard,btnaddmpayID,btnchkbill,btnpaybill,btntransdays,
-            btnCntCard,btnCntBill,btnCntDays;
-    ImageButton imgbtnRecentTD,imgbtnResetPB;
-    LinearLayout head0,head1,head2,head3,head4,content0,content1,content2,content3,content4;
-    SharedPreferences sharedPref;
-    SharedPreferences.Editor edt;
-    final private int REQUEST_READ_CONTACTS_PERMISSIONS = 112;
-    final private int REQUEST_CALL_PHONE_PERMISSIONS = 123;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentManager;
 
-    public AddOnsFragment(){}
-    @SuppressLint("SourceLockedOrientationActivity")
+import com.mondaro.easytopup.data.SecurePrefs;
+import com.mondaro.easytopup.telephony.UssdCodes;
+import com.mondaro.easytopup.ui.BaseFragment;
+import com.mondaro.easytopup.util.Amounts;
+import com.mondaro.easytopup.util.PhoneNumbers;
+
+/** mPay wallet top-up, cash cards, bill payment and day transfers. */
+public class AddOnsFragment extends BaseFragment {
+
+    private static final int MIN_MPAY_ID_LENGTH = 4;
+
+    private static final int[] HEADER_IDS = {
+            R.id.contentH0, R.id.contentH1, R.id.contentH2, R.id.contentH3, R.id.contentH4};
+    private static final int[] CONTENT_IDS = {
+            R.id.contentC0, R.id.contentC1, R.id.contentC2, R.id.contentC3, R.id.contentC4};
+
+    private static final String[] MPAY_TOPUP_TYPES = {"0", "1"};
+    private static final String[] CASH_CARD_AMOUNTS = {"50", "100", "300", "500", "1000"};
+    private static final String[] BILL_OPTIONS = {"0", "1", "2"};
+    private static final String[] TRANSFER_DAYS = {"5", "10", "20"};
+
+    private EditText amountField;
+    private EditText mpayIdField;
+    private EditText cashCardPhone;
+    private EditText billPhone;
+    private EditText transferDaysPhone;
+
+    private Button saveMpayId;
+    private Button checkBill;
+    private Button payBill;
+    private Button requestTopup;
+    private Button confirmTopup;
+
+    private final View[] contentPanels = new View[CONTENT_IDS.length];
+
+    private String topupType = MPAY_TOPUP_TYPES[0];
+    private String cashCardAmount = CASH_CARD_AMOUNTS[0];
+    private String billOption = BILL_OPTIONS[0];
+    private String transferDays = TRANSFER_DAYS[0];
+
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        View root = inflater.inflate(R.layout.fragment_addons, container, false);
+        lockPortrait();
 
-        final View rootView = inflater.inflate(R.layout.fragment_addons, container, false);
-        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        t_am = (EditText)rootView.findViewById(R.id.editText_Amount);
-        t_id  = (EditText)rootView.findViewById(R.id.editText_ID);
-        t_phoneCard = (EditText)rootView.findViewById(R.id.editText_phonecard);
-        t_phoneBill = (EditText)rootView.findViewById(R.id.editText_phonebill);
-        t_phoneDays = (EditText)rootView.findViewById(R.id.editText_phonedays);
-        spn1 = (Spinner)rootView.findViewById(R.id.spn1);
-        spn2 = (Spinner)rootView.findViewById(R.id.spn2);
-        spn3 = (Spinner)rootView.findViewById(R.id.spn3);
-        spn4 = (Spinner)rootView.findViewById(R.id.spn4);
-        btnchkbal = (Button)rootView.findViewById(R.id.button_chkBalance);
-        btnchkcom = (Button)rootView.findViewById(R.id.button_chkCommission);
-        btnpass1 = (Button)rootView.findViewById(R.id.button_pass1);
-        btnpass2 = (Button)rootView.findViewById(R.id.button_pass2);
-        btnwh1 = (Button)rootView.findViewById(R.id.button_what1);
-        btnwh2 = (Button)rootView.findViewById(R.id.button_what2);
-        btnwh3 = (Button)rootView.findViewById(R.id.button_what3);
-        btnwh4 = (Button)rootView.findViewById(R.id.button_what4);
-        btnbuycard = (Button)rootView.findViewById(R.id.button_card);
-        btnaddmpayID = (Button)rootView.findViewById(R.id.button_addmPayID);
-        btnchkbill = (Button)rootView.findViewById(R.id.button_chkbill);
-        btnpaybill = (Button)rootView.findViewById(R.id.button_paybill);
-        btntransdays = (Button)rootView.findViewById(R.id.button_transDays);
-        btnCntCard = (Button)rootView.findViewById(R.id.button_contactBuyCard);
-        btnCntBill = (Button)rootView.findViewById(R.id.button_contactBill);
-        btnCntDays = (Button)rootView.findViewById(R.id.button_contactTransDay);
-        imgbtnRecentTD = (ImageButton)rootView.findViewById(R.id.imageButton_RepeatPhone);
-        imgbtnResetPB = (ImageButton)rootView.findViewById(R.id.imageButton_ResetPhoneBilll);
-        head0 = (LinearLayout)rootView.findViewById(R.id.contentH0);
-        head1 = (LinearLayout)rootView.findViewById(R.id.contentH1);
-        head2 = (LinearLayout)rootView.findViewById(R.id.contentH2);
-        head3 = (LinearLayout)rootView.findViewById(R.id.contentH3);
-        head4 = (LinearLayout)rootView.findViewById(R.id.contentH4);
-        content0 = (LinearLayout)rootView.findViewById(R.id.contentC0);
-        content1 = (LinearLayout)rootView.findViewById(R.id.contentC1);
-        content2 = (LinearLayout)rootView.findViewById(R.id.contentC2);
-        content3 = (LinearLayout)rootView.findViewById(R.id.contentC3);
-        content4 = (LinearLayout)rootView.findViewById(R.id.contentC4);
+        amountField = root.findViewById(R.id.editText_Amount);
+        mpayIdField = root.findViewById(R.id.editText_ID);
+        cashCardPhone = root.findViewById(R.id.editText_phonecard);
+        billPhone = root.findViewById(R.id.editText_phonebill);
+        transferDaysPhone = root.findViewById(R.id.editText_phonedays);
 
-        final InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        saveMpayId = root.findViewById(R.id.button_addmPayID);
+        checkBill = root.findViewById(R.id.button_chkbill);
+        payBill = root.findViewById(R.id.button_paybill);
+        requestTopup = root.findViewById(R.id.button_pass1);
+        confirmTopup = root.findViewById(R.id.button_pass2);
 
-        sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-        getmPayID = sharedPref.getString("MPAY","");
-        uidAIS = sharedPref.getString("UID_AIS", "");
-        edt = sharedPref.edit();
+        setUpAccordion(root);
+        setUpMpayId();
+        setUpSpinners(root);
+        setUpActions(root);
+        setUpHelpButtons(root);
 
-        if(getmPayID.equals("")){
-            Toast.makeText(getActivity(), "แจ้งเตือน :\r\nกรุณากรอกรหัส mPay และบันทึกลงระบบด้วยคะ\r\n", Toast.LENGTH_SHORT).show();
-        }else{
-            t_id.setText(getmPayID.trim());
-            t_id.setEnabled(false);
-            btnaddmpayID.setText("-");
-        }
-
-        type = "0";
-        am_card = "50";
-        opBill = "0";
-        opDays = "5";
-
-        btnchkbal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    Intent callIntent = new Intent(Intent.ACTION_CALL);
-                    String txtTel = "*556" + "%23";
-                    callIntent.setData(Uri.parse("tel:" + txtTel));
-                    startActivity(callIntent);
-                } catch (ActivityNotFoundException activityException) {
-                    Log.d("dialing-example", "Call failed", activityException);
-                }
-            }
-        });
-
-        btnchkcom.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    Intent callIntent = new Intent(Intent.ACTION_CALL);
-                    String txtTel = "*556*9" + "%23";
-                    callIntent.setData(Uri.parse("tel:" + txtTel));
-                    startActivity(callIntent);
-                } catch (ActivityNotFoundException activityException) {
-                    Log.d("dialing-example", "Call failed", activityException);
-                }
-            }
-        });
-
-        btnCntCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                pickContact(v,1);
-            }
-        });
-
-        btnCntBill.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                pickContact(v,2);
-            }
-        });
-
-        btnCntDays.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                pickContact(v,3);
-            }
-        });
-
-        btnpass1.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
-            if(t_am.getText().toString().equals("")){
-                Toast.makeText(getActivity(), "แจ้งเตือน :\r\nกรุณากรอกจำนวนเงินที่ต้องการเติมด้วยคะ\r\n", Toast.LENGTH_SHORT).show();
-            }else if(t_id.getText().toString().trim().equals("")){
-                Toast.makeText(getActivity(), "แจ้งเตือน :\r\nกรุณากรอกรหัส mPay ด้วยคะ\r\n", Toast.LENGTH_SHORT).show();
-            }else{
-                if(t_id.getText().toString().trim().equals("")){
-                    Toast.makeText(getActivity(), "แจ้งเตือน :\r\nกรุณากรอกรหัสประจำตัว mPay ด้วยคะ\r\n", Toast.LENGTH_SHORT).show();
-                }else{
-                    try {
-                        Intent callIntent = new Intent(Intent.ACTION_CALL);
-                        String txtTel = "*555*86*" + t_am.getText().toString().trim() + "*" + t_id.getText().toString().trim() + "%23";
-                        callIntent.setData(Uri.parse("tel:" + txtTel));
-                        startActivity(callIntent);
-                    } catch (ActivityNotFoundException activityException) {
-                        Log.d("dialing-example", "Call failed", activityException);
-                    }
-                    btnpass2.setEnabled(true);
-                    btnpass1.setEnabled(false);
-                    spn1.setClickable(true);
-                }
-            }
-        }});
-
-        btnpass2.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
-            try {
-                Intent callIntent = new Intent(Intent.ACTION_CALL);
-                String txtTel = "*555*" + type + "%23";
-                callIntent.setData(Uri.parse("tel:" + txtTel));
-                startActivity(callIntent);
-            } catch (ActivityNotFoundException activityException) {
-                Log.d("dialing-example", "Call failed", activityException);
-            }
-            ((MainActivity) getActivity()).displayView(0);
-        }});
-
-        btnbuycard.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
-            if(t_id.getText().toString().trim().equals("")){
-                Toast.makeText(getActivity(), "แจ้งเตือน :\r\nกรุณากรอกรหัส mPay ด้วยคะ\r\n", Toast.LENGTH_SHORT).show();
-            }else{
-                if(t_phoneCard.getText().toString().trim().equals("")){
-                    Toast.makeText(getActivity(), "แจ้งเตือน :\r\nกรุณากรอกหมายเลขโทรศัพท์ที่ต้องการซื้อบัตรเงินสดด้วยคะ\r\n",
-                            Toast.LENGTH_SHORT).show();
-                }else if(t_phoneCard.getText().length()<10){
-                    Toast.makeText(getActivity(), "แจ้งเตือน :\r\nกรุณากรอกหมายเลขโทรศัพท์ให้ครบ 10 หลักด้วยคะ\r\n",
-                            Toast.LENGTH_SHORT).show();
-                }else{
-                    try {
-                        Intent callIntent = new Intent(Intent.ACTION_CALL);
-                        String txtTel = "*228*" + uidAIS + "*" + t_phoneCard.getText().toString().trim()
-                                + "*" + am_card + "%23";
-                        callIntent.setData(Uri.parse("tel:" + txtTel));
-                        startActivity(callIntent);
-                    } catch (ActivityNotFoundException activityException) {
-                        Log.d("dialing-example", "Call failed", activityException);
-                    }
-                }
-            }
-        }});
-
-        btnchkbill.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
-            if(t_id.getText().toString().trim().equals("")){
-                Toast.makeText(getActivity(), "แจ้งเตือน :\r\nกรุณากรอกรหัส mPay ด้วยคะ\r\n", Toast.LENGTH_SHORT).show();
-            }else{
-                if(t_phoneBill.getText().toString().trim().equals("")){
-                    Toast.makeText(getActivity(), "แจ้งเตือน :\r\nกรุณากรอกหมายเลขโทรศัพท์ที่ต้องการชำระด้วยคะ\r\n",
-                            Toast.LENGTH_SHORT).show();
-                }else if(t_phoneBill.getText().length()<10){
-                    Toast.makeText(getActivity(), "แจ้งเตือน :\r\nกรุณากรอกหมายเลขโทรศัพท์ให้ครบ 10 หลักด้วยคะ\r\n",
-                            Toast.LENGTH_SHORT).show();
-                }else{
-                    try {
-                        Intent callIntent = new Intent(Intent.ACTION_CALL);
-                        String txtTel = "*556*1*" + getmPayID + "*" + t_phoneBill.getText().toString().trim() + "%23";
-                        callIntent.setData(Uri.parse("tel:" + txtTel));
-                        startActivity(callIntent);
-                    } catch (ActivityNotFoundException activityException) {
-                        Log.d("dialing-example", "Call failed", activityException);
-                    }
-                    btnchkbill.setEnabled(false);
-                    btnpaybill.setEnabled(true);
-                    spn3.setClickable(true);
-                }
-            }
-        }});
-
-        btnpaybill.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
-            try {
-                Intent callIntent = new Intent(Intent.ACTION_CALL);
-                String txtTel = "*556*1*" + opBill + "%23";
-                callIntent.setData(Uri.parse("tel:" + txtTel));
-                startActivity(callIntent);
-            } catch (ActivityNotFoundException activityException) {
-                Log.d("dialing-example", "Call failed", activityException);
-            }
-            imgbtnResetPB.performClick();
-        }});
-
-        btntransdays.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
-            if(t_phoneDays.getText().toString().trim().equals("")){
-                Toast.makeText(getActivity(), "แจ้งเตือน :\r\nกรุณากรอกหมายเลขโทรศัพท์ที่ต้องการโอนวันให้ด้วยคะ\r\n",
-                        Toast.LENGTH_SHORT).show();
-            }else if(t_phoneDays.getText().length()<10){
-                Toast.makeText(getActivity(), "แจ้งเตือน :\r\nกรุณากรอกหมายเลขโทรศัพท์ให้ครบ 10 หลักด้วยคะ\r\n",
-                        Toast.LENGTH_SHORT).show();
-            }else{
-                try {
-                    Intent callIntent = new Intent(Intent.ACTION_CALL);
-                    String txtTel = "*140*2*" + t_phoneDays.getText().toString().trim()
-                            + "*" + opDays + "%23";
-                    callIntent.setData(Uri.parse("tel:" + txtTel));
-                    startActivity(callIntent);
-                } catch (ActivityNotFoundException activityException) {
-                    Log.d("dialing-example", "Call failed", activityException);
-                }
-            }
-            edt.putString("tdrecent",t_phoneDays.getText().toString().trim());
-            edt.apply();
-        }});
-
-        imgbtnRecentTD.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
-            phoneTDRecent = sharedPref.getString("tdrecent", "");
-            t_phoneDays.setText(phoneTDRecent);
-        }});
-
-        imgbtnResetPB.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
-            t_phoneBill.setText("");
-            t_phoneBill.setFocusableInTouchMode(true);
-            btnchkbill.setEnabled(true);
-            btnpaybill.setEnabled(false);
-            spn3.setClickable(false);
-        }});
-
-        spn1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view,
-                                       int position, long id) {
-                switch (position) {
-                    case 0:type = "0";break;
-                    case 1:type = "1";break;
-                }
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // TODO Auto-generated method stub
-            }
-        });
-
-        spn2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view,
-                                       int position, long id) {
-                switch (position) {
-                    case 0:am_card = "50";break;
-                    case 1:am_card = "100";break;
-                    case 2:am_card = "300";break;
-                    case 3:am_card = "500";break;
-                    case 4:am_card = "1000";break;
-                }
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // TODO Auto-generated method stub
-            }
-        });
-
-        spn3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view,
-                                       int position, long id) {
-                switch (position) {
-                    case 0:
-                        opBill = "0";break;
-                    case 1:
-                        opBill = "1";break;
-                    case 2:
-                        opBill = "2";break;
-                }
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // TODO Auto-generated method stub
-            }
-        });
-
-        spn4.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view,
-                                       int position, long id) {
-                switch (position) {
-                    case 0:
-                        opDays = "5";break;
-                    case 1:
-                        opDays = "10";break;
-                    case 2:
-                        opDays = "20";break;
-                }
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // TODO Auto-generated method stub
-            }
-        });
-
-        btnaddmpayID.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(btnaddmpayID.getText().equals("-")){
-                    t_id.setText("");
-                    getmPayID = "";
-                    edt.putString("MPAY","");
-                    edt.apply();
-                    ((MainActivity) getActivity()).displayView(3);
-                }else{
-                    if(t_id.getText().toString().trim().equals("")){
-                        Toast.makeText(getActivity(), "แจ้งเตือน :\r\nกรุณากรอกรหัสประจำตัว mPay ก่อนทำการบันทึกคะ\r\n",
-                                Toast.LENGTH_SHORT).show();
-                    }else if(t_id.getText().length()<4){
-                        Toast.makeText(getActivity(), "แจ้งเตือน :\r\nกรุณากรอกรหัสประจำตัว mPay ให้ครบ 4 หลักด้วยคะ\r\n",
-                                Toast.LENGTH_SHORT).show();
-                    }else{
-                        edt.putString("MPAY",t_id.getText().toString().trim());
-                        edt.apply();
-                        Toast.makeText(getActivity(), "แจ้งเตือน :\r\nบันทึกรหัสประจำตัว mPay เรียบร้อยแล้วคะ\r\n",
-                                Toast.LENGTH_SHORT).show();
-                        ((MainActivity) getActivity()).displayView(3);
-                    }
-                }
-            }
-        });
-
-        btnwh1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Helpmpay1Fragment fragmentPop = new Helpmpay1Fragment();
-                FragmentTransaction ft1 = getFragmentManager().beginTransaction();
-                ft1.replace(R.id.contentL, fragmentPop);
-                ft1.commit();
-            }
-        });
-
-        btnwh2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Helpmpay2Fragment fragmentPop = new Helpmpay2Fragment();
-                FragmentTransaction ft2 = getFragmentManager().beginTransaction();
-                ft2.replace(R.id.contentL, fragmentPop);
-                ft2.commit();
-            }
-        });
-
-        btnwh3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Helpmpay3Fragment fragmentPop = new Helpmpay3Fragment();
-                FragmentTransaction ft3 = getFragmentManager().beginTransaction();
-                ft3.replace(R.id.contentL, fragmentPop);
-                ft3.commit();
-            }
-        });
-
-        btnwh4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Helpmpay4Fragment fragmentPop = new Helpmpay4Fragment();
-                FragmentTransaction ft4 = getFragmentManager().beginTransaction();
-                ft4.replace(R.id.contentL, fragmentPop);
-                ft4.commit();
-            }
-        });
-
-        head0.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
-            int hasCallPhonePermission = ContextCompat.checkSelfPermission(getActivity(),
-                    Manifest.permission.CALL_PHONE);
-            if (hasCallPhonePermission != PackageManager.PERMISSION_GRANTED){
-                if (!ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
-                        Manifest.permission.CALL_PHONE)) {
-                    showMessageOK("ต้องการยืนยันการอนุญาตเข้าถึง\n\n[ระบบการโทร]\n\nเพื่อให้แอปพลิเคชันทำงานได้",
-                            new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    ActivityCompat.requestPermissions(getActivity(),
-                                            new String[] {Manifest.permission.CALL_PHONE},
-                                            REQUEST_CALL_PHONE_PERMISSIONS);
-                                }
-                            });
-                    return;
-                }
-                ActivityCompat.requestPermissions(getActivity(),
-                        new String[] {Manifest.permission.CALL_PHONE},
-                        REQUEST_CALL_PHONE_PERMISSIONS);
-                return;
-            }else{
-                if(content0.getVisibility() == View.VISIBLE){
-                    content0.setVisibility(View.GONE);
-                }else{
-                    content0.setVisibility(View.VISIBLE);
-                    content1.setVisibility(View.GONE);
-                    content2.setVisibility(View.GONE);
-                    content3.setVisibility(View.GONE);
-                    content4.setVisibility(View.GONE);
-                }
-            }
-        }});
-
-        head1.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
-            int hasCallPhonePermission = ContextCompat.checkSelfPermission(getActivity(),
-                    Manifest.permission.CALL_PHONE);
-            if (hasCallPhonePermission != PackageManager.PERMISSION_GRANTED){
-                if (!ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
-                        Manifest.permission.CALL_PHONE)) {
-                    showMessageOK("ต้องการยืนยันการอนุญาตเข้าถึง\n\n[ระบบการโทร]\n\nเพื่อให้แอปพลิเคชันทำงานได้",
-                            new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    ActivityCompat.requestPermissions(getActivity(),
-                                            new String[] {Manifest.permission.CALL_PHONE},
-                                            REQUEST_CALL_PHONE_PERMISSIONS);
-                                }
-                            });
-                    return;
-                }
-                ActivityCompat.requestPermissions(getActivity(),
-                        new String[] {Manifest.permission.CALL_PHONE},
-                        REQUEST_CALL_PHONE_PERMISSIONS);
-                return;
-            }else{
-                if(content1.getVisibility() == View.VISIBLE){
-                    content1.setVisibility(View.GONE);
-                }else{
-                    content0.setVisibility(View.GONE);
-                    content1.setVisibility(View.VISIBLE);
-                    content2.setVisibility(View.GONE);
-                    content3.setVisibility(View.GONE);
-                    content4.setVisibility(View.GONE);
-                }
-            }
-        }});
-
-        head2.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
-            int hasCallPhonePermission = ContextCompat.checkSelfPermission(getActivity(),
-                    Manifest.permission.CALL_PHONE);
-            if (hasCallPhonePermission != PackageManager.PERMISSION_GRANTED){
-                if (!ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
-                        Manifest.permission.CALL_PHONE)) {
-                    showMessageOK("ต้องการยืนยันการอนุญาตเข้าถึง\n\n[ระบบการโทร]\n\nเพื่อให้แอปพลิเคชันทำงานได้",
-                            new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    ActivityCompat.requestPermissions(getActivity(),
-                                            new String[] {Manifest.permission.CALL_PHONE},
-                                            REQUEST_CALL_PHONE_PERMISSIONS);
-                                }
-                            });
-                    return;
-                }
-                ActivityCompat.requestPermissions(getActivity(),
-                        new String[] {Manifest.permission.CALL_PHONE},
-                        REQUEST_CALL_PHONE_PERMISSIONS);
-                return;
-            }else{
-                if(content2.getVisibility() == View.VISIBLE){
-                    content2.setVisibility(View.GONE);
-                }else{
-                    content0.setVisibility(View.GONE);
-                    content1.setVisibility(View.GONE);
-                    content2.setVisibility(View.VISIBLE);
-                    content3.setVisibility(View.GONE);
-                    content4.setVisibility(View.GONE);
-                }
-            }
-        }});
-
-        head3.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
-            int hasCallPhonePermission = ContextCompat.checkSelfPermission(getActivity(),
-                    Manifest.permission.CALL_PHONE);
-            if (hasCallPhonePermission != PackageManager.PERMISSION_GRANTED){
-                if (!ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
-                        Manifest.permission.CALL_PHONE)) {
-                    showMessageOK("ต้องการยืนยันการอนุญาตเข้าถึง\n\n[ระบบการโทร]\n\nเพื่อให้แอปพลิเคชันทำงานได้",
-                            new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    ActivityCompat.requestPermissions(getActivity(),
-                                            new String[] {Manifest.permission.CALL_PHONE},
-                                            REQUEST_CALL_PHONE_PERMISSIONS);
-                                }
-                            });
-                    return;
-                }
-                ActivityCompat.requestPermissions(getActivity(),
-                        new String[] {Manifest.permission.CALL_PHONE},
-                        REQUEST_CALL_PHONE_PERMISSIONS);
-                return;
-            }else{
-                if(content3.getVisibility() == View.VISIBLE){
-                    content3.setVisibility(View.GONE);
-                }else{
-                    content0.setVisibility(View.GONE);
-                    content1.setVisibility(View.GONE);
-                    content2.setVisibility(View.GONE);
-                    content3.setVisibility(View.VISIBLE);
-                    content4.setVisibility(View.GONE);
-                }
-            }
-        }});
-
-        head4.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
-            int hasCallPhonePermission = ContextCompat.checkSelfPermission(getActivity(),
-                    Manifest.permission.CALL_PHONE);
-            if (hasCallPhonePermission != PackageManager.PERMISSION_GRANTED){
-                if (!ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
-                        Manifest.permission.CALL_PHONE)) {
-                    showMessageOK("ต้องการยืนยันการอนุญาตเข้าถึง\n\n[ระบบการโทร]\n\nเพื่อให้แอปพลิเคชันทำงานได้",
-                            new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    ActivityCompat.requestPermissions(getActivity(),
-                                            new String[] {Manifest.permission.CALL_PHONE},
-                                            REQUEST_CALL_PHONE_PERMISSIONS);
-                                }
-                            });
-                    return;
-                }
-                ActivityCompat.requestPermissions(getActivity(),
-                        new String[] {Manifest.permission.CALL_PHONE},
-                        REQUEST_CALL_PHONE_PERMISSIONS);
-                return;
-            }else{
-                if(content4.getVisibility() == View.VISIBLE){
-                    content4.setVisibility(View.GONE);
-                }else{
-                    content0.setVisibility(View.GONE);
-                    content1.setVisibility(View.GONE);
-                    content2.setVisibility(View.GONE);
-                    content3.setVisibility(View.GONE);
-                    content4.setVisibility(View.VISIBLE);
-                }
-            }
-        }});
-
-        return rootView;
+        return root;
     }
 
-    private void pickContact(View v,int target) {
-        int hasReadContactsPermission = ContextCompat.checkSelfPermission(getActivity(),
-                Manifest.permission.READ_CONTACTS);
-        if (hasReadContactsPermission != PackageManager.PERMISSION_GRANTED){
-            if (!ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
-                    Manifest.permission.READ_CONTACTS)) {
-                showMessageOK("ต้องการยืนยันการอนุญาตเข้าถึง\n\n[สมุดรายชื่อ]\n\nเพื่อให้แอปพลิเคชันทำงานได้",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                ActivityCompat.requestPermissions(getActivity(),
-                                        new String[] {Manifest.permission.READ_CONTACTS},
-                                        REQUEST_READ_CONTACTS_PERMISSIONS);
-                            }
-                        });
+    /**
+     * One expandable section at a time. The five headers previously repeated the
+     * same forty lines - including a call-permission check that guarded opening a
+     * panel rather than dialling; the permission is now requested by the action
+     * itself, where it is actually needed.
+     */
+    private void setUpAccordion(@NonNull View root) {
+        for (int i = 0; i < HEADER_IDS.length; i++) {
+            final int index = i;
+            contentPanels[i] = root.findViewById(CONTENT_IDS[i]);
+            root.findViewById(HEADER_IDS[i]).setOnClickListener(v -> togglePanel(index));
+        }
+    }
+
+    private void togglePanel(int index) {
+        boolean open = contentPanels[index].getVisibility() == View.VISIBLE;
+        for (int i = 0; i < contentPanels.length; i++) {
+            contentPanels[i].setVisibility(!open && i == index ? View.VISIBLE : View.GONE);
+        }
+    }
+
+    private void setUpMpayId() {
+        String saved = prefs().getString(SecurePrefs.MPAY);
+        applyMpayIdState(saved);
+        saveMpayId.setOnClickListener(v -> {
+            if (!prefs().getString(SecurePrefs.MPAY).isEmpty()) {
+                prefs().putString(SecurePrefs.MPAY, "");
+                applyMpayIdState("");
                 return;
             }
-            ActivityCompat.requestPermissions(getActivity(),
-                    new String[] {Manifest.permission.READ_CONTACTS},
-                    REQUEST_READ_CONTACTS_PERMISSIONS);
+            String id = mpayId();
+            if (id.length() < MIN_MPAY_ID_LENGTH) {
+                toast(R.string.mpay_id_too_short);
+                return;
+            }
+            prefs().putString(SecurePrefs.MPAY, id);
+            applyMpayIdState(id);
+            toast(R.string.mpay_id_saved);
+        });
+    }
+
+    private void applyMpayIdState(@NonNull String saved) {
+        boolean stored = !saved.isEmpty();
+        mpayIdField.setText(saved);
+        mpayIdField.setEnabled(!stored);
+        saveMpayId.setText(stored ? R.string.mpay_id_clear : R.string.mpay_id_save);
+    }
+
+    @NonNull
+    private String mpayId() {
+        return mpayIdField.getText().toString().trim();
+    }
+
+    private void setUpSpinners(@NonNull View root) {
+        bindSpinner(root.findViewById(R.id.spn1), MPAY_TOPUP_TYPES, value -> topupType = value);
+        bindSpinner(root.findViewById(R.id.spn2), CASH_CARD_AMOUNTS, value -> cashCardAmount = value);
+        bindSpinner(root.findViewById(R.id.spn3), BILL_OPTIONS, value -> billOption = value);
+        bindSpinner(root.findViewById(R.id.spn4), TRANSFER_DAYS, value -> transferDays = value);
+    }
+
+    private interface SpinnerListener {
+        void onSelected(@NonNull String value);
+    }
+
+    private static void bindSpinner(@NonNull Spinner spinner, @NonNull String[] values,
+                                    @NonNull SpinnerListener listener) {
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position >= 0 && position < values.length) {
+                    listener.onSelected(values[position]);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+    }
+
+    private void setUpActions(@NonNull View root) {
+        root.findViewById(R.id.button_chkBalance)
+                .setOnClickListener(v -> sendUssd(UssdCodes.MPAY_BALANCE, null));
+        root.findViewById(R.id.button_chkCommission)
+                .setOnClickListener(v -> sendUssd(UssdCodes.MPAY_COMMISSION, null));
+
+        root.findViewById(R.id.button_contactBuyCard)
+                .setOnClickListener(v -> pickContact(cashCardPhone::setText));
+        root.findViewById(R.id.button_contactBill)
+                .setOnClickListener(v -> pickContact(billPhone::setText));
+        root.findViewById(R.id.button_contactTransDay)
+                .setOnClickListener(v -> pickContact(transferDaysPhone::setText));
+
+        requestTopup.setOnClickListener(v -> requestMpayTopup());
+        confirmTopup.setOnClickListener(v -> {
+            sendUssd(UssdCodes.mpayTopupConfirm(topupType), null);
+            confirmTopup.setEnabled(false);
+            requestTopup.setEnabled(true);
+        });
+
+        root.findViewById(R.id.button_card).setOnClickListener(v -> buyCashCard());
+        checkBill.setOnClickListener(v -> checkBill());
+        payBill.setOnClickListener(v -> {
+            sendUssd(UssdCodes.payBill(billOption), null);
+            resetBillPanel();
+        });
+        root.findViewById(R.id.button_transDays).setOnClickListener(v -> transferDays());
+
+        root.findViewById(R.id.imageButton_RepeatPhone).setOnClickListener(v ->
+                transferDaysPhone.setText(prefs().getString(SecurePrefs.LAST_TRANSFER_DAYS_PHONE)));
+        root.findViewById(R.id.imageButton_ResetPhoneBilll).setOnClickListener(v -> resetBillPanel());
+
+        resetBillPanel();
+        confirmTopup.setEnabled(false);
+    }
+
+    private void requestMpayTopup() {
+        int amount = Amounts.parse(amountField.getText().toString());
+        if (amount == Amounts.INVALID) {
+            toast(R.string.error_amount);
             return;
-        }else{
-            txtphoneContact = "";
-            Intent pickContactIntent = new Intent( Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI );
-            pickContactIntent.setType(ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE);
-            startActivityForResult(pickContactIntent, target);
+        }
+        String id = mpayId();
+        if (id.length() < MIN_MPAY_ID_LENGTH) {
+            toast(R.string.mpay_id_too_short);
+            return;
+        }
+        sendUssd(UssdCodes.mpayTopupRequest(amount, id), () -> {
+            requestTopup.setEnabled(false);
+            confirmTopup.setEnabled(true);
+        });
+    }
+
+    private void buyCashCard() {
+        String pin = prefs().getString(SecurePrefs.UID_AIS);
+        if (pin.isEmpty()) {
+            toast(R.string.carrier_not_configured);
+            return;
+        }
+        String phone = PhoneNumbers.normalise(cashCardPhone.getText().toString());
+        if (!PhoneNumbers.isValid(phone)) {
+            toast(R.string.error_phone_length);
+            return;
+        }
+        sendUssd(UssdCodes.buyCashCard(pin, phone, cashCardAmount), null);
+    }
+
+    private void checkBill() {
+        String id = mpayId();
+        if (id.length() < MIN_MPAY_ID_LENGTH) {
+            toast(R.string.mpay_id_too_short);
+            return;
+        }
+        String phone = PhoneNumbers.normalise(billPhone.getText().toString());
+        if (!PhoneNumbers.isValid(phone)) {
+            toast(R.string.error_phone_length);
+            return;
+        }
+        sendUssd(UssdCodes.checkBill(id, phone), () -> {
+            checkBill.setEnabled(false);
+            payBill.setEnabled(true);
+        });
+    }
+
+    private void transferDays() {
+        String phone = PhoneNumbers.normalise(transferDaysPhone.getText().toString());
+        if (!PhoneNumbers.isValid(phone)) {
+            toast(R.string.error_phone_length);
+            return;
+        }
+        sendUssd(UssdCodes.transferDays(phone, transferDays), () ->
+                prefs().putString(SecurePrefs.LAST_TRANSFER_DAYS_PHONE, phone));
+    }
+
+    private void resetBillPanel() {
+        billPhone.setText("");
+        checkBill.setEnabled(true);
+        payBill.setEnabled(false);
+    }
+
+    private void setUpHelpButtons(@NonNull View root) {
+        int[] helpButtons = {R.id.button_what1, R.id.button_what2,
+                R.id.button_what3, R.id.button_what4};
+        for (int i = 0; i < helpButtons.length; i++) {
+            final int page = i;
+            root.findViewById(helpButtons[i]).setOnClickListener(v -> showHelp(page));
         }
     }
 
-    @Override
-    public void onActivityResult( int requestCode, int resultCode, Intent data ) {
-        super.onActivityResult(requestCode, resultCode, data);
-        String number = "";
-        if ( resultCode == Activity.RESULT_OK ) {
-            Uri contactData = data.getData();
-            String[] projection = { ContactsContract.CommonDataKinds.Phone.NUMBER,
-                    ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME };
-            Cursor cursor = getActivity().getContentResolver().query(contactData, projection,
-                    null, null, null);
-            cursor.moveToFirst();
-
-            int numberColumnIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
-            number = cursor.getString(numberColumnIndex).replace("(", "").replace(")", "").replace("-", "").replace(" ", "");
-            number.trim();
+    private void showHelp(int page) {
+        FragmentManager manager = getChildFragmentManager();
+        if (manager.isStateSaved()) {
+            return;
         }
-        if(requestCode == 1){
-            try{
-                t_phoneCard.setText(number);
-            }catch (Exception e){
-                Toast.makeText(getActivity(), R.string.hintReport,
-                        Toast.LENGTH_LONG).show();
-            }
-        }else if(requestCode == 2){
-            try{
-                t_phoneBill.setText(number);
-            }catch (Exception e){
-                Toast.makeText(getActivity(), R.string.hintReport,
-                        Toast.LENGTH_LONG).show();
-            }
-        }else if(requestCode == 3){
-            try{
-                t_phoneDays.setText(number);
-            }catch (Exception e){
-                Toast.makeText(getActivity(), R.string.hintReport,
-                        Toast.LENGTH_LONG).show();
-            }
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        switch(requestCode){
-            case REQUEST_CALL_PHONE_PERMISSIONS:
-                if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
-
-                }else{
-                    Toast.makeText(getActivity(), "CALL_PHONE Denied", Toast.LENGTH_SHORT)
-                            .show();
-                }
-                break;
-            case REQUEST_READ_CONTACTS_PERMISSIONS:
-                if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
-
-                }else{
-                    Toast.makeText(getActivity(), "READ_CONTACTS Denied", Toast.LENGTH_SHORT)
-                            .show();
-                }
-                break;
-            default:
-                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        }
-    }
-
-    private void showMessageOK(String message, DialogInterface.OnClickListener okListener) {
-        new AlertDialog.Builder(getActivity())
-                .setMessage(message)
-                .setPositiveButton("OK", okListener)
-                .create()
-                .show();
+        manager.beginTransaction()
+                .replace(R.id.contentL, HelpMpayFragment.newInstance(page))
+                .commit();
     }
 }

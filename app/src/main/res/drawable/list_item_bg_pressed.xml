@@ -1,7 +1,15 @@
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="rectangle">
-    <gradient
-        android:startColor="@color/list_background_pressed"
-        android:endColor="@color/list_background_pressed"
-        android:angle="90" />
-</shape>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Selected drawer row: a brass rail on the leading edge over a warm tint,
+     rather than filling the whole row with red. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/brass" />
+        </shape>
+    </item>
+    <item android:left="3dp">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/list_background_pressed" />
+        </shape>
+    </item>
+</layer-list>

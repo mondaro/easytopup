@@ -1,5 +1,31 @@
 <resources>
-    <!-- Base application theme. -->
-    <style name="AppThemeDark" parent="Base.Theme.AppCompat.Light.DarkActionBar" />
-    <style name="AppThemeLight" parent="Base.Theme.AppCompat.Light" />
+
+    <!--
+      Base.* variants are internal to AppCompat and are not meant to be used as a
+      parent directly; the public themes carry the same look.
+    -->
+    <style name="AppThemeDark" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/ink</item>
+        <item name="colorPrimaryDark">@color/well_fill</item>
+        <item name="colorAccent">@color/brass</item>
+        <item name="android:textColorPrimary">@color/ink</item>
+        <item name="android:textColorSecondary">@color/ink_muted</item>
+        <item name="android:windowBackground">@color/stone</item>
+        <item name="android:colorBackground">@color/stone</item>
+        <item name="alertDialogTheme">@style/AppDialog</item>
+    </style>
+
+    <style name="AppThemeLight" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/ink</item>
+        <item name="colorPrimaryDark">@color/well_fill</item>
+        <item name="colorAccent">@color/brass</item>
+    </style>
+
+    <!-- Dialogs carry the confirmations for every money action, so they follow
+         the same accent as the rest of the app. -->
+    <style name="AppDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">@color/brass_dark</item>
+        <item name="android:textColorPrimary">@color/ink</item>
+    </style>
+
 </resources>

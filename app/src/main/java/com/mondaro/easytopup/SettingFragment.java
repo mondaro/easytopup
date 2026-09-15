@@ -1,227 +1,170 @@
 package com.mondaro.easytopup;
 
-import android.annotation.SuppressLint;
-import android.app.Fragment;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
+import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.Toast;
 
-public class SettingFragment extends Fragment {
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
-    String uidAIS, uidTRUE, uidDTAC, uidCAT, setTheme;
-    EditText txtUID_AIS, txtUID_TRUE, txtUID_DTAC;
-    CheckBox chkbAIS, chkbTRUE, chkbDTAC, chkbCAT, chkbThemePastel, chkbThemeDefault;
-    Button btnSet;
-    SharedPreferences.Editor edt;
+import com.mondaro.easytopup.data.Carrier;
+import com.mondaro.easytopup.data.SecurePrefs;
+import com.mondaro.easytopup.telephony.UssdDialer;
+import com.mondaro.easytopup.ui.BaseFragment;
 
-    public SettingFragment(){}
+/** Where the agent PINs, the colour theme and the dial mode are configured. */
+public class SettingFragment extends BaseFragment {
 
-    @SuppressLint("SourceLockedOrientationActivity")
+    private static final int MIN_PIN_LENGTH = 4;
+
+    private EditText pinAis;
+    private EditText pinDtac;
+    private EditText pinTrue;
+    private CheckBox useAis;
+    private CheckBox useDtac;
+    private CheckBox useTrue;
+    private CheckBox useCat;
+    private CheckBox themeDefault;
+    private CheckBox themePastel;
+    private CheckBox legacyDialer;
+
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        View root = inflater.inflate(R.layout.fragment_setting, container, false);
+        lockPortrait();
 
-        View settingView = inflater.inflate(R.layout.fragment_setting, container, false);
-        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        pinAis = root.findViewById(R.id.editTextAIS);
+        pinDtac = root.findViewById(R.id.editTextDTAC);
+        pinTrue = root.findViewById(R.id.editTextTRUE);
+        useAis = root.findViewById(R.id.checkBoxAIS);
+        useDtac = root.findViewById(R.id.checkBoxDTAC);
+        useTrue = root.findViewById(R.id.checkBoxTRUE);
+        useCat = root.findViewById(R.id.checkBoxCAT);
+        themeDefault = root.findViewById(R.id.checkBoxThemeDefault);
+        themePastel = root.findViewById(R.id.checkBoxThemePastel);
+        legacyDialer = root.findViewById(R.id.checkBoxLegacyDialer);
 
-        final InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        SecurePrefs prefs = prefs();
+        bindCarrier(useAis, pinAis, prefs.getString(SecurePrefs.UID_AIS));
+        bindCarrier(useDtac, pinDtac, prefs.getString(SecurePrefs.UID_DTAC));
+        bindCarrier(useTrue, pinTrue, prefs.getString(SecurePrefs.UID_TRUE));
+        useCat.setChecked(prefs.has(SecurePrefs.UID_CAT));
 
-        final SharedPreferences sharedPrf = this.getActivity().getPreferences(Context.MODE_PRIVATE);
-        edt = sharedPrf.edit();
+        String theme = prefs.getString(SecurePrefs.THEME);
+        boolean useDefaultTheme = "A".equals(theme);
+        themeDefault.setChecked(useDefaultTheme);
+        themePastel.setChecked(!useDefaultTheme);
+        themeDefault.setOnClickListener(v -> setTheme(true));
+        themePastel.setOnClickListener(v -> setTheme(false));
 
-        edt.putString("UID1", "");edt.putString("UID2", "");edt.putString("UID3", "");edt.putString("CHK", "");
-        edt.apply();
-        uidAIS = sharedPrf.getString("UID_AIS", "");
-        uidDTAC = sharedPrf.getString("UID_DTAC","");
-        uidTRUE = sharedPrf.getString("UID_TRUE","");
-        uidCAT = sharedPrf.getString("UID_CAT","");
-        setTheme = sharedPrf.getString("THEME","");
-
-        txtUID_AIS = (EditText) settingView.findViewById(R.id.editTextAIS);
-        txtUID_DTAC = (EditText) settingView.findViewById(R.id.editTextDTAC);
-        txtUID_TRUE = (EditText) settingView.findViewById(R.id.editTextTRUE);
-
-        chkbAIS = (CheckBox) settingView.findViewById(R.id.checkBoxAIS);
-        chkbDTAC = (CheckBox) settingView.findViewById(R.id.checkBoxDTAC);
-        chkbTRUE = (CheckBox) settingView.findViewById(R.id.checkBoxTRUE);
-        chkbCAT = (CheckBox) settingView.findViewById(R.id.checkBoxCAT);
-        chkbThemeDefault = (CheckBox) settingView.findViewById(R.id.checkBoxThemeDefault);
-        chkbThemePastel = (CheckBox) settingView.findViewById(R.id.checkBoxThemePastel);
-
-        if(!uidAIS.equals("")){
-            chkbAIS.setChecked(true);
-            txtUID_AIS.setText(uidAIS);
-            txtUID_AIS.setBackgroundResource(R.drawable.border_active);
-        }
-        if(!uidDTAC.equals("")){
-            chkbDTAC.setChecked(true);
-            txtUID_DTAC.setText(uidDTAC);
-            txtUID_DTAC.setBackgroundResource(R.drawable.border_active);
-        }
-        if(!uidTRUE.equals("")){
-            chkbTRUE.setChecked(true);
-            txtUID_TRUE.setText(uidTRUE);
-            txtUID_TRUE.setBackgroundResource(R.drawable.border_active);
-        }
-        if(!uidCAT.equals("")){
-            chkbCAT.setChecked(true);
-        }
-        if(!setTheme.equals("")){
-            if(setTheme.equals("A")){chkbThemeDefault.setChecked(true);chkbThemePastel.setChecked(false);}
-            if(setTheme.equals("B")){chkbThemePastel.setChecked(true);chkbThemeDefault.setChecked(false);}
+        // The in-app USSD session only exists from API 26 onwards; below that the
+        // system dialer is the only route, so there is nothing to choose.
+        View dialModeGroup = root.findViewById(R.id.groupDialMode);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            dialModeGroup.setVisibility(View.VISIBLE);
+            legacyDialer.setChecked(prefs.getBoolean(SecurePrefs.USE_LEGACY_DIALER, false));
+        } else {
+            dialModeGroup.setVisibility(View.GONE);
         }
 
-        btnSet = (Button) settingView.findViewById(R.id.buttonOKSetting);
+        root.findViewById(R.id.buttonOKSetting).setOnClickListener(v -> save());
+        return root;
+    }
 
-        chkbAIS.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(chkbAIS.isChecked()){
-                    txtUID_AIS.setEnabled(true);
-                    chkbTRUE.performClick();
-                    txtUID_AIS.requestFocus();
-                    txtUID_AIS.setBackgroundResource(R.drawable.border_active);
-                    chkbTRUE.performClick();
-                    imm.showSoftInput(txtUID_AIS, InputMethodManager.SHOW_IMPLICIT);
-                }else{
-                    txtUID_AIS.setBackgroundResource(R.drawable.border_inactive);
-                    txtUID_AIS.setText("");
-                    txtUID_AIS.setEnabled(false);
-                    edt.putString("UID_AIS", "");
-                    edt.putString("CHK_OK", "");
-                    edt.apply();
-                }
-
-        }});
-        chkbDTAC.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(chkbDTAC.isChecked()){
-                    txtUID_DTAC.setEnabled(true);
-                    txtUID_DTAC.requestFocus();
-                    imm.showSoftInput(txtUID_DTAC, InputMethodManager.SHOW_IMPLICIT);
-                    txtUID_DTAC.setBackgroundResource(R.drawable.border_active);
-                }else{
-                    txtUID_DTAC.setBackgroundResource(R.drawable.border_inactive);
-                    txtUID_DTAC.setText("");
-                    txtUID_DTAC.setEnabled(false);
-                    edt.putString("UID_DTAC", "");
-                    edt.putString("CHK_OK", "");
-                    edt.apply();
-                }
-            }});
-        chkbTRUE.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(chkbTRUE.isChecked()){
-                    txtUID_TRUE.setEnabled(true);
-                    txtUID_TRUE.requestFocus();
-                    imm.showSoftInput(txtUID_TRUE, InputMethodManager.SHOW_IMPLICIT);
-                    txtUID_TRUE.setBackgroundResource(R.drawable.border_active);
-                }else{
-                    txtUID_TRUE.setBackgroundResource(R.drawable.border_inactive);
-                    txtUID_TRUE.setText("");
-                    txtUID_TRUE.setEnabled(false);
-                    edt.putString("UID_TRUE", "");
-                    edt.putString("CHK_OK", "");
-                    edt.apply();
-                }
-            }});
-        chkbCAT.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(!chkbCAT.isChecked()){
-                    edt.putString("UID_CAT", "");
-                    edt.putString("CHK_OK", "");
-                    edt.apply();
-                }
-            }});
-        chkbThemeDefault.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(chkbThemeDefault.isChecked()){
-                    chkbThemePastel.setChecked(false);
-                }else{
-                    chkbThemePastel.setChecked(true);
-                }
-            }});
-        chkbThemePastel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(chkbThemePastel.isChecked()){
-                    chkbThemeDefault.setChecked(false);
-                }else{
-                    chkbThemeDefault.setChecked(true);
-                }
-            }});
-
-        btnSet.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(chkbAIS.isChecked()){
-                    if(txtUID_AIS.getText().toString().trim().equals("") || txtUID_AIS.getText().toString().trim().length() < 4){
-                        edt.putString("CHK_OK", "");
-                        edt.apply();
-                        Toast.makeText(getActivity(), "ผลการตรวจสอบ :\r\nกรุณากรอกข้อมูลให้ถูกต้องก่อนคะ\r\n\n", Toast.LENGTH_SHORT).show();
-                    }else{
-                        edt.putString("UID_AIS", txtUID_AIS.getText().toString().trim());
-                        edt.putString("CHK_OK", "PASS");
-                        edt.apply();
-                    }
-                }
-                if(chkbDTAC.isChecked()){
-                    if(txtUID_DTAC.getText().toString().trim().equals("") || txtUID_DTAC.getText().toString().trim().length() < 4){
-                        edt.putString("CHK_OK", "");
-                        edt.apply();
-                        Toast.makeText(getActivity(), "ผลการตรวจสอบ :\r\nกรุณากรอกข้อมูลให้ถูกต้องก่อนคะ\r\n\n", Toast.LENGTH_SHORT).show();
-                    }else{
-                        edt.putString("UID_DTAC", txtUID_DTAC.getText().toString().trim());
-                        edt.putString("CHK_OK", "PASS");
-                        edt.apply();
-                    }
-                }
-                if(chkbTRUE.isChecked()){
-                    if(txtUID_TRUE.getText().toString().trim().equals("") || txtUID_TRUE.getText().toString().trim().length() < 4){
-                        edt.putString("CHK_OK", "");
-                        edt.apply();
-                        Toast.makeText(getActivity(), "ผลการตรวจสอบ :\r\nกรุณากรอกข้อมูลให้ถูกต้องก่อนคะ\r\n\n", Toast.LENGTH_SHORT).show();
-                    }else{
-                        edt.putString("UID_TRUE", txtUID_TRUE.getText().toString().trim());
-                        edt.putString("CHK_OK", "PASS");
-                        edt.apply();
-                    }
-                }
-                if(chkbCAT.isChecked()){
-                    edt.putString("UID_CAT", "CAT");
-                    edt.putString("CHK_OK", "PASS");
-                    edt.apply();
-                }
-                if(chkbThemeDefault.isChecked()){
-                    edt.putString("THEME", "A");
-                    edt.apply();
-                }
-                if(chkbThemePastel.isChecked()){
-                    edt.putString("THEME", "B");
-                    edt.apply();
-                }
-                if(sharedPrf.getString("CHK_OK", "").equals("PASS")){
-                    edt.putString("CHK_OK", "TRUE");
-                    edt.apply();
-                    ((MainActivity) getActivity()).displayView(0);
-                }
-
+    private void bindCarrier(@NonNull CheckBox toggle, @NonNull EditText pin,
+                             @NonNull String storedPin) {
+        boolean enabled = !storedPin.isEmpty();
+        toggle.setChecked(enabled);
+        pin.setEnabled(enabled);
+        pin.setText(storedPin);
+        pin.setBackgroundResource(enabled ? R.drawable.border_active : R.drawable.border_inactive);
+        pin.addTextChangedListener(new SimpleWatcher(() ->
+                pin.setBackgroundResource(pin.getText().toString().trim().length() >= MIN_PIN_LENGTH
+                        ? R.drawable.border_active : R.drawable.border_inactive)));
+        toggle.setOnClickListener(v -> {
+            boolean on = toggle.isChecked();
+            pin.setEnabled(on);
+            if (on) {
+                pin.requestFocus();
+            } else {
+                pin.setText("");
+                pin.setBackgroundResource(R.drawable.border_inactive);
             }
         });
+    }
 
-        return settingView;
+    private void setTheme(boolean useDefault) {
+        themeDefault.setChecked(useDefault);
+        themePastel.setChecked(!useDefault);
+    }
+
+    /**
+     * Validates everything first and only then writes. The previous version wrote
+     * each carrier as it went and left the "configured" flag in whatever state the
+     * last carrier happened to produce.
+     */
+    private void save() {
+        String ais = useAis.isChecked() ? pinAis.getText().toString().trim() : "";
+        String dtac = useDtac.isChecked() ? pinDtac.getText().toString().trim() : "";
+        String truemove = useTrue.isChecked() ? pinTrue.getText().toString().trim() : "";
+        boolean cat = useCat.isChecked();
+
+        if (invalidPin(useAis, ais) || invalidPin(useDtac, dtac) || invalidPin(useTrue, truemove)) {
+            toast(R.string.setting_invalid_pin);
+            return;
+        }
+        if (ais.isEmpty() && dtac.isEmpty() && truemove.isEmpty() && !cat) {
+            toast(R.string.setting_pick_one);
+            return;
+        }
+
+        SecurePrefs prefs = prefs();
+        prefs.putString(SecurePrefs.UID_AIS, ais);
+        prefs.putString(SecurePrefs.UID_DTAC, dtac);
+        prefs.putString(SecurePrefs.UID_TRUE, truemove);
+        prefs.putString(SecurePrefs.UID_CAT, cat ? Carrier.displayName(Carrier.CAT) : "");
+        prefs.putString(SecurePrefs.THEME, themeDefault.isChecked() ? "A" : "B");
+        if (UssdDialer.canSendInApp(requireContext())) {
+            prefs.putBoolean(SecurePrefs.USE_LEGACY_DIALER, legacyDialer.isChecked());
+        }
+        prefs.putString(SecurePrefs.CONFIGURED, "TRUE");
+
+        toast(R.string.setting_saved);
+        ((MainActivity) requireActivity()).displayView(MainActivity.VIEW_TOPUP);
+    }
+
+    private static boolean invalidPin(@NonNull CheckBox toggle, @NonNull String pin) {
+        return toggle.isChecked() && pin.length() < MIN_PIN_LENGTH;
+    }
+
+    /** Minimal {@link TextWatcher} so the callers only supply the part they need. */
+    private static final class SimpleWatcher implements TextWatcher {
+
+        private final Runnable onChanged;
+
+        SimpleWatcher(@NonNull Runnable onChanged) {
+            this.onChanged = onChanged;
+        }
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            onChanged.run();
+        }
     }
 }

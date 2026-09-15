@@ -1,864 +1,401 @@
 package com.mondaro.easytopup;
 
-import android.Manifest;
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentTransaction;
-import android.content.ActivityNotFoundException;
-import android.content.ContentValues;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
 import android.content.res.Configuration;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
-import android.util.Base64;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.view.View.OnClickListener;
 
-import java.util.ArrayList;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentManager;
+
+import com.mondaro.easytopup.data.Carrier;
+import com.mondaro.easytopup.data.HistoryRepository;
+import com.mondaro.easytopup.data.QuickDial;
+import com.mondaro.easytopup.data.SecurePrefs;
+import com.mondaro.easytopup.telephony.UssdCodes;
+import com.mondaro.easytopup.ui.BaseFragment;
+import com.mondaro.easytopup.util.Amounts;
+import com.mondaro.easytopup.util.PhoneNumbers;
+
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 
-import com.mondaro.easytopup.sqlite.DBHelper;
-import com.mondaro.easytopup.sqlite.SimpleDBDial;
+/** The keypad: pick a carrier, type a number and an amount, dial the top-up. */
+public class TopupFragment extends BaseFragment {
 
-public class TopupFragment extends Fragment {
-    String tmpDigit = "",tmpLabel = "";
-    char target ='1';
-    int mode = 0;
-    TextView txtphone,txtcost,txtQuick1,txtQuick2,txtQuick3,labelAIS,labelDTAC,labelTRUE,labelCAT;
-    Button btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btnOK,btnDel,btnContact,btnHistory;
-    LinearLayout bgcolor,sltAIS, sltDTAC, sltTRUE, sltCAT, slt1, slt2, slt3, slt4;
-    String USERPIN_AIS, USERPIN_DTAC, USERPIN_TRUE, USERPIN_CAT,LASTPHONE,CHK_THEME;
-    int bgAIS,bgDTAC,bgTRUE,bgCAT,tabAIS,tabDTAC,tabTRUE,tabCAT;
-    List<String> getPhone;
-    SharedPreferences sharedPref;
-    SharedPreferences.Editor edt;
-    static final int PICK_CONTACT_REQUEST = 1;
-    final private int REQUEST_READ_CONTACTS_PERMISSIONS = 112;
-    final private int REQUEST_CALL_PHONE_PERMISSIONS = 123;
+    private static final int FIELD_PHONE = 1;
+    private static final int FIELD_AMOUNT = 2;
 
-    public TopupFragment(){}
+    private static final int[] KEYPAD_IDS = {
+            R.id.button0, R.id.button1, R.id.button2, R.id.button3, R.id.button4,
+            R.id.button5, R.id.button6, R.id.button7, R.id.button8, R.id.button9};
 
+    private TextView txtPhone;
+    private TextView txtCost;
+    private TextView[] quickViews;
+    private LinearLayout bgColor;
+    private LinearLayout[] carrierTabs;
+    private LinearLayout[] carrierSlots;
+
+    private int field = FIELD_PHONE;
+    @Carrier.Id
+    private int carrier = Carrier.NONE;
+
+    private List<QuickDial> quickDials = Collections.emptyList();
+    private HistoryRepository history;
+    private SecurePrefs prefs;
+
+    private int[] tabBackgrounds;
+    private int[] tabColors;
+
+    // Survive the view being re-inflated when the device is rotated: the activity
+    // handles the configuration change itself, so only the view is rebuilt.
+    private String pendingPhone = "";
+    private String pendingAmount = "";
+
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        View root = inflater.inflate(R.layout.fragment_topup, container, false);
+        allowAnyOrientation();
 
-        View rootView = inflater.inflate(R.layout.fragment_topup, container, false);
-        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR);
+        prefs = prefs();
+        history = HistoryRepository.get(requireContext());
 
-        sharedPref = this.getActivity().getPreferences(Context.MODE_PRIVATE);
-        USERPIN_AIS = sharedPref.getString("UID_AIS", "");
-        USERPIN_DTAC = sharedPref.getString("UID_DTAC", "");
-        USERPIN_TRUE = sharedPref.getString("UID_TRUE", "");
-        USERPIN_CAT = sharedPref.getString("UID_CAT", "");
-        CHK_THEME = sharedPref.getString("THEME", "");
-        String getCheck = sharedPref.getString("CHK_OK","");
-        edt = sharedPref.edit();
-        edt.putString("UID1", "");edt.putString("UID2", "");edt.putString("UID3", "");edt.putString("CHK", "");
-        edt.apply();
-        int year = Calendar.getInstance().get(Calendar.YEAR);
-        chkNewRoll(year);
-
-        if(getCheck.equals("")){
-            Toast.makeText(getActivity(), "ผลการตรวจสอบ :\r\nเครื่องนี้ยังไม่ได้ทำรายการตั้งค่าคะ\r\n\n", Toast.LENGTH_LONG).show();
-            ((MainActivity) getActivity()).displayView(4);
-        }else{
-            bgcolor = (LinearLayout)rootView.findViewById(R.id.bgTheme);
-            btnHistory = (Button) rootView.findViewById(R.id.btnHistory);
-            btnContact = (Button) rootView.findViewById(R.id.btnFindContact);
-            txtphone = (TextView) rootView.findViewById(R.id.textViewPhone);
-            txtcost = (TextView) rootView.findViewById(R.id.textViewCost);
-            txtQuick1 = (TextView) rootView.findViewById(R.id.textViewDial1);
-            txtQuick2 = (TextView) rootView.findViewById(R.id.textViewDial2);
-            txtQuick3 = (TextView) rootView.findViewById(R.id.textViewDial3);
-            labelAIS = (TextView) rootView.findViewById(R.id.textViewAIS);
-            labelDTAC = (TextView) rootView.findViewById(R.id.textViewDTAC);
-            labelTRUE = (TextView) rootView.findViewById(R.id.textViewTRUE);
-            labelCAT = (TextView) rootView.findViewById(R.id.textViewCAT);
-            btn0 = (Button) rootView.findViewById(R.id.button0);
-            btn1 = (Button) rootView.findViewById(R.id.button1);
-            btn2 = (Button) rootView.findViewById(R.id.button2);
-            btn3 = (Button) rootView.findViewById(R.id.button3);
-            btn4 = (Button) rootView.findViewById(R.id.button4);
-            btn5 = (Button) rootView.findViewById(R.id.button5);
-            btn6 = (Button) rootView.findViewById(R.id.button6);
-            btn7 = (Button) rootView.findViewById(R.id.button7);
-            btn8 = (Button) rootView.findViewById(R.id.button8);
-            btn9 = (Button) rootView.findViewById(R.id.button9);
-            btnOK = (Button) rootView.findViewById(R.id.buttonTopup);
-            btnDel = (Button) rootView.findViewById(R.id.buttonDel);
-            sltAIS = (LinearLayout) rootView.findViewById(R.id.sltAIS);
-            sltDTAC = (LinearLayout) rootView.findViewById(R.id.sltDTAC);
-            sltTRUE = (LinearLayout) rootView.findViewById(R.id.sltTRUE);
-            sltCAT = (LinearLayout) rootView.findViewById(R.id.sltCAT);
-            slt1 = (LinearLayout) rootView.findViewById(R.id.slt1);
-            slt2 = (LinearLayout) rootView.findViewById(R.id.slt2);
-            slt3 = (LinearLayout) rootView.findViewById(R.id.slt3);
-            slt4 = (LinearLayout) rootView.findViewById(R.id.slt4);
-
-            if(CHK_THEME.equals("A")){
-                bgAIS = R.color.bg_topup_ais_default;
-                bgDTAC = R.color.bg_topup_dtac_default;
-                bgTRUE = R.color.bg_topup_true_default;
-                bgCAT = R.color.bg_topup_cat_default;
-                tabAIS = R.drawable.button_select_ais_default;
-                tabDTAC = R.drawable.button_select_dtac_default;
-                tabTRUE = R.drawable.button_select_true_default;
-                tabCAT = R.drawable.button_select_cat_default;
-            }else{
-                bgAIS = R.color.bg_topup_ais_pastel;
-                bgDTAC = R.color.bg_topup_dtac_pastel;
-                bgTRUE = R.color.bg_topup_true_pastel;
-                bgCAT = R.color.bg_topup_cat_pastel;
-                tabAIS = R.drawable.button_select_ais_pastel;
-                tabDTAC = R.drawable.button_select_dtac_pastel;
-                tabTRUE = R.drawable.button_select_true_pastel;
-                tabCAT = R.drawable.button_select_cat_pastel;
-            }
-
-            btnHistory.setOnClickListener(new OnClickListener() {@Override public void onClick(View v) {
-                if(target=='1'){
-                    tmpDigit = "";
-                    LASTPHONE = sharedPref.getString("LAST","");
-                    InsDigit(LASTPHONE);
-                }}});
-            btnContact.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
-                pickContact();}});
-            txtphone.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
-                target = '1';tmpDigit = txtphone.getText().toString().trim();
-                txtphone.setBackgroundResource(R.drawable.border_active);
-                txtcost.setBackgroundResource(R.drawable.border_inactive);}});
-            txtcost.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
-                target = '2';tmpDigit = txtcost.getText().toString().trim();
-                txtcost.setBackgroundResource(R.drawable.border_active);
-                txtphone.setBackgroundResource(R.drawable.border_inactive);}});
-            txtQuick1.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
-                if(!txtQuick1.getText().equals("")){
-                    txtphone.setText(txtQuick1.getText());
-                    chkCarrier(getPhone.get(0).substring(10,11));
-                }
-            }});
-            txtQuick2.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
-                if(!txtQuick2.getText().equals("")){
-                    txtphone.setText(txtQuick2.getText());
-                    chkCarrier(getPhone.get(1).substring(10,11));
-                }
-            }});
-            txtQuick3.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
-                if(!txtQuick3.getText().equals("")){
-                    txtphone.setText(txtQuick3.getText());
-                    chkCarrier(getPhone.get(2).substring(10,11));
-                }
-            }});
-            sltAIS.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
-                bgcolor.setBackgroundResource(bgAIS);
-                mode = 1;
-                showLabel("1000");
-            }});
-            sltDTAC.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
-                bgcolor.setBackgroundResource(bgDTAC);
-                mode = 2;
-                showLabel("0100");
-            }});
-            sltTRUE.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
-                bgcolor.setBackgroundResource(bgTRUE);
-                mode = 3;
-                showLabel("0010");
-            }});
-            sltCAT.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
-                bgcolor.setBackgroundResource(bgCAT);
-                mode = 4;
-                showLabel("0001");
-            }});
-
-            if(USERPIN_CAT.equals("")){
-                tmpLabel = "0";
-                slt4.setVisibility(View.GONE);
-            }else{
-                tmpLabel = "1";
-                slt4.setVisibility(View.VISIBLE);
-                sltCAT.setBackgroundResource(tabCAT);
-                bgcolor.setBackgroundResource(bgCAT);
-                sltCAT.performClick();
-            }
-            if(USERPIN_TRUE.equals("")){
-                tmpLabel = "0" + tmpLabel;
-                slt3.setVisibility(View.GONE);
-            }else{
-                tmpLabel = "1" + tmpLabel;
-                slt3.setVisibility(View.VISIBLE);
-                sltTRUE.setBackgroundResource(tabTRUE);
-                bgcolor.setBackgroundResource(bgTRUE);
-                sltTRUE.performClick();
-            }
-            if(USERPIN_DTAC.equals("")){
-                tmpLabel = "0" + tmpLabel;
-                slt2.setVisibility(View.GONE);
-            }else{
-                tmpLabel = "1" + tmpLabel;
-                slt2.setVisibility(View.VISIBLE);
-                sltDTAC.setBackgroundResource(tabDTAC);
-                bgcolor.setBackgroundResource(bgDTAC);
-                sltDTAC.performClick();
-            }
-            if(USERPIN_AIS.equals("")){
-                tmpLabel = "0" + tmpLabel;
-                slt1.setVisibility(View.GONE);
-            }else{
-                tmpLabel = "1" + tmpLabel;
-                slt1.setVisibility(View.VISIBLE);
-                sltAIS.setBackgroundResource(tabAIS);
-                bgcolor.setBackgroundResource(bgAIS);
-                sltAIS.performClick();
-            }
-
-            showLabel(tmpLabel);
-
-            btn0.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {InsDigit("0");}});
-            btn1.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {InsDigit("1");}});
-            btn2.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {InsDigit("2");}});
-            btn3.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {InsDigit("3");}});
-            btn4.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {InsDigit("4");}});
-            btn5.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {InsDigit("5");}});
-            btn6.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {InsDigit("6");}});
-            btn7.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    InsDigit("7");
-                }
-            });
-            btn8.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {InsDigit("8");}});
-            btn9.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    InsDigit("9");
-                }
-            });
-            btnOK.setOnClickListener(new View.OnClickListener() {
-                @Override public void onClick(View v) {InsDigit("OK");promptQuickDial();}});
-            btnDel.setOnClickListener(new View.OnClickListener() {
-                @Override public void onClick(View v) {
-                    InsDigit("DEL");
-                    if(txtphone.getText().toString().equals("")){
-                        promptQuickDial();
-                    }
-                }
-            });
-            txtphone.setBackgroundResource(R.drawable.border_active);
-
-            btnDel.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View v) {
-                    if(target=='1'){
-                        txtphone.setText("");
-                        txtphone.setBackgroundResource(R.drawable.border_active);
-                        txtcost.setBackgroundResource(R.drawable.border_inactive);
-                    }else{
-                        txtcost.setText("");
-                        txtphone.setBackgroundResource(R.drawable.border_inactive);
-                        txtcost.setBackgroundResource(R.drawable.border_active);
-                    }
-                    return false;
-                }
-            });
+        if (!prefs.isConfigured()) {
+            toast(R.string.not_configured_yet);
+            ((MainActivity) requireActivity()).displayView(MainActivity.VIEW_SETTING);
+            return root;
         }
 
-        return rootView;
+        bindViews(root);
+        applyTheme();
+        wireKeypad(root);
+        wireCarrierTabs();
+        setUpEnabledCarriers();
+        resetAmountsOnNewYear();
+        restorePendingInput();
+
+        return root;
     }
 
+    private void bindViews(@NonNull View root) {
+        bgColor = root.findViewById(R.id.bgTheme);
+        txtPhone = root.findViewById(R.id.textViewPhone);
+        txtCost = root.findViewById(R.id.textViewCost);
+        quickViews = new TextView[]{
+                root.findViewById(R.id.textViewDial1),
+                root.findViewById(R.id.textViewDial2),
+                root.findViewById(R.id.textViewDial3)};
+        carrierTabs = new LinearLayout[]{
+                root.findViewById(R.id.sltAIS),
+                root.findViewById(R.id.sltDTAC),
+                root.findViewById(R.id.sltTRUE),
+                root.findViewById(R.id.sltCAT)};
+        carrierSlots = new LinearLayout[]{
+                root.findViewById(R.id.slt1),
+                root.findViewById(R.id.slt2),
+                root.findViewById(R.id.slt3),
+                root.findViewById(R.id.slt4)};
+
+        txtPhone.setOnClickListener(v -> focusField(FIELD_PHONE));
+        txtCost.setOnClickListener(v -> focusField(FIELD_AMOUNT));
+        focusField(FIELD_PHONE);
+
+        root.findViewById(R.id.btnHistory).setOnClickListener(v -> {
+            String last = prefs.getString(SecurePrefs.LAST_PHONE);
+            if (!last.isEmpty()) {
+                focusField(FIELD_PHONE);
+                setText(txtPhone, last);
+                refreshQuickDial(last);
+            }
+        });
+        root.findViewById(R.id.btnFindContact).setOnClickListener(v -> pickContact(number -> {
+            setText(txtPhone, number);
+            if (!PhoneNumbers.isValid(number)) {
+                toast(R.string.error_phone_length);
+            }
+            focusField(FIELD_AMOUNT);
+            clearQuickDial();
+        }));
+
+        for (int i = 0; i < quickViews.length; i++) {
+            final int index = i;
+            quickViews[i].setOnClickListener(v -> onQuickDialClicked(index));
+        }
+    }
+
+    /** Re-inflates the view so the layout for the new orientation is picked up. */
     @Override
-    public void onConfigurationChanged(Configuration newConfig) {
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
-            try {
-                FragmentTransaction ft = getFragmentManager().beginTransaction();
-                ft.detach(this).attach(this).commit();
-            } catch (Exception e) {
-                e.printStackTrace();
+        if (txtPhone != null) {
+            pendingPhone = txtPhone.getText().toString();
+            pendingAmount = txtCost.getText().toString();
+        }
+        FragmentManager manager = getParentFragmentManager();
+        if (!manager.isStateSaved()) {
+            manager.beginTransaction().detach(this).attach(this).commit();
+        }
+    }
+
+    private void restorePendingInput() {
+        if (!pendingPhone.isEmpty()) {
+            setText(txtPhone, pendingPhone);
+        }
+        if (!pendingAmount.isEmpty()) {
+            setText(txtCost, pendingAmount);
+        }
+        focusField(pendingPhone.length() >= PhoneNumbers.LENGTH ? FIELD_AMOUNT : FIELD_PHONE);
+    }
+
+    private void applyTheme() {
+        boolean defaultTheme = "A".equals(prefs.getString(SecurePrefs.THEME));
+        tabColors = defaultTheme
+                ? new int[]{R.color.bg_topup_ais_default, R.color.bg_topup_dtac_default,
+                R.color.bg_topup_true_default, R.color.bg_topup_cat_default}
+                : new int[]{R.color.bg_topup_ais_pastel, R.color.bg_topup_dtac_pastel,
+                R.color.bg_topup_true_pastel, R.color.bg_topup_cat_pastel};
+        tabBackgrounds = defaultTheme
+                ? new int[]{R.drawable.button_select_ais_default, R.drawable.button_select_dtac_default,
+                R.drawable.button_select_true_default, R.drawable.button_select_cat_default}
+                : new int[]{R.drawable.button_select_ais_pastel, R.drawable.button_select_dtac_pastel,
+                R.drawable.button_select_true_pastel, R.drawable.button_select_cat_pastel};
+    }
+
+    private void wireKeypad(@NonNull View root) {
+        for (int digit = 0; digit < KEYPAD_IDS.length; digit++) {
+            final String value = String.valueOf(digit);
+            root.findViewById(KEYPAD_IDS[digit]).setOnClickListener(v -> appendDigit(value));
+        }
+        root.findViewById(R.id.buttonTopup).setOnClickListener(v -> submit());
+
+        View delete = root.findViewById(R.id.buttonDel);
+        delete.setOnClickListener(v -> deleteDigit());
+        delete.setOnLongClickListener(v -> {
+            setText(activeField(), "");
+            if (field == FIELD_PHONE) {
+                clearQuickDial();
             }
-        } else if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            try {
-                FragmentTransaction ft = getFragmentManager().beginTransaction();
-                ft.detach(this).attach(this).commit();
-            } catch (Exception e) {
-                e.printStackTrace();
+            return true;
+        });
+    }
+
+    private void wireCarrierTabs() {
+        for (int i = 0; i < carrierTabs.length; i++) {
+            final int id = i + 1;
+            carrierTabs[i].setOnClickListener(v -> selectCarrier(id));
+        }
+    }
+
+    /** Hides the tabs for carriers that have no PIN and selects the first that does. */
+    private void setUpEnabledCarriers() {
+        int firstEnabled = Carrier.NONE;
+        for (int id = Carrier.AIS; id <= Carrier.CAT; id++) {
+            int index = id - 1;
+            boolean enabled = !prefs.pinFor(id).isEmpty();
+            carrierSlots[index].setVisibility(enabled ? View.VISIBLE : View.GONE);
+            if (enabled && firstEnabled == Carrier.NONE) {
+                firstEnabled = id;
             }
         }
-    }
-    void InsDigit(String tmp){
-        switch (tmp) {
-            case "OK":
-                if (txtphone.getText().toString().equals("") || txtcost.getText().toString().equals("")) {
-                    Toast.makeText(getActivity(), "ผิดพลาด :\r\nกรุณากรอกหมายเลขโทรศัพท์\nและจำนวนเงินที่ต้องการเติมเงินด้วยคะ", Toast.LENGTH_SHORT).show();
-                } else if (txtphone.getText().length() > 10 || txtphone.getText().length() < 10) {
-                    Toast.makeText(getActivity(), "ผิดพลาด :\r\nกรุณากรอกหมายเลขโทรศัพท์\nให้ครบ 10 หลักด้วยคะ", Toast.LENGTH_SHORT).show();
-                } else if (txtcost.getText().length() < 1) {
-                    Toast.makeText(getActivity(), "ผิดพลาด :\r\nกรุณากรอกจำนวนเงิน\nให้ถูกต้องด้วยคะ", Toast.LENGTH_SHORT).show();
-                } else {
-                    int hasCallPhonePermission = ContextCompat.checkSelfPermission(getActivity(),
-                            Manifest.permission.CALL_PHONE);
-                    if (hasCallPhonePermission != PackageManager.PERMISSION_GRANTED) {
-                        if (!ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
-                                Manifest.permission.CALL_PHONE)) {
-                            tmpDigit = "";
-                            showMessageOK("ต้องการยืนยันการอนุญาตเข้าถึง\n\n[ระบบการโทร]\n\nเพื่อให้แอปพลิเคชันทำงานได้",
-                                    new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            ActivityCompat.requestPermissions(getActivity(),
-                                                    new String[]{Manifest.permission.CALL_PHONE},
-                                                    REQUEST_CALL_PHONE_PERMISSIONS);
-                                        }
-                                    });
-                            return;
-                        }
-                        ActivityCompat.requestPermissions(getActivity(),
-                                new String[]{Manifest.permission.CALL_PHONE},
-                                REQUEST_CALL_PHONE_PERMISSIONS);
-                        return;
-                    } else {
-                        switch (mode) {
-                            case 1:
-                                TopupAIS();
-                                break;
-                            case 2:
-                                TopupDTAC();
-                                break;
-                            case 3:
-                                TopupTRUE();
-                                break;
-                            case 4:
-                                TopupCAT();
-                                break;
-                        }
-                        saveToDB();
-                        edt.putString("LAST", txtphone.getText().toString().trim());
-                        edt.commit();
-                        tmpDigit = "";
-                        txtphone.setText("");
-                        txtcost.setText("");
-                        txtphone.setBackgroundResource(R.drawable.border_active);
-                        txtcost.setBackgroundResource(R.drawable.border_inactive);
-                        target = '1';
-                        txtQuick1.setText("");
-                        txtQuick2.setText("");
-                        txtQuick3.setText("");
-                    }
-                }
-                break;
-            case "DEL":
-                if (target == '1') {
-                    tmpDigit = txtphone.getText().toString();
-                    if (tmpDigit.length() > 0) {
-                        tmpDigit = tmpDigit.substring(0, tmpDigit.length() - 1);
-                    }
-                    txtphone.setText(tmpDigit);
-                    updateQuickDial(tmpDigit);
-                } else {
-                    tmpDigit = txtcost.getText().toString();
-                    if (tmpDigit.length() > 0) {
-                        tmpDigit = tmpDigit.substring(0, tmpDigit.length() - 1);
-                    }
-                    txtcost.setText(tmpDigit);
-                }
-                break;
-            default:
-                tmpDigit += tmp;
-                if (tmpDigit.length() == 11) {
-                    tmpDigit = tmp;
-                    target = '2';
-                    txtphone.setBackgroundResource(R.drawable.border_inactive);
-                    txtcost.setBackgroundResource(R.drawable.border_active);
-                }
-                break;
-        }
-        if(target == '1'){
-            txtphone.setBackgroundResource(R.drawable.border_active);
-            txtphone.setText(tmpDigit);
-            updateQuickDial(tmpDigit);
-        }else{
-            txtcost.setText(tmpDigit);
+        // Keep the tab the user had chosen when the view is rebuilt on rotation.
+        int wanted = (carrier != Carrier.NONE && !prefs.pinFor(carrier).isEmpty())
+                ? carrier : firstEnabled;
+        if (wanted != Carrier.NONE) {
+            selectCarrier(wanted);
         }
     }
 
-    private void TopupAIS() {
-        Log.d("Test", "To this");
-        try {
-            Intent callIntent = new Intent(Intent.ACTION_CALL);
-            String txtTel = "*123*" + USERPIN_AIS + "*" + txtphone.getText().toString().trim() + "*" + txtcost.getText().toString().trim() + "%23";
-            callIntent.setData(Uri.parse("tel:" + txtTel));
-            startActivity(callIntent);
-        } catch (ActivityNotFoundException activityException) {
-            Log.d("dialing-example", "Call failed", activityException);
+    private void selectCarrier(@Carrier.Id int id) {
+        carrier = id;
+        int index = id - 1;
+        bgColor.setBackgroundResource(tabColors[index]);
+        for (int i = 0; i < carrierSlots.length; i++) {
+            // The selected tab carries its carrier colour and a brass edge; the
+            // rest are a scrim over whichever ground is behind them. Width alone
+            // used to be the only thing marking the selection.
+            carrierTabs[i].setBackgroundResource(
+                    i == index ? tabBackgrounds[i] : R.drawable.tab_inactive);
+            // Mutating the weight keeps the margins the XML set; rebuilding the
+            // LayoutParams - as the old code did - threw them away on every tap.
+            ViewGroup.LayoutParams params = carrierSlots[i].getLayoutParams();
+            if (params instanceof LinearLayout.LayoutParams) {
+                ((LinearLayout.LayoutParams) params).weight = (i == index) ? 1f : 0f;
+            }
+            carrierSlots[i].requestLayout();
         }
     }
 
-    private void TopupDTAC() {
-        try {
-            Intent callIntent = new Intent(Intent.ACTION_CALL);
-            String txtTel = "*211*1*" + txtphone.getText().toString().trim() + "*" + USERPIN_DTAC + "*" + txtcost.getText().toString().trim() + "*1" + "%23";
-            callIntent.setData(Uri.parse("tel:" + txtTel));
-            startActivity(callIntent);
-        } catch (ActivityNotFoundException activityException) {
-            Log.d("dialing-example", "Call failed", activityException);
-        }
+    // ---- keypad -----------------------------------------------------------
+
+    private TextView activeField() {
+        return field == FIELD_PHONE ? txtPhone : txtCost;
     }
 
-    private void TopupTRUE() {
-        try {
-            Intent callIntent = new Intent(Intent.ACTION_CALL);
-            String txtTel = "*666*" + txtphone.getText().toString().trim() + "*" + txtcost.getText().toString().trim() + "*" + USERPIN_TRUE + "%23";
-            callIntent.setData(Uri.parse("tel:" + txtTel));
-            startActivity(callIntent);
-        } catch (ActivityNotFoundException activityException) {
-            Log.d("dialing-example", "Call failed", activityException);
-        }
+    private void focusField(int which) {
+        field = which;
+        txtPhone.setBackgroundResource(which == FIELD_PHONE
+                ? R.drawable.border_active : R.drawable.border_inactive);
+        txtCost.setBackgroundResource(which == FIELD_AMOUNT
+                ? R.drawable.border_active : R.drawable.border_inactive);
     }
 
-    private void TopupCAT() {
-        try {
-            Intent callIntent = new Intent(Intent.ACTION_CALL);
-            String txtTel = "*215*" + txtphone.getText().toString().trim() + "*" + txtcost.getText().toString().trim() + "%23";
-            callIntent.setData(Uri.parse("tel:" + txtTel));
-            startActivity(callIntent);
-        } catch (ActivityNotFoundException activityException) {
-            Log.d("dialing-example", "Call failed", activityException);
-        }
-    }
-
-    private void pickContact() {
-        int hasReadContactsPermission = ContextCompat.checkSelfPermission(getActivity(),
-                Manifest.permission.READ_CONTACTS);
-        if (hasReadContactsPermission != PackageManager.PERMISSION_GRANTED){
-            if (!ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
-                    Manifest.permission.READ_CONTACTS)) {
-                showMessageOK("ต้องการยืนยันการอนุญาตเข้าถึง\n\n[สมุดรายชื่อ]\n\nเพื่อให้แอปพลิเคชันทำงานได้",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                ActivityCompat.requestPermissions(getActivity(),
-                                        new String[] {Manifest.permission.READ_CONTACTS},
-                                        REQUEST_READ_CONTACTS_PERMISSIONS);
-                            }
-                        });
+    private void appendDigit(@NonNull String digit) {
+        TextView target = activeField();
+        String current = target.getText().toString();
+        if (field == FIELD_PHONE) {
+            if (current.length() >= PhoneNumbers.LENGTH) {
+                // Number complete - roll over to the amount and start it with this key.
+                focusField(FIELD_AMOUNT);
+                setText(txtCost, digit);
                 return;
             }
-            ActivityCompat.requestPermissions(getActivity(),
-                    new String[] {Manifest.permission.READ_CONTACTS},
-                    REQUEST_READ_CONTACTS_PERMISSIONS);
-            //return;
-        }else{
-            tmpDigit = "";
-            Intent pickContactIntent = new Intent( Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI );
-            pickContactIntent.setType(ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE);
-            startActivityForResult(pickContactIntent, PICK_CONTACT_REQUEST);
-        }
-
-    }
-
-    @Override
-    public void onActivityResult( int requestCode, int resultCode, Intent data ) {
-    super.onActivityResult(requestCode, resultCode, data);
-        String number = "";
-        if ( requestCode == PICK_CONTACT_REQUEST ) {
-            if ( resultCode == Activity.RESULT_OK ) {
-                Uri contactData = data.getData();
-                String[] projection = { ContactsContract.CommonDataKinds.Phone.NUMBER, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME };
-                Cursor cursor = getActivity().getContentResolver().query(contactData, projection,
-                        null, null, null);
-                if (cursor != null) {
-                    cursor.moveToFirst();
-                    int numberColumnIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
-                    number = cursor.getString(numberColumnIndex).replace("(", "").replace(")", "").replace("-", "").replace(" ", "").trim();
-                    cursor.close();
-                }
-                try{
-                    txtphone.setText(number);
-                    target = '2';
-                    txtcost.setBackgroundResource(R.drawable.border_active);
-                    txtphone.setBackgroundResource(R.drawable.border_inactive);
-                }catch (Exception e){
-                    Toast.makeText(getActivity(), "\n** พบข้อผิดพลาด **\n\nกรุณาแจ้งผู้พัฒนาระบบ\n\nmondaro23@gmail.com\n\n\n", Toast.LENGTH_LONG).show();
-                }
-            }
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch(requestCode){
-            case REQUEST_READ_CONTACTS_PERMISSIONS:
-                if(grantResults[0] != PackageManager.PERMISSION_GRANTED){
-                    Toast.makeText(getActivity(), "READ_CONTACTS Denied", Toast.LENGTH_SHORT)
-                            .show();
-                }
-                break;
-            case REQUEST_CALL_PHONE_PERMISSIONS:
-                if(grantResults[0] != PackageManager.PERMISSION_GRANTED){
-                    Toast.makeText(getActivity(), "CALL_PHONE Denied", Toast.LENGTH_SHORT)
-                            .show();
-                }
-                break;
-            default:
-                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        }
-    }
-
-    private void showMessageOK(String message, DialogInterface.OnClickListener okListener) {
-        new AlertDialog.Builder(getActivity())
-                .setMessage(message)
-                .setPositiveButton("OK", okListener)
-                .create()
-                .show();
-    }
-
-    private void saveToDB() {
-        SQLiteDatabase _writedatabase = new DBHelper(getActivity()).getWritableDatabase();
-        SQLiteDatabase _readdatabase = new DBHelper(getActivity()).getReadableDatabase();
-        ContentValues values = new ContentValues();
-        int chk = chkDuplicateDB();
-        if(chk != 0){
-            int amount = 0;
-            String[] projection = {
-                    SimpleDBDial.ContactDial.COLS_AMOUNT
-            };
-
-            String selection =
-                    SimpleDBDial.ContactDial._ID + " = ?";
-
-            String[] args = {String.valueOf(chk)};
-
-            Cursor cursor = _readdatabase.query(
-                    SimpleDBDial.ContactDial.TABLE_NAME,
-                    projection,
-                    selection,
-                    args,
-                    null, null, null
-            );
-            if(cursor.getCount() != 0){
-                if (cursor.moveToFirst()){
-                    do{
-                        String data = cursor.getString(cursor.getColumnIndexOrThrow(SimpleDBDial.ContactDial.COLS_AMOUNT));
-                        amount = Integer.valueOf(data);
-                    }while(cursor.moveToNext());
-                }
-                cursor.close();
-            }
-            amount += Integer.valueOf(txtcost.getText().toString());
-            values.put(SimpleDBDial.ContactDial.COLS_AMOUNT, amount);
-            values.put(SimpleDBDial.ContactDial.COLS_CARRIER, mode);
-            _writedatabase.update(SimpleDBDial.ContactDial.TABLE_NAME,values,selection,args);
-        }else{
-            values.put(SimpleDBDial.ContactDial.COLS_CARRIER, mode);
-            values.put(SimpleDBDial.ContactDial.COLS_PHONE, txtphone.getText().toString());
-            values.put(SimpleDBDial.ContactDial.COLS_AMOUNT, Integer.valueOf(txtcost.getText().toString()));
-            _writedatabase.insert(SimpleDBDial.ContactDial.TABLE_NAME, null, values);
-        }
-    }
-
-    private int chkDuplicateDB(){
-        int chk = 0;
-        SQLiteDatabase _findduplicatedatabase = new DBHelper(getActivity()).getReadableDatabase();
-        String[] projection = {
-                SimpleDBDial.ContactDial._ID
-        };
-
-        String selection = SimpleDBDial.ContactDial.COLS_PHONE + " LIKE ?";
-
-        String[] args = {txtphone.getText().toString() + "%"};
-
-        Cursor cursor = _findduplicatedatabase.query(
-                SimpleDBDial.ContactDial.TABLE_NAME,
-                projection,
-                selection,
-                args,
-                null, null, null
-        );
-        if(cursor.getCount() != 0){
-            if (cursor.moveToFirst()){
-                do{
-                    String data = cursor.getString(cursor.getColumnIndexOrThrow(SimpleDBDial.ContactDial._ID));
-                    chk = Integer.valueOf(data);
-                }while(cursor.moveToNext());
-            }
-            cursor.close();
-        }
-        return chk;
-    }
-
-    private void updateQuickDial(String t) {
-        promptQuickDial();
-        SQLiteDatabase _getquickphone = new DBHelper(getActivity()).getReadableDatabase();
-        String[] projection = {
-                SimpleDBDial.ContactDial.COLS_CARRIER,
-                SimpleDBDial.ContactDial.COLS_PHONE
-        };
-
-        String selection = SimpleDBDial.ContactDial.COLS_PHONE + " LIKE ?";
-
-        String[] args = {t + "%"};
-
-        Cursor cur = _getquickphone.query(
-                SimpleDBDial.ContactDial.TABLE_NAME,
-                projection,
-                selection,
-                args,
-                null, null,
-                SimpleDBDial.ContactDial.COLS_AMOUNT + " DESC",
-                "3"
-        );
-        getPhone = new ArrayList<>();
-        String carrier;
-        String phone;
-        if(cur.getCount() != 0){
-            if (cur.moveToFirst()){
-                do{
-                    carrier = cur.getString(cur.getColumnIndexOrThrow(SimpleDBDial.ContactDial.COLS_CARRIER));
-                    phone = cur.getString(cur.getColumnIndexOrThrow(SimpleDBDial.ContactDial.COLS_PHONE));
-                    getPhone.add(phone+carrier);
-                }while(cur.moveToNext());
-            }
-            cur.close();
-        }
-        try{
-            txtQuick1.setVisibility(View.VISIBLE);
-            txtQuick2.setVisibility(View.VISIBLE);
-            txtQuick3.setVisibility(View.VISIBLE);
-            txtQuick1.setText(getPhone.get(0).substring(0,10));
-            txtQuick2.setText(getPhone.get(1).substring(0,10));
-            txtQuick3.setText(getPhone.get(2).substring(0,10));
-        }catch (Exception e){
-            //No code
-        }
-        try{
-            switch (getPhone.get(0).substring(10,11)){
-                case "1" :txtQuick1.setBackgroundResource(R.drawable.button_quick_ais);break;
-                case "2" :txtQuick1.setBackgroundResource(R.drawable.button_quick_dtac);break;
-                case "3" :txtQuick1.setBackgroundResource(R.drawable.button_quick_true);break;
-                case "4" :txtQuick1.setBackgroundResource(R.drawable.button_quick_cat);break;
-            }
-            switch (getPhone.get(1).substring(10,11)){
-                case "1" :txtQuick2.setBackgroundResource(R.drawable.button_quick_ais);break;
-                case "2" :txtQuick2.setBackgroundResource(R.drawable.button_quick_dtac);break;
-                case "3" :txtQuick2.setBackgroundResource(R.drawable.button_quick_true);break;
-                case "4" :txtQuick2.setBackgroundResource(R.drawable.button_quick_cat);break;
-            }
-            switch (getPhone.get(2).substring(10,11)){
-                case "1" :txtQuick3.setBackgroundResource(R.drawable.button_quick_ais);break;
-                case "2" :txtQuick3.setBackgroundResource(R.drawable.button_quick_dtac);break;
-                case "3" :txtQuick3.setBackgroundResource(R.drawable.button_quick_true);break;
-                case "4" :txtQuick3.setBackgroundResource(R.drawable.button_quick_cat);break;
-            }
-        }catch (Exception e){
-            //No code
-        }
-        if(txtQuick1.getText() == ""){txtQuick1.setVisibility(View.INVISIBLE);}
-        if(txtQuick2.getText() == ""){txtQuick2.setVisibility(View.INVISIBLE);}
-        if(txtQuick3.getText() == ""){txtQuick3.setVisibility(View.INVISIBLE);}
-    }
-
-    private void promptQuickDial(){
-        txtQuick1.setText("");
-        txtQuick1.setVisibility(View.INVISIBLE);
-        txtQuick2.setText("");
-        txtQuick2.setVisibility(View.INVISIBLE);
-        txtQuick3.setText("");
-        txtQuick3.setVisibility(View.INVISIBLE);
-        txtcost.setText("");
-    }
-
-    private void chkCarrier(String c){
-        switch (c){
-            case "1":
-                if(USERPIN_AIS.equals("")){
-                    Toast.makeText(getActivity(), "หมายเลขนี้อยู่ในระบบที่คุณไม่ได้ตั้งค่าไว้ค่ะ", Toast.LENGTH_LONG).show();
-                    txtphone.setText("");
-                }else{
-                    sltAIS.performClick();
-                }
-                break;
-            case "2":
-                if(USERPIN_DTAC.equals("")){
-                    Toast.makeText(getActivity(), "หมายเลขนี้อยู่ในระบบที่คุณไม่ได้ตั้งค่าไว้ค่ะ", Toast.LENGTH_LONG).show();
-                    txtphone.setText("");
-                }else{
-                    sltDTAC.performClick();
-                }
-                break;
-            case "3":
-                if(USERPIN_TRUE.equals("")){
-                    Toast.makeText(getActivity(), "หมายเลขนี้อยู่ในระบบที่คุณไม่ได้ตั้งค่าไว้ค่ะ", Toast.LENGTH_LONG).show();
-                    txtphone.setText("");
-                }else{
-                    sltTRUE.performClick();
-                }
-                break;
-            case "4":
-                if(USERPIN_CAT.equals("")){
-                    Toast.makeText(getActivity(), "หมายเลขนี้อยู่ในระบบที่คุณไม่ได้ตั้งค่าไว้ค่ะ", Toast.LENGTH_LONG).show();
-                    txtphone.setText("");
-                }else{
-                    sltCAT.performClick();
-                }
-                break;
-        }
-        target = '2';tmpDigit = "";
-        txtphone.setBackgroundResource(R.drawable.border_inactive);
-        txtcost.setBackgroundResource(R.drawable.border_active);
-        promptQuickDial();
-    }
-
-    private void chkNewRoll(int yearNow){
-        int yearOn = sharedPref.getInt("YEAR",0);
-        if(yearOn == 0){
-            edt.putInt("YEAR", Calendar.getInstance().get(Calendar.YEAR));
-            edt.commit();
-            yearOn = sharedPref.getInt("YEAR",0);
-        }
-        if(yearOn != yearNow){
-            edt.putInt("YEAR", Calendar.getInstance().get(Calendar.YEAR));
-            edt.commit();
-            try {
-                cleanAmount();
-            }catch (Exception e){
-                //Null
-            }
-        }
-    }
-
-    private void cleanAmount(){
-        SQLiteDatabase _writedatabase = new DBHelper(getActivity()).getWritableDatabase();
-        ContentValues cv = new ContentValues();
-        cv.put(SimpleDBDial.ContactDial.COLS_AMOUNT, 0);
-        _writedatabase.update(SimpleDBDial.ContactDial.TABLE_NAME,cv,null,null);
-
-    }
-
-    private void showLabel(String lb){
-        switch (lb){
-            case "1000" :case "1100" :case "1010" :case "1001" :
-                //labelAIS.setVisibility(View.VISIBLE);
-                labelDTAC.setVisibility(View.GONE);
-                labelTRUE.setVisibility(View.GONE);
-                labelCAT.setVisibility(View.GONE);
-                slt1.setLayoutParams(new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT,
-                        1.0f));
-                slt2.setLayoutParams(new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT,
-                        0.0f));
-                slt3.setLayoutParams(new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT,
-                        0.0f));
-                slt4.setLayoutParams(new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT,
-                        0.0f));
-                break;
-            case "0100" :case "0110" :case "0101" :
-                labelAIS.setVisibility(View.GONE);
-                //labelDTAC.setVisibility(View.VISIBLE);
-                labelTRUE.setVisibility(View.GONE);
-                labelCAT.setVisibility(View.GONE);
-                slt1.setLayoutParams(new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT,
-                        0.0f));
-                slt2.setLayoutParams(new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT,
-                        1.0f));
-                slt3.setLayoutParams(new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT,
-                        0.0f));
-                slt4.setLayoutParams(new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT,
-                        0.0f));
-                break;
-            case "0010" :case "0011" :
-                labelAIS.setVisibility(View.GONE);
-                labelDTAC.setVisibility(View.GONE);
-                //labelTRUE.setVisibility(View.VISIBLE);
-                labelCAT.setVisibility(View.GONE);
-                slt1.setLayoutParams(new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT,
-                        0.0f));
-                slt2.setLayoutParams(new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT,
-                        0.0f));
-                slt3.setLayoutParams(new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT,
-                        1.0f));
-                slt4.setLayoutParams(new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT,
-                        0.0f));
-                break;
-            case "0001" :
-                labelAIS.setVisibility(View.GONE);
-                labelDTAC.setVisibility(View.GONE);
-                labelTRUE.setVisibility(View.GONE);
-                //labelCAT.setVisibility(View.VISIBLE);
-                slt1.setLayoutParams(new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT,
-                        0.0f));
-                slt2.setLayoutParams(new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT,
-                        0.0f));
-                slt3.setLayoutParams(new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT,
-                        0.0f));
-                slt4.setLayoutParams(new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT,
-                        1.0f));
-                break;
-        }
-    }
-    public static void setBackgroundResource(@NonNull View view, @DrawableRes int resId) {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-            int paddingTop = view.getPaddingTop();
-            int paddingLeft = view.getPaddingLeft();
-            int paddingRight = view.getPaddingRight();
-            int paddingBottom = view.getPaddingBottom();
-            view.setBackgroundResource(resId);
-            view.setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom);
+            String updated = current + digit;
+            setText(txtPhone, updated);
+            refreshQuickDial(updated);
         } else {
-            view.setBackgroundResource(resId);
+            if (current.length() >= 6) {
+                return;
+            }
+            setText(txtCost, current + digit);
+        }
+    }
+
+    private void deleteDigit() {
+        TextView target = activeField();
+        String current = target.getText().toString();
+        if (current.isEmpty()) {
+            if (field == FIELD_AMOUNT) {
+                focusField(FIELD_PHONE);
+            }
+            return;
+        }
+        String updated = current.substring(0, current.length() - 1);
+        setText(target, updated);
+        if (field == FIELD_PHONE) {
+            refreshQuickDial(updated);
+        }
+    }
+
+    private void setText(@NonNull TextView view, @NonNull String value) {
+        view.setText(value);
+    }
+
+    // ---- quick dial -------------------------------------------------------
+
+    private void refreshQuickDial(@NonNull String prefix) {
+        history.quickDial(prefix, items -> {
+            if (!isAdded()) {
+                return;
+            }
+            quickDials = items;
+            for (int i = 0; i < quickViews.length; i++) {
+                if (i < items.size()) {
+                    QuickDial item = items.get(i);
+                    quickViews[i].setText(item.phone);
+                    quickViews[i].setBackgroundResource(quickBackground(item.carrier));
+                    quickViews[i].setVisibility(View.VISIBLE);
+                } else {
+                    quickViews[i].setText("");
+                    quickViews[i].setVisibility(View.INVISIBLE);
+                }
+            }
+        });
+    }
+
+    private void clearQuickDial() {
+        quickDials = Collections.emptyList();
+        for (TextView view : quickViews) {
+            view.setText("");
+            view.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    private static int quickBackground(@Carrier.Id int carrier) {
+        switch (carrier) {
+            case Carrier.DTAC:
+                return R.drawable.button_quick_dtac;
+            case Carrier.TRUE:
+                return R.drawable.button_quick_true;
+            case Carrier.CAT:
+                return R.drawable.button_quick_cat;
+            case Carrier.AIS:
+            default:
+                return R.drawable.button_quick_ais;
+        }
+    }
+
+    private void onQuickDialClicked(int index) {
+        if (index >= quickDials.size()) {
+            return;
+        }
+        QuickDial item = quickDials.get(index);
+        if (prefs.pinFor(item.carrier).isEmpty()) {
+            toast(R.string.carrier_not_configured);
+            return;
+        }
+        setText(txtPhone, item.phone);
+        selectCarrier(item.carrier);
+        focusField(FIELD_AMOUNT);
+        setText(txtCost, "");
+        clearQuickDial();
+    }
+
+    // ---- submit -----------------------------------------------------------
+
+    private void submit() {
+        String phone = PhoneNumbers.normalise(txtPhone.getText().toString());
+        int amount = Amounts.parse(txtCost.getText().toString());
+
+        if (phone.isEmpty() || amount == Amounts.INVALID) {
+            toast(R.string.error_phone_and_amount);
+            return;
+        }
+        if (!PhoneNumbers.isValid(phone)) {
+            toast(R.string.error_phone_length);
+            return;
+        }
+        if (carrier == Carrier.NONE) {
+            toast(R.string.error_no_carrier);
+            return;
+        }
+        String pin = prefs.pinFor(carrier);
+        if (pin.isEmpty()) {
+            toast(R.string.carrier_not_configured);
+            return;
+        }
+
+        final int dialledCarrier = carrier;
+        sendUssd(UssdCodes.topup(dialledCarrier, pin, phone, amount), () -> {
+            history.recordTopup(phone, dialledCarrier, amount);
+            prefs.putString(SecurePrefs.LAST_PHONE, phone);
+            pendingPhone = "";
+            pendingAmount = "";
+            setText(txtPhone, "");
+            setText(txtCost, "");
+            focusField(FIELD_PHONE);
+            clearQuickDial();
+        });
+    }
+
+    /** Running totals drive the quick-dial ranking and start fresh each year. */
+    private void resetAmountsOnNewYear() {
+        int thisYear = Calendar.getInstance().get(Calendar.YEAR);
+        int storedYear = prefs.getInt(SecurePrefs.ROLL_YEAR, 0);
+        if (storedYear == 0) {
+            prefs.putInt(SecurePrefs.ROLL_YEAR, thisYear);
+            return;
+        }
+        if (storedYear != thisYear) {
+            prefs.putInt(SecurePrefs.ROLL_YEAR, thisYear);
+            history.resetAmounts();
         }
     }
 }
-
